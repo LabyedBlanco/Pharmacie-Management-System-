@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'oblong';
+    src: url('/fonts/oblong.ttf');
+}
+
+.text {
+    -fx-font-family: "oblong";
+}

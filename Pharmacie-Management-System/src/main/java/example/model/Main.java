@@ -3,6 +3,7 @@ package example.model;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.text.Font;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -19,6 +20,8 @@ public class Main extends Application {
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
+        Font labiad = Font.loadFont("resources/fonts/oblong.ttf", 45);
+
     }
 
     public static void main(String[] args) {

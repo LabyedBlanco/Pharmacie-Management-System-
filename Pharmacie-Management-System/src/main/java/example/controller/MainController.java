@@ -15,6 +15,7 @@ public class MainController {
     private GridPane MainPane;
     @FXML
     private Label welcomeText;
+
     public void OnProduit (ActionEvent event) throws IOException {
         System.out.print("Gestion des Produit");
         FxmlLoader object = new FxmlLoader();
