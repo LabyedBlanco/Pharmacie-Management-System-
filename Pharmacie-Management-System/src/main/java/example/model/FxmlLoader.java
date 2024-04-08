@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.net.URL;
 
 public class FxmlLoader {
-    private GridPane view;
+    private BorderPane view;
 
     public Pane setPage(String filename) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/fxml/"+filename+".fxml"));
