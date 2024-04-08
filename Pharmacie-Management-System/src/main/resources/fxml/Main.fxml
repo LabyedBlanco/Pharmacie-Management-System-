@@ -61,7 +61,7 @@
                   <Font size="13.0" />
                </font>
             </Button>
-            <Button alignment="TOP_LEFT" layoutX="60.0" layoutY="140.0" mnemonicParsing="false" onAction="#OnProduit" prefHeight="40.0" prefWidth="216.0" style="-fx-background-color: #1c1f22;" text="  Utilisateurs" textFill="WHITE" GridPane.rowIndex="1" GridPane.valignment="TOP">
+            <Button alignment="TOP_LEFT" layoutX="60.0" layoutY="140.0" mnemonicParsing="false" onAction="#OnUtilisateur" prefHeight="40.0" prefWidth="216.0" style="-fx-background-color: #1c1f22;" text="  Utilisateurs" textFill="WHITE" GridPane.rowIndex="1" GridPane.valignment="TOP">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0">
                      <image>

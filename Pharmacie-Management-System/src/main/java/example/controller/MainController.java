@@ -21,6 +21,14 @@ public class MainController {
         FxmlLoader object = new FxmlLoader();
         Pane view = object.setPage("Produits");
         MainPane.add(view,1,0);
-    }
 
+    }
+    public void OnUtilisateur (ActionEvent event) throws IOException {
+
+        System.out.print("Gestion des Utilisateurs");
+        FxmlLoader object = new FxmlLoader();
+        Pane view = object.setPage("Utilisateur");
+        MainPane.add(view,1,0);
+
+    }
 }
