@@ -2,6 +2,7 @@ package example.controller;
 
 import example.model.FxmlLoader;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
@@ -15,6 +16,8 @@ public class MainController {
     private GridPane MainPane;
     @FXML
     private Label welcomeText;
+
+
 
     public void OnProduit (ActionEvent event) throws IOException {
         System.out.print("\nGestion des Produit");
@@ -39,6 +42,7 @@ public class MainController {
         MainPane.add(view,1,0);
 
     }
+
     public void OnCommande (ActionEvent event) throws IOException {
 
         System.out.print("\nCommande");

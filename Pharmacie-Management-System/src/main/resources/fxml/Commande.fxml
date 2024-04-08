@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -72,7 +74,19 @@
                         </AnchorPane>
                     </children>
                 </GridPane>
-                <AnchorPane prefHeight="631.0" prefWidth="1100.0" style="-fx-background-color: #f9f9f9d;" GridPane.rowIndex="1" />
+                <AnchorPane prefHeight="631.0" prefWidth="1100.0" style="-fx-background-color: #f9f9f9d;" GridPane.rowIndex="1">
+               <children>
+                  <AnchorPane layoutX="79.0" layoutY="321.0" prefHeight="264.0" prefWidth="943.0" style="-fx-background-color: grey; -fx-border-radius: 15px;" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="76.0">
+                     <children>
+                        <TableView prefHeight="263.0" prefWidth="945.0" AnchorPane.rightAnchor="0.0">
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="C1" />
+                            <TableColumn prefWidth="75.0" text="C2" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+               </children></AnchorPane>
             </children>
         </GridPane>
     </center>
