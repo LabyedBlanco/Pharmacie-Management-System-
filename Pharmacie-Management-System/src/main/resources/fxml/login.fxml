@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="example.controller.LoginController"
-            prefHeight="400.0" prefWidth="600.0"/>
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="400.0" minWidth="1100.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+    <top>
+        <AnchorPane prefHeight="68.0" prefWidth="600.0" style="-fx-background-color: red;" BorderPane.alignment="CENTER">
+            <children>
+                <Text layoutX="743.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="right" AnchorPane.rightAnchor="331.998046875" />
+                <Text layoutX="128.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="left" AnchorPane.leftAnchor="100.0" />
+                <Text layoutX="416.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="center" />
+            </children></AnchorPane>
+    </top>
+    <center>
+        <AnchorPane prefHeight="332.0" prefWidth="602.0" style="-fx-background-color: green;" BorderPane.alignment="CENTER">
+            <children>
+                <Text layoutX="392.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kh,dhsldhsk" />
+                <Text layoutX="31.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kh,dhsldhsk" />
+                <Text layoutX="681.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kh,dhsldhsk" />
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>

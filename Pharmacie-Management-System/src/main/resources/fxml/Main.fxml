@@ -46,7 +46,7 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Text>
-            <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#OnProduit" prefHeight="40.0" prefWidth="216.0" style="-fx-background-color: #1c1f22;" text="  Dashbord" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+            <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#OnDashboard" prefHeight="40.0" prefWidth="216.0" style="-fx-background-color: #1c1f22;" text="  Dashbord" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0">
                      <image>
