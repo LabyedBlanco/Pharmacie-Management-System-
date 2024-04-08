@@ -39,4 +39,20 @@ public class MainController {
         MainPane.add(view,1,0);
 
     }
+    public void OnCommande (ActionEvent event) throws IOException {
+
+        System.out.print("\nCommande");
+        FxmlLoader object = new FxmlLoader();
+        Pane view = object.setPage("Commande");
+        MainPane.add(view,1,0);
+
+    }
+    public void OnVentes (ActionEvent event) throws IOException {
+
+        System.out.print("\nVentes");
+        FxmlLoader object = new FxmlLoader();
+        Pane view = object.setPage("Ventes");
+        MainPane.add(view,1,0);
+
+    }
 }

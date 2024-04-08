@@ -91,7 +91,7 @@
                   <Insets left="50.0" top="100.0" />
                </GridPane.margin>
             </Button>
-            <Button alignment="TOP_LEFT" layoutX="60.0" layoutY="240.0" mnemonicParsing="false" onAction="#OnProduit" prefHeight="40.0" prefWidth="216.0" style="-fx-background-color: #1c1f22;" text="  Ventes" textFill="WHITE" GridPane.rowIndex="1" GridPane.valignment="TOP">
+            <Button alignment="TOP_LEFT" layoutX="60.0" layoutY="240.0" mnemonicParsing="false" onAction="#OnVentes" prefHeight="40.0" prefWidth="216.0" style="-fx-background-color: #1c1f22;" text="  Ventes" textFill="WHITE" GridPane.rowIndex="1" GridPane.valignment="TOP">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0">
                      <image>
@@ -106,7 +106,7 @@
                   <Insets left="50.0" top="150.0" />
                </GridPane.margin>
             </Button>
-            <Button alignment="TOP_LEFT" layoutX="60.0" layoutY="290.0" mnemonicParsing="false" onAction="#OnProduit" prefHeight="40.0" prefWidth="216.0" style="-fx-background-color: #1c1f22;" text="  Commandes" textFill="WHITE" GridPane.rowIndex="1" GridPane.valignment="TOP">
+            <Button alignment="TOP_LEFT" layoutX="60.0" layoutY="290.0" mnemonicParsing="false" onAction="#OnCommande" prefHeight="40.0" prefWidth="216.0" style="-fx-background-color: #1c1f22;" text="  Commandes" textFill="WHITE" GridPane.rowIndex="1" GridPane.valignment="TOP">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0">
                      <image>

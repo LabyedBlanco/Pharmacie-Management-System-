@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -8,10 +7,11 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="1100.0" prefHeight="728.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="1100.0" prefHeight="728.0" styleClass="text" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
     <center>
         <GridPane style="-fx-background-color: white;" BorderPane.alignment="CENTER">
             <columnConstraints>
@@ -33,38 +33,46 @@
                     <children>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                             <children>
-                                <AnchorPane layoutX="460.0" layoutY="26.0" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #dddddd; -fx-background-radius: 100;" AnchorPane.rightAnchor="40.0">
-                                    <opaqueInsets>
-                                        <Insets />
-                                    </opaqueInsets>
-                                    <children>
-                                        <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="-1.0" layoutY="1.0">
-                                            <image>
-                                                <Image url="@../images/icons/pharmacien.png" />
-                                            </image>
-                                        </ImageView>
-                                    </children>
-                                </AnchorPane>
-                                <AnchorPane layoutX="429.0" layoutY="47.0" prefHeight="14.0" prefWidth="14.0" style="-fx-background-color: green; -fx-background-radius: 100;" AnchorPane.rightAnchor="107.0" />
-                                <Text layoutX="365.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Active" AnchorPane.rightAnchor="139.27099609375">
+                                <AnchorPane layoutX="268.0" layoutY="48.0" prefHeight="14.0" prefWidth="14.0" style="-fx-background-color: green; -fx-background-radius: 100;" AnchorPane.rightAnchor="268.0" />
+                                <Text fx:id="main" layoutX="206.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Active" AnchorPane.rightAnchor="296.96875">
                                     <font>
-                                        <Font size="17.0" />
+                                        <Font name="Ebrima Bold" size="16.0" />
                                     </font>
                                 </Text>
+                                <Line endX="-3.0" endY="15.0" layoutX="307.0" layoutY="57.0" startX="-3.0" startY="-22.0" stroke="#bfbdbd" styleClass="style.css" AnchorPane.rightAnchor="245.5" />
+                                <AnchorPane layoutX="312.0" layoutY="13.0" prefHeight="84.0" prefWidth="129.0" AnchorPane.rightAnchor="108.0">
+                                    <children>
+                                        <Text layoutX="26.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jhon Doe" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="40.61962890625">
+                                            <font>
+                                                <Font size="15.0" />
+                                            </font>
+                                        </Text>
+                                        <Text layoutX="20.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin App" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="34.029296875">
+                                            <font>
+                                                <Font name="Ebrima" size="15.0" />
+                                            </font>
+                                        </Text>
+                                    </children>
+                                </AnchorPane>
+                                <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="420.0" layoutY="23.0" AnchorPane.rightAnchor="65.0" AnchorPane.topAnchor="23.0">
+                                    <image>
+                                        <Image url="@../images/icons/profil.png" />
+                                    </image>
+                                </ImageView>
                             </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
                             <children>
-                                <Text layoutX="55.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DASHBORD" AnchorPane.leftAnchor="55.0">
+                                <Text layoutX="46.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VENTES :" AnchorPane.leftAnchor="46.0" AnchorPane.topAnchor="48.0">
                                     <font>
-                                        <Font size="16.0" />
+                                        <Font name="Tahoma" size="16.0" />
                                     </font>
                                 </Text>
                             </children>
                         </AnchorPane>
                     </children>
                 </GridPane>
-                <AnchorPane prefHeight="631.0" prefWidth="1100.0" style="-fx-background-color: red;" GridPane.rowIndex="1" />
+                <AnchorPane prefHeight="631.0" prefWidth="1100.0" style="-fx-background-color: #f9f9f9;" GridPane.rowIndex="1" />
             </children>
         </GridPane>
     </center>

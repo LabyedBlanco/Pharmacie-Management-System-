@@ -3,6 +3,12 @@
     src: url('/fonts/oblong.ttf');
 }
 
-.text {
+#main{
     -fx-font-family: "oblong";
+}
+.root{
+    -fx-font-family: "oblong";
+}
+.drop-shadow {
+    -fx-effect: dropshadow(gaussian, gray, 10, 0.5, 5, 5);
 }
