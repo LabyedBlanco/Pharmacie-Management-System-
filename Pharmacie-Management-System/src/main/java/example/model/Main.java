@@ -18,12 +18,11 @@ public class Main extends Application {
         System.out.print("Width = "+screenWidth+" Height = "+screenHeight);
         Scene scene = new Scene(fxmlLoader.load(), screenWidth, screenHeight);
         stage.setTitle("Hello!");
+        
         stage.setScene(scene);
         stage.show();
         Font labiad = Font.loadFont("resources/fonts/oblong.ttf", 45);
-
     }
-
     public static void main(String[] args) {
         launch();
     }

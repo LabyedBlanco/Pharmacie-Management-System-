@@ -55,7 +55,7 @@
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
                             <children>
-                                <Text layoutX="55.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PRODUCT FORM" AnchorPane.leftAnchor="55.0">
+                                <Text layoutX="55.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DASHBORD" AnchorPane.leftAnchor="55.0">
                                     <font>
                                         <Font size="16.0" />
                                     </font>
