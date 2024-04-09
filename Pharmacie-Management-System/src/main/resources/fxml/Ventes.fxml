@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
@@ -88,134 +89,184 @@
                         <TableColumn prefWidth="319.9998779296875" text="Produit" />
                     </columns>
                   </TableView>
-                  <Pane layoutX="30.0" layoutY="100.0" prefHeight="99.0" prefWidth="200.0" style="-fx-background-color: rgb(68,102,242);">
+                  <GridPane layoutX="37.0" layoutY="88.0" prefHeight="114.0" prefWidth="1013.0" styleClass="drop-shadow" stylesheets="@style.css">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
                      <children>
-                        <Text layoutX="31.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total :">
-                           <font>
-                              <Font size="23.0" />
-                           </font>
-                        </Text>
-                        <Text layoutX="39.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="24500 DH" translateY="5.0">
-                           <font>
-                              <Font size="23.0" />
-                           </font>
-                        </Text>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #46c35f; -fx-background-radius: 8px;">
+                           <GridPane.margin>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </GridPane.margin>
+                           <children>
+                              <Text layoutX="45.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white;" text="Total :">
+                                 <font>
+                                    <Font name="Tahoma" size="23.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="55.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white;" text="24500 DH">
+                                 <font>
+                                    <Font name="Tahoma" size="23.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="30.0" layoutY="30.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fc6510; -fx-background-radius: 8px;" GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </GridPane.margin>
+                           <children>
+                              <Text layoutX="45.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white;" text="Ce Mois :">
+                                 <font>
+                                    <Font name="Tahoma" size="23.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="55.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white;" text="4500 DH">
+                                 <font>
+                                    <Font name="Tahoma" size="23.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="285.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #019aff; -fx-background-radius: 8px;" GridPane.columnIndex="2">
+                           <GridPane.margin>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </GridPane.margin>
+                           <children>
+                              <Text layoutX="45.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white;" text="Dernier Mois :">
+                                 <font>
+                                    <Font name="Tahoma" size="23.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="55.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white;" text="5500 DH">
+                                 <font>
+                                    <Font name="Tahoma" size="23.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="560.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fc2c10; -fx-background-radius: 8px;" GridPane.columnIndex="3">
+                           <GridPane.margin>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </GridPane.margin>
+                           <children>
+                              <Text layoutX="45.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white;" text="Cette Annee :">
+                                 <font>
+                                    <Font name="Tahoma" size="23.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="55.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white;" text="30500 DH">
+                                 <font>
+                                    <Font name="Tahoma" size="23.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </AnchorPane>
                      </children>
-                  </Pane>
-                  <Pane layoutX="780.0" layoutY="100.0" prefHeight="99.0" prefWidth="200.0" style="-fx-background-color: rgb(252,44,16);">
+                  </GridPane>
+                  <GridPane layoutX="100.0" layoutY="206.0" prefHeight="30.0" prefWidth="469.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
                      <children>
-                        <Text layoutX="31.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cette Annee :">
+                        <Button mnemonicParsing="false" style="-fx-background-color: rgb(255,255,255); -fx-border-radius: 20px; -fx-background-radius: 20px;" text="Jour" GridPane.halignment="CENTER">
                            <font>
-                              <Font size="23.0" />
+                              <Font name="Tahoma" size="17.0" />
                            </font>
-                        </Text>
-                        <Text layoutX="39.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="30015 Dh" translateY="5.0">
-                           <font>
-                              <Font size="23.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </Pane>
-                  <Pane layoutX="280.0" layoutY="100.0" prefHeight="99.0" prefWidth="200.0" style="-fx-background-color: rgb(70,195,95);">
-                     <children>
-                        <Text layoutX="31.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ce Mois :">
-                           <font>
-                              <Font size="23.0" />
-                           </font>
-                        </Text>
-                        <Text layoutX="39.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4800 DH" translateY="5.0">
-                           <font>
-                              <Font size="23.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </Pane>
-                  <Pane layoutX="530.0" layoutY="100.0" prefHeight="99.0" prefWidth="200.0" style="-fx-background-color: rgb(56,164,248);">
-                     <children>
-                        <Text layoutX="31.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dernier Mois :">
-                           <font>
-                              <Font size="23.0" />
-                           </font>
-                        </Text>
-                        <Text layoutX="39.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7800 DH" translateY="5.0">
-                           <font>
-                              <Font size="23.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </Pane>
-                  <Button layoutX="932.0" layoutY="22.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="127.0" style="-fx-background-color: rgb(70,195,95);" text="Ajouter">
-                     <graphic>
-                        <ImageView fitHeight="23.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/icons/plus.png" />
-                           </image>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Button layoutX="622.0" layoutY="23.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="127.0" style="-fx-background-color: rgb(1,154,255);" text="Modifier">
-                     <graphic>
-                        <ImageView fitHeight="23.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/icons/edit.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Button layoutX="778.0" layoutY="22.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="127.0" style="-fx-background-color: rgb(1,154,255);" text="Archiver">
-                     <graphic>
-                        <ImageView fitHeight="23.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/icons/archive.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Button layoutX="114.0" layoutY="214.0" mnemonicParsing="false" style="-fx-background-color: rgb(255,255,255); -fx-border-radius: 20px; -fx-background-radius: 20px;" text="Jour">
-                     <font>
-                        <Font name="System Bold" size="17.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Button layoutX="208.0" layoutY="214.0" mnemonicParsing="false" style="-fx-background-color: rgb(255,255,255); -fx-border-radius: 20px; -fx-background-radius: 20px;" text="Semaine">
-                     <font>
-                        <Font name="System Bold" size="17.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Button layoutX="328.0" layoutY="214.0" mnemonicParsing="false" style="-fx-background-color: rgb(255,255,255); -fx-border-radius: 20px; -fx-background-radius: 20px;" text="Mois">
-                     <font>
-                        <Font name="System Bold" size="17.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
+                        </Button>
+                        <Button mnemonicParsing="false" style="-fx-background-color: rgb(255,255,255); -fx-border-radius: 20px; -fx-background-radius: 20px;" text="Semaine" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                           <font>
+                              <Font name="Tahoma" size="17.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button mnemonicParsing="false" style="-fx-background-color: rgb(255,255,255); -fx-border-radius: 20px; -fx-background-radius: 20px;" text="Mois" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                           <font>
+                              <Font name="Tahoma" size="17.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </GridPane>
+                  <GridPane layoutX="578.0" layoutY="49.0" prefHeight="30.0" prefWidth="469.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="157.0" minWidth="10.0" prefWidth="157.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="159.13330078125" minWidth="10.0" prefWidth="157.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="118.0" style="-fx-background-color: rgb(1,154,255); -fx-text-fill: white;" text="Modifier" GridPane.halignment="CENTER">
+                           <graphic>
+                              <ImageView fitHeight="23.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/icons/edit.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="Tahoma" size="18.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="127.0" style="-fx-background-color: rgb(1,154,255); -fx-text-fill: white;" text="Archiver" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                           <graphic>
+                              <ImageView fitHeight="23.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/icons/archive.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="Tahoma" size="18.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="127.0" style="-fx-background-color: rgb(70,195,95); -fx-text-fill: white;" text="Ajouter" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                           <graphic>
+                              <ImageView fitHeight="23.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/icons/plus.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="Tahoma" size="18.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </GridPane>
+                  <TextField layoutX="872.0" layoutY="208.0" prefHeight="32.0" prefWidth="163.0" promptText="Search" style="-fx-background-radius: 15px;" />
                </children></AnchorPane>
             </children>
         </GridPane>
