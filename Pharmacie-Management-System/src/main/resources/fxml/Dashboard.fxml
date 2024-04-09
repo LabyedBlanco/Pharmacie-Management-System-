@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -7,6 +12,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -22,7 +28,7 @@
                 <RowConstraints maxHeight="642.0" minHeight="10.0" prefHeight="619.3333358764648" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <GridPane stylesheets="@style.css">
+                <GridPane>
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -61,7 +67,7 @@
                                 </ImageView>
                             </children>
                         </AnchorPane>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" stylesheets="@style.css">
                             <children>
                                 <Text layoutX="46.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DASHBORD :" AnchorPane.leftAnchor="46.0" AnchorPane.topAnchor="48.0">
                                     <font>
@@ -71,8 +77,137 @@
                             </children>
                         </AnchorPane>
                     </children>
+               <stylesheets>
+                  <URL value="@style.css" />
+                  <URL value="@style.css" />
+               </stylesheets>
                 </GridPane>
-                <AnchorPane prefHeight="631.0" prefWidth="1100.0" style="-fx-background-color: #f9f9f9;" styleClass="dropshadow" stylesheets="@style.css" GridPane.rowIndex="1" />
+            <GridPane style="-fx-background-color: #f7f7f7;" GridPane.rowIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="300.6666564941406" minHeight="10.0" prefHeight="145.6666717529297" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="503.3333282470703" minHeight="10.0" prefHeight="474.3333282470703" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <GridPane prefHeight="478.0" prefWidth="1080.0" GridPane.rowIndex="1">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="896.6666870117188" minWidth="10.0" prefWidth="826.3333129882812" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="543.3333129882812" minWidth="10.0" prefWidth="273.66668701171875" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <GridPane style="-fx-background-color: white; -fx-background-radius: 8px;" styleClass="drop-shadow" stylesheets="@style.css">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints maxHeight="176.33331298828125" minHeight="10.0" prefHeight="62.999969482421875" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="321.66668701171875" minHeight="10.0" prefHeight="319.0000305175781" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <GridPane.margin>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </GridPane.margin>
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Diagrame de Capital Annuel :" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font name="Ebrima" size="18.0" />
+                                 </font>
+                                 <GridPane.margin>
+                                    <Insets left="40.0" />
+                                 </GridPane.margin>
+                              </Text>
+                              <LineChart prefHeight="320.0" prefWidth="664.0" GridPane.rowIndex="1">
+                                <xAxis>
+                                  <CategoryAxis side="BOTTOM" />
+                                </xAxis>
+                                <yAxis>
+                                  <NumberAxis side="LEFT" />
+                                </yAxis>
+                                 <GridPane.margin>
+                                    <Insets left="20.0" right="20.0" top="20.0" />
+                                 </GridPane.margin>
+                              </LineChart>
+                              <Line endX="675.2929077148438" endY="-0.999872088432312" opacity="0.3" startX="-100.0" GridPane.valignment="BOTTOM" />
+                           </children>
+                        </GridPane>
+                        <GridPane style="-fx-background-color: white; -fx-background-radius: 8px;" styleClass="drop-shadow" stylesheets="@style.css" GridPane.columnIndex="1">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints maxHeight="176.33331298828125" minHeight="10.0" prefHeight="62.999969482421875" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="321.66668701171875" minHeight="10.0" prefHeight="319.0000305175781" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Vente Overview :" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font name="Ebrima" size="18.0" />
+                                 </font>
+                                 <GridPane.margin>
+                                    <Insets left="40.0" />
+                                 </GridPane.margin>
+                              </Text>
+                              <Circle fill="DODGERBLUE" radius="80.0" stroke="#fffafa" strokeType="INSIDE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BASELINE">
+                                 <GridPane.margin>
+                                    <Insets top="30.0" />
+                                 </GridPane.margin>
+                              </Circle>
+                              <Line endX="1127.2120361328125" endY="238.37867736816406" opacity="0.3" startX="903.9191284179688" startY="237.58578491210938" GridPane.valignment="BOTTOM" />
+                           </children>
+                           <GridPane.margin>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </GridPane.margin>
+                        </GridPane>
+                     </children>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </GridPane>
+                  <GridPane prefHeight="113.0" prefWidth="1080.0" styleClass="drop-shadow" stylesheets="@style.css">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #46c35f; -fx-background-radius: 8px;">
+                           <GridPane.margin>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </GridPane.margin>
+                        </AnchorPane>
+                        <AnchorPane layoutX="30.0" layoutY="30.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fc6510; -fx-background-radius: 8px;" GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </GridPane.margin>
+                        </AnchorPane>
+                        <AnchorPane layoutX="285.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #019aff; -fx-background-radius: 8px;" GridPane.columnIndex="2">
+                           <GridPane.margin>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </GridPane.margin>
+                        </AnchorPane>
+                        <AnchorPane layoutX="560.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fc2c10; -fx-background-radius: 8px;" GridPane.columnIndex="3">
+                           <GridPane.margin>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </GridPane.margin>
+                        </AnchorPane>
+                     </children>
+                     <GridPane.margin>
+                        <Insets top="10.0" />
+                     </GridPane.margin>
+                  </GridPane>
+               </children>
+               <GridPane.margin>
+                  <Insets right="20.0" />
+               </GridPane.margin>
+            </GridPane>
             </children>
         </GridPane>
     </center>

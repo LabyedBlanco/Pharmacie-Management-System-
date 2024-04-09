@@ -10,5 +10,5 @@
     -fx-font-family: "oblong";
 }
 .drop-shadow {
-    -fx-effect: dropshadow(gaussian, gray, 10, 0.5, 5, 5);
+    -fx-effect: dropshadow(gaussian,  rgba(0, 0, 0, 0.1), 5, 0.7, 0, 0);
 }
