@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -75,95 +74,95 @@
                         </AnchorPane>
                     </children>
                 </GridPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
-               <children>
-                  <GridPane layoutX="201.0" layoutY="56.0" prefHeight="365.0" prefWidth="626.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="384.33331298828125" minWidth="10.0" prefWidth="289.39996337890625" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="503.800048828125" minWidth="10.0" prefWidth="500.60003662109375" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Client Nom :" GridPane.halignment="CENTER">
+                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                    <children>
+                        <GridPane layoutX="195.0" layoutY="28.0" prefHeight="354.0" prefWidth="634.0">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="358.6000061035156" minWidth="10.0" prefWidth="273.6000122070312" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="459.933349609375" minWidth="10.0" prefWidth="360.79998779296875" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Code :" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                                    <font>
+                                        <Font size="23.0" />
+                                    </font>
+                                </Text>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prix :" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                                    <font>
+                                        <Font size="23.0" />
+                                    </font>
+                                </Text>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Category :" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+                                    <font>
+                                        <Font size="23.0" />
+                                    </font>
+                                </Text>
+                                <Text layoutX="84.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Client Name :" GridPane.halignment="CENTER">
+                                    <font>
+                                        <Font size="23.0" />
+                                    </font>
+                                </Text>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom Mediacament :" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                    <font>
+                                        <Font size="23.0" />
+                                    </font>
+                                </Text>
+                        <Text layoutX="53.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Client Name&quot;" GridPane.columnIndex="1">
                            <font>
                               <Font size="23.0" />
                            </font>
                         </Text>
-                        <TextField maxWidth="250.0" prefHeight="39.0" prefWidth="230.0" promptText="Nom" GridPane.columnIndex="1" GridPane.halignment="CENTER">
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                        </TextField>
-                        <DatePicker maxWidth="250.0" prefHeight="38.0" prefWidth="229.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                        <TextField maxWidth="250.0" prefHeight="39.0" prefWidth="230.0" promptText="Quantite" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                        </TextField>
-                        <TextField maxWidth="250.0" prefHeight="39.0" prefWidth="230.0" promptText="Produit" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                        </TextField>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date :" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                        <Text layoutX="10.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Nom Mediacament&quot;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font size="23.0" />
                            </font>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Quantite :" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                        <Text layoutX="89.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Code&quot;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
                               <Font size="23.0" />
                            </font>
                         </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Produit :" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                        <Text layoutX="97.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Prix&quot;" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <font>
                               <Font size="23.0" />
                            </font>
                         </Text>
-                     </children>
-                  </GridPane>
-                  <GridPane layoutX="190.0" layoutY="490.0" prefHeight="46.0" prefWidth="702.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="127.0" style="-fx-background-color: rgb(70,195,95);" text="Ajouter" GridPane.halignment="CENTER">
-                           <graphic>
-                              <ImageView fitHeight="23.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/icons/plus.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
+                        <Text layoutX="70.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Category&quot;" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <font>
-                              <Font size="18.0" />
+                              <Font size="23.0" />
                            </font>
-                        </Button>
-                        <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="127.0" style="-fx-background-color: rgb(252,44,16);" text="Annuler" GridPane.columnIndex="1" GridPane.halignment="CENTER">
-                           <graphic>
-                              <ImageView fitHeight="23.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/icons/annuler.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </GridPane>
-               </children>
-            </AnchorPane>
+                        </Text>
+                            </children>
+                        </GridPane>
+                  <Button layoutX="816.0" layoutY="488.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="127.0" style="-fx-background-color: rgb(252,44,16);" text="Quit">
+                     <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/icons/annuler.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <ImageView fitHeight="244.0" fitWidth="219.0" layoutX="794.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Mediacation.png" />
+                     </image>
+                  </ImageView>
+                    </children>
+                </AnchorPane>
             </children>
         </GridPane>
     </center>
