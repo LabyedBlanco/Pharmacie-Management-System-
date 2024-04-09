@@ -216,7 +216,6 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button layoutX="117.0" layoutY="10.0" mnemonicParsing="false" text="Button" />
                </children></AnchorPane>
             </children>
         </GridPane>
