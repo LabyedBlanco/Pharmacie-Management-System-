@@ -136,6 +136,21 @@
                   <Insets left="50.0" top="250.0" />
                </GridPane.margin>
             </Button>
+            <Button mnemonicParsing="false" onAction="#OnFournisseur" prefHeight="90.0" prefWidth="121.0" style="-fx-background-color: #1c1f22;" text=" Fournisseur" textFill="#fffbfb" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="50.0" top="183.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="29.0">
+                     <image>
+                        <Image url="@../images/icons/supplier.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </GridPane>
    </children>

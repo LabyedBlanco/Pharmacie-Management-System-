@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="example.controller.FournisseurController">
+
+    <Label layoutX="50.0" layoutY="50.0" text="Nom:" />
+    <TextField fx:id="nomField" layoutX="150.0" layoutY="50.0" />
+
+    <Label layoutX="50.0" layoutY="100.0" text="Email:" />
+    <TextField fx:id="emailField" layoutX="150.0" layoutY="100.0" />
+
+    <Label layoutX="50.0" layoutY="150.0" text="Phone:" />
+    <TextField fx:id="phoneField" layoutX="150.0" layoutY="150.0" />
+
+    <Label layoutX="50.0" layoutY="200.0" text="Ville:" />
+    <TextField fx:id="villeField" layoutX="150.0" layoutY="200.0" />
+
+    <Label layoutX="50.0" layoutY="250.0" text="Pays:" />
+    <TextField fx:id="Pays" layoutX="150.0" layoutY="200.0" />
+
+
+    <Label layoutX="50.0" layoutY="300.0" text="Sexe:" />
+    <ComboBox fx:id="sexeComboBox" layoutX="150.0" layoutY="300.0" prefHeight="25.0" prefWidth="149.0">
+        <items>
+
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Male" />
+                <String fx:value="Female" />
+
+            </FXCollections>
+        </items>
+    </ComboBox>
+   <TextField layoutX="150.0" layoutY="255.0" />
+   <AnchorPane layoutX="361.0" layoutY="59.0" prefHeight="183.0" prefWidth="188.0" style="-fx-border-color: black;">
+      <children>
+          <ImageView fx:id="imageView" fitHeight="170.0" fitWidth="178.0" layoutX="5.0" layoutY="7.0" />
+      </children>
+   </AnchorPane>
+    <Button layoutX="398.0" layoutY="259.0" mnemonicParsing="false" onAction="#parcourirPhoto" prefHeight="31.0" prefWidth="114.0" text="Parcourir Photo" />
+
+    <Text layoutX="76.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Fournisseur">
+      <font>
+         <Font name="System Bold" size="22.0" />
+      </font>
+   </Text>
+
+</AnchorPane>
