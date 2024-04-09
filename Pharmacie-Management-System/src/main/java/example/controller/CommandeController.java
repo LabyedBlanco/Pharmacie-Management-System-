@@ -1,16 +1,22 @@
 package example.controller;
 
 import javafx.application.Application;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
-public class CommandeController extends Application {
+import java.net.URL;
+import java.util.ResourceBundle;
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+public class CommandeController implements Initializable {
+
+    @FXML
+    private ListView<String> Listeview;
 
     @Override
-    public void start(Stage primaryStage) {
-
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        String[] items = {"Kadkjsl" , "djsklds" , "sdpoid"};
+        Listeview.getItems().addAll(items);
     }
 }
