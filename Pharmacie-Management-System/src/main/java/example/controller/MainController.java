@@ -59,4 +59,12 @@ public class MainController {
         MainPane.add(view,1,0);
 
     }
+    public void OnFournisseur (ActionEvent event) throws IOException {
+
+        System.out.print("\nFournisseur");
+        FxmlLoader object = new FxmlLoader();
+        Pane view = object.setPage("Fournisseur");
+        MainPane.add(view,1,0);
+
+    }
 }
