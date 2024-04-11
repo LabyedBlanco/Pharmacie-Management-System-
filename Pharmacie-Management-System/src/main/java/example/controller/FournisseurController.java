@@ -49,5 +49,14 @@ public class FournisseurController {
             System.out.println("Aucun fichier sélectionné.");
         }
     }
+    @FXML
+    private void AddforA(ActionEvent event) throws IOException {
 
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ArchiverF.fxml"));
+        Parent root = loader.load();
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
 }

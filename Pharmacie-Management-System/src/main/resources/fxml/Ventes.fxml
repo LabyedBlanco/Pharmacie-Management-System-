@@ -80,19 +80,6 @@
                 </GridPane>
                 <AnchorPane prefHeight="631.0" prefWidth="1100.0" style="-fx-background-color: #f9f9f9;" GridPane.rowIndex="1">
                <children>
-                  <TableView fx:id="listPurchases" layoutX="1.0" layoutY="259.0" prefHeight="352.0" prefWidth="1060.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
-                    <columns>
-                      <TableColumn prefWidth="104.00000250339508" text="Client" />
-                        <TableColumn minWidth="9.066658020019531" prefWidth="204.26660919189453" text="Date" />
-                        <TableColumn prefWidth="202.1333770751953" text="Amount" />
-                        <TableColumn prefWidth="227.0" text="utilisateur" />
-                        <TableColumn prefWidth="225.0" text="Produit" />
-                        <TableColumn prefWidth="94.0" text="Action" />
-                    </columns>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </TableView>
                   <GridPane layoutY="67.0" prefHeight="112.0" prefWidth="1099.0" styleClass="drop-shadow" stylesheets="@style.css">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -264,6 +251,16 @@
                         </Button>
                      </children>
                   </GridPane>
+                  <TableView fx:id="listPurchases" layoutX="20.0" layoutY="263.0" prefHeight="345.0" prefWidth="1060.0" stylesheets="@../styles/MainFormDesign.css" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                     <columns>
+                        <TableColumn fx:id="listPurchases" minWidth="150.0" prefWidth="157.0" text="Client" />
+                        <TableColumn minWidth="127.33334350585938" prefWidth="200.0" text="Date" />
+                        <TableColumn minWidth="178.0" prefWidth="178.0" text="Amount" />
+                        <TableColumn minWidth="200.0" prefWidth="208.66668701171875" text="Utilisateur" />
+                        <TableColumn minWidth="150.0" prefWidth="155.66668701171875" text="Produit" />
+                        <TableColumn minWidth="150.0" prefWidth="162.33331298828125" text="Action" />
+                     </columns>
+                  </TableView>
                </children></AnchorPane>
             </children>
         </GridPane>
