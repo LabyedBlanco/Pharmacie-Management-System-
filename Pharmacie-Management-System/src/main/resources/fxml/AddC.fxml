@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="example.controller.CommandeController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="191.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="519.0" minHeight="10.0" prefHeight="519.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Text fill="#898989" strokeType="OUTSIDE" strokeWidth="0.0" text="Crée Commande :" GridPane.valignment="CENTER">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="80.0" top="20.0" />
+         </GridPane.margin>
+      </Text>
+      <Line endX="-61.495086669921875" endY="-30.707050323486328" fill="#898989" startX="-61.49509811401367" startY="4.73040771484375" stroke="#898989" strokeWidth="2.0" GridPane.valignment="CENTER">
+         <GridPane.margin>
+            <Insets left="60.0" top="20.0" />
+         </GridPane.margin>
+      </Line>
+      <Text fill="#898989" layoutX="50.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fournisseur :" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="100.0" top="80.0" />
+         </GridPane.margin>
+      </Text>
+      <Text fill="#898989" layoutX="130.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Depot Num :" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="100.0" top="140.0" />
+         </GridPane.margin>
+      </Text>
+      <Text fill="#898989" layoutX="130.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payement Type : " GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="100.0" top="200.0" />
+         </GridPane.margin>
+      </Text>
+      <Text fill="#898989" layoutX="130.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date :" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="500.0" top="80.0" />
+         </GridPane.margin>
+      </Text>
+      <Text fill="#898989" layoutX="510.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Details :" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="500.0" top="140.0" />
+         </GridPane.margin>
+      </Text>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="800.0" style="-fx-background-color: white; -fx-background-radius: 25px;" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+         <GridPane.margin>
+            <Insets bottom="50.0" />
+         </GridPane.margin>
+         <children>
+            <TableView layoutX="70.0" layoutY="39.0" prefHeight="200.0" prefWidth="478.0" stylesheets="@../styles/MainFormDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <columns>
+                  <TableColumn minWidth="150.0" prefWidth="85.0" text="             Reference" />
+                  <TableColumn minWidth="150.0" prefWidth="85.0" text="             Reference" />
+                  <TableColumn minWidth="200.0" prefWidth="125.0" text="             Reference" />
+                  <TableColumn minWidth="200.0" prefWidth="85.0" text="             Reference" />
+                  <TableColumn minWidth="150.0" prefWidth="85.0" text="             Reference" />
+                  <TableColumn minWidth="150.0" prefWidth="85.0" text="             Reference" />
+               </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <ComboBox prefWidth="150.0" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets left="230.0" top="80.0" />
+         </GridPane.margin>
+      </ComboBox>
+      <ComboBox layoutX="240.0" layoutY="171.0" prefWidth="150.0" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets left="230.0" top="140.0" />
+         </GridPane.margin>
+      </ComboBox>
+      <ComboBox layoutX="240.0" layoutY="231.0" prefWidth="150.0" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets left="230.0" top="200.0" />
+         </GridPane.margin>
+      </ComboBox>
+      <DatePicker prefHeight="25.0" prefWidth="150.0" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets left="580.0" top="80.0" />
+         </GridPane.margin>
+      </DatePicker>
+      <TextField maxWidth="-Infinity" prefWidth="150.0" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets left="580.0" top="140.0" />
+         </GridPane.margin>
+      </TextField>
+      <Button layoutX="540.0" layoutY="291.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="31.0" text="+" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets left="705.0" top="231.0" />
+         </GridPane.margin>
+      </Button>
+
+      <Text fill="#898989" layoutX="510.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produits:" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="500.0" top="200.0" />
+         </GridPane.margin>
+      </Text>
+         <GridPane>
+         </GridPane>
+
+      <Text fill="#898989" layoutX="510.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qte       :" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="500.0" top="231.0" />
+         </GridPane.margin>
+      </Text>
+   </children>
+</GridPane>
