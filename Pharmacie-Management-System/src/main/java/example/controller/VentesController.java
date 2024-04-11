@@ -16,7 +16,14 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Date;
+
+
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
+
 
 
 
@@ -28,7 +35,7 @@ public class VentesController extends Application {
     private Text main;
 
     @FXML
-    static TableView<purchaseproduct> listPurchases;
+    static TableView<String> listPurchases;
 
 
     public static void main(String[] args) {
@@ -54,7 +61,51 @@ public class VentesController extends Application {
 
 
 
+    @FXML
+    private TextField amount;
+
+    @FXML
+    private TextField clientname;
+
+    @FXML
+    private DatePicker date;
+
+    @FXML
+    private TextField productname;
 
 
 
-}
+
+
+
+
+
+    public void addpurchases(ActionEvent event) throws IOException {
+        String amounttxt=amount.getText();
+        int amountint = Integer.parseInt(amounttxt);
+
+
+
+        System.out.println(amountint);
+        System.out.println(productname.getText());
+        System.out.println(date.getValue());
+        System.out.println(clientname.getText());
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+
