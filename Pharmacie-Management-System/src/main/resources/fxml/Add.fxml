@@ -11,47 +11,44 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="example.controller.FournisseurController">
+<AnchorPane minHeight="700.0" minWidth="700.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="example.controller.FournisseurController">
+   <children>
+      <AnchorPane layoutY="-1.0" prefHeight="700.0" prefWidth="108.0" style="-fx-background-color: #50D890;" />
+      <AnchorPane layoutX="107.0" prefHeight="81.0" prefWidth="594.0" style="-fx-background-color: #50D899;">
+         <children>
+            <Text fill="WHITE" layoutX="146.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADD SUPPLIER">
+               <font>
+                  <Font name="System Bold" size="31.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <TextField layoutX="208.0" layoutY="171.0" style="-fx-border-radius: 15; -fx-border-color: #4F98CA; -fx-background-radius: 50;" />
+      <TextField layoutX="208.0" layoutY="249.0" style="-fx-border-radius: 15; -fx-border-color: #4F98CA; -fx-background-radius: 50;" />
+      <TextField layoutX="208.0" layoutY="401.0" style="-fx-border-radius: 15; -fx-border-color: #4F98CA; -fx-background-radius: 50;" />
+      <TextField layoutX="208.0" layoutY="323.0" style="-fx-border-radius: 15; -fx-border-color: #4F98CA; -fx-background-radius: 50;" />
+      <Label layoutX="124.0" layoutY="176.0" text="Name:" />
+      <Label layoutX="124.0" layoutY="262.0" text="Email:" />
+      <Label layoutX="124.0" layoutY="485.0" text="Gender:" />
+      <Label layoutX="124.0" layoutY="405.0" text="Country:" />
+      <Label layoutX="124.0" layoutY="327.0" text="Phone:" />
+      <ComboBox layoutX="209.0" layoutY="482.0" prefWidth="150.0" style="-fx-border-radius: 15; -fx-border-color: #4F9BCA; -fx-background-radius: 50;">
+       <items>
 
-    <Label layoutX="50.0" layoutY="50.0" text="Nom:" />
-    <TextField fx:id="nomField" layoutX="150.0" layoutY="50.0" />
+           <FXCollections fx:factory="observableArrayList">
+               <String fx:value="Male" />
+               <String fx:value="Female" />
 
-    <Label layoutX="50.0" layoutY="100.0" text="Email:" />
-    <TextField fx:id="emailField" layoutX="150.0" layoutY="100.0" />
-
-    <Label layoutX="50.0" layoutY="150.0" text="Phone:" />
-    <TextField fx:id="phoneField" layoutX="150.0" layoutY="150.0" />
-
-    <Label layoutX="50.0" layoutY="200.0" text="Ville:" />
-    <TextField fx:id="villeField" layoutX="150.0" layoutY="200.0" />
-
-    <Label layoutX="50.0" layoutY="250.0" text="Pays:" />
-    <TextField fx:id="Pays" layoutX="150.0" layoutY="200.0" />
-
-
-    <Label layoutX="50.0" layoutY="300.0" text="Sexe:" />
-    <ComboBox fx:id="sexeComboBox" layoutX="150.0" layoutY="300.0" prefHeight="25.0" prefWidth="149.0">
-        <items>
-
-            <FXCollections fx:factory="observableArrayList">
-                <String fx:value="Male" />
-                <String fx:value="Female" />
-
-            </FXCollections>
-        </items>
-    </ComboBox>
-   <TextField layoutX="150.0" layoutY="255.0" />
-   <AnchorPane layoutX="361.0" layoutY="59.0" prefHeight="183.0" prefWidth="188.0" style="-fx-border-color: black;">
-      <children>
-          <ImageView fx:id="imageView" fitHeight="170.0" fitWidth="178.0" layoutX="5.0" layoutY="7.0" />
-      </children>
-   </AnchorPane>
-    <Button layoutX="398.0" layoutY="259.0" mnemonicParsing="false" onAction="#parcourirPhoto" prefHeight="31.0" prefWidth="114.0" text="Parcourir Photo" />
-
-    <Text layoutX="76.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Fournisseur">
-      <font>
-         <Font name="System Bold" size="22.0" />
-      </font>
-   </Text>
-
+           </FXCollections>
+       </items>
+      </ComboBox>
+      <AnchorPane layoutX="446.0" layoutY="180.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: BLACK;">
+          <children>
+              <ImageView fx:id="imageView" fitHeight="170.0" fitWidth="178.0" layoutX="4.0" layoutY="12.0" />
+          </children>
+      </AnchorPane>
+      <Button layoutX="517.0" layoutY="423.0" mnemonicParsing="false" onAction="#parcourirPhoto" style="-fx-background-color: #4F9BCA;" text="PHOTO" textFill="WHITE" />
+      <Button layoutX="614.0" layoutY="636.0" mnemonicParsing="false" style="-fx-background-color: #4F9BCA;" text="CANCEL" textFill="WHITE" />
+      <Button layoutX="524.0" layoutY="636.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="65.0" style="-fx-background-color: #4F9BCA;" text="SAVE" textFill="WHITE" />
+   </children>
 </AnchorPane>

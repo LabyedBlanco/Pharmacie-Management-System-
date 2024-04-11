@@ -85,6 +85,21 @@
     -fx-font-family:"Arial";
 }
 
+.tab-fournisseurs-actifs {
+    -fx-background-color: #E2F2E9;
+}
+
+
+.tab-archiver {
+    -fx-background-color: #F5E5E6;
+}
+
+
+.tab-label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
 .textfield{
     -fx-background-color:linear-gradient(to bottom, #efefef, #eee);
     -fx-border-color:linear-gradient(to bottom right, #272b3f, #256b51);
