@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="1100.0" prefHeight="728.0" styleClass="text" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="1100.0" prefHeight="728.0" styleClass="text" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="example.controller.Produit_controller">
     <center>
         <GridPane style="-fx-background-color: white;" BorderPane.alignment="CENTER">
             <columnConstraints>
@@ -78,7 +78,7 @@
                 </GridPane>
                 <AnchorPane prefHeight="631.0" prefWidth="1100.0" style="-fx-background-color: #f9f9f9;" GridPane.rowIndex="1">
                <children>
-                  <Button layoutX="971.0" layoutY="42.0" mnemonicParsing="false" style="-fx-background-color: #46c35f;" styleClass="drop-shadow" stylesheets="@style.css" text="+ Add Product" textFill="WHITE" AnchorPane.rightAnchor="65.0" AnchorPane.topAnchor="42.0">
+                  <Button layoutX="971.0" layoutY="42.0" mnemonicParsing="false" onAction="#addproduct" style="-fx-background-color: #46c35f;" styleClass="drop-shadow" stylesheets="@style.css" text="+ Add Product" textFill="WHITE" AnchorPane.rightAnchor="65.0" AnchorPane.topAnchor="42.0">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -96,13 +96,8 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
-                  <Button layoutX="744.0" layoutY="42.0" mnemonicParsing="false" style="-fx-background-color: #019aff;" styleClass="drop-shadow" stylesheets="@style.css" text="= Categories" textFill="WHITE" AnchorPane.rightAnchor="210.0" AnchorPane.topAnchor="43.0">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Button>
                   <TextField layoutX="785.0" layoutY="110.0" promptText="Search" style="-fx-border-radius: 80; -fx-background-color: #f6f6f6; -fx-border-color: black; -fx-background-radius: 80;" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="105.0" />
-                  <Button layoutX="641.0" layoutY="45.0" mnemonicParsing="false" style="-fx-background-color: red;" text="= Product Sheet" textFill="WHITE" AnchorPane.rightAnchor="345.0" AnchorPane.topAnchor="43.5">
+                  <Button layoutX="775.0" layoutY="42.0" mnemonicParsing="false" style="-fx-background-color: red;" onAction="#fichproduct" text="= Product Sheet" textFill="WHITE" AnchorPane.rightAnchor="205.0" AnchorPane.topAnchor="42.0">
                      <font>
                         <Font size="14.0" />
                      </font>
