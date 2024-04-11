@@ -90,7 +90,7 @@
                         <Insets bottom="50.0" left="60.0" right="60.0" top="260.0" />
                      </GridPane.margin>
                   </GridPane>
-                  <GridPane style="-fx-background-color: white; -fx-background-radius: 25px;" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                  <GridPane style="-fx-background-color: white; -fx-background-radius: 25px;" styleClass="drop-shadow" stylesheets="@style.css" GridPane.rowIndex="1" GridPane.valignment="TOP">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

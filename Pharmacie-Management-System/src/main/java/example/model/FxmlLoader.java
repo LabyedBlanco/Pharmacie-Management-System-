@@ -6,7 +6,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
-import java.net.URL;
 
 public class FxmlLoader {
     private BorderPane view;
