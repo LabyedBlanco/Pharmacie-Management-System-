@@ -6,207 +6,114 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="1100.0" prefHeight="728.0" styleClass="text" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
-    <center>
-        <GridPane style="-fx-background-color: white;" BorderPane.alignment="CENTER">
-            <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints maxHeight="238.0" minHeight="0.0" prefHeight="108.66666412353516" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="642.0" minHeight="10.0" prefHeight="619.3333358764648" vgrow="SOMETIMES" />
-            </rowConstraints>
-            <children>
-                <GridPane>
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                    <children>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
-                            <children>
-                                <AnchorPane layoutX="268.0" layoutY="48.0" prefHeight="14.0" prefWidth="14.0" style="-fx-background-color: green; -fx-background-radius: 100;" AnchorPane.rightAnchor="268.0" />
-                                <Text fx:id="main" layoutX="206.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Active" AnchorPane.rightAnchor="296.96875">
-                                    <font>
-                                        <Font name="Ebrima Bold" size="16.0" />
-                                    </font>
-                                </Text>
-                                <Line endX="-3.0" endY="15.0" layoutX="307.0" layoutY="57.0" startX="-3.0" startY="-22.0" stroke="#bfbdbd" styleClass="style.css" AnchorPane.rightAnchor="245.5" />
-                                <AnchorPane layoutX="312.0" layoutY="13.0" prefHeight="84.0" prefWidth="129.0" AnchorPane.rightAnchor="108.0">
-                                    <children>
-                                        <Text layoutX="26.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jhon Doe" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="40.61962890625">
-                                            <font>
-                                                <Font size="15.0" />
-                                            </font>
-                                        </Text>
-                                        <Text layoutX="20.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin App" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="34.029296875">
-                                            <font>
-                                                <Font name="Ebrima" size="15.0" />
-                                            </font>
-                                        </Text>
-                                    </children>
-                                </AnchorPane>
-                                <ImageView fitHeight="65.0" fitWidth="65.0" layoutX="420.0" layoutY="23.0" AnchorPane.rightAnchor="65.0" AnchorPane.topAnchor="23.0">
-                                    <image>
-                                        <Image url="@../images/icons/profil.png" />
-                                    </image>
-                                </ImageView>
-                            </children>
-                        </AnchorPane>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                            <children>
-                                <Text layoutX="46.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Purchase :" AnchorPane.leftAnchor="46.0" AnchorPane.topAnchor="48.0">
-                                    <font>
-                                        <Font name="Tahoma" size="23.0" />
-                                    </font>
-                                </Text>
-                            </children>
-                        </AnchorPane>
-                    </children>
-                </GridPane>
-                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
-                    <children>
-                  <GridPane layoutX="195.0" layoutY="28.0" prefHeight="354.0" prefWidth="634.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="358.6000061035156" minWidth="10.0" prefWidth="270.066650390625" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="459.933349609375" minWidth="10.0" prefWidth="459.933349609375" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="177.0" style="-fx-background-color: rgb(70,195,95);" text="Add Image" GridPane.columnIndex="1" GridPane.halignment="CENTER">
-                           <graphic>
-                              <ImageView fitHeight="23.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/icons/plus.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Image :" GridPane.halignment="CENTER">
-                                  <font>
-                                      <Font size="23.0" />
-                                  </font>
-                              </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom Mediacament:" GridPane.halignment="CENTER" GridPane.rowIndex="2">
-                                  <font>
-                                      <Font size="23.0" />
-                                  </font>
-                              </Text>
-                        <TextField maxWidth="250.0" prefHeight="39.0" prefWidth="230.0" promptText="Nom" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                        </TextField>
-                              <TextField maxWidth="250.0" prefHeight="39.0" prefWidth="230.0" promptText="Code" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
-                                  <font>
-                                      <Font size="17.0" />
-                                  </font>
-                              </TextField>
-                              <TextField maxWidth="250.0" prefHeight="39.0" prefWidth="230.0" promptText="Prix" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
-                                  <font>
-                                      <Font size="17.0" />
-                                  </font>
-                              </TextField>
-                        <TextField maxWidth="250.0" prefHeight="39.0" prefWidth="230.0" promptText="Category" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5">
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                        </TextField>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Code :" GridPane.halignment="CENTER" GridPane.rowIndex="3">
-                                  <font>
-                                      <Font size="23.0" />
-                                  </font>
-                              </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prix :" GridPane.halignment="CENTER" GridPane.rowIndex="4">
-                           <font>
-                              <Font size="23.0" />
-                           </font>
-                        </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Category :" GridPane.halignment="CENTER" GridPane.rowIndex="5">
-                                  <font>
-                                      <Font size="23.0" />
-                                  </font>
-                              </Text>
-                        <Text layoutX="84.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Client Name :" GridPane.halignment="CENTER" GridPane.rowIndex="1">
-                           <font>
-                              <Font size="23.0" />
-                           </font>
-                        </Text>
-                        <TextField layoutX="313.0" layoutY="139.0" maxWidth="250.0" prefHeight="39.0" prefWidth="230.0" promptText="Client Name" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                        </TextField>
-                     </children>
-                  </GridPane>
-                  <GridPane layoutX="209.0" layoutY="433.0" prefHeight="70.0" prefWidth="751.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                              <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="127.0" style="-fx-background-color: rgb(70,195,95);" text="Ajouter" GridPane.halignment="CENTER">
-                                  <graphic>
-                                      <ImageView fitHeight="23.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                          <image>
-                                              <Image url="@../images/icons/plus.png" />
-                                          </image>
-                                      </ImageView>
-                                  </graphic>
-                                  <font>
-                                      <Font size="18.0" />
-                                  </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                              </Button>
-                              <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="127.0" style="-fx-background-color: rgb(252,44,16);" text="Annuler" GridPane.columnIndex="1" GridPane.halignment="CENTER">
-                                  <graphic>
-                                      <ImageView fitHeight="23.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                          <image>
-                                              <Image url="@../images/icons/annuler.png" />
-                                          </image>
-                                      </ImageView>
-                                  </graphic>
-                                  <font>
-                                      <Font size="18.0" />
-                                  </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                              </Button>
-                     </children>
-                  </GridPane>
-                    </children>
-                </AnchorPane>
-            </children>
-        </GridPane>
-    </center>
-</BorderPane>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="742.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="example.controller.Produit_controller">
+   <children>
+      <GridPane layoutY="7.0" prefHeight="354.0" prefWidth="634.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="358.6000061035156" minWidth="10.0" prefWidth="270.066650390625" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="459.933349609375" minWidth="10.0" prefWidth="459.933349609375" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Button mnemonicParsing="false" onAction="#onaddimageproduct" prefHeight="38.0" prefWidth="177.0" style="-fx-background-color: rgb(1,154,255);" text="Add Image" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icons/plus.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Image :" GridPane.halignment="CENTER">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom Mediacament:" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+            <TextField maxWidth="250.0" prefHeight="39.0" prefWidth="230.0" promptText="Nom" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </TextField>
+            <TextField maxWidth="250.0" prefHeight="39.0" prefWidth="230.0" promptText="Code" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </TextField>
+            <TextField maxWidth="250.0" prefHeight="39.0" prefWidth="230.0" promptText="Prix" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </TextField>
+            <TextField maxWidth="250.0" prefHeight="39.0" prefWidth="230.0" promptText="Category" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Code :" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prix :" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Category :" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+            <Text layoutX="84.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Client Name :" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+            <TextField layoutX="313.0" layoutY="139.0" maxWidth="250.0" prefHeight="39.0" prefWidth="230.0" promptText="Client Name" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </TextField>
+         </children>
+      </GridPane>
+      <Button layoutX="309.0" layoutY="373.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="127.0" style="-fx-background-color: rgb(70,195,95);" text="Ajouter">
+         <graphic>
+            <ImageView fitHeight="23.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/icons/plus.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>
