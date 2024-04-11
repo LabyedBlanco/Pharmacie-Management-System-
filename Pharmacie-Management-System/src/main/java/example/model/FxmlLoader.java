@@ -16,4 +16,5 @@ public class FxmlLoader {
         view = fxmlLoader.load();
         return view;
     }
+
 }
