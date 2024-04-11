@@ -48,7 +48,7 @@
           </children>
       </AnchorPane>
       <Button layoutX="517.0" layoutY="423.0" mnemonicParsing="false" onAction="#parcourirPhoto" style="-fx-background-color: #4F9BCA;" text="PHOTO" textFill="WHITE" />
-      <Button layoutX="614.0" layoutY="636.0" mnemonicParsing="false" style="-fx-background-color: #4F9BCA;" text="CANCEL" textFill="WHITE" />
+      <Button layoutX="614.0" layoutY="636.0" mnemonicParsing="false"  prefHeight="30.0" prefWidth="65.0" style="-fx-background-color: #4F9BCA;" text="CANCEL" textFill="WHITE" />
       <Button layoutX="524.0" layoutY="636.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="65.0" style="-fx-background-color: #4F9BCA;" text="SAVE" textFill="WHITE" />
    </children>
 </AnchorPane>
