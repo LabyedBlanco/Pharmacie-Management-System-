@@ -4,10 +4,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import org.controlsfx.control.spreadsheet.Grid;
 
 import java.io.IOException;
-import java.net.URL;
 
 public class FxmlLoader {
     private BorderPane view;
