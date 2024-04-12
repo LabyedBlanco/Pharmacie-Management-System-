@@ -85,7 +85,6 @@ public class VentesController extends Application {
         int amountint = Integer.parseInt(amounttxt);
 
 
-
         System.out.println(amountint);
         System.out.println(productname.getText());
         System.out.println(date.getValue());

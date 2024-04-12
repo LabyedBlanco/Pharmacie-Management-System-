@@ -113,7 +113,7 @@
                         <TableView layoutX="197.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../styles/MainFormDesign.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
                           <columns>
                             <TableColumn minWidth="150.0" prefWidth="85.0" text="             Reference" />
-                              <TableColumn minWidth="150.0" prefWidth="85.0" text="             Reference" />
+                              <TableColumn minWidth="150.0" prefWidth="85.0" text="             Fournisseur" />
                               <TableColumn minWidth="200.0" prefWidth="125.0" text="             Reference" />
                               <TableColumn minWidth="200.0" prefWidth="85.0" text="             Reference" />
                               <TableColumn minWidth="150.0" prefWidth="85.0" text="             Reference" />
