@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <GridPane fx:id="MainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="example.controller.MainController">
   <columnConstraints>
@@ -26,27 +25,11 @@
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints maxHeight="339.0" minHeight="10.0" prefHeight="130.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="489.0" minHeight="10.0" prefHeight="470.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="339.0" minHeight="10.0" prefHeight="205.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="489.0" minHeight="10.0" prefHeight="395.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ImageView fitHeight="100.0" fitWidth="100.0">
-               <image>
-                  <Image url="@../images/icons/FreeSample-Vectorizer-io-Logo.png" />
-               </image>
-               <GridPane.margin>
-                  <Insets left="30.0" />
-               </GridPane.margin>
-            </ImageView>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Pharmacy">
-               <GridPane.margin>
-                  <Insets left="125.0" />
-               </GridPane.margin>
-               <font>
-                  <Font name="System Bold" size="24.0" />
-               </font>
-            </Text>
-            <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#OnDashboard" prefHeight="40.0" prefWidth="216.0" style="-fx-background-color: #1c1f22;" text="  Dashbord" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+            <Button fx:id="dash" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#OnDashboard" prefHeight="40.0" prefWidth="216.0" style="-fx-background-color: #1c1f22;" styleClass="sidebarItem" stylesheets="@../styles/hover.css" text="  Dashbord" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0">
                      <image>
@@ -58,10 +41,10 @@
                   <Insets left="50.0" />
                </GridPane.margin>
                <font>
-                  <Font size="13.0" />
+                  <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button alignment="TOP_LEFT" layoutX="60.0" layoutY="140.0" mnemonicParsing="false" onAction="#OnUtilisateur" prefHeight="40.0" prefWidth="216.0" style="-fx-background-color: #1c1f22;" text="  Utilisateurs" textFill="WHITE" GridPane.rowIndex="1" GridPane.valignment="TOP">
+            <Button fx:id="util" alignment="TOP_LEFT" layoutX="60.0" layoutY="140.0" mnemonicParsing="false" onAction="#OnUtilisateur" prefHeight="40.0" prefWidth="216.0" style="-fx-background-color: #1c1f22;" styleClass="sidebarItem" stylesheets="@../styles/hover.css" text="  Utilisateurs" textFill="WHITE" GridPane.rowIndex="1" GridPane.valignment="TOP">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0">
                      <image>
@@ -70,13 +53,13 @@
                   </ImageView>
                </graphic>
                <font>
-                  <Font size="13.0" />
+                  <Font name="System Bold" size="15.0" />
                </font>
                <GridPane.margin>
                   <Insets left="50.0" top="50.0" />
                </GridPane.margin>
             </Button>
-            <Button alignment="TOP_LEFT" layoutX="60.0" layoutY="190.0" mnemonicParsing="false" onAction="#OnProduit" prefHeight="40.0" prefWidth="216.0" style="-fx-background-color: #1c1f22;" text="  Products" textFill="WHITE" GridPane.rowIndex="1" GridPane.valignment="TOP">
+            <Button fx:id="prod" alignment="TOP_LEFT" layoutX="60.0" layoutY="190.0" mnemonicParsing="false" onAction="#OnProduit" prefHeight="40.0" prefWidth="216.0" style="-fx-background-color: #1c1f22;" styleClass="sidebarItem" stylesheets="@../styles/hover.css" text="  Products" textFill="WHITE" GridPane.rowIndex="1" GridPane.valignment="TOP">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0">
                      <image>
@@ -85,13 +68,13 @@
                   </ImageView>
                </graphic>
                <font>
-                  <Font size="13.0" />
+                  <Font name="System Bold" size="16.0" />
                </font>
                <GridPane.margin>
                   <Insets left="50.0" top="100.0" />
                </GridPane.margin>
             </Button>
-            <Button alignment="TOP_LEFT" layoutX="60.0" layoutY="240.0" mnemonicParsing="false" onAction="#OnVentes" prefHeight="40.0" prefWidth="216.0" style="-fx-background-color: #1c1f22;" text="  Ventes" textFill="WHITE" GridPane.rowIndex="1" GridPane.valignment="TOP">
+            <Button fx:id="vent" alignment="TOP_LEFT" layoutX="60.0" layoutY="240.0" mnemonicParsing="false" onAction="#OnVentes" prefHeight="40.0" prefWidth="216.0" style="-fx-background-color: #1c1f22;" styleClass="sidebarItem" stylesheets="@../styles/hover.css" text="  Ventes" textFill="WHITE" GridPane.rowIndex="1" GridPane.valignment="TOP">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0">
                      <image>
@@ -100,13 +83,13 @@
                   </ImageView>
                </graphic>
                <font>
-                  <Font size="13.0" />
+                  <Font name="System Bold" size="15.0" />
                </font>
                <GridPane.margin>
                   <Insets left="50.0" top="150.0" />
                </GridPane.margin>
             </Button>
-            <Button alignment="TOP_LEFT" layoutX="60.0" layoutY="290.0" mnemonicParsing="false" onAction="#OnCommande" prefHeight="40.0" prefWidth="216.0" style="-fx-background-color: #1c1f22;" text="  Commandes" textFill="WHITE" GridPane.rowIndex="1" GridPane.valignment="TOP">
+            <Button fx:id="comm" alignment="TOP_LEFT" layoutX="60.0" layoutY="290.0" mnemonicParsing="false" onAction="#OnCommande" prefHeight="40.0" prefWidth="216.0" style="-fx-background-color: #1c1f22;" styleClass="sidebarItem" stylesheets="@../styles/hover.css" text="  Commandes" textFill="WHITE" GridPane.rowIndex="1" GridPane.valignment="TOP">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0">
                      <image>
@@ -115,34 +98,19 @@
                   </ImageView>
                </graphic>
                <font>
-                  <Font size="13.0" />
+                  <Font name="System Bold" size="15.0" />
                </font>
                <GridPane.margin>
                   <Insets left="50.0" top="200.0" />
                </GridPane.margin>
             </Button>
-            <Button alignment="TOP_LEFT" layoutX="60.0" layoutY="290.0" mnemonicParsing="false" onAction="#OnProduit" prefHeight="40.0" prefWidth="216.0" style="-fx-background-color: #1c1f22;" text="  Settings" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0">
-                     <image>
-                        <Image url="@../images/icons/engrenages-mecaniques.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
+            <Button fx:id="four" alignment="TOP_LEFT" layoutX="60.0" layoutY="290.0" mnemonicParsing="false" onAction="#OnFournisseur" prefHeight="40.0" prefWidth="216.0" style="-fx-background-color: #1c1f22;" styleClass="sidebarItem" stylesheets="@../styles/hover.css" text="  Fournisseur" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
                <font>
-                  <Font size="13.0" />
+                  <Font name="System Bold" size="15.0" />
                </font>
                <GridPane.margin>
                   <Insets left="50.0" top="250.0" />
                </GridPane.margin>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#OnFournisseur" prefHeight="90.0" prefWidth="121.0" style="-fx-background-color: #1c1f22;" text=" Fournisseur" textFill="#fffbfb" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets left="50.0" top="183.0" />
-               </GridPane.margin>
-               <font>
-                  <Font size="13.0" />
-               </font>
                <graphic>
                   <ImageView fitHeight="37.0" fitWidth="29.0">
                      <image>
@@ -151,6 +119,14 @@
                   </ImageView>
                </graphic>
             </Button>
+            <ImageView fitHeight="245.0" fitWidth="245.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@../images/icons/LogoPharma.png" />
+               </image>
+               <GridPane.margin>
+                  <Insets top="40.0" />
+               </GridPane.margin>
+            </ImageView>
          </children>
       </GridPane>
    </children>

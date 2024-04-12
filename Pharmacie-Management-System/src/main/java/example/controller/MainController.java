@@ -4,6 +4,7 @@ import example.model.FxmlLoader;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -14,8 +15,29 @@ import java.io.IOException;
 public class MainController {
     @FXML
     private GridPane MainPane;
+
     @FXML
-    private Label welcomeText;
+    private Button comm;
+
+
+
+
+    @FXML
+    private Button dash;
+
+    @FXML
+    private Button four;
+
+    @FXML
+    private Button prod;
+
+    @FXML
+    private Button util;
+
+    @FXML
+    private Button vent;
+
+
 
 
 
@@ -24,6 +46,13 @@ public class MainController {
         FxmlLoader object = new FxmlLoader();
         Pane view = object.setPage("Produits");
         MainPane.add(view,1,0);
+        prod.setStyle("-fx-background-color: transparent;-fx-effect: dropshadow(gaussian, white, 10, 0.05, 0, 0);-fx-border-color: WHITE; -fx-border-width: 0px 0px 0px 3px;");
+        dash.setStyle("-fx-background-color: transparent");
+        vent.setStyle("-fx-background-color: transparent");
+        util.setStyle("-fx-background-color: transparent");
+        comm.setStyle("-fx-background-color: transparent");
+        four.setStyle("-fx-background-color: transparent");
+
     }
 
     public void OnUtilisateur (ActionEvent event) throws IOException {
@@ -32,6 +61,13 @@ public class MainController {
         FxmlLoader object = new FxmlLoader();
         Pane view = object.setPage("Utilisateur");
         MainPane.add(view,1,0);
+        util.setStyle("-fx-background-color: transparent;-fx-effect: dropshadow(gaussian, white, 10, 0.05, 0, 0);-fx-border-color: WHITE; -fx-border-width: 0px 0px 0px 3px;");
+        dash.setStyle("-fx-background-color: transparent");
+        vent.setStyle("-fx-background-color: transparent");
+        comm.setStyle("-fx-background-color: transparent");
+        prod.setStyle("-fx-background-color: transparent");
+        four.setStyle("-fx-background-color: transparent");
+
 
     }
     public void OnDashboard (ActionEvent event) throws IOException {
@@ -40,6 +76,13 @@ public class MainController {
         FxmlLoader object = new FxmlLoader();
         Pane view = object.setPage("Dashboard");
         MainPane.add(view,1,0);
+        dash.setStyle("-fx-background-color: transparent;-fx-effect: dropshadow(gaussian, white, 10, 0.05, 0, 0);-fx-border-color: WHITE; -fx-border-width: 0px 0px 0px 3px;");
+        comm.setStyle("-fx-background-color: transparent");
+        vent.setStyle("-fx-background-color: transparent");
+        util.setStyle("-fx-background-color: transparent");
+        prod.setStyle("-fx-background-color: transparent");
+        four.setStyle("-fx-background-color: transparent");
+
 
     }
 
@@ -49,6 +92,13 @@ public class MainController {
         FxmlLoader object = new FxmlLoader();
         Pane view = object.setPage("Commande");
         MainPane.add(view,1,0);
+        comm.setStyle("-fx-background-color: transparent;-fx-effect: dropshadow(gaussian, white, 10, 0.05, 0, 0);-fx-border-color: WHITE; -fx-border-width: 0px 0px 0px 3px;");
+        dash.setStyle("-fx-background-color: transparent");
+        vent.setStyle("-fx-background-color: transparent");
+        util.setStyle("-fx-background-color: transparent");
+        prod.setStyle("-fx-background-color: transparent");
+        four.setStyle("-fx-background-color: transparent");
+
 
     }
     public void OnVentes (ActionEvent event) throws IOException {
@@ -57,6 +107,13 @@ public class MainController {
         FxmlLoader object = new FxmlLoader();
         Pane view = object.setPage("Ventes");
         MainPane.add(view,1,0);
+        vent.setStyle("-fx-background-color: transparent;-fx-effect: dropshadow(gaussian, white, 10, 0.05, 0, 0);-fx-border-color: WHITE; -fx-border-width: 0px 0px 0px 3px;");
+        dash.setStyle("-fx-background-color: transparent");
+        comm.setStyle("-fx-background-color: transparent");
+        util.setStyle("-fx-background-color: transparent");
+        prod.setStyle("-fx-background-color: transparent");
+        four.setStyle("-fx-background-color: transparent");
+
 
     }
     public void OnFournisseur (ActionEvent event) throws IOException {
@@ -65,6 +122,12 @@ public class MainController {
         FxmlLoader object = new FxmlLoader();
         Pane view = object.setPage("Fournisseur");
         MainPane.add(view,1,0);
+        four.setStyle("-fx-background-color: transparent;-fx-effect: dropshadow(gaussian, white, 10, 0.05, 0, 0);-fx-border-color: WHITE; -fx-border-width: 0px 0px 0px 3px;");
+        dash.setStyle("-fx-background-color: transparent");
+        vent.setStyle("-fx-background-color: transparent");
+        util.setStyle("-fx-background-color: transparent");
+        comm.setStyle("-fx-background-color: transparent");
+        prod.setStyle("-fx-background-color: transparent");
 
     }
 }
