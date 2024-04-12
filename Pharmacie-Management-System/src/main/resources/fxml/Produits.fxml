@@ -122,12 +122,11 @@
                   </GridPane>
                   <TableView fx:id="listPurchases" layoutX="143.0" layoutY="193.0" prefHeight="476.0" prefWidth="1061.0" stylesheets="@../styles/MainFormDesign.css" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                      <columns>
-                        <TableColumn fx:id="listPurchases" minWidth="150.0" prefWidth="157.0" text="Client" />
-                        <TableColumn minWidth="127.33334350585938" prefWidth="200.0" text="Date" />
-                        <TableColumn minWidth="178.0" prefWidth="178.0" text="Amount" />
-                        <TableColumn minWidth="200.0" prefWidth="208.66668701171875" text="Utilisateur" />
-                        <TableColumn minWidth="150.0" prefWidth="155.66668701171875" text="Produit" />
-                        <TableColumn minWidth="150.0" prefWidth="162.33331298828125" text="Action" />
+                        <TableColumn fx:id="listPurchases" minWidth="150.0" prefWidth="243.0" text="Name" />
+                        <TableColumn minWidth="127.33334350585938" prefWidth="199.0" text="Code" />
+                        <TableColumn minWidth="178.0" prefWidth="252.0" text="Category" />
+                        <TableColumn minWidth="193.0" prefWidth="209.0" text="Price" />
+                        <TableColumn minWidth="150.0" prefWidth="157.0" text="Action" />
                      </columns>
                   </TableView>
                   <GridPane layoutY="61.0" prefHeight="56.0" prefWidth="1100.0">
