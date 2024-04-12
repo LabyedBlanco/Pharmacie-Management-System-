@@ -114,10 +114,10 @@
                           <columns>
                             <TableColumn minWidth="150.0" prefWidth="85.0" text="             Reference" />
                               <TableColumn minWidth="150.0" prefWidth="85.0" text="             Fournisseur" />
-                              <TableColumn minWidth="200.0" prefWidth="125.0" text="             Reference" />
-                              <TableColumn minWidth="200.0" prefWidth="85.0" text="             Reference" />
-                              <TableColumn minWidth="150.0" prefWidth="85.0" text="             Reference" />
-                              <TableColumn minWidth="150.0" prefWidth="85.0" text="             Reference" />
+                              <TableColumn minWidth="200.0" prefWidth="125.0" text="             Date" />
+                              <TableColumn minWidth="200.0" prefWidth="85.0" text="             Utilisateur" />
+                              <TableColumn minWidth="150.0" prefWidth="85.0" text="Status" />
+                              <TableColumn minWidth="150.0" prefWidth="85.0" text="             Prix" />
                           </columns>
                         </TableView>
                      </children>
@@ -146,7 +146,7 @@
                         </TextField>
                      </children>
                   </GridPane>
-                  <Button alignment="CENTER" graphicTextGap="10.0" layoutX="955.0" layoutY="42.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #46c35f; -fx-background-color: #019aff;" styleClass="drop-shadow" stylesheets="@style.css" text="Modifier" textFill="WHITE" GridPane.halignment="RIGHT">
+                  <Button alignment="CENTER" graphicTextGap="10.0" layoutX="955.0" layoutY="42.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #46c35f; -fx-background-color: #019aff;" styleClass="drop-shadow" stylesheets="@style.css" text="Modifier" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets right="230.0" top="20.0" />
                      </GridPane.margin>

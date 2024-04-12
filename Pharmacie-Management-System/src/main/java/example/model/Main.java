@@ -17,7 +17,7 @@ public class Main extends Application {
         double screenHeight = Screen.getPrimary().getVisualBounds().getHeight();
         System.out.print("Width = "+screenWidth+" Height = "+screenHeight);
         Scene scene = new Scene(fxmlLoader.load(), screenWidth, screenHeight);
-        stage.setTitle("Hello!");
+        stage.setTitle("Pharmacie.exe");
         
         stage.setScene(scene);
         stage.show();

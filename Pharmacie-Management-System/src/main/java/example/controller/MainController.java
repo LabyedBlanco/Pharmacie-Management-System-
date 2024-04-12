@@ -4,6 +4,7 @@ import example.model.FxmlLoader;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
@@ -11,8 +12,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class MainController {
+public class MainController implements Initializable {
     @FXML
     private GridPane MainPane;
 
@@ -38,7 +41,23 @@ public class MainController {
     private Button vent;
 
 
-
+    public void initialize(URL url , ResourceBundle resourceBundle) {
+        dash.setStyle("-fx-background-color: transparent;-fx-effect: dropshadow(gaussian, white, 10, 0.05, 0, 0);-fx-border-color: WHITE; -fx-border-width: 0px 0px 0px 3px;");
+        prod.setStyle("-fx-background-color: transparent");
+        vent.setStyle("-fx-background-color: transparent");
+        util.setStyle("-fx-background-color: transparent");
+        comm.setStyle("-fx-background-color: transparent");
+        four.setStyle("-fx-background-color: transparent");
+        System.out.print("\nDashboard");
+        FxmlLoader object = new FxmlLoader();
+        Pane view = null;
+        try {
+            view = object.setPage("Dashboard");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        MainPane.add(view,1,0);
+    }
 
 
     public void OnProduit (ActionEvent event) throws IOException {
