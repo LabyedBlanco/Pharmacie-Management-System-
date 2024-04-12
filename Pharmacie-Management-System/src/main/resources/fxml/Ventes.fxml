@@ -275,7 +275,7 @@
                               <Insets right="30.0" />
                            </GridPane.margin>
                            <graphic>
-                              <ImageView fitHeight="20.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0">
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0">
                                  <image>
                                     <Image url="@../images/icons/plus-symbole-noir.png" />
                                  </image>
@@ -286,7 +286,7 @@
                   </GridPane>
                   <TableView fx:id="listPurchases" layoutX="20.0" layoutY="263.0" prefHeight="345.0" prefWidth="1060.0" stylesheets="@../styles/MainFormDesign.css" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                      <columns>
-                        <TableColumn fx:id="listPurchases" minWidth="150.0" prefWidth="157.0" text="Client" />
+                        <TableColumn minWidth="150.0" prefWidth="157.0" text="Client" />
                         <TableColumn minWidth="127.33334350585938" prefWidth="200.0" text="Date" />
                         <TableColumn minWidth="178.0" prefWidth="178.0" text="Amount" />
                         <TableColumn minWidth="200.0" prefWidth="208.66668701171875" text="Utilisateur" />
