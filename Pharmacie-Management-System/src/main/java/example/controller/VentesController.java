@@ -77,9 +77,6 @@ public class VentesController extends Application {
 
 
 
-
-
-
     public void addpurchases(ActionEvent event) throws IOException {
         String amounttxt=amount.getText();
         int amountint = Integer.parseInt(amounttxt);
@@ -92,15 +89,6 @@ public class VentesController extends Application {
 
 
     }
-
-
-
-
-
-
-
-
-
 
 
 
