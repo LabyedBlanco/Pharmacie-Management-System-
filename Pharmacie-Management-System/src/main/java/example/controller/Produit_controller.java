@@ -6,6 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -22,6 +24,8 @@ public class Produit_controller extends Application {
     public void start(Stage primaryStage) {
         
     }
+    @FXML
+    private ImageView image;
 
     @FXML
     private void onaddimageproduct(ActionEvent event){
@@ -31,7 +35,10 @@ public class Produit_controller extends Application {
             fileChooser.setTitle("Select Image File");
 
             File file = fileChooser.showOpenDialog(new Stage());
+
             if (file != null) {
+                Image img=new Image(file.toURI().toString());
+                image.setImage(img);
 
             }
     }

@@ -94,7 +94,7 @@
          <String fx:value="shadow" />
       </styleClass>
    </AnchorPane>
-   <Button layoutX="975.0" layoutY="551.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="100.0" style="-fx-background-color: #4F9BCA;" text="Archiver" textFill="WHITE">
+   <Button layoutX="975.0" layoutY="551.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="100.0" style="-fx-background-color: #019aff;" text="Archiver" textFill="WHITE">
       <font>
          <Font name="Arial Narrow Bold" size="17.0" />
       </font>

@@ -26,6 +26,7 @@ public class FournisseurController {
         stage.setScene(new Scene(root));
         stage.show();
     }
+    @FXML
     public void parcourirPhoto() {
         FileChooser fileChooser = new FileChooser();
 

@@ -92,7 +92,7 @@
                                <TabPane layoutX="3.0" layoutY="61.0" prefHeight="421.0" prefWidth="1038.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
                                <tabs>
 
-                               <Tab styleClass="tab-fournisseurs-actifs" text="Fournisseurs Actifs">
+                               <Tab closable="false" styleClass="tab-fournisseurs-actifs" text="Fournisseurs Actifs">
                                    <content>
                                        <GridPane prefHeight="346.0" prefWidth="489.0" style="-fx-background-color: white;">
                                            <columnConstraints>
@@ -120,7 +120,7 @@
                                        </GridPane>
                                    </content>
                                </Tab>
-                                   <Tab styleClass="tab-archiver" text="Fournisseurs Archivés">
+                                   <Tab closable="false" styleClass="tab-archiver" text="Fournisseurs Archivés">
                                        <content>
                                            <GridPane style="-fx-background-color: white;">
                                                <columnConstraints>
@@ -150,32 +150,47 @@
                                    </Tab>
                                </tabs>
                                </TabPane>
-                              <TextField layoutX="412.0" layoutY="16.0" prefHeight="38.0" prefWidth="252.0" promptText="              Search" style="-fx-background-radius: 50;" />
-                              <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="416.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/icons/9035096_search_icon.png" />
-                                 </image>
-                              </ImageView>
                                <Button graphicTextGap="10.0" layoutX="861.0" layoutY="7.0" mnemonicParsing="false" onAction="#Addfor" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #46c35f;" styleClass="drop-shadow" stylesheets="@style.css" text="Ajouter" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                                  <font>
                                     <Font name="Book Antiqua Bold" size="21.0" />
                                  </font>
+                                 <graphic>
+                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/icons/plus-icon-2048x2048-z6v59bd6.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
                               </Button>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="869.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/icons/plus-icon-2048x2048-z6v59bd6.png" />
-                                 </image>
-                              </ImageView>
-                              <Button graphicTextGap="10.0" layoutX="705.0" layoutY="7.0" mnemonicParsing="false" onAction="#AddforA" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #4F98CA;" styleClass="drop-shadow" stylesheets="@style.css" text="    ARCHIVER" textFill="WHITE">
+                              <Button graphicTextGap="10.0" layoutX="606.0" layoutY="7.0" mnemonicParsing="false" onAction="#AddforA" prefHeight="45.0" prefWidth="164.0" style="-fx-background-color: #4F98CA;" styleClass="drop-shadow" stylesheets="@style.css" text="ARCHIVER" textFill="WHITE">
                                  <font>
                                     <Font name="Book Antiqua Bold" size="21.0" />
                                  </font>
+                                 <graphic>
+                                    <ImageView fitHeight="27.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/icons/archive.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
                               </Button>
-                              <ImageView fitHeight="30.0" fitWidth="43.0" layoutX="712.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/icons/archive.png" />
-                                 </image>
-                              </ImageView>
+                              <GridPane layoutX="58.0" layoutY="17.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: white; -fx-border-color: white; -fx-border-radius: 25px; -fx-background-radius: 25px;" styleClass="shadow" stylesheets="@style.css">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.0" minWidth="10.0" prefWidth="42.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.0" minWidth="10.0" prefWidth="158.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <ImageView fitHeight="69.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/icons/9035096_search_icon.png" />
+                                       </image>
+                                    </ImageView>
+                                    <TextField style="-fx-background-color: white; -fx-border-color: white; -fx-border-radius: 25px; -fx-background-radius: 25px;" GridPane.columnIndex="1" />
+                                 </children>
+                              </GridPane>
                            </children>
                         </AnchorPane>
                      </children>

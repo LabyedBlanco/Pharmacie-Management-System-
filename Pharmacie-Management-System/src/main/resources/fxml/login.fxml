@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ewample.controller.LoginController">
    <top>
       <GridPane prefHeight="801.0" prefWidth="1100.0" style="-fx-background-color: #f9f9f9;" BorderPane.alignment="CENTER">
@@ -29,7 +28,7 @@
                   <Image url="@../images/icons/FreeSample-Vectorizer-%20remove%20bg.png" />
                </image>
             </ImageView>
-            <GridPane style="-fx-background-color: #46c35f; -fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 20;" GridPane.rowIndex="1">
+            <GridPane style="-fx-background-color: #46c35f; -fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 20;" styleClass="card" stylesheets="@design.css" GridPane.rowIndex="1">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
