@@ -94,7 +94,7 @@
                         <Insets right="-10.0" />
                      </padding>
                   </Pane>
-                  <Pane layoutX="362.0" layoutY="39.0" prefHeight="140.0" prefWidth="148.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #898989;" styleClass="drop-shadow" stylesheets="@style.css">
+                  <Pane layoutX="362.0" layoutY="39.0" prefHeight="140.0" prefWidth="148.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" styleClass="drop-shadow" stylesheets="@style.css">
                      <children>
                         <ImageView fx:id="image" fitHeight="137.0" fitWidth="146.0" layoutX="2.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
