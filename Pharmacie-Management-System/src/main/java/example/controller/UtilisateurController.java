@@ -2,7 +2,9 @@ package example.controller;
 
 import javafx.application.Application;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
@@ -18,6 +20,7 @@ import java.io.IOException;
 public class UtilisateurController extends Application {
 
     public Button bottonmodify;
+    public ImageView image;
 
     public static void main(String[] args) {
         launch(args);
@@ -50,10 +53,18 @@ public class UtilisateurController extends Application {
 
         File file = fileChooser.showOpenDialog(new Stage());
         if (file != null) {
+            String cheminPhoto = file.getAbsolutePath();
+            System.out.println("Chemin de la photo sélectionnée : " + cheminPhoto);
+
+            Image imageview = new Image(file.toURI().toString());
+            image.setImage(imageview);
+        } else {
+            System.out.println("Aucun fichier sélectionné.");
+        }
 
         }
     }
 
 
 
-}
+

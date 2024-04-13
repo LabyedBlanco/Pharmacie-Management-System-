@@ -79,7 +79,6 @@
                 </GridPane>
                 <AnchorPane prefHeight="631.0" prefWidth="1100.0" style="-fx-background-color: #f9f9f9;" GridPane.rowIndex="1">
                <children>
-<<<<<<< HEAD
                   <Button layoutX="971.0" layoutY="42.0" mnemonicParsing="false" onAction="#addproduct" style="-fx-background-color: #46c35f;" styleClass="drop-shadow" stylesheets="@style.css" text="+ Add Product" textFill="WHITE" AnchorPane.rightAnchor="65.0" AnchorPane.topAnchor="42.0">
                      <font>
                         <Font name="System Bold" size="14.0" />
