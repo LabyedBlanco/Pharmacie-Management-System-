@@ -52,6 +52,7 @@ public class UtilisateurController extends Application {
         fileChooser.setTitle("Select Image File");
 
         File file = fileChooser.showOpenDialog(new Stage());
+
         if (file != null) {
             String cheminPhoto = file.getAbsolutePath();
             System.out.println("Chemin de la photo sélectionnée : " + cheminPhoto);
