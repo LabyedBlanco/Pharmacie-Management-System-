@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -80,10 +81,10 @@
                <children>
                   <Button layoutX="971.0" layoutY="42.0" mnemonicParsing="false" onAction="#addproduct" style="-fx-background-color: #46c35f;" styleClass="drop-shadow" stylesheets="@style.css" text="+ Add Product" textFill="WHITE" AnchorPane.rightAnchor="65.0" AnchorPane.topAnchor="42.0">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="System Bold" size="14.0" />
                      </font>
                   </Button>
-                  <TableView editable="true" layoutX="91.2" layoutY="172.0" prefHeight="426.0" prefWidth="918.0" style="-fx-background-color: #ffffff;" styleClass="drop-shadow" stylesheets="@style.css" AnchorPane.leftAnchor="91.0" AnchorPane.rightAnchor="91.0">
+                  <TableView editable="true" layoutX="91.2" layoutY="172.0" prefHeight="426.0" prefWidth="918.0" style="-fx-background-color: #ffffff; -fx-background-radius: 20; -fx-border-radius: 20;" styleClass="drop-shadow" stylesheets="@../styles/MainFormDesign.css" AnchorPane.leftAnchor="91.0" AnchorPane.rightAnchor="91.0">
                     <columns>
                       <TableColumn prefWidth="124.80002135038376" text="Image" />
                       <TableColumn prefWidth="171.99996948242188" text="Name" />
@@ -96,12 +97,32 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
-                  <TextField layoutX="785.0" layoutY="110.0" promptText="Search" style="-fx-border-radius: 80; -fx-background-color: #f6f6f6; -fx-border-color: black; -fx-background-radius: 80;" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="105.0" />
-                  <Button layoutX="775.0" layoutY="42.0" mnemonicParsing="false" style="-fx-background-color: red;" onAction="#fichproduct" text="= Product Sheet" textFill="WHITE" AnchorPane.rightAnchor="205.0" AnchorPane.topAnchor="42.0">
+                  <Button layoutX="775.0" layoutY="42.0" mnemonicParsing="false" onAction="#fichproduct" style="-fx-background-color: red;" text="= Product Sheet" textFill="WHITE" AnchorPane.rightAnchor="205.0" AnchorPane.topAnchor="42.0">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
+                  <GridPane layoutX="722.0" layoutY="110.0" maxHeight="35.0" maxWidth="225.0" style="-fx-background-color: white; -fx-background-radius: 25px;" styleClass="drop-shadow" stylesheets="@style.css" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="105.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="118.33331298828125" minWidth="10.0" prefWidth="56.66668701171875" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="207.66668701171875" minWidth="10.0" prefWidth="193.33331298828125" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                           <image>
+                              <Image url="@../images/icons/9035096_search_icon.png" />
+                           </image>
+                        </ImageView>
+                        <TextField prefHeight="75.0" prefWidth="194.0" promptText="Search" style="-fx-background-color: white; -fx-border-color: white; -fx-border-radius: 25px; -fx-background-radius: 25px;" stylesheets="@style.css" GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets right="60.0" />
+                           </GridPane.margin>
+                        </TextField>
+                     </children>
+                  </GridPane>
                </children></AnchorPane>
             </children>
         </GridPane>
