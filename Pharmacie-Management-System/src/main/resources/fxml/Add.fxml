@@ -2,53 +2,238 @@
 
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane minHeight="700.0" minWidth="700.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="example.controller.FournisseurController">
-   <children>
-      <AnchorPane layoutY="-1.0" prefHeight="700.0" prefWidth="108.0" style="-fx-background-color: #50D890;" />
-      <AnchorPane layoutX="107.0" prefHeight="81.0" prefWidth="594.0" style="-fx-background-color: #50D899;">
-         <children>
-            <Text fill="WHITE" layoutX="146.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADD SUPPLIER">
-               <font>
-                  <Font name="System Bold" size="31.0" />
-               </font>
-            </Text>
-         </children>
-      </AnchorPane>
-      <TextField layoutX="208.0" layoutY="171.0" style="-fx-border-radius: 15; -fx-border-color: #4F98CA; -fx-background-radius: 50;" />
-      <TextField layoutX="208.0" layoutY="249.0" style="-fx-border-radius: 15; -fx-border-color: #4F98CA; -fx-background-radius: 50;" />
-      <TextField layoutX="208.0" layoutY="401.0" style="-fx-border-radius: 15; -fx-border-color: #4F98CA; -fx-background-radius: 50;" />
-      <TextField layoutX="208.0" layoutY="323.0" style="-fx-border-radius: 15; -fx-border-color: #4F98CA; -fx-background-radius: 50;" />
-      <Label layoutX="124.0" layoutY="176.0" text="Name:" />
-      <Label layoutX="124.0" layoutY="262.0" text="Email:" />
-      <Label layoutX="124.0" layoutY="485.0" text="Gender:" />
-      <Label layoutX="124.0" layoutY="405.0" text="Country:" />
-      <Label layoutX="124.0" layoutY="327.0" text="Phone:" />
-      <ComboBox layoutX="209.0" layoutY="482.0" prefWidth="150.0" style="-fx-border-radius: 15; -fx-border-color: #4F9BCA; -fx-background-radius: 50;">
-       <items>
-
-           <FXCollections fx:factory="observableArrayList">
-               <String fx:value="Male" />
-               <String fx:value="Female" />
-
-           </FXCollections>
-       </items>
-      </ComboBox>
-      <AnchorPane layoutX="446.0" layoutY="180.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: BLACK;">
-          <children>
-              <ImageView fx:id="imageView" fitHeight="170.0" fitWidth="178.0" layoutX="4.0" layoutY="12.0" />
-          </children>
-      </AnchorPane>
-      <Button layoutX="517.0" layoutY="423.0" mnemonicParsing="false" onAction="#parcourirPhoto" style="-fx-background-color: #4F9BCA;" text="PHOTO" textFill="WHITE" />
-      <Button layoutX="614.0" layoutY="636.0" mnemonicParsing="false"  prefHeight="30.0" prefWidth="65.0" style="-fx-background-color: #4F9BCA;" text="CANCEL" textFill="WHITE" />
-      <Button layoutX="524.0" layoutY="636.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="65.0" style="-fx-background-color: #4F9BCA;" text="SAVE" textFill="WHITE" />
-   </children>
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="example.controller.FournisseurController">
+    <children>
+        <GridPane fx:id="MainPane" layoutX="10.0" layoutY="10.0" prefHeight="636.0" prefWidth="1000.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="642.0" minHeight="10.0" prefHeight="619.3333358764648" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <GridPane fx:id="Commande" prefHeight="579.0" prefWidth="1100.0" style="-fx-background-color: #f7f7f7;" styleClass="drop-shadow" stylesheets="@style.css">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="199.0" minHeight="0.0" prefHeight="82.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="557.3333282470703" minHeight="10.0" prefHeight="538.0" vgrow="SOMETIMES" />
+                  <RowConstraints />
+                  <RowConstraints />
+                    </rowConstraints>
+                    <children>
+                        <Button graphicTextGap="10.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #46c35f;" styleClass="drop-shadow" stylesheets="@style.css" text="Ajouter" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                            <GridPane.margin>
+                                <Insets right="60.0" top="20.0" />
+                            </GridPane.margin>
+                            <font>
+                                <Font name="System Bold" size="15.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="20.0" nodeOrientation="INHERIT">
+                                    <image>
+                                        <Image url="@../images/icons/plus-symbole-noir.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button alignment="CENTER" graphicTextGap="10.0" layoutX="955.0" layoutY="42.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #46c35f; -fx-background-color: #019aff;" styleClass="drop-shadow" stylesheets="@style.css" text="Imprimer " textFill="WHITE" GridPane.halignment="RIGHT">
+                            <GridPane.margin>
+                                <Insets right="230.0" top="20.0" />
+                            </GridPane.margin>
+                            <graphic>
+                                <ImageView fitHeight="25.0" fitWidth="25.0" nodeOrientation="INHERIT">
+                                    <image>
+                                        <Image url="@../images/icons/imprimante.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <font>
+                                <Font name="System Bold" size="15.0" />
+                            </font>
+                        </Button>
+                        <Text fill="#898989" strokeType="OUTSIDE" strokeWidth="0.0" text="ajouter founisseur :">
+                            <GridPane.margin>
+                                <Insets left="60.0" />
+                            </GridPane.margin>
+                            <font>
+                                <Font name="System Bold" size="17.0" />
+                            </font>
+                        </Text>
+                        <Line endX="-61.495086669921875" endY="-30.707050323486328" fill="#898989" startX="-61.49509811401367" startY="4.73040771484375" stroke="#898989" strokeWidth="2.0">
+                            <GridPane.margin>
+                                <Insets left="40.0" />
+                            </GridPane.margin>
+                        </Line>
+                        <GridPane style="-fx-background-color: white; -fx-background-radius: 25px;" styleClass="drop-shadow" stylesheets="@style.css" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <GridPane.margin>
+                                <Insets bottom="50.0" left="60.0" right="60.0" top="260.0" />
+                            </GridPane.margin>
+                        </GridPane>
+                        <GridPane prefHeight="290.0" prefWidth="567.0" style="-fx-background-color: white; -fx-background-radius: 25px;" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="68.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="96.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="101.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="101.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <GridPane.margin>
+                                <Insets bottom="50.0" left="60.0" right="60.0" top="90.0" />
+                            </GridPane.margin>
+                            <children>
+                                <Text fill="#898989" strokeType="OUTSIDE" strokeWidth="0.0" text="Name :" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+                                    <font>
+                                        <Font name="System Bold" size="14.0" />
+                                    </font>
+                                    <GridPane.margin>
+                                        <Insets left="40.0" />
+                                    </GridPane.margin>
+                                </Text>
+                                <Text fill="#898989" layoutX="50.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" GridPane.columnIndex="1" GridPane.valignment="CENTER">
+                                    <font>
+                                        <Font name="System Bold" size="14.0" />
+                                    </font>
+                                    <GridPane.margin>
+                                        <Insets left="40.0" />
+                                    </GridPane.margin>
+                                </Text>
+                                <Text fill="#898989" layoutX="450.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone :" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                    <font>
+                                        <Font name="System Bold" size="14.0" />
+                                    </font>
+                                    <GridPane.margin>
+                                        <Insets left="40.0" />
+                                    </GridPane.margin>
+                                </Text>
+                                <Text fill="#898989" layoutX="10.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="City :" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                    <font>
+                                        <Font name="System Bold" size="14.0" />
+                                    </font>
+                                    <GridPane.margin>
+                                        <Insets left="40.0" />
+                                    </GridPane.margin>
+                                </Text>
+                                <Text fill="#898989" layoutX="450.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Country:" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                    <font>
+                                        <Font name="System Bold" size="14.0" />
+                                    </font>
+                                    <GridPane.margin>
+                                        <Insets left="40.0" />
+                                    </GridPane.margin>
+                                </Text>
+                                <Text fill="#898989" layoutX="10.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender :" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                                    <font>
+                                        <Font name="System Bold" size="14.0" />
+                                    </font>
+                                    <GridPane.margin>
+                                        <Insets left="40.0" />
+                                    </GridPane.margin>
+                                </Text>
+                                <TextField GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                    <GridPane.margin>
+                                        <Insets left="150.0" right="80.0" />
+                                    </GridPane.margin>
+                                </TextField>
+                                <TextField GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <GridPane.margin>
+                                        <Insets left="150.0" right="80.0" />
+                                    </GridPane.margin>
+                                </TextField>
+                                <TextField prefHeight="26.0" prefWidth="210.0" GridPane.columnIndex="1" GridPane.valignment="CENTER">
+                                    <GridPane.margin>
+                                        <Insets left="150.0" right="80.0" />
+                                    </GridPane.margin>
+                                </TextField>
+                                <TextField GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                    <GridPane.margin>
+                                        <Insets left="150.0" right="80.0" />
+                                    </GridPane.margin>
+                                </TextField>
+                                <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                                    <GridPane.margin>
+                                        <Insets left="150.0" />
+                                    </GridPane.margin>
+                                    <items>
+                                        <FXCollections fx:factory="observableArrayList">
+                                            <String fx:value="Male" />
+                                            <String fx:value="Female" />
+                                        </FXCollections>
+                                    </items>
+                                </ComboBox>
+                        <TextField GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets left="150.0" right="80.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <Button mnemonicParsing="false" onAction="#parcourirPhoto" prefHeight="30.0" prefWidth="83.0" style="-fx-background-color: #019aff;" text="Parcourir " GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                           <padding>
+                              <Insets right="40.0" />
+                           </padding>
+                           <GridPane.margin>
+                              <Insets left="40.0" />
+                           </GridPane.margin>
+                        </Button>
+                        <ImageView fx:id="imageView" fitHeight="123.0" fitWidth="163.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets right="30.0" top="17.0" />
+                           </GridPane.margin>
+                        </ImageView>
+                            </children>
+                        </GridPane>
+                    </children>
+                </GridPane>
+                <GridPane fx:id="Avoirs" layoutX="10.0" layoutY="118.0" prefHeight="579.0" prefWidth="1100.0" style="-fx-background-color: #f7f7f7;" styleClass="drop-shadow" stylesheets="@style.css" visible="false">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="199.0" minHeight="0.0" prefHeight="82.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="557.3333282470703" minHeight="10.0" prefHeight="538.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Button graphicTextGap="10.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #46c35f;" styleClass="drop-shadow" stylesheets="@style.css" text="Ajouter" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                            <GridPane.margin>
+                                <Insets right="60.0" top="20.0" />
+                            </GridPane.margin>
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="20.0" nodeOrientation="INHERIT">
+                                    <image>
+                                        <Image url="@../images/icons/plus-symbole-noir.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </children>
+                </GridPane>
+            </children>
+        </GridPane>
+    </children>
 </AnchorPane>
