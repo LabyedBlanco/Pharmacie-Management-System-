@@ -79,6 +79,7 @@ and open the template in the editor.
     -fx-padding: 0;
     -fx-border-radius: 8px;
 }
+
 .table-view .column-header-background{
     -fx-background-color: white;
     -fx-background-insets: 0 0 0 0;

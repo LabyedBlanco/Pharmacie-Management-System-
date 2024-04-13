@@ -51,7 +51,7 @@ public class FournisseurController {
         }
     }
     @FXML
-    private void AddforA(ActionEvent event) throws IOException {
+    public void AddforA(ActionEvent event) throws IOException {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ArchiverF.fxml"));
         Parent root = loader.load();
