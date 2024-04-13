@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -187,6 +188,7 @@
                                           <Image url="@../images/icons/9035096_search_icon.png" />
                                        </image>
                                     </ImageView>
+                                    <TextField style="-fx-background-color: white; -fx-border-color: white; -fx-border-radius: 25px; -fx-background-radius: 25px;" GridPane.columnIndex="1" />
                                  </children>
                               </GridPane>
                            </children>

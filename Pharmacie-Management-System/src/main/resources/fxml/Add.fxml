@@ -190,7 +190,7 @@
                               <Insets left="150.0" right="80.0" />
                            </GridPane.margin>
                         </TextField>
-                        <Button mnemonicParsing="false" onAction="#parcourirPhoto" prefHeight="30.0" prefWidth="83.0" style="-fx-background-color: #019aff;" text="Parcourir " GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                        <Button mnemonicParsing="false" onAction="#parcourirPhoto" prefHeight="30.0" prefWidth="117.0" style="-fx-background-color: #019aff;" text="Parcourir " GridPane.rowIndex="3" GridPane.valignment="CENTER">
                            <padding>
                               <Insets right="40.0" />
                            </padding>
