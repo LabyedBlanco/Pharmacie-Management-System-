@@ -32,27 +32,27 @@ public class CommandeController implements Initializable {
 
     @Override
     public void initialize(URL url , ResourceBundle resourceBundle){
-        Selectbox.setItems(FXCollections.observableArrayList("Gestion des Commandes","Gestion des Avoirs"));
-
-        Selectbox.setOnAction(e -> {
-            String selectedOption = Selectbox.getValue();
-            System.out.println(selectedOption);
-            if(selectedOption == "Gestion des Avoirs"){
+        if (Selectbox != null) {
+            Selectbox.setItems(FXCollections.observableArrayList("Gestion des Commandes", "Gestion des Avoirs"));
+            Selectbox.setOnAction(e -> {
+                String selectedOption = Selectbox.getValue();
                 System.out.println(selectedOption);
-                Commande.setVisible(false);
-                Avoirs.setVisible(true);
+                if (selectedOption == "Gestion des Avoirs") {
+                    System.out.println(selectedOption);
+                    Commande.setVisible(false);
+                    Avoirs.setVisible(true);
 
-            }else {
-                Avoirs.setVisible(false);
-                Commande.setVisible(true);
-            }
-        });
+                } else {
+                    Avoirs.setVisible(false);
+                    Commande.setVisible(true);
+                }
+            });
+        }
     }
 
     public void Ajouter() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AddCommande.fxml"));
         Parent root = loader.load();
-
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.show();

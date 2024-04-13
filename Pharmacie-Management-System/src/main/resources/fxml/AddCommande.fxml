@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -17,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="example.controller.FournisseurController">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="example.controller.CommandeController">
    <children>
       <GridPane fx:id="MainPane" layoutX="10.0" layoutY="10.0" prefHeight="636.0" prefWidth="1000.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <columnConstraints>
@@ -89,6 +90,22 @@
                      <GridPane.margin>
                         <Insets bottom="50.0" left="60.0" right="60.0" top="260.0" />
                      </GridPane.margin>
+                     <children>
+                        <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+                          </content>
+                        </ScrollPane>
+                        <TableView prefHeight="200.0" prefWidth="200.0" stylesheets="@../styles/MainFormDesign.css">
+                           <columns>
+                              <TableColumn minWidth="150.0" prefWidth="183.0" text="Order" />
+                              <TableColumn minWidth="150.0" prefWidth="183.0" text="Nom" />
+                              <TableColumn minWidth="150.0" prefWidth="183.0" text="Quantitée " />
+                              <TableColumn minWidth="150.0" prefWidth="183.0" text="Prix" />
+                              <TableColumn minWidth="150.0" prefWidth="183.0" text="Reference" />
+                           </columns>
+                        </TableView>
+                     </children>
                   </GridPane>
                   <GridPane style="-fx-background-color: white; -fx-background-radius: 25px;" styleClass="drop-shadow" stylesheets="@style.css" GridPane.rowIndex="1" GridPane.valignment="TOP">
                     <columnConstraints>
@@ -160,9 +177,9 @@
                               <Insets bottom="10.0" left="40.0" top="40.0" />
                            </GridPane.margin>
                         </Text>
-                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                        <TextField maxWidth="40.0" prefHeight="25.0" prefWidth="40.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                            <GridPane.margin>
-                              <Insets bottom="10.0" left="150.0" right="150.0" top="40.0" />
+                              <Insets bottom="10.0" left="150.0" top="40.0" />
                            </GridPane.margin>
                         </TextField>
                         <ComboBox prefWidth="150.0" GridPane.rowIndex="1">
@@ -185,6 +202,26 @@
                               <Insets left="150.0" />
                            </GridPane.margin>
                         </ComboBox>
+                        <TextField layoutX="600.0" layoutY="181.0" prefHeight="25.0" prefWidth="40.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                           <GridPane.margin>
+                              <Insets left="150.0" right="80.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <Button graphicTextGap="10.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" style="-fx-background-color: #46c35f;" styleClass="drop-shadow" stylesheets="@style.css" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" nodeOrientation="INHERIT">
+                                 <image>
+                                    <Image url="@../images/icons/plus-symbole-noir.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <GridPane.margin>
+                              <Insets left="200.0" top="32.0" />
+                           </GridPane.margin>
+                        </Button>
                      </children>
                   </GridPane>
                </children>
@@ -221,16 +258,21 @@
                         <Insets bottom="40.0" left="40.0" right="60.0" top="80.0" />
                      </GridPane.margin>
                      <children>
-                        <TableView layoutX="197.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../styles/MainFormDesign.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
-                           <columns>
-                              <TableColumn minWidth="150.0" prefWidth="85.0" text="             Reference" />
-                              <TableColumn minWidth="150.0" prefWidth="85.0" text="             Reference" />
-                              <TableColumn minWidth="200.0" prefWidth="125.0" text="             Reference" />
-                              <TableColumn minWidth="200.0" prefWidth="85.0" text="             Reference" />
-                              <TableColumn minWidth="150.0" prefWidth="85.0" text="             Reference" />
-                              <TableColumn minWidth="150.0" prefWidth="85.0" text="             Reference" />
-                           </columns>
-                        </TableView>
+                        <ScrollPane layoutX="350.0" layoutY="21.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <content>
+                              <TableView prefHeight="396.0" prefWidth="972.0" stylesheets="@../styles/MainFormDesign.css">
+                                 <columns>
+                                    <TableColumn minWidth="150.0" prefWidth="85.0" text="Fournisseur" />
+                                    <TableColumn minWidth="150.0" prefWidth="85.0" text="Status" />
+                                    <TableColumn minWidth="200.0" prefWidth="125.0" text="Prix" />
+                                    <TableColumn minWidth="200.0" prefWidth="85.0" text="Date" />
+                                    <TableColumn minWidth="150.0" prefWidth="85.0" text="             CommandeRef" visible="false" />
+                                    <TableColumn minWidth="150.0" prefWidth="85.0" text="CommandeRef" />
+                                    <TableColumn minWidth="200.0" prefWidth="125.0" text="Operateur" />
+                                 </columns>
+                              </TableView>
+                           </content>
+                        </ScrollPane>
                      </children>
                   </AnchorPane>
                   <GridPane maxHeight="35.0" maxWidth="225.0" style="-fx-background-color: white; -fx-background-radius: 25px;" styleClass="drop-shadow" stylesheets="@style.css" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
