@@ -2,76 +2,66 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ewample.controller.LoginController">
-   <top>
-      <GridPane prefHeight="801.0" prefWidth="1100.0" style="-fx-background-color: #f9f9f9;" BorderPane.alignment="CENTER">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #f9f9f9;" styleClass="drop-shadow" stylesheets="@style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="392.0" minWidth="10.0" prefWidth="345.3333435058594" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="454.6666564941406" minWidth="10.0" prefWidth="454.6666564941406" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <GridPane style="-fx-background-color: #46c35f;">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+      </GridPane>
+      <GridPane GridPane.columnIndex="1">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints maxHeight="414.6666320800781" minHeight="10.0" prefHeight="292.7999633789062" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="529.3333679199219" minHeight="10.0" prefHeight="508.0000366210937" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="290.6666564941406" minHeight="10.0" prefHeight="178.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="449.3333282470703" minHeight="10.0" prefHeight="422.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ImageView fitHeight="250.0" fitWidth="250.0" GridPane.halignment="CENTER">
-               <image>
-                  <Image url="@../images/icons/FreeSample-Vectorizer-%20remove%20bg.png" />
-               </image>
-            </ImageView>
-            <GridPane style="-fx-background-color: #46c35f; -fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 20;" styleClass="card" stylesheets="@design.css" GridPane.rowIndex="1">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
+            <TextField minHeight="30.0" promptText="Password" style="-fx-background-color: white;" GridPane.rowIndex="1" GridPane.valignment="TOP">
                <GridPane.margin>
-                  <Insets left="70.0" right="70.0" />
+                  <Insets left="100.0" right="100.0" top="100.0" />
                </GridPane.margin>
-               <children>
-                  <TextField prefHeight="26.0" prefWidth="807.0" promptText="Email" style="-fx-border-color: black; -fx-border-radius: 50; -fx-background-radius: 50;" translateY="-100.0">
-                     <GridPane.margin>
-                        <Insets left="220.0" right="220.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField promptText="Password" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-border-color: black;" translateY="-20.0">
-                     <GridPane.margin>
-                        <Insets left="220.0" right="220.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <Button mnemonicParsing="false" style="-fx-background-color: black; -fx-background-radius: 10; -fx-border-color: white; -fx-border-radius: 10;" text=" = Login" textFill="WHITE" translateY="80.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Button>
-                  <Hyperlink text="Forgot-password ?" translateY="130.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Hyperlink>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" translateX="180.0" translateY="-20.0">
-                     <image>
-                        <Image url="@../images/icons/lock4.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" translateX="180.0" translateY="-100.0">
-                     <image>
-                        <Image url="@../images/icons/user5.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </GridPane>
+            </TextField>
+            <TextField minHeight="30.0" prefHeight="35.0" prefWidth="255.0" promptText="Email" style="-fx-background-color: white;" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="100.0" right="100.0" top="50.0" />
+               </GridPane.margin>
+            </TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Connectez Vous :!" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font name="System Bold" size="27.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </Text>
+            <Button maxWidth="250.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="250.0" style="-fx-background-color: #019aff;" text="Button" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="150.0" />
+               </GridPane.margin>
+            </Button>
          </children>
       </GridPane>
-   </top>
-</BorderPane>
+   </children>
+</GridPane>

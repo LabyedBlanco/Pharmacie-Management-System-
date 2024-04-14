@@ -4,14 +4,13 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="MainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="example.controller.MainController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="example.controller.MainController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="292.0" minWidth="10.0" prefWidth="149.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="486.0" minWidth="10.0" prefWidth="451.0" />
@@ -20,7 +19,6 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <AnchorPane minWidth="1100.0" prefHeight="200.0" prefWidth="841.0" GridPane.columnIndex="1" />
       <GridPane style="-fx-background-color: #1c1f22;">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -136,6 +134,12 @@
                </GridPane.margin>
             </VBox>
          </children>
+      </GridPane>
+      <GridPane fx:id="MainPane" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
       </GridPane>
    </children>
 </GridPane>

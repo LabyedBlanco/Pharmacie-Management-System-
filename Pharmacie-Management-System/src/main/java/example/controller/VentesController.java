@@ -37,7 +37,7 @@ public class VentesController extends Application {
     @FXML
     static TableView<String> listPurchases;
 
-
+    int c=0;
     public static void main(String[] args) {
         launch(args);
     }
@@ -47,16 +47,28 @@ public class VentesController extends Application {
 
     }
 
+    Stage stage = new Stage();
+
     public void onadd(ActionEvent event) throws IOException {
+        if(c==0){
+            c++;
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Ajouter-vente.fxml"));
-        Parent root = loader.load();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Ajouter-vente.fxml"));
+            Parent root = loader.load();
 
 
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.setTitle("Add a Purchase");
-        stage.show();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Add a Purchase");
+            stage.show();
+
+        }else{
+            stage.show();
+        }
+
+
+
+
     }
 
 
@@ -77,9 +89,6 @@ public class VentesController extends Application {
 
 
 
-
-
-
     public void addpurchases(ActionEvent event) throws IOException {
         String amounttxt=amount.getText();
         int amountint = Integer.parseInt(amounttxt);
@@ -92,15 +101,6 @@ public class VentesController extends Application {
 
 
     }
-
-
-
-
-
-
-
-
-
 
 
 
