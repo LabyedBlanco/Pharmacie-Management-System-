@@ -33,8 +33,8 @@
                     <rowConstraints>
                         <RowConstraints maxHeight="199.0" minHeight="0.0" prefHeight="82.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="557.3333282470703" minHeight="10.0" prefHeight="538.0" vgrow="SOMETIMES" />
-                  <RowConstraints />
-                  <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
                     </rowConstraints>
                     <children>
                         <Button graphicTextGap="10.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #46c35f;" styleClass="drop-shadow" stylesheets="@style.css" text="Ajouter" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
@@ -52,21 +52,10 @@
                                 </ImageView>
                             </graphic>
                         </Button>
-                        <Button alignment="CENTER" graphicTextGap="10.0" layoutX="955.0" layoutY="42.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #46c35f; -fx-background-color: #019aff;" styleClass="drop-shadow" stylesheets="@style.css" text="Imprimer " textFill="WHITE" GridPane.halignment="RIGHT">
-                            <GridPane.margin>
-                                <Insets right="230.0" top="20.0" />
-                            </GridPane.margin>
-                            <graphic>
-                                <ImageView fitHeight="25.0" fitWidth="25.0" nodeOrientation="INHERIT">
-                                    <image>
-                                        <Image url="@../images/icons/imprimante.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                            <font>
-                                <Font name="System Bold" size="15.0" />
-                            </font>
-                        </Button>
+
+
+
+
                         <Text fill="#898989" strokeType="OUTSIDE" strokeWidth="0.0" text="ajouter founisseur :">
                             <GridPane.margin>
                                 <Insets left="60.0" />
@@ -100,7 +89,7 @@
                                 <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="68.0" vgrow="SOMETIMES" />
                                 <RowConstraints maxHeight="96.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
                                 <RowConstraints maxHeight="101.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="101.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="101.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <GridPane.margin>
                                 <Insets bottom="50.0" left="60.0" right="60.0" top="90.0" />
@@ -185,24 +174,24 @@
                                         </FXCollections>
                                     </items>
                                 </ComboBox>
-                        <TextField GridPane.rowIndex="1">
-                           <GridPane.margin>
-                              <Insets left="150.0" right="80.0" />
-                           </GridPane.margin>
-                        </TextField>
-                        <Button mnemonicParsing="false" onAction="#parcourirPhoto" prefHeight="30.0" prefWidth="117.0" style="-fx-background-color: #019aff;" text="Parcourir " GridPane.rowIndex="3" GridPane.valignment="CENTER">
-                           <padding>
-                              <Insets right="40.0" />
-                           </padding>
-                           <GridPane.margin>
-                              <Insets left="40.0" />
-                           </GridPane.margin>
-                        </Button>
-                        <ImageView fx:id="imageView" fitHeight="123.0" fitWidth="163.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
-                           <GridPane.margin>
-                              <Insets right="30.0" top="17.0" />
-                           </GridPane.margin>
-                        </ImageView>
+                                <TextField GridPane.rowIndex="1">
+                                    <GridPane.margin>
+                                        <Insets left="150.0" right="80.0" />
+                                    </GridPane.margin>
+                                </TextField>
+                                <Button mnemonicParsing="false" onAction="#parcourirPhoto" prefHeight="30.0" prefWidth="84.0" style="-fx-background-color: #019aff;" text="Parcourir " GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                                    <padding>
+                                        <Insets right="40.0" />
+                                    </padding>
+                                    <GridPane.margin>
+                                        <Insets left="40.0" />
+                                    </GridPane.margin>
+                                </Button>
+                                <ImageView fx:id="imageView" fitHeight="123.0" fitWidth="163.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                                    <GridPane.margin>
+                                        <Insets right="30.0" top="17.0" />
+                                    </GridPane.margin>
+                                </ImageView>
                             </children>
                         </GridPane>
                     </children>

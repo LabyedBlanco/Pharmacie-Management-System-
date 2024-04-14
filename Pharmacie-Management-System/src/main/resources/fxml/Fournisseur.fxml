@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -20,7 +18,7 @@
 
 <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="1100.0" prefHeight="728.0" style="-fx-background-color: white;" styleClass="text" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="example.controller.FournisseurController">
     <center>
-        <GridPane style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+        <GridPane fx:id="MainPane" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             </columnConstraints>
@@ -70,7 +68,7 @@
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
                             <children>
-                                <Text layoutX="46.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FOURNISSEUR :" AnchorPane.leftAnchor="46.0" AnchorPane.topAnchor="48.0">
+                                <Text  layoutX="46.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fournisseur:" AnchorPane.leftAnchor="46.0" AnchorPane.topAnchor="48.0">
                                     <font>
                                         <Font name="Tahoma" size="16.0" />
                                     </font>
@@ -79,123 +77,125 @@
                         </AnchorPane>
                     </children>
                 </GridPane>
-                <AnchorPane prefHeight="631.0" prefWidth="1100.0" style="-fx-background-color: #f9f9f9d;" GridPane.rowIndex="1">
-               <children>
-                  <AnchorPane layoutX="7.0" layoutY="7.0" prefHeight="612.0" prefWidth="1063.0">
-                     <children>
-                        <AnchorPane layoutX="21.0" layoutY="20.0" prefHeight="610.0" prefWidth="1081.0" stylesheets="@design.css" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="0.0">
-                           <styleClass>
-                              <String fx:value="white-bg" />
-                              <String fx:value="shadow" />
-                           </styleClass>
-                           <children>
-                               <TabPane layoutX="3.0" layoutY="61.0" prefHeight="421.0" prefWidth="1038.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
-                               <tabs>
+                <GridPane fx:id="FournisseurAc" prefHeight="561.0" prefWidth="1100.0" style="-fx-background-color: #f7f7f7;" styleClass="drop-shadow" stylesheets="@style.css" GridPane.rowIndex="1">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="199.0" minHeight="0.0" prefHeight="82.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="199.0" minHeight="0.0" prefHeight="135.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="557.3333282470703" minHeight="10.0" prefHeight="431.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Button graphicTextGap="10.0" mnemonicParsing="false" onAction="#Addfor" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #46c35f;" styleClass="drop-shadow" stylesheets="@style.css" text="Ajouter" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                            <GridPane.margin>
+                                <Insets right="60.0" top="20.0" />
+                            </GridPane.margin>
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="20.0" nodeOrientation="INHERIT">
+                                    <image>
+                                        <Image url="@../images/icons/plus-symbole-noir.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button onAction="#afficherFournisseursActifs" prefHeight="41.0" prefWidth="189.0" style="-fx-background-color: #019aff;" text="Afficher les fournisseurs actifs" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin></Button>
 
-                               <Tab closable="false" styleClass="tab-fournisseurs-actifs" text="Fournisseurs Actifs">
-                                   <content>
-                                       <GridPane prefHeight="346.0" prefWidth="489.0" style="-fx-background-color: white;">
-                                           <columnConstraints>
-                                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                           </columnConstraints>
-                                           <rowConstraints>
-                                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                           </rowConstraints>
-                                           <children>
-                                               <AnchorPane prefHeight="437.0" prefWidth="1038.0">
-                                                   <children>
-                                                       <TableView layoutX="213.0" layoutY="230.0" prefHeight="372.0" prefWidth="1041.0" style="-fx-background-color: transparent;" stylesheets="@../styles/MainFormDesign.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-3.0" AnchorPane.topAnchor="10.0">
-                                                         <columns>
-                                                            <TableColumn prefWidth="150.0" style="background-color: transparent;" text="ID" />
-                                                            <TableColumn prefWidth="150.0" text="Nom" />
-                                                            <TableColumn prefWidth="150.0" text="Email" />
-                                                            <TableColumn prefWidth="150.0" text="Tel" />
-                                                            <TableColumn prefWidth="200.0" text="Address" />
-                                                            <TableColumn prefWidth="239.0" text="Operation" />
-                                                         </columns>
-                                                      </TableView>
-                                                   </children>
-                                               </AnchorPane>
-                                           </children>
-                                       </GridPane>
-                                   </content>
-                               </Tab>
-                                   <Tab closable="false" styleClass="tab-archiver" text="Fournisseurs Archivés">
-                                       <content>
-                                           <GridPane style="-fx-background-color: white;">
-                                               <columnConstraints>
-                                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                               </columnConstraints>
-                                               <rowConstraints>
-                                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                               </rowConstraints>
-                                             <children>
-                                                <AnchorPane prefHeight="299.0" prefWidth="899.0">
-                                                   <children>
-                                                      <TableView layoutX="213.0" layoutY="230.0" prefHeight="576.0" prefWidth="692.0" style="-fx-background-color: transparent;" stylesheets="@../styles/MainFormDesign.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
-                                                         <columns>
-                                                            <TableColumn prefWidth="150.0" style="background-color: transparent;" text="ID" />
-                                                            <TableColumn prefWidth="150.0" text="Nom" />
-                                                            <TableColumn prefWidth="150.0" text="Email" />
-                                                            <TableColumn prefWidth="150.0" text="Tel" />
-                                                            <TableColumn prefWidth="200.0" text="Address" />
-                                                            <TableColumn prefWidth="233.0" text="Operation" />
-                                                         </columns>
-                                                      </TableView>
-                                                   </children>
-                                                </AnchorPane>
-                                             </children>
-                                           </GridPane>
-                                       </content>
-                                   </Tab>
-                               </tabs>
-                               </TabPane>
-                               <Button graphicTextGap="10.0" layoutX="861.0" layoutY="7.0" mnemonicParsing="false" onAction="#Addfor" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #46c35f;" styleClass="drop-shadow" stylesheets="@style.css" text="Ajouter" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
-                                 <font>
-                                    <Font name="Book Antiqua Bold" size="21.0" />
-                                 </font>
-                                 <graphic>
-                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../images/icons/plus-icon-2048x2048-z6v59bd6.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
-                              <Button graphicTextGap="10.0" layoutX="606.0" layoutY="7.0" mnemonicParsing="false" onAction="#AddforA" prefHeight="45.0" prefWidth="164.0" style="-fx-background-color: #4F98CA;" styleClass="drop-shadow" stylesheets="@style.css" text="ARCHIVER" textFill="WHITE">
-                                 <font>
-                                    <Font name="Book Antiqua Bold" size="21.0" />
-                                 </font>
-                                 <graphic>
-                                    <ImageView fitHeight="27.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../images/icons/archive.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
-                              <GridPane layoutX="58.0" layoutY="17.0" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: white; -fx-border-color: white; -fx-border-radius: 25px; -fx-background-radius: 25px;" styleClass="shadow" stylesheets="@style.css">
-                                <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.0" minWidth="10.0" prefWidth="42.0" />
-                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.0" minWidth="10.0" prefWidth="158.0" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                </rowConstraints>
-                                 <children>
-                                    <ImageView fitHeight="69.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../images/icons/9035096_search_icon.png" />
-                                       </image>
-                                    </ImageView>
-                                    <TextField style="-fx-background-color: white; -fx-border-color: white; -fx-border-radius: 25px; -fx-background-radius: 25px;" GridPane.columnIndex="1" />
-                                 </children>
-                              </GridPane>
-                           </children>
+                        <Button onAction="#afficherFournisseursArchives" prefHeight="41.0" prefWidth="190.0" style="-fx-background-color: #019aff;" text="Afficher les fournisseurs archivés" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets left="230.0" />
+                     </GridPane.margin></Button>
+
+
+                        <AnchorPane prefHeight="416.0" prefWidth="1024.0" style="-fx-background-color: white; -fx-background-radius: 15px;" styleClass="drop-shadow" stylesheets="@style.css" GridPane.rowIndex="2">
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <GridPane.margin>
+                                <Insets bottom="40.0" left="40.0" right="60.0" top="80.0" />
+                            </GridPane.margin>
+                            <children>
+                                <TableView fx:id="tableViewActif" layoutX="197.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../styles/MainFormDesign.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+                                    <columns>
+                                        <TableColumn minWidth="138.0" prefWidth="138.0" text="             Name" />
+                                        <TableColumn minWidth="150.0" prefWidth="222.0" text="             Email" />
+                                        <TableColumn minWidth="189.0" prefWidth="189.0" text="            Phone" />
+                                        <TableColumn minWidth="200.0" prefWidth="253.0" text="             Adress" />
+
+                                        <TableColumn minWidth="150.0" prefWidth="195.0" text="             Action" />
+                                    </columns>
+                                </TableView>
+                                <TableView fx:id="tableViewArchived" layoutX="197.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../styles/MainFormDesign.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+                                    <columns>
+                                        <TableColumn minWidth="138.0" prefWidth="189.0" text="             Name" />
+                                        <TableColumn minWidth="150.0" prefWidth="287.0" text="             Email" />
+                                        <TableColumn minWidth="189.0" prefWidth="231.0" text="            Phone" />
+                                        <TableColumn minWidth="200.0" prefWidth="292.0" text="             Adress" />
+
+                                    </columns>
+                                </TableView>
+                            </children>
                         </AnchorPane>
-                     </children>
-                  </AnchorPane>
-               </children></AnchorPane>
+
+                        <GridPane maxHeight="35.0" maxWidth="225.0" style="-fx-background-color: white; -fx-background-radius: 25px;" styleClass="drop-shadow" stylesheets="@style.css" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="118.33331298828125" minWidth="10.0" prefWidth="56.66668701171875" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="207.66668701171875" minWidth="10.0" prefWidth="193.33331298828125" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <GridPane.margin>
+                                <Insets right="60.0" top="10.0" />
+                            </GridPane.margin>
+                            <children>
+                                <ImageView fitHeight="20.0" fitWidth="20.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                    <image>
+                                        <Image url="@../images/icons/9035096_search_icon.png" />
+                                    </image>
+                                </ImageView>
+                                <TextField prefHeight="75.0" prefWidth="194.0" promptText="Search" style="-fx-background-color: white; -fx-border-color: white; -fx-border-radius: 25px; -fx-background-radius: 25px;" stylesheets="@style.css" GridPane.columnIndex="1">
+                                    <GridPane.margin>
+                                        <Insets right="20.0" />
+                                    </GridPane.margin>
+                                </TextField>
+                            </children>
+                        </GridPane>
+                        <Button alignment="CENTER" graphicTextGap="10.0" layoutX="955.0" layoutY="42.0" mnemonicParsing="false" onAction="#AddforA" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #46c35f; -fx-background-color: #019aff;" styleClass="drop-shadow" stylesheets="@style.css" text="Archiver" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                            <GridPane.margin>
+                                <Insets right="230.0" top="20.0" />
+                            </GridPane.margin>
+                            <graphic>
+                                <ImageView fitHeight="25.0" fitWidth="25.0" nodeOrientation="INHERIT">
+                                    <image>
+                                        <Image url="@../images/icons/archive.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Text  fx:id="main2" fill="#898989" strokeType="OUTSIDE" strokeWidth="0.0" text="Fournisseur :">
+                            <GridPane.margin>
+                                <Insets left="60.0" />
+                            </GridPane.margin>
+                            <font>
+                                <Font name="System Bold" size="17.0" />
+                            </font>
+                        </Text>
+                        <Line endX="-61.495086669921875" endY="-30.707050323486328" fill="#898989" startX="-61.49509811401367" startY="4.73040771484375" stroke="#898989" strokeWidth="2.0">
+                            <GridPane.margin>
+                                <Insets left="40.0" />
+                            </GridPane.margin>
+                        </Line>
+
+                    </children>
+                </GridPane>
+
             </children>
         </GridPane>
     </center>
