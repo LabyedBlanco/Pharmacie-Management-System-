@@ -1,39 +1,65 @@
 package example.controller;
 
+
 import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+
+import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class FournisseurController {
+public class FournisseurController implements Initializable {
     @FXML
     private ImageView imageView;
 
-    private int c = 0;
     @FXML
-    Stage stage = new Stage();
+    private TableView<?> tableViewActif;
 
-    private void Addfor(ActionEvent event) throws IOException {
+    @FXML
+    private TableView<?> tableViewArchived;
+    @FXML
+    private Text main2;
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
 
-        if (c==0){
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Add.fxml"));
-            Parent root = loader.load();
-            stage.setScene(new Scene(root));
-            stage.show();
-
-        }else {
-            stage.show();
+        if (tableViewActif != null && tableViewArchived != null) {
+            tableViewActif.setVisible(true);
+            tableViewArchived.setVisible(false);
+        } else {
+            System.err.println("TableView is null");
         }
-        c++;
+    }
+
+
+
+
+
+
+
+
+
+    @FXML
+    public void Addfor(ActionEvent event) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Add.fxml"));
+        Parent root = loader.load();
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
     @FXML
     public void parcourirPhoto() {
@@ -69,4 +95,27 @@ public class FournisseurController {
         stage.setScene(new Scene(root));
         stage.show();
     }
+
+    @FXML
+    void afficherFournisseursActifs() {
+        if (tableViewActif != null && tableViewArchived != null) {
+            tableViewActif.setVisible(true);
+            tableViewArchived.setVisible(false);
+            main2.setText("Fournisseur Actif");
+        } else {
+            System.err.println("TableView is null");
+        }
+    }
+
+    @FXML
+    void afficherFournisseursArchives() {
+        if (tableViewActif != null && tableViewArchived != null) {
+            tableViewActif.setVisible(false);
+            tableViewArchived.setVisible(true);
+            main2.setText("Fournisseur Archivé");
+        } else {
+            System.err.println("TableView is null");
+        }
+    }
+
 }

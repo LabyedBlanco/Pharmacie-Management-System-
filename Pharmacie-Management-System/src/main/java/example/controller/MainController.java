@@ -146,7 +146,7 @@ public class MainController implements Initializable {
         System.out.print("\nFournisseur");
         FxmlLoader object = new FxmlLoader();
         Pane view = object.setPage("Fournisseur");
-        MainPane.add(view,1,0);
+        MainPane.add(view,0,0);
         four.setStyle("-fx-background-color: transparent;-fx-effect: dropshadow(gaussian, white, 10, 0.05, 0, 0);-fx-border-color: WHITE; -fx-border-width: 0px 0px 0px 3px;");
         dash.setStyle("-fx-background-color: transparent");
         vent.setStyle("-fx-background-color: transparent");

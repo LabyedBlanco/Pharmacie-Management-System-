@@ -28,6 +28,7 @@ public class Produit_controller extends Application {
     private ImageView image;
 
     int c=0;
+    int d=0;
     Stage stage = new Stage();
 
     @FXML
@@ -64,8 +65,8 @@ public class Produit_controller extends Application {
     }
     public void fichproduct(ActionEvent event) throws IOException {
 
-        if(c==0){
-            c++;
+        if(d==0){
+            d++;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/fich-produit.fxml"));
         Parent root = loader.load();
         stage.setScene(new Scene(root));
