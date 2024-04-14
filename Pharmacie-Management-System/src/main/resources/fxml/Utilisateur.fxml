@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -36,7 +35,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="drop-shadow" stylesheets="@style.css" GridPane.columnIndex="1">
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                             <children>
                                 <AnchorPane layoutX="268.0" layoutY="48.0" prefHeight="14.0" prefWidth="14.0" style="-fx-background-color: green; -fx-background-radius: 100;" AnchorPane.rightAnchor="268.0" />
                                 <Text fx:id="main" layoutX="206.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Active" AnchorPane.rightAnchor="296.96875">
@@ -79,69 +78,38 @@
                 </GridPane>
                 <AnchorPane prefHeight="631.0" prefWidth="1100.0" style="-fx-background-color: #f9f9f9ed;" GridPane.rowIndex="1">
                <children>
-                  <GridPane layoutX="42.0" layoutY="37.0" prefHeight="546.0" prefWidth="955.0" style="-fx-background-color: #f7f7f7;" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
+                  <TableView layoutX="-14.0" layoutY="137.0" prefHeight="426.0" prefWidth="1022.0" style="-fx-border-radius: 20; -fx-background-radius: 20;" stylesheets="@../styles/MainFormDesign.css">
+                    <columns>
+                      <TableColumn prefWidth="96.00002670288086" text="Name" />
+                      <TableColumn prefWidth="98.39999389648438" text="First Name" />
+                        <TableColumn prefWidth="98.39999389648438" text="Tel" />
+                        <TableColumn prefWidth="98.39999389648438" text="Sexe" />
+                        <TableColumn prefWidth="172.80007934570312" text="Email" />
+                        <TableColumn prefWidth="137.5999755859375" text="Salary" />
+                        <TableColumn prefWidth="105.60009765625" text="Role" />
+                        <TableColumn prefWidth="132.79998779296875" text="Date" />
+                        <TableColumn prefWidth="75.2000732421875" text="Action" />
+                    </columns>
+                  </TableView>
+                  <GridPane maxHeight="35.0" maxWidth="225.0" style="-fx-background-color: white; -fx-background-radius: 25px;" styleClass="drop-shadow" stylesheets="@style.css">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="118.33331298828125" minWidth="10.0" prefWidth="56.66668701171875" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="207.66668701171875" minWidth="10.0" prefWidth="193.33331298828125" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
                      <children>
-                        <GridPane maxHeight="35.0" maxWidth="225.0" style="-fx-background-color: white; -fx-background-radius: 25px;" styleClass="drop-shadow" stylesheets="@style.css" translateX="600.0" translateY="-200.0">
-                           <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="118.33331298828125" minWidth="10.0" prefWidth="56.66668701171875" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="207.66668701171875" minWidth="10.0" prefWidth="193.33331298828125" />
-                           </columnConstraints>
-                           <rowConstraints>
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                           </rowConstraints>
-                           <children>
-                              <ImageView fitHeight="20.0" fitWidth="20.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                                 <image>
-                                    <Image url="@../images/icons/9035096_search_icon.png" />
-                                 </image>
-                              </ImageView>
-                              <TextField prefHeight="75.0" prefWidth="194.0" promptText="Search" style="-fx-background-color: white; -fx-border-color: white; -fx-border-radius: 25px; -fx-background-radius: 25px;" stylesheets="@style.css" GridPane.columnIndex="1">
-                                 <GridPane.margin>
-                                    <Insets right="60.0" />
-                                 </GridPane.margin>
-                              </TextField>
-                           </children>
-                        </GridPane>
-                        <Button contentDisplay="RIGHT" graphicTextGap="10.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#switchToHello" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #46c35f;" styleClass="drop-shadow" stylesheets="@style.css" text="Add User" textFill="WHITE" translateX="900.0" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="20.0" fitWidth="20.0" nodeOrientation="INHERIT">
-                                 <image>
-                                    <Image url="@../images/icons/plus-symbole-noir.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                           <image>
+                              <Image url="@../images/icons/9035096_search_icon.png" />
+                           </image>
+                        </ImageView>
+                        <TextField prefHeight="75.0" prefWidth="194.0" promptText="Search" style="-fx-background-color: white; -fx-border-color: white; -fx-border-radius: 25px; -fx-background-radius: 25px;" stylesheets="@style.css" GridPane.columnIndex="1">
                            <GridPane.margin>
-                              <Insets right="50.0" top="-400.0" />
+                              <Insets right="60.0" />
                            </GridPane.margin>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                        </Button>
-                        <TableView prefHeight="200.0" prefWidth="200.0" style="-fx-border-radius: 20; -fx-background-radius: 20;" stylesheets="@../styles/MainFormDesign.css">
-                          <columns>
-                            <TableColumn prefWidth="96.00002670288086" text="Name" />
-                            <TableColumn prefWidth="98.39999389648438" text="First Name" />
-                              <TableColumn prefWidth="98.39999389648438" text="Tel" />
-                              <TableColumn prefWidth="98.39999389648438" text="Sexe" />
-                              <TableColumn prefWidth="172.80007934570312" text="Email" />
-                              <TableColumn prefWidth="137.5999755859375" text="Salary" />
-                              <TableColumn prefWidth="105.60009765625" text="Role" />
-                              <TableColumn prefWidth="132.79998779296875" text="Date" />
-                              <TableColumn prefWidth="75.2000732421875" text="Action" />
-                          </columns>
-                           <GridPane.margin>
-                              <Insets left="20.0" right="20.0" top="120.0" />
-                           </GridPane.margin>
-                        </TableView>
+                        </TextField>
                      </children>
                   </GridPane>
                </children></AnchorPane>
