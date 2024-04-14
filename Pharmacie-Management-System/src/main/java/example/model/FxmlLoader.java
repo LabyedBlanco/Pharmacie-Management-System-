@@ -11,11 +11,14 @@ public class FxmlLoader {
     private BorderPane view;
     private GridPane View;
 
+
+
     public Pane setPage(String filename) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/fxml/"+filename+".fxml"));
         view = fxmlLoader.load();
         return view;
     }
+
 
     public Pane SetPage(String filename) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/fxml/"+filename+".fxml"));
