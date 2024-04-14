@@ -49,13 +49,20 @@ public class CommandeController implements Initializable {
             });
         }
     }
-
+    private int c = 0;
+    Stage stage = new Stage();
     public void Ajouter() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AddCommande.fxml"));
-        Parent root = loader.load();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.show();
+
+        if (c==0) {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AddCommande.fxml"));
+            Parent root = loader.load();
+            stage.setScene(new Scene(root));
+            stage.show();
+        }else {
+            stage.show();
+        }
+        c++;
     }
 
 }

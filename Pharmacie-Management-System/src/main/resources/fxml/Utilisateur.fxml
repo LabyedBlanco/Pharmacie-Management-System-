@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -17,7 +20,7 @@
 
 <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="1100.0" prefHeight="728.0" styleClass="text" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="example.controller.UtilisateurController">
     <center>
-        <GridPane style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+        <GridPane style="-fx-background-color: #f7f7f7;" styleClass="drop-shadow" stylesheets="@style.css" BorderPane.alignment="CENTER">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             </columnConstraints>
@@ -26,7 +29,7 @@
                 <RowConstraints maxHeight="642.0" minHeight="10.0" prefHeight="619.3333358764648" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <GridPane>
+                <GridPane style="-fx-background-color: white;">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -76,9 +79,36 @@
                         </AnchorPane>
                     </children>
                 </GridPane>
-                <AnchorPane prefHeight="631.0" prefWidth="1100.0" style="-fx-background-color: #f9f9f9ed;" GridPane.rowIndex="1">
+            <GridPane maxHeight="35.0" maxWidth="225.0" style="-fx-background-color: white; -fx-background-radius: 25px;" styleClass="drop-shadow" stylesheets="@style.css" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BASELINE">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="118.33331298828125" minWidth="10.0" prefWidth="56.66668701171875" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="207.66668701171875" minWidth="10.0" prefWidth="193.33331298828125" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
                <children>
-                  <TableView layoutX="-14.0" layoutY="137.0" prefHeight="426.0" prefWidth="1022.0" style="-fx-border-radius: 20; -fx-background-radius: 20;" stylesheets="@../styles/MainFormDesign.css">
+                  <ImageView fitHeight="20.0" fitWidth="20.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <image>
+                        <Image url="@../images/icons/9035096_search_icon.png" />
+                     </image>
+                  </ImageView>
+                  <TextField prefHeight="30.0" prefWidth="121.0" promptText="Search" style="-fx-background-color: white; -fx-border-color: white; -fx-border-radius: 25px; -fx-background-radius: 25px;" stylesheets="@style.css" GridPane.columnIndex="1">
+                     <GridPane.margin>
+                        <Insets right="60.0" />
+                     </GridPane.margin>
+                  </TextField>
+               </children>
+               <GridPane.margin>
+                  <Insets left="60.0" top="40.0" />
+               </GridPane.margin>
+            </GridPane>
+            <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="60.0" right="50.0" top="150.0" />
+               </GridPane.margin>
+               <content>
+                  <TableView prefHeight="470.0" prefWidth="1024.0" style="-fx-border-radius: 20; -fx-background-radius: 20;" styleClass="drop-shadow">
                     <columns>
                       <TableColumn prefWidth="96.00002670288086" text="Name" />
                       <TableColumn prefWidth="98.39999389648438" text="First Name" />
@@ -88,32 +118,34 @@
                         <TableColumn prefWidth="137.5999755859375" text="Salary" />
                         <TableColumn prefWidth="105.60009765625" text="Role" />
                         <TableColumn prefWidth="132.79998779296875" text="Date" />
-                        <TableColumn prefWidth="75.2000732421875" text="Action" />
+                        <TableColumn prefWidth="156.0" text="Action" />
                     </columns>
+                     <stylesheets>
+                        <URL value="@../styles/MainFormDesign.css" />
+                        <URL value="@style.css" />
+                     </stylesheets>
                   </TableView>
-                  <GridPane maxHeight="35.0" maxWidth="225.0" style="-fx-background-color: white; -fx-background-radius: 25px;" styleClass="drop-shadow" stylesheets="@style.css">
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="118.33331298828125" minWidth="10.0" prefWidth="56.66668701171875" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="207.66668701171875" minWidth="10.0" prefWidth="193.33331298828125" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
-                     <children>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                           <image>
-                              <Image url="@../images/icons/9035096_search_icon.png" />
-                           </image>
-                        </ImageView>
-                        <TextField prefHeight="75.0" prefWidth="194.0" promptText="Search" style="-fx-background-color: white; -fx-border-color: white; -fx-border-radius: 25px; -fx-background-radius: 25px;" stylesheets="@style.css" GridPane.columnIndex="1">
-                           <GridPane.margin>
-                              <Insets right="60.0" />
-                           </GridPane.margin>
-                        </TextField>
-                     </children>
-                  </GridPane>
-               </children></AnchorPane>
+               </content>
+            </ScrollPane>
+            <Button graphicTextGap="10.0" mnemonicParsing="false" onAction="#switchToHello" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #46c35f;" styleClass="drop-shadow" stylesheets="@style.css" text="Ajouter" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" nodeOrientation="INHERIT">
+                     <image>
+                        <Image url="@../images/icons/plus-symbole-noir.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <GridPane.margin>
+                  <Insets right="60.0" top="40.0" />
+               </GridPane.margin>
+            </Button>
             </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
         </GridPane>
     </center>
 </BorderPane>

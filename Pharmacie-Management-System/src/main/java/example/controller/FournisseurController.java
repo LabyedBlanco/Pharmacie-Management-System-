@@ -16,15 +16,24 @@ import java.io.IOException;
 public class FournisseurController {
     @FXML
     private ImageView imageView;
+
+    private int c = 0;
     @FXML
+    Stage stage = new Stage();
+
     private void Addfor(ActionEvent event) throws IOException {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Add.fxml"));
-        Parent root = loader.load();
+        if (c==0){
 
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.show();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Add.fxml"));
+            Parent root = loader.load();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        }else {
+            stage.show();
+        }
+        c++;
     }
     @FXML
     public void parcourirPhoto() {
