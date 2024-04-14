@@ -27,6 +27,9 @@ public class Produit_controller extends Application {
     @FXML
     private ImageView image;
 
+    int c=0;
+    Stage stage = new Stage();
+
     @FXML
     private void onaddimageproduct(ActionEvent event){
 
@@ -45,22 +48,32 @@ public class Produit_controller extends Application {
 
     public void addproduct(ActionEvent event) throws IOException {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ajouter-produit.fxml"));
-        Parent root = loader.load();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.setTitle("Add a Product");
-        stage.show();
+        if(c==0){
+            c++;
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ajouter-produit.fxml"));
+            Parent root = loader.load();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Add a Product");
+            stage.show();
+        }else{
+            stage.show();
+
+        }
+
 
     }
     public void fichproduct(ActionEvent event) throws IOException {
 
+        if(c==0){
+            c++;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/fich-produit.fxml"));
         Parent root = loader.load();
-        Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.setTitle("sheet product");
         stage.show();
+    }else{
+        stage.show();
+    }
 
     }
 }
