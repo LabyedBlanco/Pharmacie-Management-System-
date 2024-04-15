@@ -200,7 +200,7 @@
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <Button mnemonicParsing="false" style="-fx-background-color: rgb(255,255,255); -fx-border-radius: 20px; -fx-background-radius: 20px; -fx-text-fill: rgb(201,182,165);" text="Jour" GridPane.halignment="RIGHT">
+                                <Button fx:id="btnjr" mnemonicParsing="false" style="-fx-background-color: rgb(255,255,255); -fx-border-radius: 20px; -fx-background-radius: 20px; -fx-text-fill: rgb(201,182,165); -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);" text="Jour" GridPane.halignment="RIGHT">
                                     <font>
                                         <Font name="Tahoma" size="14.0" />
                                     </font>
@@ -211,7 +211,7 @@
                                         <Insets right="10.0" />
                                     </GridPane.margin>
                                 </Button>
-                                <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="76.0" style="-fx-background-color: rgb(255,255,255); -fx-border-radius: 20px; -fx-background-radius: 20px; -fx-text-fill: rgb(201,182,165);" text="Semaine" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                                <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="76.0" style="-fx-background-color: rgb(255,255,255); -fx-border-radius: 20px; -fx-background-radius: 20px; -fx-text-fill: rgb(201,182,165); -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);" text="Semaine" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                                     <font>
                                         <Font name="Tahoma" size="14.0" />
                                     </font>
@@ -219,7 +219,7 @@
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </Button>
-                                <Button mnemonicParsing="false" style="-fx-background-color: rgb(255,255,255); -fx-border-radius: 20px; -fx-background-radius: 20px; -fx-text-fill: rgb(201,182,165);" text="Mois" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                                <Button mnemonicParsing="false" style="-fx-background-color: rgb(255,255,255); -fx-border-radius: 20px; -fx-background-radius: 20px; -fx-text-fill: rgb(201,182,165); -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);" text="Mois" GridPane.columnIndex="2" GridPane.halignment="CENTER">
                                     <font>
                                         <Font name="Tahoma" size="14.0" />
                                     </font>

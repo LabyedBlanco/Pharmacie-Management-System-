@@ -68,34 +68,6 @@
                                 <Insets left="40.0" />
                             </GridPane.margin>
                         </Line>
-                        <GridPane style="-fx-background-color: white; -fx-background-radius: 25px;" styleClass="drop-shadow" stylesheets="@style.css" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
-                            <columnConstraints>
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            </columnConstraints>
-                            <rowConstraints>
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            </rowConstraints>
-                            <GridPane.margin>
-                                <Insets bottom="35.0" left="60.0" right="60.0" top="350.0" />
-                            </GridPane.margin>
-                            <children>
-                                <ScrollPane prefHeight="200.0" prefWidth="200.0">
-                                    <content>
-                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-                                    </content>
-                                </ScrollPane>
-                                <TableView prefHeight="200.0" prefWidth="200.0" stylesheets="@../styles/MainFormDesign.css">
-                                    <columns>
-                                        <TableColumn minWidth="150.0" prefWidth="183.0" text="Client Name" />
-                                        <TableColumn minWidth="150.0" prefWidth="219.0" text="Mediacation Name" />
-                                        <TableColumn minWidth="150.0" prefWidth="172.0" text="Code" />
-                                        <TableColumn minWidth="105.0" prefWidth="105.0" text="Prix" />
-                                        <TableColumn minWidth="89.0" prefWidth="111.0" text="Category" />
-                                        <TableColumn prefWidth="90.0" text="Quantite" />
-                                    </columns>
-                                </TableView>
-                            </children>
-                        </GridPane>
                   <GridPane prefHeight="159.0" prefWidth="880.0" style="-fx-background-color: white; -fx-background-radius: 25px;" styleClass="drop-shadow" stylesheets="@style.css" GridPane.rowIndex="1">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="525.0" minWidth="10.0" prefWidth="463.0" />
@@ -105,7 +77,7 @@
                         <RowConstraints vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <GridPane prefHeight="298.0" prefWidth="474.0" style="-fx-background-color: white; -fx-background-radius: 25px;" styleClass="drop-shadow" stylesheets="@style.css">
+                        <GridPane prefHeight="298.0" prefWidth="474.0" style="-fx-background-color: white; -fx-background-radius: 25px; -fx-border-width: 0;">
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                            </columnConstraints>
@@ -183,8 +155,11 @@
                                  </GridPane.margin>
                               </TextField>
                            </children>
+                           <GridPane.margin>
+                              <Insets bottom="100.0" />
+                           </GridPane.margin>
                         </GridPane>
-                        <ImageView fx:id="image" fitHeight="224.0" fitWidth="291.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+                        <ImageView fx:id="image" fitHeight="290.0" fitWidth="293.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
                            <GridPane.margin>
                               <Insets right="50.0" top="10.0" />
                            </GridPane.margin>
@@ -207,33 +182,12 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                            <GridPane.margin>
-                              <Insets bottom="15.0" right="50.0" />
+                              <Insets bottom="60.0" right="50.0" />
                            </GridPane.margin>
-                        </Button>
-                        <Button graphicTextGap="10.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="20.0" style="-fx-background-color: #46c35f;" styleClass="drop-shadow" stylesheets="@style.css" textFill="WHITE" GridPane.columnIndex="1" GridPane.valignment="BOTTOM">
-                           <font>
-                              <Font name="System Bold" size="15.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="20.0" fitWidth="20.0" nodeOrientation="INHERIT">
-                                 <image>
-                                    <Image url="@../images/icons/plus-symbole-noir.png" />
-                                 </image>
-                                 <cursor>
-                                    <Cursor fx:constant="DEFAULT" />
-                                 </cursor>
-                              </ImageView>
-                           </graphic>
-                           <GridPane.margin>
-                              <Insets bottom="15.0" left="350.0" />
-                           </GridPane.margin>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
                         </Button>
                      </children>
                      <GridPane.margin>
-                        <Insets bottom="210.0" left="60.0" right="20.0" top="20.0" />
+                        <Insets bottom="60.0" left="60.0" right="20.0" top="20.0" />
                      </GridPane.margin>
                   </GridPane>
                     </children>
