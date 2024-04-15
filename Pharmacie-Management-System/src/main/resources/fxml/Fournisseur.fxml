@@ -84,7 +84,7 @@
                     <rowConstraints>
                         <RowConstraints maxHeight="199.0" minHeight="0.0" prefHeight="82.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="199.0" minHeight="0.0" prefHeight="135.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="557.3333282470703" minHeight="10.0" prefHeight="431.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="557.3333282470703" minHeight="10.0" prefHeight="431.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
                         <Button graphicTextGap="10.0" mnemonicParsing="false" onAction="#Addfor" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #46c35f;" styleClass="drop-shadow" stylesheets="@style.css" text="Ajouter" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
@@ -103,21 +103,21 @@
                             </graphic>
                         </Button>
                         <Button onAction="#afficherFournisseursActifs" prefHeight="41.0" prefWidth="189.0" style="-fx-background-color: #f7f7f7;" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                     <GridPane.margin>
-                        <Insets left="10.0" />
-                     </GridPane.margin>
-                     <graphic>
-                        <ImageView fitHeight="44.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/icons/fleche2.png" />
-                           </image>
-                        </ImageView>
-                     </graphic></Button>
+                            <GridPane.margin>
+                                <Insets left="10.0" />
+                            </GridPane.margin>
+                            <graphic>
+                                <ImageView fitHeight="44.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/icons/fleche2.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic></Button>
 
                         <Button onAction="#afficherFournisseursArchives" prefHeight="41.0" prefWidth="190.0" style="-fx-background-color: #019aff;" text="Afficher les fournisseurs archivés" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                     <GridPane.margin>
-                        <Insets left="180.0" />
-                     </GridPane.margin></Button>
+                            <GridPane.margin>
+                                <Insets left="180.0" />
+                            </GridPane.margin></Button>
 
 
                         <AnchorPane prefHeight="416.0" prefWidth="1024.0" style="-fx-background-color: white; -fx-background-radius: 15px;" styleClass="drop-shadow" stylesheets="@style.css" GridPane.rowIndex="2">

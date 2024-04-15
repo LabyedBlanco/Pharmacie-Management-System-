@@ -184,7 +184,7 @@
                                         </Text>
                                     </children>
                                     <GridPane.margin>
-                                        <Insets left="20.0" right="20.0" top="20.0" />
+                                        <Insets right="40.0" top="20.0" />
                                     </GridPane.margin>
                                 </GridPane>
                             </children>
@@ -248,7 +248,7 @@
                                         </ImageView>
                                     </children>
                                     <GridPane.margin>
-                                        <Insets right="20.0" />
+                                        <Insets right="40.0" />
                                     </GridPane.margin>
                                 </GridPane>
                             </children>
@@ -272,7 +272,7 @@
                                         <Insets />
                                     </opaqueInsets>
                                     <GridPane.margin>
-                                        <Insets right="30.0" />
+                                        <Insets right="40.0" />
                                     </GridPane.margin>
                                     <graphic>
                                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0">
@@ -284,7 +284,7 @@
                                 </Button>
                             </children>
                         </GridPane>
-                        <TableView fx:id="listPurchases" layoutX="20.0" layoutY="263.0" prefHeight="345.0" prefWidth="1060.0" stylesheets="@../styles/MainFormDesign.css" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                        <TableView fx:id="listPurchases" layoutX="20.0" layoutY="263.0" prefHeight="345.0" prefWidth="1060.0" stylesheets="@../styles/MainFormDesign.css" AnchorPane.rightAnchor="40.0">
                             <columns>
                                 <TableColumn minWidth="150.0" prefWidth="157.0" text="Client" />
                                 <TableColumn minWidth="127.33334350585938" prefWidth="200.0" text="Date" />

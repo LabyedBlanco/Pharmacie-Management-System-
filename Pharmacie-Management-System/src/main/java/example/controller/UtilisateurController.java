@@ -23,6 +23,7 @@ public class UtilisateurController extends Application {
 
     public Button bottonmodify;
     public ImageView image;
+    int c = 0;
     public Pane imagePane;
 
 
@@ -36,17 +37,21 @@ public class UtilisateurController extends Application {
     }
 
     public void switchToHello(ActionEvent event) throws IOException {
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Profile_utilisateur.fxml"));
-        Parent root = loader.load();
-        UtilisateurController controller = loader.getController();
         Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.setTitle("Add a User");
-        stage.setResizable(false);
-        stage.show();
-        controller.bottonmodify.setVisible(false);
 
+        if(c==0) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Profile_utilisateur.fxml"));
+            Parent root = loader.load();
+            UtilisateurController controller = loader.getController();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Add a User");
+            stage.setResizable(false);
+            stage.show();
+            controller.bottonmodify.setVisible(false);
+        }else {
+            stage.show();
+        }
+        c++;
     }
 
     public void onaddimageUser(ActionEvent event){
