@@ -68,7 +68,7 @@
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
                             <children>
-                                <Text  layoutX="46.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fournisseur:" AnchorPane.leftAnchor="46.0" AnchorPane.topAnchor="48.0">
+                                <Text layoutX="46.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fournisseur:" AnchorPane.leftAnchor="46.0" AnchorPane.topAnchor="48.0">
                                     <font>
                                         <Font name="Tahoma" size="16.0" />
                                     </font>
@@ -77,7 +77,7 @@
                         </AnchorPane>
                     </children>
                 </GridPane>
-                <GridPane fx:id="FournisseurAc" prefHeight="561.0" prefWidth="1100.0" style="-fx-background-color: #f7f7f7;" styleClass="drop-shadow" stylesheets="@style.css" GridPane.rowIndex="1">
+                <GridPane prefHeight="561.0" prefWidth="1100.0" style="-fx-background-color: #f7f7f7;" styleClass="drop-shadow" stylesheets="@style.css" GridPane.rowIndex="1">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
@@ -102,14 +102,21 @@
                                 </ImageView>
                             </graphic>
                         </Button>
-                        <Button onAction="#afficherFournisseursActifs" prefHeight="41.0" prefWidth="189.0" style="-fx-background-color: #019aff;" text="Afficher les fournisseurs actifs" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                        <Button onAction="#afficherFournisseursActifs" prefHeight="41.0" prefWidth="189.0" style="-fx-background-color: #f7f7f7;" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets left="10.0" />
-                     </GridPane.margin></Button>
+                     </GridPane.margin>
+                     <graphic>
+                        <ImageView fitHeight="44.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/icons/fleche2.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
 
                         <Button onAction="#afficherFournisseursArchives" prefHeight="41.0" prefWidth="190.0" style="-fx-background-color: #019aff;" text="Afficher les fournisseurs archivés" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <GridPane.margin>
-                        <Insets left="230.0" />
+                        <Insets left="180.0" />
                      </GridPane.margin></Button>
 
 
@@ -121,7 +128,7 @@
                                 <Insets bottom="40.0" left="40.0" right="60.0" top="80.0" />
                             </GridPane.margin>
                             <children>
-                                <TableView fx:id="tableViewActif" layoutX="197.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../styles/MainFormDesign.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+                                <TableView fx:id="tableViewActif" layoutX="197.0" layoutY="10.0" prefHeight="282.0" prefWidth="828.0" stylesheets="@../styles/MainFormDesign.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-28.0" AnchorPane.topAnchor="10.0">
                                     <columns>
                                         <TableColumn minWidth="138.0" prefWidth="138.0" text="             Name" />
                                         <TableColumn minWidth="150.0" prefWidth="222.0" text="             Email" />
@@ -131,7 +138,7 @@
                                         <TableColumn minWidth="150.0" prefWidth="195.0" text="             Action" />
                                     </columns>
                                 </TableView>
-                                <TableView fx:id="tableViewArchived" layoutX="197.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../styles/MainFormDesign.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+                                <TableView fx:id="tableViewArchived" layoutX="197.0" layoutY="10.0" prefHeight="282.0" prefWidth="829.0" stylesheets="@../styles/MainFormDesign.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-29.0" AnchorPane.topAnchor="10.0">
                                     <columns>
                                         <TableColumn minWidth="138.0" prefWidth="189.0" text="             Name" />
                                         <TableColumn minWidth="150.0" prefWidth="287.0" text="             Email" />
@@ -179,7 +186,7 @@
                                 </ImageView>
                             </graphic>
                         </Button>
-                        <Text  fx:id="main2" fill="#898989" strokeType="OUTSIDE" strokeWidth="0.0" text="Fournisseur :">
+                        <Text fx:id="main2" fill="#898989" strokeType="OUTSIDE" strokeWidth="0.0" text="Fournisseur Active :">
                             <GridPane.margin>
                                 <Insets left="60.0" />
                             </GridPane.margin>

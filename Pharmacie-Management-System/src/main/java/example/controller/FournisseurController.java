@@ -1,19 +1,15 @@
 package example.controller;
 
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Tab;
+
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -26,7 +22,7 @@ import java.util.ResourceBundle;
 public class FournisseurController implements Initializable {
     @FXML
     private ImageView imageView;
-    
+
     @FXML
     private TableView<?> tableViewActif;
 
@@ -44,15 +40,6 @@ public class FournisseurController implements Initializable {
             System.err.println("TableView is null");
         }
     }
-
-
-
-
-
-
-
-
-
     @FXML
     public void Addfor(ActionEvent event) throws IOException {
 
