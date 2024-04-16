@@ -109,7 +109,7 @@
                             <graphic>
                                 <ImageView fitHeight="44.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../images/icons/fleche2.png" />
+                                        <Image url="@../images/icons/fleche2-removebg-preview.png" />
                                     </image>
                                 </ImageView>
                             </graphic></Button>
