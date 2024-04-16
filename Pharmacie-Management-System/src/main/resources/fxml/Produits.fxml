@@ -89,7 +89,7 @@
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <Button mnemonicParsing="false" onAction="#fichproduct" prefHeight="35.0" prefWidth="127.0" style="-fx-background-color: red;" styleClass="drop-shadow" stylesheets="@style.css" text="Product Sheet" textFill="WHITE" GridPane.halignment="RIGHT">
+                                <Button mnemonicParsing="false" onAction="#fichproduct" prefHeight="35.0" prefWidth="127.0" style="-fx-background-color: red;" styleClass="drop-shadow" stylesheets="@style.css" text="Fich Produit" textFill="WHITE" GridPane.halignment="RIGHT">
                                     <font>
                                         <Font name="Tahoma" size="13.0" />
                                     </font>
@@ -104,7 +104,7 @@
                                         <Insets right="20.0" top="20.0" />
                                     </GridPane.margin>
                                 </Button>
-                                <Button mnemonicParsing="false" onAction="#addproduct" prefHeight="34.0" prefWidth="127.0" style="-fx-background-color: #46c35f;" styleClass="drop-shadow" stylesheets="@style.css" text="Add Product" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+                                <Button mnemonicParsing="false" onAction="#addproduct" prefHeight="34.0" prefWidth="127.0" style="-fx-background-color: #46c35f;" styleClass="drop-shadow" stylesheets="@style.css" text="Ajouter" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
                                     <font>
                                         <Font name="Tahoma" size="13.0" />
                                     </font>
@@ -123,11 +123,11 @@
                         </GridPane>
                         <TableView fx:id="listPurchases" layoutX="143.0" layoutY="193.0" prefHeight="447.0" prefWidth="1060.0" styleClass="drop-shadow" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="60.0">
                             <columns>
-                                <TableColumn minWidth="150.0" prefWidth="243.0" text="Name" />
-                                <TableColumn minWidth="127.33334350585938" prefWidth="199.0" text="Code" />
-                                <TableColumn minWidth="178.0" prefWidth="252.0" text="Category" />
-                                <TableColumn minWidth="193.0" prefWidth="209.0" text="Price" />
-                                <TableColumn minWidth="150.0" prefWidth="157.0" text="Action" />
+                                <TableColumn minWidth="150.0" prefWidth="243.0" text="Nom Produit" />
+                                <TableColumn minWidth="127.33334350585938" prefWidth="199.0" text="Code " />
+                                <TableColumn minWidth="178.0" prefWidth="252.0" text="Categorie" />
+                                <TableColumn minWidth="193.0" prefWidth="209.0" text="Prix" />
+                                <TableColumn minWidth="116.7999389648437" prefWidth="116.7999389648437" text="Action" />
                             </columns>
                      <stylesheets>
                         <URL value="@../styles/MainFormDesign.css" />
