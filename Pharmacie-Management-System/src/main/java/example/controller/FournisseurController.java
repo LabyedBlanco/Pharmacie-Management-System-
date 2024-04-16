@@ -3,6 +3,10 @@ package example.controller;
 
 import javafx.event.ActionEvent;
 
+
+import javafx.event.ActionEvent;
+
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -42,15 +46,6 @@ public class FournisseurController implements Initializable {
             System.err.println("TableView is null");
         }
     }
-
-
-
-
-
-
-
-
-
     @FXML
     public void Addfor(ActionEvent event) throws IOException {
 
