@@ -33,6 +33,9 @@ public class FournisseurController implements Initializable {
     private TableView<?> tableViewActif;
 
     @FXML
+    private ImageView OnBack;
+
+    @FXML
     private TableView<?> tableViewArchived;
     @FXML
     private Text main2;
@@ -93,10 +96,12 @@ public class FournisseurController implements Initializable {
 
     @FXML
     void afficherFournisseursActifs() {
+
         if (tableViewActif != null && tableViewArchived != null) {
             tableViewActif.setVisible(true);
             tableViewArchived.setVisible(false);
             main2.setText("Fournisseur Actif");
+            OnBack.setVisible(false);
         } else {
             System.err.println("TableView is null");
         }
@@ -104,10 +109,13 @@ public class FournisseurController implements Initializable {
 
     @FXML
     void afficherFournisseursArchives() {
+
         if (tableViewActif != null && tableViewArchived != null) {
             tableViewActif.setVisible(false);
             tableViewArchived.setVisible(true);
             main2.setText("Fournisseur Archivé");
+            OnBack.setVisible(true);
+
         } else {
             System.err.println("TableView is null");
         }
