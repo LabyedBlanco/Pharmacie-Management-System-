@@ -8,6 +8,9 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class Main extends Application {
     @Override
@@ -24,6 +27,13 @@ public class Main extends Application {
         Font labiad = Font.loadFont("resources/fonts/oblong.ttf", 45);
     }
     public static void main(String[] args) {
+        try{
+            Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3307/pharmacie","root","");
+            System.out.println(conn);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
         launch();
 
     }
