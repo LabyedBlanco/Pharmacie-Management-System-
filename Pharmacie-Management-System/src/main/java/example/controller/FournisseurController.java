@@ -1,6 +1,7 @@
 package example.controller;
 
 
+import example.model.DatabaseManager;
 import javafx.event.ActionEvent;
 
 
@@ -16,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -30,6 +32,9 @@ public class FournisseurController implements Initializable {
     private ImageView imageView;
 
     @FXML
+    private AnchorPane Connected;
+
+    @FXML
     private TableView<?> tableViewActif;
 
     @FXML
@@ -41,6 +46,17 @@ public class FournisseurController implements Initializable {
     private Text main2;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+            Connected.setStyle("-fx-background-color: red;-fx-background-radius: 100px");
+            DatabaseManager Data = new DatabaseManager();
+            if (Data.ConnectionStat() == true) {
+                System.out.print(Data.ConnectionStat());
+                Connected.setStyle("-fx-background-color: green;-fx-background-radius: 100px");
+            }else {
+                System.out.print(Data.ConnectionStat());
+                Connected.setStyle("-fx-background-color: red;-fx-background-radius: 100px");
+            }
+
 
         if (tableViewActif != null && tableViewArchived != null) {
             tableViewActif.setVisible(true);
