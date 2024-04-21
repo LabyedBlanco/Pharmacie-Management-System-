@@ -10,11 +10,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class Main extends Application {
-
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/fxml/Main.fxml"));
@@ -23,24 +21,19 @@ public class Main extends Application {
         System.out.print("Width = "+screenWidth+" Height = "+screenHeight);
         Scene scene = new Scene(fxmlLoader.load(), screenWidth, screenHeight);
         stage.setTitle("Pharmacie.exe");
-
+        
         stage.setScene(scene);
         stage.show();
+        Font labiad = Font.loadFont("resources/fonts/oblong.ttf", 45);
     }
     public static void main(String[] args) {
-
-        //Trying to get Connection with Database *
         try{
-            DatabaseManager dbManager = new DatabaseManager();
-            Connection conn = dbManager.getConnection();
-            dbManager.setConnectionStat(true);
-
-        }catch (Exception e){
-
+            Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3307/pharmacie","root","");
+            System.out.println(conn);
+        }
+        catch (Exception e){
             e.printStackTrace();
         }
-
-
         launch();
 
     }

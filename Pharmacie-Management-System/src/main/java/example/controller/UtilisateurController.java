@@ -1,12 +1,9 @@
 package example.controller;
 
-import example.model.DatabaseManager;
 import javafx.application.Application;
-import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -20,24 +17,9 @@ import javafx.scene.Scene;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 
-public class UtilisateurController implements Initializable {
-    public AnchorPane Connected ;
-    public void initialize(URL url , ResourceBundle resourceBundle){
-        Connected.setStyle("-fx-background-color: red;-fx-background-radius: 100px");
-        DatabaseManager Data = new DatabaseManager();
-        if (Data.ConnectionStat() == true) {
-            System.out.print(Data.ConnectionStat());
-            Connected.setStyle("-fx-background-color: green;-fx-background-radius: 100px");
-        }else {
-            System.out.print(Data.ConnectionStat());
-            Connected.setStyle("-fx-background-color: red;-fx-background-radius: 100px");
-        }
-    }
-
+public class UtilisateurController extends Application {
 
     public Button bottonmodify;
     public ImageView image;
@@ -46,10 +28,10 @@ public class UtilisateurController implements Initializable {
 
 
     public static void main(String[] args) {
-
+        launch(args);
     }
 
-
+    @Override
     public void start(Stage primaryStage) {
 
     }

@@ -1,38 +1,36 @@
 package example.controller;
 
-import example.model.DatabaseManager;
+import example.model.FxmlLoader;
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.time.LocalDate;
+import java.util.Date;
 
 
-public class VentesController implements Initializable {
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
-    public AnchorPane Connected;
-    public void initialize(URL url , ResourceBundle resourceBundle){
-        Connected.setStyle("-fx-background-color: red;-fx-background-radius: 100px");
-        DatabaseManager Data = new DatabaseManager();
-        if (Data.ConnectionStat() == true) {
-            System.out.print(Data.ConnectionStat());
-            Connected.setStyle("-fx-background-color: green;-fx-background-radius: 100px");
-        }else {
-            System.out.print(Data.ConnectionStat());
-            Connected.setStyle("-fx-background-color: red;-fx-background-radius: 100px");
-        }
-    }
+
+
+
+public class VentesController extends Application {
+
+
+
     @FXML
     private Text main;
 
@@ -41,9 +39,10 @@ public class VentesController implements Initializable {
 
     private int c = 0;
     public static void main(String[] args) {
-
+        launch(args);
     }
 
+    @Override
     public void start(Stage primaryStage) {
 
     }
