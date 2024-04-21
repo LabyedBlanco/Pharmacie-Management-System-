@@ -37,7 +37,7 @@
                         <RowConstraints />
                     </rowConstraints>
                     <children>
-                        <Button graphicTextGap="10.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #46c35f;" styleClass="drop-shadow" stylesheets="@style.css" text="Ajouter" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                        <Button graphicTextGap="10.0" mnemonicParsing="false" onAction="#addf" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #46c35f;" styleClass="drop-shadow" stylesheets="@style.css" text="Ajouter" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                             <GridPane.margin>
                                 <Insets right="60.0" top="20.0" />
                             </GridPane.margin>
@@ -135,7 +135,7 @@
                                         <Insets left="40.0" />
                                     </GridPane.margin>
                                 </Text>
-                                <Text fill="#898989" layoutX="10.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender :" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                                <Text fill="#898989" layoutX="10.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender :" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                     <font>
                                         <Font name="System Bold" size="14.0" />
                                     </font>
@@ -143,27 +143,27 @@
                                         <Insets left="40.0" />
                                     </GridPane.margin>
                                 </Text>
-                                <TextField GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                <TextField fx:id="countryfor" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                     <GridPane.margin>
                                         <Insets left="150.0" right="80.0" />
                                     </GridPane.margin>
                                 </TextField>
-                                <TextField GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                <TextField fx:id="cityfor" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                     <GridPane.margin>
                                         <Insets left="150.0" right="80.0" />
                                     </GridPane.margin>
                                 </TextField>
-                                <TextField prefHeight="26.0" prefWidth="210.0" GridPane.columnIndex="1" GridPane.valignment="CENTER">
+                                <TextField fx:id="emailfor" prefHeight="26.0" prefWidth="210.0" GridPane.columnIndex="1" GridPane.valignment="CENTER">
                                     <GridPane.margin>
                                         <Insets left="150.0" right="80.0" />
                                     </GridPane.margin>
                                 </TextField>
-                                <TextField GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                <TextField fx:id="namefor" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                     <GridPane.margin>
                                         <Insets left="150.0" right="80.0" />
                                     </GridPane.margin>
                                 </TextField>
-                                <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                                <ComboBox fx:id="genderfor" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                     <GridPane.margin>
                                         <Insets left="150.0" />
                                     </GridPane.margin>
@@ -174,20 +174,12 @@
                                         </FXCollections>
                                     </items>
                                 </ComboBox>
-                                <TextField GridPane.rowIndex="1">
+                                <TextField fx:id="phonefor" GridPane.rowIndex="1">
                                     <GridPane.margin>
                                         <Insets left="150.0" right="80.0" />
                                     </GridPane.margin>
                                 </TextField>
-                        <Button mnemonicParsing="false" onAction="#parcourirPhoto" prefHeight="30.0" prefWidth="96.0" style="-fx-background-color: #019aff;" text="Parcourir " GridPane.rowIndex="3">
-                           <padding>
-                              <Insets right="40.0" />
-                           </padding>
-                        </Button>
                                 <AnchorPane layoutX="361.0" layoutY="137.0" prefHeight="184.0" prefWidth="178.0" style="-fx-border-color: black;" GridPane.halignment="LEFT" GridPane.rowIndex="3">
-                                    <children>
-                                        <ImageView fx:id="imageView" fitHeight="184.0" fitWidth="178.0" layoutX="0.0" layoutY="0.0"/>
-                                    </children>
                                     <GridPane.margin>
                                         <Insets bottom="60.0" left="239.0" right="230.0" top="89.0" />
                                     </GridPane.margin>
@@ -197,7 +189,7 @@
                         </GridPane>
                     </children>
                 </GridPane>
-                <GridPane  layoutX="10.0" layoutY="118.0" prefHeight="579.0" prefWidth="1100.0" style="-fx-background-color: #f7f7f7;" styleClass="drop-shadow" stylesheets="@style.css" visible="false">
+                <GridPane layoutX="10.0" layoutY="118.0" prefHeight="579.0" prefWidth="1100.0" style="-fx-background-color: #f7f7f7;" styleClass="drop-shadow" stylesheets="@style.css" visible="false">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
