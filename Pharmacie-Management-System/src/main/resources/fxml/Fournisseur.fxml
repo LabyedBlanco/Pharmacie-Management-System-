@@ -38,7 +38,7 @@
                     <children>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                             <children>
-                                <AnchorPane layoutX="268.0" layoutY="48.0" prefHeight="14.0" prefWidth="14.0" style="-fx-background-color: green; -fx-background-radius: 100;" AnchorPane.rightAnchor="268.0" />
+                                <AnchorPane fx:id="Connected" layoutX="268.0" layoutY="48.0" prefHeight="14.0" prefWidth="14.0" AnchorPane.rightAnchor="268.0" />
                                 <Text fx:id="main" layoutX="206.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Active" AnchorPane.rightAnchor="296.96875">
                                     <font>
                                         <Font name="Ebrima Bold" size="16.0" />

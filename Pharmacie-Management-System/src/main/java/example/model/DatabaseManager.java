@@ -12,10 +12,10 @@ public class DatabaseManager {
 
     public DatabaseManager() {
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/pharmacie", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3308/pharmacie", "root", "");
         }catch (Exception e){
-                ConnectionStat = false;
-                e.printStackTrace();
+            ConnectionStat = false;
+            e.printStackTrace();
         }
     }
 
