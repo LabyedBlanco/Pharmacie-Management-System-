@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class Main extends Application {
@@ -27,9 +28,25 @@ public class Main extends Application {
         Font labiad = Font.loadFont("resources/fonts/oblong.ttf", 45);
     }
     public static void main(String[] args) {
+        int id=1;
+        String name = "John Doe";
+        int age = 30;
+        String adress="oujda12";
+        String telc="0699955";
+        String password="redaf";
         try{
             Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3307/pharmacie","root","");
-            System.out.println(conn);
+            //System.out.println(conn);
+            String sql = "INSERT INTO client (IDc, Nomc,adress,age,Telc,passwordc) VALUES (?, ?,?,?,?,?)";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setInt(1, id);
+            statement.setString(2, name);
+            statement.setString(3,adress );
+            statement.setInt(4, age);
+            statement.setString(5,telc);
+            statement.setString(6,password);
+            statement.executeUpdate();
+            System.out.println("Données insérées avec succès !");
         }
         catch (Exception e){
             e.printStackTrace();

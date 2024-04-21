@@ -13,7 +13,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
@@ -23,6 +25,9 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.util.ResourceBundle;
 
 public class FournisseurController implements Initializable {
@@ -39,8 +44,27 @@ public class FournisseurController implements Initializable {
     private TableView<?> tableViewArchived;
     @FXML
     private Text main2;
+    @FXML
+    private TextField cityfor;
+
+    @FXML
+    private TextField countryfor;
+
+    @FXML
+    private TextField emailfor;
+
+    @FXML
+    private ComboBox<String> genderfor;
+
+
+    @FXML
+    private TextField namefor;
+
+    @FXML
+    private TextField phonefor;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        genderfor.getItems().addAll("Male", "Female");
 
         if (tableViewActif != null && tableViewArchived != null) {
             tableViewActif.setVisible(true);
@@ -118,6 +142,34 @@ public class FournisseurController implements Initializable {
 
         } else {
             System.err.println("TableView is null");
+        }
+    }
+    @FXML
+    public void addf(){
+        String name = namefor.getText();
+        String email = emailfor.getText();
+        String phone = phonefor.getText();
+        String city = cityfor.getText();
+        String country = countryfor.getText();
+        String gender = genderfor.getValue();
+
+        try{
+            Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3307/pharmacie","root","");
+
+            String sql = "INSERT INTO fournisseur (,Nomf ,Telf , Emailf,gender) VALUES(?,?,?,?,?,?)";
+
+            PreparedStatement statement = conn.prepareStatement(sql);
+            //statement.setInt(1, id);
+            statement.setString(2, name);
+            statement.setString(3,phone );
+            statement.setString(4, email);
+            statement.setString(5,gender);
+            //statement.setString(6,password);
+            statement.executeUpdate();
+            System.out.println("Données insérées avec succès !");
+        }
+        catch (Exception e){
+            e.printStackTrace();
         }
     }
 
