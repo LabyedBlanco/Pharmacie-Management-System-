@@ -44,17 +44,30 @@ public class FournisseurController implements Initializable {
     private TableView<?> tableViewArchived;
     @FXML
     private Text main2;
+    @FXML
+    private Text main;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        try {
+            DatabaseManager Data = new DatabaseManager();
+            boolean isConnected = Data.ConnectionStat();
+            if (isConnected) {
+                System.out.print(isConnected);
+                Connected.setStyle("-fx-background-color: green; -fx-background-radius: 100px");
+            } else {
+                System.out.print(isConnected);
+                Connected.setStyle("-fx-background-color: red; -fx-background-radius: 100px");
+                main.setText("Offline");
+            }
+        } catch (Exception e) {
+            System.err.println("Error initializing connection: " + e.getMessage());
+        }
 
-        Connected.setStyle("-fx-background-color: red;-fx-background-radius: 100px");
-        DatabaseManager Data = new DatabaseManager();
-        if (Data.ConnectionStat() == true) {
-            System.out.print(Data.ConnectionStat());
-            Connected.setStyle("-fx-background-color: green;-fx-background-radius: 100px");
-        }else {
-            System.out.print(Data.ConnectionStat());
-            Connected.setStyle("-fx-background-color: red;-fx-background-radius: 100px");
+        if (tableViewActif != null && tableViewArchived != null) {
+            tableViewActif.setVisible(true);
+            tableViewArchived.setVisible(false);
+        } else {
+            System.err.println("TableView is null");
         }
 
 
@@ -136,5 +149,4 @@ public class FournisseurController implements Initializable {
             System.err.println("TableView is null");
         }
     }
-
 }

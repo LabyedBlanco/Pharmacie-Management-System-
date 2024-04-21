@@ -112,7 +112,6 @@ public class MainController implements Initializable {
         prod.setStyle("-fx-background-color: transparent");
         four.setStyle("-fx-background-color: transparent");
 
-
     }
 
     public void OnCommande (ActionEvent event) throws IOException {

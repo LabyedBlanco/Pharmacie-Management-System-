@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -24,14 +25,19 @@ public class Produit_controller implements Initializable {
 
     //this is to make the color of the Connection State
     public void initialize(URL url , ResourceBundle resourceBundle){
-        Connected.setStyle("-fx-background-color: red;-fx-background-radius: 100px");
-        DatabaseManager Data = new DatabaseManager();
-        if (Data.ConnectionStat() == true) {
-            System.out.print(Data.ConnectionStat());
-            Connected.setStyle("-fx-background-color: green;-fx-background-radius: 100px");
-        }else {
-            System.out.print(Data.ConnectionStat());
-            Connected.setStyle("-fx-background-color: red;-fx-background-radius: 100px");
+        try {
+            DatabaseManager Data = new DatabaseManager();
+            boolean isConnected = Data.ConnectionStat();
+            if (isConnected) {
+                System.out.print(isConnected);
+                Connected.setStyle("-fx-background-color: green; -fx-background-radius: 100px");
+            } else {
+                System.out.print(isConnected);
+                Connected.setStyle("-fx-background-color: red; -fx-background-radius: 100px");
+                main.setText("Offline");
+            }
+        } catch (Exception e) {
+            System.err.println("Error initializing connection: " + e.getMessage());
         }
     }
 
@@ -44,6 +50,8 @@ public class Produit_controller implements Initializable {
     }
     @FXML
     private ImageView image;
+    @FXML
+    private Text main;
     int c=0;
     int d=0;
     Stage stage = new Stage();
