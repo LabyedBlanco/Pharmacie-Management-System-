@@ -144,6 +144,7 @@
                            <GridPane.margin>
                               <Insets left="40.0" />
                            </GridPane.margin>
+                           
                         </Text>
                         <Text fill="#898989" layoutX="10.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Details :" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <font>
@@ -177,37 +178,37 @@
                               <Insets bottom="10.0" left="40.0" top="40.0" />
                            </GridPane.margin>
                         </Text>
-                        <TextField maxWidth="40.0" prefHeight="25.0" prefWidth="40.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                        <TextField fx:id="ComQantite" maxWidth="40.0" prefHeight="25.0" prefWidth="40.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                            <GridPane.margin>
                               <Insets bottom="10.0" left="150.0" top="40.0" />
                            </GridPane.margin>
                         </TextField>
-                        <ComboBox prefWidth="150.0" GridPane.rowIndex="1">
+                        <ComboBox fx:id="Depot" prefWidth="150.0" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets left="150.0" />
                            </GridPane.margin>
                         </ComboBox>
-                        <DatePicker GridPane.columnIndex="1">
+                        <DatePicker fx:id="ComDate" GridPane.columnIndex="1">
                            <GridPane.margin>
                               <Insets left="150.0" />
                            </GridPane.margin>
                         </DatePicker>
-                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <TextField fx:id="ComDetails" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets left="150.0" right="80.0" />
                            </GridPane.margin>
                         </TextField>
-                        <ComboBox layoutX="160.0" layoutY="96.0" prefWidth="150.0" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                        <ComboBox fx:id="ComPayement" layoutX="160.0" layoutY="96.0" prefWidth="150.0" GridPane.rowIndex="2" GridPane.valignment="TOP">
                            <GridPane.margin>
                               <Insets left="150.0" />
                            </GridPane.margin>
                         </ComboBox>
-                        <TextField layoutX="600.0" layoutY="181.0" prefHeight="25.0" prefWidth="40.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                        <TextField fx:id="AjProduit" layoutX="600.0" layoutY="181.0" prefHeight="25.0" prefWidth="40.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP">
                            <GridPane.margin>
                               <Insets left="150.0" right="80.0" />
                            </GridPane.margin>
                         </TextField>
-                        <Button graphicTextGap="10.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" style="-fx-background-color: #46c35f;" styleClass="drop-shadow" stylesheets="@style.css" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                        <Button fx:id="ComConfirm" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" style="-fx-background-color: #46c35f;" styleClass="drop-shadow" stylesheets="@style.css" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -222,6 +223,11 @@
                               <Insets left="200.0" top="32.0" />
                            </GridPane.margin>
                         </Button>
+                        <TextField fx:id="ComFournisseur">
+                           <GridPane.margin>
+                              <Insets left="150.0" right="80.0" />
+                           </GridPane.margin>
+                        </TextField>
                      </children>
                   </GridPane>
                </children>
