@@ -14,7 +14,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class Main extends Application {
-
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/fxml/Main.fxml"));
@@ -28,20 +27,14 @@ public class Main extends Application {
         stage.show();
     }
     public static void main(String[] args) {
-
-        //Trying to get Connection with Database *
+        //Trying to get Connection with Database;
         try{
             DatabaseManager dbManager = new DatabaseManager();
             Connection conn = dbManager.getConnection();
             dbManager.setConnectionStat(true);
-
         }catch (Exception e){
-
             e.printStackTrace();
         }
-
-
         launch();
-
     }
 }

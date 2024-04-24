@@ -159,8 +159,7 @@ public class MainController implements Initializable {
 
     }
 
-    public void Onlogout (ActionEvent actionEvent)  throws IOException{
-
+    public void Onlogout(ActionEvent actionEvent)  throws IOException{
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("/fxml/Close.fxml"));
         Parent root = loader.load();
 

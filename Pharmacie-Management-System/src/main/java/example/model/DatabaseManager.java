@@ -12,13 +12,12 @@ public class DatabaseManager {
 
     public DatabaseManager() {
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/pharmacie", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3308/pharmacie", "root", "");
         }catch (Exception e){
                 ConnectionStat = false;
                 e.printStackTrace();
         }
     }
-
     public Connection getConnection() {
         return conn;
     }
@@ -31,7 +30,6 @@ public class DatabaseManager {
     }
     //Usage : DatabaseManager dbManager = new DatabaseManager();
     //Connection conn = dbManager.getConnection();
-
     public void closeConnection() throws SQLException {
         if (conn != null && !conn.isClosed()) {
             conn.close();
