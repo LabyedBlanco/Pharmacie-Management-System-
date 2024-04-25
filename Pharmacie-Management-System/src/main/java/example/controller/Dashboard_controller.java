@@ -1,15 +1,39 @@
 package example.controller;
-import javafx.application.Application;
-import javafx.stage.Stage;
 
-public class Dashboard_controller extends Application {
+import example.model.DatabaseManager;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-    @Override
-    public void start(Stage primaryStage) {
-        
+
+public class Dashboard_controller extends Controller implements Initializable {
+    public DatabaseManager DataConnexion = new DatabaseManager();
+    @FXML
+    private AnchorPane Connected;
+    @FXML
+    private Text main;
+
+    public void initialize(URL url , ResourceBundle resourceBundle){
+
+        //This is for connecting with database
+        //we are doing this on DashbordController cause its the first to be executed
+        try{
+            DataConnexion.setConnectionStat(true);
+            Online(ConnectionStat(),main,Connected);
+        }catch (Exception e){
+            DataConnexion.setConnectionStat(false);
+            e.printStackTrace();
+        }
+
+
+        //this code is repetetive for each controller to
+
+
+
     }
 }

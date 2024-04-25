@@ -20,7 +20,7 @@
 
 <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="1100.0" prefHeight="728.0" styleClass="text" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="example.controller.UtilisateurController">
     <center>
-        <GridPane style="-fx-background-color: #f7f7f7;" styleClass="drop-shadow" stylesheets="@style.css" BorderPane.alignment="CENTER">
+        <GridPane style="-fx-background-color: #f7f7f7;" styleClass="drop-shadow" BorderPane.alignment="CENTER">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             </columnConstraints>
@@ -40,7 +40,7 @@
                     <children>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                             <children>
-                                <AnchorPane layoutX="268.0" layoutY="48.0" prefHeight="14.0" prefWidth="14.0" style="-fx-background-color: green; -fx-background-radius: 100;" AnchorPane.rightAnchor="268.0" />
+                                <AnchorPane fx:id="Connected" layoutX="268.0" layoutY="48.0" prefHeight="14.0" prefWidth="14.0" AnchorPane.rightAnchor="268.0" />
                                 <Text fx:id="main" layoutX="206.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Active" AnchorPane.rightAnchor="296.96875">
                                     <font>
                                         <Font name="Ebrima Bold" size="16.0" />
@@ -100,12 +100,12 @@
                   </TextField>
                </children>
                <GridPane.margin>
-                  <Insets left="60.0" top="40.0" />
+                  <Insets left="40.0" top="40.0" />
                </GridPane.margin>
             </GridPane>
             <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <GridPane.margin>
-                  <Insets bottom="60.0" left="60.0" right="50.0" top="150.0" />
+                  <Insets bottom="20.0" left="40.0" right="50.0" top="150.0" />
                </GridPane.margin>
                <content>
                   <TableView prefHeight="470.0" prefWidth="1024.0" style="-fx-border-radius: 20; -fx-background-radius: 20;" styleClass="drop-shadow">
@@ -146,6 +146,10 @@
          <BorderPane.margin>
             <Insets />
          </BorderPane.margin>
+         <stylesheets>
+            <URL value="@style.css" />
+            <URL value="@style.css" />
+         </stylesheets>
         </GridPane>
     </center>
 </BorderPane>

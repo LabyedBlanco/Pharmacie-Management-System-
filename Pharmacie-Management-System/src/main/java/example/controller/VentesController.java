@@ -1,71 +1,29 @@
 package example.controller;
 
-import example.model.FxmlLoader;
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
 import java.io.IOException;
-import java.time.LocalDate;
-import java.util.Date;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
-
-
-
-
-public class VentesController extends Application {
-
-
-
+public class VentesController extends Controller implements Initializable {
     @FXML
     private Text main;
-
     @FXML
     static TableView<String> listPurchases;
-
-    private int c = 0;
-    public static void main(String[] args) {
-        launch(args);
-    }
-
-    @Override
-    public void start(Stage primaryStage) {
-
-    }
-
-    Stage stage = new Stage();
-
-    public void onadd(ActionEvent event) throws IOException {
-
-        if(c==0){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Ajouter-vente.fxml"));
-            Parent root = loader.load();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Add a Purchase");
-            stage.show();
-
-        }else {
-            stage.show();
-        }
-        c++;
-    }
-
-
-
+    @FXML
+    private AnchorPane Connected;
     @FXML
     private TextField amount;
 
@@ -77,6 +35,18 @@ public class VentesController extends Application {
 
     @FXML
     private TextField productname;
+
+
+
+    public void initialize(URL url , ResourceBundle resourceBundle){
+        Online(ConnectionStat(),main,Connected);
+    }
+
+    public void onadd() throws IOException {
+        super.NouveauFenetre("Ajouter-vente");
+    }
+
+
 
 
 

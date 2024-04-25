@@ -128,6 +128,21 @@
                         <Insets />
                      </VBox.margin>
                   </Button>
+                  <Button fx:id="logout" alignment="TOP_LEFT" layoutX="10.0" layoutY="267.0" mnemonicParsing="false" onAction="#OnClose" prefHeight="40.0" prefWidth="216.0" style="-fx-background-color: #1c1f22;" styleClass="sidebarItem" stylesheets="@../styles/hover.css" text="  Se déconnecter" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0">
+                           <image>
+                              <Image url="@../images/icons/se-deconnecter.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="50.0" />
+                     </VBox.margin>
+                  </Button>
                </children>
                <GridPane.margin>
                   <Insets left="50.0" />

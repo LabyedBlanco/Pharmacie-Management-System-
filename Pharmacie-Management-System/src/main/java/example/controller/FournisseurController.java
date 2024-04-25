@@ -1,43 +1,48 @@
 package example.controller;
 
-
 import javafx.event.ActionEvent;
-
-
-import javafx.event.ActionEvent;
-
-
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class FournisseurController implements Initializable {
+public class FournisseurController extends Controller implements Initializable {
+
     @FXML
     private ImageView imageView;
-
+    @FXML
+    private AnchorPane Connected;
     @FXML
     private TableView<?> tableViewActif;
-
+    @FXML
+    private ImageView OnBack;
     @FXML
     private TableView<?> tableViewArchived;
     @FXML
     private Text main2;
+    @FXML
+    private Text main;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        Online(ConnectionStat(),main,Connected);
+
+        if (tableViewActif != null && tableViewArchived != null) {
+            tableViewActif.setVisible(true);
+            tableViewArchived.setVisible(false);
+        } else {
+            System.err.println("TableView is null");
+        }
+
 
         if (tableViewActif != null && tableViewArchived != null) {
             tableViewActif.setVisible(true);
@@ -46,15 +51,10 @@ public class FournisseurController implements Initializable {
             System.err.println("TableView is null");
         }
     }
+
     @FXML
     public void Addfor(ActionEvent event) throws IOException {
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Add.fxml"));
-        Parent root = loader.load();
-
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.show();
+        super.NouveauFenetre("Add");
     }
     @FXML
     public void parcourirPhoto() {
@@ -82,21 +82,17 @@ public class FournisseurController implements Initializable {
     }
     @FXML
     public void AddforA(ActionEvent event) throws IOException {
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ArchiverF.fxml"));
-        Parent root = loader.load();
-
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.show();
+        NouveauFenetre("ArchiverF");
     }
 
     @FXML
     void afficherFournisseursActifs() {
+
         if (tableViewActif != null && tableViewArchived != null) {
             tableViewActif.setVisible(true);
             tableViewArchived.setVisible(false);
             main2.setText("Fournisseur Actif");
+            OnBack.setVisible(false);
         } else {
             System.err.println("TableView is null");
         }
@@ -104,13 +100,15 @@ public class FournisseurController implements Initializable {
 
     @FXML
     void afficherFournisseursArchives() {
+
         if (tableViewActif != null && tableViewArchived != null) {
             tableViewActif.setVisible(false);
             tableViewArchived.setVisible(true);
             main2.setText("Fournisseur Archivé");
+            OnBack.setVisible(true);
+
         } else {
             System.err.println("TableView is null");
         }
     }
-
 }

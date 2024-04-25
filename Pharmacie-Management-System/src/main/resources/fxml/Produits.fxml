@@ -3,6 +3,7 @@
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -39,7 +40,7 @@
                     <children>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                             <children>
-                                <AnchorPane layoutX="268.0" layoutY="48.0" prefHeight="14.0" prefWidth="14.0" style="-fx-background-color: green; -fx-background-radius: 100;" AnchorPane.rightAnchor="268.0" />
+                                <AnchorPane fx:id="Connected" layoutX="268.0" layoutY="48.0" prefHeight="14.0" prefWidth="14.0" AnchorPane.rightAnchor="268.0" />
                                 <Text fx:id="main" layoutX="206.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Active" AnchorPane.rightAnchor="296.96875">
                                     <font>
                                         <Font name="Ebrima Bold" size="16.0" />
@@ -121,19 +122,6 @@
                                 </Button>
                             </children>
                         </GridPane>
-                        <TableView fx:id="listPurchases" layoutX="143.0" layoutY="193.0" prefHeight="447.0" prefWidth="1060.0" styleClass="drop-shadow" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="60.0">
-                            <columns>
-                                <TableColumn minWidth="150.0" prefWidth="243.0" text="Nom Produit" />
-                                <TableColumn minWidth="127.33334350585938" prefWidth="199.0" text="Code " />
-                                <TableColumn minWidth="178.0" prefWidth="252.0" text="Categorie" />
-                                <TableColumn minWidth="193.0" prefWidth="209.0" text="Prix" />
-                                <TableColumn minWidth="116.7999389648437" prefWidth="116.7999389648437" text="Action" />
-                            </columns>
-                     <stylesheets>
-                        <URL value="@../styles/MainFormDesign.css" />
-                        <URL value="@style.css" />
-                     </stylesheets>
-                        </TableView>
                   <GridPane layoutX="31.0" layoutY="82.0" maxHeight="35.0" maxWidth="225.0" prefHeight="40.0" style="-fx-background-color: white; -fx-background-radius: 30;" styleClass="drop-shadow" stylesheets="@style.css" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="82.0">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.0" minWidth="10.0" prefWidth="48.0" />
@@ -153,6 +141,33 @@
                               <Image url="@../images/icons/9035096_search_icon.png" />
                            </image>
                         </ImageView>
+                     </children>
+                  </GridPane>
+                  <GridPane layoutX="639.0" layoutY="323.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="160.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                           <content>
+                              <TableView fx:id="listPurchases" prefHeight="769.0" prefWidth="1060.0" styleClass="drop-shadow">
+                                 <columns>
+                                    <TableColumn minWidth="150.0" prefWidth="243.0" text="Nom Produit" />
+                                    <TableColumn minWidth="127.33334350585938" prefWidth="199.0" text="Code " />
+                                    <TableColumn minWidth="178.0" prefWidth="252.0" text="Categorie" />
+                                    <TableColumn minWidth="193.0" prefWidth="209.0" text="Prix" />
+                                    <TableColumn minWidth="116.7999389648437" prefWidth="116.7999389648437" text="Action" />
+                                 </columns>
+                                 <stylesheets>
+                                    <URL value="@../styles/MainFormDesign.css" />
+                                    <URL value="@style.css" />
+                                 </stylesheets>
+                              </TableView>
+                           </content>
+                        </ScrollPane>
                      </children>
                   </GridPane>
                     </children></AnchorPane>

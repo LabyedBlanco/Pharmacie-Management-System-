@@ -1,80 +1,53 @@
 package example.controller;
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.FileChooser;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class Produit_controller extends Application {
+public class Produit_controller extends Controller implements Initializable {
 
-    public static void main(String[] args) {
-        launch(args);
+    //this is to make the color of the Connection State
+    public void initialize(URL url , ResourceBundle resourceBundle){
+        Online(ConnectionStat(),main,Connected);
     }
 
-    @Override
+    @FXML
+    private AnchorPane Connected;
     public void start(Stage primaryStage) {
-        
+
     }
     @FXML
     private ImageView image;
-
+    @FXML
+    private Text main;
     int c=0;
     int d=0;
     Stage stage = new Stage();
 
-    @FXML
-    private void onaddimageproduct(ActionEvent event){
+    public void Onclose(ActionEvent event) throws IOException {
+        FermerFentere(event);
+    }
 
-
-            FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("Select Image File");
-
-            File file = fileChooser.showOpenDialog(new Stage());
-
+    public void Addimage(ActionEvent event){
+         File file = ParcourirFichier(event);
             if (file != null) {
                 Image img=new Image(file.toURI().toString());
                 image.setImage(img);
-
             }
     }
-
     public void addproduct(ActionEvent event) throws IOException {
-
-        if(c==0){
-            c++;
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ajouter-produit.fxml"));
-            Parent root = loader.load();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Add a Product");
-            stage.show();
-        }else{
-            stage.show();
-
-        }
-
-
+        NouveauFenetre("ajouter-produit");
     }
     public void fichproduct(ActionEvent event) throws IOException {
-
-        if(d==0){
-            d++;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/fich-produit.fxml"));
-        Parent root = loader.load();
-        stage.setScene(new Scene(root));
-        stage.setTitle("sheet product");
-        stage.show();
-    }else{
-        stage.show();
-    }
-
+        NouveauFenetre("fich-produit");
     }
 }

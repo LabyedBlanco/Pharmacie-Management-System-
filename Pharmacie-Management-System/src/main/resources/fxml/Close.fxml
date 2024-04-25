@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="137.0" prefWidth="492.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="example.controller.Controller">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Button alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onAction="#Annuler" prefHeight="42.0" prefWidth="150.0" style="-fx-background-color: #019aff; -fx-border-radius: 8px; -fx-background-radius: 8px;" styleClass="drop-shadow" stylesheets="@style.css" text="Annuler" textFill="WHITE" GridPane.halignment="RIGHT">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+         <GridPane.margin>
+            <Insets right="60.0" />
+         </GridPane.margin>
+      </Button>
+      <Button alignment="CENTER" graphicTextGap="10.0" layoutX="251.0" layoutY="61.0" mnemonicParsing="false" onAction="#Quitter" prefHeight="44.0" prefWidth="218.0" style="-fx-border-color: #019aff; -fx-background-color: transparent; -fx-border-radius: 8px;" stylesheets="@style.css" text="Voulez vous vraiment quitter ?" textFill="#019aff">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="40.0" />
+         </GridPane.margin>
+      </Button>
+   </children>
+</GridPane>
