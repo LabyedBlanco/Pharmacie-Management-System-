@@ -37,7 +37,7 @@
                         <RowConstraints maxHeight="557.3333282470703" minHeight="10.0" prefHeight="538.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Button graphicTextGap="10.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #46c35f;" styleClass="drop-shadow" stylesheets="@style.css" text="Add" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                        <Button graphicTextGap="10.0" mnemonicParsing="false" onAction="#Onclose" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #46c35f;" styleClass="drop-shadow" stylesheets="@style.css" text="Add" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                             <GridPane.margin>
                                 <Insets right="60.0" top="20.0" />
                             </GridPane.margin>
@@ -55,7 +55,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Text fill="#898989" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Product :">
+                        <Text fill="#898989" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Produit :">
                             <GridPane.margin>
                                 <Insets left="60.0" />
                             </GridPane.margin>
@@ -167,7 +167,7 @@
                               <Image url="@../images/icons/Mediacation.png" />
                            </image>
                         </ImageView>
-                        <Button graphicTextGap="10.0" mnemonicParsing="false" onAction="#onaddimageproduct" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #46c35f;" styleClass="drop-shadow" stylesheets="@style.css" text="Picture" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                        <Button graphicTextGap="10.0" mnemonicParsing="false" onAction="#Addimage" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #46c35f;" styleClass="drop-shadow" stylesheets="@style.css" text="Picture" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>

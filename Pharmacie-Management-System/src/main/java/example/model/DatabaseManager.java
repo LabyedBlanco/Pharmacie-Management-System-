@@ -7,19 +7,19 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseManager {
-    private Connection conn;
+    private Connection conexion;
     static boolean ConnectionStat = false;
 
     public DatabaseManager() {
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3308/pharmacie", "root", "");
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3308/pharmacie", "root", "");
         }catch (Exception e){
                 ConnectionStat = false;
                 e.printStackTrace();
         }
     }
     public Connection getConnection() {
-        return conn;
+        return conexion;
     }
     public boolean setConnectionStat(boolean Stat){
         ConnectionStat = Stat;
@@ -31,8 +31,8 @@ public class DatabaseManager {
     //Usage : DatabaseManager dbManager = new DatabaseManager();
     //Connection conn = dbManager.getConnection();
     public void closeConnection() throws SQLException {
-        if (conn != null && !conn.isClosed()) {
-            conn.close();
+        if (conexion != null && !conexion.isClosed()) {
+            conexion.close();
         }
     }
 }

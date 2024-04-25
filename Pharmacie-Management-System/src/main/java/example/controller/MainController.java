@@ -21,10 +21,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class MainController implements Initializable {
+public class MainController extends Controller implements Initializable {
 
-    @FXML
-    private GridPane MainPane;
+
+    public GridPane MainPane;
     @FXML
     private AnchorPane Display;
     @FXML
@@ -141,9 +141,9 @@ public class MainController implements Initializable {
         util.setStyle("-fx-background-color: transparent");
         prod.setStyle("-fx-background-color: transparent");
         four.setStyle("-fx-background-color: transparent");
-
-
     }
+
+
     public void OnFournisseur (ActionEvent event) throws IOException {
         MainPane.getChildren().clear();
         System.out.print("\nFournisseur");
@@ -159,18 +159,8 @@ public class MainController implements Initializable {
 
     }
 
-    public void Onlogout(ActionEvent actionEvent)  throws IOException{
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("/fxml/Close.fxml"));
-        Parent root = loader.load();
-
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.show();
-    }
-
     public void OnClose(ActionEvent actionEvent) throws IOException{
-        Node  source = (Node)  actionEvent.getSource();
-        Stage stage  = (Stage) source.getScene().getWindow();
-        stage.close();
+        MessageConfirmation("Close");
+
     }
 }
