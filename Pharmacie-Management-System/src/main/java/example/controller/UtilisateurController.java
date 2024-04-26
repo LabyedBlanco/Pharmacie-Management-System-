@@ -26,8 +26,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class UtilisateurController implements Initializable {
+public class UtilisateurController extends Controller implements Initializable {
     public AnchorPane Connected ;
+<<<<<<< HEAD
     public void initialize(URL url , ResourceBundle resourceBundle){
         try {
             DatabaseManager Data = new DatabaseManager();
@@ -46,13 +47,21 @@ public class UtilisateurController implements Initializable {
     }
 
 
+=======
+>>>>>>> 022289110064033b2a58265e1dec8a5c303ee2e7
     public Button bottonmodify;
     public ImageView image;
     int c = 0;
     public Pane imagePane;
     @FXML
     private Text main;
+<<<<<<< HEAD
+=======
 
+    public void initialize(URL url , ResourceBundle resourceBundle){
+        Online(ConnectionStat(),main,Connected);
+    }
+>>>>>>> 022289110064033b2a58265e1dec8a5c303ee2e7
 
     public void start(Stage primaryStage) {
 
@@ -60,39 +69,17 @@ public class UtilisateurController implements Initializable {
 
     public void switchToHello(ActionEvent event) throws IOException {
         Stage stage = new Stage();
-
-        if(c==0) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Profile_utilisateur.fxml"));
-            Parent root = loader.load();
-            UtilisateurController controller = loader.getController();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Add a User");
-            stage.setResizable(false);
-            stage.show();
-            controller.bottonmodify.setVisible(false);
-        }else {
-            stage.show();
-        }
-        c++;
+            NouveauFenetre("Profile_utilisateur");
     }
 
     public void onaddimageUser(ActionEvent event){
-
-
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Select Image File");
-
-        File file = fileChooser.showOpenDialog(new Stage());
-
+        File file = ParcourirFichier(event);
         if (file != null) {
             String cheminPhoto = file.getAbsolutePath();
             System.out.println("Chemin de la photo sélectionnée : " + cheminPhoto);
 
             Image imageview = new Image(file.toURI().toString());
-
             image.setImage(imageview);
-
-
         } else {
             System.out.println("Aucun fichier sélectionné.");
         }

@@ -37,7 +37,7 @@
                         <RowConstraints />
                     </rowConstraints>
                     <children>
-                        <Button graphicTextGap="10.0" mnemonicParsing="false" onAction="#addf" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #46c35f;" styleClass="drop-shadow" stylesheets="@style.css" text="Ajouter" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                        <Button graphicTextGap="10.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #46c35f;" styleClass="drop-shadow" stylesheets="@style.css" text="Ajouter" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                             <GridPane.margin>
                                 <Insets right="60.0" top="20.0" />
                             </GridPane.margin>
@@ -56,7 +56,7 @@
 
 
 
-                        <Text fill="#898989" strokeType="OUTSIDE" strokeWidth="0.0" text="ajouter founisseur :">
+                        <Text fill="#898989" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Fournisseur">
                             <GridPane.margin>
                                 <Insets left="60.0" />
                             </GridPane.margin>
@@ -69,18 +69,7 @@
                                 <Insets left="40.0" />
                             </GridPane.margin>
                         </Line>
-                        <GridPane style="-fx-background-color: white; -fx-background-radius: 25px;" styleClass="drop-shadow" stylesheets="@style.css" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
-                            <columnConstraints>
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            </columnConstraints>
-                            <rowConstraints>
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            </rowConstraints>
-                            <GridPane.margin>
-                                <Insets bottom="50.0" left="60.0" right="60.0" top="260.0" />
-                            </GridPane.margin>
-                        </GridPane>
-                        <GridPane prefHeight="290.0" prefWidth="567.0" style="-fx-background-color: white; -fx-background-radius: 25px;" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                        <GridPane prefHeight="100.0" prefWidth="880.0" style="-fx-background-color: white; -fx-background-radius: 25px;" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                             <columnConstraints>
                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -89,10 +78,9 @@
                                 <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="68.0" vgrow="SOMETIMES" />
                                 <RowConstraints maxHeight="96.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
                                 <RowConstraints maxHeight="101.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
-                                <RowConstraints maxHeight="101.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <GridPane.margin>
-                                <Insets bottom="50.0" left="60.0" right="60.0" top="90.0" />
+                                <Insets bottom="100.0" left="60.0" right="60.0" top="90.0" />
                             </GridPane.margin>
                             <children>
                                 <Text fill="#898989" strokeType="OUTSIDE" strokeWidth="0.0" text="Name :" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
@@ -143,27 +131,31 @@
                                         <Insets left="40.0" />
                                     </GridPane.margin>
                                 </Text>
-                                <TextField fx:id="countryfor" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                <TextField GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                     <GridPane.margin>
                                         <Insets left="150.0" right="80.0" />
                                     </GridPane.margin>
                                 </TextField>
-                                <TextField fx:id="cityfor" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                <TextField GridPane.columnIndex="1" GridPane.rowIndex="1">
                                     <GridPane.margin>
                                         <Insets left="150.0" right="80.0" />
                                     </GridPane.margin>
                                 </TextField>
-                                <TextField fx:id="emailfor" prefHeight="26.0" prefWidth="210.0" GridPane.columnIndex="1" GridPane.valignment="CENTER">
+                                <TextField prefHeight="26.0" prefWidth="210.0" GridPane.columnIndex="1" GridPane.valignment="CENTER">
                                     <GridPane.margin>
                                         <Insets left="150.0" right="80.0" />
                                     </GridPane.margin>
                                 </TextField>
-                                <TextField fx:id="namefor" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                <TextField GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                     <GridPane.margin>
                                         <Insets left="150.0" right="80.0" />
                                     </GridPane.margin>
                                 </TextField>
+<<<<<<< HEAD
                                 <ComboBox fx:id="genderfor" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP">
+=======
+                                <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP">
+>>>>>>> 022289110064033b2a58265e1dec8a5c303ee2e7
                                     <GridPane.margin>
                                         <Insets left="150.0" />
                                     </GridPane.margin>
@@ -174,17 +166,20 @@
                                         </FXCollections>
                                     </items>
                                 </ComboBox>
-                                <TextField fx:id="phonefor" GridPane.rowIndex="1">
+                                <TextField GridPane.rowIndex="1">
                                     <GridPane.margin>
                                         <Insets left="150.0" right="80.0" />
                                     </GridPane.margin>
                                 </TextField>
+<<<<<<< HEAD
 
                                 <AnchorPane layoutX="361.0" layoutY="137.0" prefHeight="184.0" prefWidth="178.0" style="-fx-border-color: black;" GridPane.halignment="LEFT" GridPane.rowIndex="3">
                                     <GridPane.margin>
                                         <Insets bottom="60.0" left="239.0" right="230.0" top="89.0" />
                                     </GridPane.margin>
                                 </AnchorPane>
+=======
+>>>>>>> 022289110064033b2a58265e1dec8a5c303ee2e7
 
                             </children>
                         </GridPane>

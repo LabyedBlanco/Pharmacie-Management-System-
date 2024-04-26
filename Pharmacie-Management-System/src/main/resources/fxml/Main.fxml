@@ -128,7 +128,7 @@
                         <Insets />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="logout" alignment="TOP_LEFT" layoutX="10.0" layoutY="267.0" mnemonicParsing="false" onAction="#Onlogout" prefHeight="40.0" prefWidth="216.0" style="-fx-background-color: #1c1f22;" styleClass="sidebarItem" stylesheets="@../styles/hover.css" text="  Se déconnecter" textFill="WHITE">
+                  <Button fx:id="logout" alignment="TOP_LEFT" layoutX="10.0" layoutY="267.0" mnemonicParsing="false" onAction="#OnClose" prefHeight="40.0" prefWidth="216.0" style="-fx-background-color: #1c1f22;" styleClass="sidebarItem" stylesheets="@../styles/hover.css" text="  Se déconnecter" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0">
                            <image>

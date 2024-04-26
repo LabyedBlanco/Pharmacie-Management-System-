@@ -54,7 +54,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Text fill="#898989" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Purchase :">
+                  <Text fill="#898989" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Vente :">
                      <GridPane.margin>
                         <Insets left="60.0" />
                      </GridPane.margin>

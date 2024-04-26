@@ -2,6 +2,7 @@ package example.controller;
 
 import example.model.DatabaseManager;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -23,56 +24,49 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
-public class CommandeController implements Initializable {
+
+public class CommandeController extends Controller implements Initializable {
 
     @FXML
     private AnchorPane Connected;
-
     @FXML
     private ComboBox<String> Selectbox;
-
     private Connection connect;
     private PreparedStatement prepare;
     private ResultSet result;
     @FXML
     private Text main;
-
     @FXML
     private GridPane Avoirs;
-
     @FXML
     private GridPane Commande;
-
     @FXML
     private TextField AjProduit;
-
     @FXML
     private Button ComConfirm;
-
     @FXML
     private DatePicker ComDate;
-
     @FXML
     private TextField ComDetails;
-
     @FXML
     private TextField ComFournisseur;
-
     @FXML
     private TextField ComQantite;
-
-
     @FXML
     private ComboBox<String> Depot;
-
     @FXML
     private GridPane MainPane;
     @FXML
     private ComboBox<String> ComPayement;
 
+
+
+    Connection conexion = getConnection();
+
     @Override
     public void initialize(URL url , ResourceBundle resourceBundle){
 
+<<<<<<< HEAD
         try {
             DatabaseManager Data = new DatabaseManager();
             boolean isConnected = Data.ConnectionStat();
@@ -87,6 +81,9 @@ public class CommandeController implements Initializable {
         } catch (Exception e) {
             System.err.println("Error initializing connection: " + e.getMessage());
         }
+=======
+        Online(ConnectionStat(),main,Connected);
+>>>>>>> 022289110064033b2a58265e1dec8a5c303ee2e7
 
         if(Depot != null){
             Depot.setItems(FXCollections.observableArrayList("1","2","3","4"));
@@ -121,21 +118,8 @@ public class CommandeController implements Initializable {
             });
         }
     }
-    private int c = 0;
-    Stage stage = new Stage();
-    public void Ajouter() throws IOException {
 
-        if (c==0) {
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AddCommande.fxml"));
-            Parent root = loader.load();
-            stage.setScene(new Scene(root));
-            stage.show();
-
-        }else {
-            stage.show();
-        }
-        c++;
+    public void Ajouter(ActionEvent actionEvent) throws IOException {
+        super.NouveauFenetre("AddCommande");
     }
-
 }

@@ -117,7 +117,7 @@
                   </GridPane>
                </children>
             </AnchorPane>
-            <Text fill="#898989" strokeType="OUTSIDE" strokeWidth="0.0" text="PROFILE UTILISATEUR:" translateX="40.0">
+            <Text fill="#898989" strokeType="OUTSIDE" strokeWidth="0.0" text="Profil : " translateX="40.0">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>

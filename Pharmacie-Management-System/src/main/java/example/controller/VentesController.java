@@ -1,6 +1,5 @@
 package example.controller;
 
-import example.model.DatabaseManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,12 +12,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 
+<<<<<<< HEAD
 public class VentesController implements Initializable {
 
     public AnchorPane Connected;
@@ -38,40 +37,15 @@ public class VentesController implements Initializable {
             System.err.println("Error initializing connection: " + e.getMessage());
         }
     }
+=======
+public class VentesController extends Controller implements Initializable {
+>>>>>>> 022289110064033b2a58265e1dec8a5c303ee2e7
     @FXML
     private Text main;
-
     @FXML
     static TableView<String> listPurchases;
-
-    private int c = 0;
-    public static void main(String[] args) {
-
-    }
-
-    public void start(Stage primaryStage) {
-
-    }
-
-    Stage stage = new Stage();
-
-    public void onadd(ActionEvent event) throws IOException {
-
-        if(c==0){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Ajouter-vente.fxml"));
-            Parent root = loader.load();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Add a Purchase");
-            stage.show();
-
-        }else {
-            stage.show();
-        }
-        c++;
-    }
-
-
-
+    @FXML
+    private AnchorPane Connected;
     @FXML
     private TextField amount;
 
@@ -83,6 +57,18 @@ public class VentesController implements Initializable {
 
     @FXML
     private TextField productname;
+
+
+
+    public void initialize(URL url , ResourceBundle resourceBundle){
+        Online(ConnectionStat(),main,Connected);
+    }
+
+    public void onadd() throws IOException {
+        super.NouveauFenetre("Ajouter-vente");
+    }
+
+
 
 
 
