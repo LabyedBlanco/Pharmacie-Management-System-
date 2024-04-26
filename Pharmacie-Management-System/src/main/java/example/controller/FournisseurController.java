@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -30,6 +31,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class FournisseurController implements Initializable {
@@ -71,7 +73,7 @@ public class FournisseurController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
 
-            Connected.setStyle("-fx-background-color: red;-fx-background-radius: 100px");
+            /*Connected.setStyle("-fx-background-color: red;-fx-background-radius: 100px");
             DatabaseManager Data = new DatabaseManager();
             if (Data.ConnectionStat() == true) {
                 System.out.print(Data.ConnectionStat());
@@ -80,7 +82,20 @@ public class FournisseurController implements Initializable {
                 System.out.print(Data.ConnectionStat());
                 Connected.setStyle("-fx-background-color: red;-fx-background-radius: 100px");
             }
-
+*/
+        try {
+            DatabaseManager Data = new DatabaseManager();
+            boolean isConnected = Data.ConnectionStat();
+            if (isConnected) {
+                System.out.print(isConnected);
+                Connected.setStyle("-fx-background-color: green; -fx-background-radius: 100px");
+            } else {
+                System.out.print(isConnected);
+                Connected.setStyle("-fx-background-color: red; -fx-background-radius: 100px");
+            }
+        } catch (Exception e) {
+            System.err.println("Error initializing connection: " + e.getMessage());
+        }
 
         if (tableViewActif != null && tableViewArchived != null) {
             tableViewActif.setVisible(true);
@@ -88,9 +103,11 @@ public class FournisseurController implements Initializable {
         } else {
             System.err.println("TableView is null");
         }
+
+
     }
     @FXML
-    public void Addfor(ActionEvent event) throws IOException {
+    public void Addfor() throws IOException {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Add.fxml"));
         Parent root = loader.load();
@@ -99,30 +116,30 @@ public class FournisseurController implements Initializable {
         stage.setScene(new Scene(root));
         stage.show();
     }
-    @FXML
-    public void parcourirPhoto() {
-        FileChooser fileChooser = new FileChooser();
+    /* @FXML
+     public void parcourirPhoto() {
+         FileChooser fileChooser = new FileChooser();
 
 
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.gif")
-        );
+         fileChooser.getExtensionFilters().addAll(
+                 new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.gif")
+         );
 
 
-        File selectedFile = fileChooser.showOpenDialog(new Stage());
+         File selectedFile = fileChooser.showOpenDialog(new Stage());
 
 
-        if (selectedFile != null) {
+         if (selectedFile != null) {
 
-            String cheminPhoto = selectedFile.getAbsolutePath();
-            System.out.println("Chemin de la photo sélectionnée : " + cheminPhoto);
+             String cheminPhoto = selectedFile.getAbsolutePath();
+             System.out.println("Chemin de la photo sélectionnée : " + cheminPhoto);
 
-            Image image = new Image(selectedFile.toURI().toString());
-            imageView.setImage(image);
-        } else {
-            System.out.println("Aucun fichier sélectionné.");
-        }
-    }
+             Image image = new Image(selectedFile.toURI().toString());
+             imageView.setImage(image);
+         } else {
+             System.out.println("Aucun fichier sélectionné.");
+         }
+     }*/
     @FXML
     public void AddforA(ActionEvent event) throws IOException {
 
@@ -161,32 +178,54 @@ public class FournisseurController implements Initializable {
         }
     }
     @FXML
-    public void addf(){
+    public void addf() {
         String name = namefor.getText();
         String email = emailfor.getText();
         String phone = phonefor.getText();
-        String city = cityfor.getText();
-        String country = countryfor.getText();
         String gender = genderfor.getValue();
+        String city=cityfor.getText();
+        String country=countryfor.getText();
 
-        try{
-            Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3307/pharmacie","root","");
+        DatabaseManager dbManager = new DatabaseManager();
+        Connection conn = null;
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        try {
+            conn = dbManager.getConnection();
 
-            String sql = "INSERT INTO fournisseur (,Nomf ,Telf , Emailf,gender) VALUES(?,?,?,?,?,?)";
-
+            String sql = "INSERT INTO fournisseur (Nomf, Telf, Emailf,country,city, gender) VALUES (?, ?, ?, ?,?,?)";
             PreparedStatement statement = conn.prepareStatement(sql);
-            //statement.setInt(1, id);
-            statement.setString(2, name);
-            statement.setString(3,phone );
-            statement.setString(4, email);
-            statement.setString(5,gender);
-            //statement.setString(6,password);
+
+            statement.setString(1, name);
+            statement.setString(2, phone);
+            statement.setString(3, email);
+            statement.setString(4, country);
+            statement.setString(5, city);
+            statement.setString(6, gender);
+
             statement.executeUpdate();
-            System.out.println("Données insérées avec succès !");
-        }
-        catch (Exception e){
-            e.printStackTrace();
+
+            alert.setTitle("Succès");
+            alert.setHeaderText(null);
+            alert.setContentText("Les données ont été insérées avec succès !");
+            alert.showAndWait();
+            Addfor();
+
+        } catch (Exception e) {
+            System.err.println("Erreur lors de l'ajout de données : " + e.getMessage());
+            alert.setTitle("Failed");
+            alert.setHeaderText(null); // Pas de sous-titre
+            alert.setContentText("probleme d'insertion !");
+            alert.showAndWait();
+        } finally {
+            if (conn != null) {
+                try {
+                    dbManager.closeConnection();
+                } catch (SQLException sqle) {
+                    System.err.println("Erreur lors de la fermeture de la connexion : " + sqle.getMessage());
+                }
+            }
         }
     }
+
 
 }

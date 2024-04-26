@@ -112,7 +112,6 @@ public class MainController implements Initializable {
         prod.setStyle("-fx-background-color: transparent");
         four.setStyle("-fx-background-color: transparent");
 
-
     }
 
     public void OnCommande (ActionEvent event) throws IOException {
@@ -160,8 +159,7 @@ public class MainController implements Initializable {
 
     }
 
-    public void Onlogout (ActionEvent actionEvent)  throws IOException{
-
+    public void Onlogout(ActionEvent actionEvent)  throws IOException{
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("/fxml/Close.fxml"));
         Parent root = loader.load();
 

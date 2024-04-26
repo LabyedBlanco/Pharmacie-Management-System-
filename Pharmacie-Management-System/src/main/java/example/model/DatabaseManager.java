@@ -18,7 +18,6 @@ public class DatabaseManager {
                 e.printStackTrace();
         }
     }
-
     public Connection getConnection() {
         return conn;
     }
@@ -31,7 +30,6 @@ public class DatabaseManager {
     }
     //Usage : DatabaseManager dbManager = new DatabaseManager();
     //Connection conn = dbManager.getConnection();
-
     public void closeConnection() throws SQLException {
         if (conn != null && !conn.isClosed()) {
             conn.close();

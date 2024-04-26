@@ -135,7 +135,7 @@
                                         <Insets left="40.0" />
                                     </GridPane.margin>
                                 </Text>
-                                <Text fill="#898989" layoutX="10.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender :" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                <Text fill="#898989" layoutX="10.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender :" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP">
                                     <font>
                                         <Font name="System Bold" size="14.0" />
                                     </font>
@@ -163,7 +163,7 @@
                                         <Insets left="150.0" right="80.0" />
                                     </GridPane.margin>
                                 </TextField>
-                                <ComboBox fx:id="genderfor" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                <ComboBox fx:id="genderfor" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP">
                                     <GridPane.margin>
                                         <Insets left="150.0" />
                                     </GridPane.margin>
@@ -179,6 +179,7 @@
                                         <Insets left="150.0" right="80.0" />
                                     </GridPane.margin>
                                 </TextField>
+
                                 <AnchorPane layoutX="361.0" layoutY="137.0" prefHeight="184.0" prefWidth="178.0" style="-fx-border-color: black;" GridPane.halignment="LEFT" GridPane.rowIndex="3">
                                     <GridPane.margin>
                                         <Insets bottom="60.0" left="239.0" right="230.0" top="89.0" />

@@ -23,15 +23,19 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-            Connected.setStyle("-fx-background-color: red;-fx-background-radius: 100px");
+        try {
             DatabaseManager Data = new DatabaseManager();
-            if (Data.ConnectionStat() == true) {
-                System.out.print(Data.ConnectionStat());
-                Connected.setStyle("-fx-background-color: green;-fx-background-radius: 100px");
-            }else {
-                System.out.print(Data.ConnectionStat());
-                Connected.setStyle("-fx-background-color: red;-fx-background-radius: 100px");
+            boolean isConnected = Data.ConnectionStat();
+            if (isConnected) {
+                System.out.print(isConnected);
+                Connected.setStyle("-fx-background-color: green; -fx-background-radius: 100px");
+            } else {
+                System.out.print(isConnected);
+                Connected.setStyle("-fx-background-color: red; -fx-background-radius: 100px");
             }
+        } catch (Exception e) {
+            System.err.println("Error initializing connection: " + e.getMessage());
+        }
     }
 
     public void section(ActionEvent event) throws IOException {

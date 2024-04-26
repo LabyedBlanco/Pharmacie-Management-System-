@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -69,7 +70,7 @@
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
                             <children>
-                                <Text layoutX="46.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Purchases :" AnchorPane.leftAnchor="46.0" AnchorPane.topAnchor="48.0">
+                                <Text layoutX="46.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VENTES :" AnchorPane.leftAnchor="46.0" AnchorPane.topAnchor="48.0">
                                     <font>
                                         <Font name="Tahoma" size="16.0" />
                                     </font>
@@ -78,7 +79,7 @@
                         </AnchorPane>
                     </children>
                 </GridPane>
-                <AnchorPane prefHeight="631.0" prefWidth="1100.0" style="-fx-background-color: #f9f9f9;" GridPane.rowIndex="1">
+                <AnchorPane prefHeight="631.0" prefWidth="1100.0" style="-fx-background-color: #f9f9f9;" styleClass="drop-shadow" stylesheets="@style.css" GridPane.rowIndex="1">
                     <children>
                         <GridPane layoutY="67.0" prefHeight="112.0" prefWidth="1099.0" styleClass="drop-shadow" stylesheets="@style.css">
                             <columnConstraints>
@@ -189,7 +190,7 @@
                                 </GridPane>
                             </children>
                         </GridPane>
-                        <GridPane layoutY="198.0" prefHeight="39.0" prefWidth="1100.0">
+                        <GridPane layoutY="198.0" prefHeight="39.0" prefWidth="1100.0" styleClass="drop-shadow" stylesheets="@style.css">
                             <columnConstraints>
                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="341.6666564941406" minWidth="10.0" prefWidth="125.0" />
                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="561.6666793823242" minWidth="10.0" prefWidth="91.0" />
@@ -200,7 +201,7 @@
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <Button fx:id="btnjr" mnemonicParsing="false" style="-fx-background-color: rgb(255,255,255); -fx-border-radius: 20px; -fx-background-radius: 20px; -fx-text-fill: rgb(201,182,165); -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);" text="Jour" GridPane.halignment="RIGHT">
+                                <Button fx:id="btnjr" mnemonicParsing="false" style="-fx-background-color: rgb(255,255,255); -fx-border-radius: 20px; -fx-background-radius: 20px; -fx-text-fill: rgb(201,182,165);" text="Jour" GridPane.halignment="RIGHT">
                                     <font>
                                         <Font name="Tahoma" size="14.0" />
                                     </font>
@@ -211,7 +212,7 @@
                                         <Insets right="10.0" />
                                     </GridPane.margin>
                                 </Button>
-                                <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="76.0" style="-fx-background-color: rgb(255,255,255); -fx-border-radius: 20px; -fx-background-radius: 20px; -fx-text-fill: rgb(201,182,165); -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);" text="Semaine" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                                <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="76.0" style="-fx-background-color: rgb(255,255,255); -fx-border-radius: 20px; -fx-background-radius: 20px; -fx-text-fill: rgb(201,182,165);" text="Semaine" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                                     <font>
                                         <Font name="Tahoma" size="14.0" />
                                     </font>
@@ -219,7 +220,7 @@
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </Button>
-                                <Button mnemonicParsing="false" style="-fx-background-color: rgb(255,255,255); -fx-border-radius: 20px; -fx-background-radius: 20px; -fx-text-fill: rgb(201,182,165); -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);" text="Mois" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                                <Button mnemonicParsing="false" style="-fx-background-color: rgb(255,255,255); -fx-border-radius: 20px; -fx-background-radius: 20px; -fx-text-fill: rgb(201,182,165);" text="Mois" GridPane.columnIndex="2" GridPane.halignment="CENTER">
                                     <font>
                                         <Font name="Tahoma" size="14.0" />
                                     </font>
@@ -261,7 +262,7 @@
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <Button graphicTextGap="0.0" mnemonicParsing="false" onAction="#onadd" prefHeight="34.0" prefWidth="127.0" style="-fx-background-color: rgb(70,195,95); -fx-text-fill: white;" text="Ajouter" GridPane.halignment="RIGHT">
+                                <Button graphicTextGap="0.0" mnemonicParsing="false" onAction="#onadd" prefHeight="34.0" prefWidth="127.0" style="-fx-background-color: rgb(70,195,95); -fx-text-fill: white;" styleClass="drop-shadow" stylesheets="@style.css" text="Ajouter" GridPane.halignment="RIGHT">
                                     <font>
                                         <Font name="Tahoma" size="13.0" />
                                     </font>
@@ -284,16 +285,30 @@
                                 </Button>
                             </children>
                         </GridPane>
-                        <TableView fx:id="listPurchases" layoutX="20.0" layoutY="263.0" prefHeight="345.0" prefWidth="1060.0" stylesheets="@../styles/MainFormDesign.css" AnchorPane.rightAnchor="40.0">
-                            <columns>
-                                <TableColumn minWidth="150.0" prefWidth="157.0" text="Client" />
-                                <TableColumn minWidth="127.33334350585938" prefWidth="200.0" text="Date" />
-                                <TableColumn minWidth="178.0" prefWidth="178.0" text="Amount" />
-                                <TableColumn minWidth="200.0" prefWidth="208.66668701171875" text="Utilisateur" />
-                                <TableColumn minWidth="150.0" prefWidth="155.66668701171875" text="Produit" />
-                                <TableColumn minWidth="150.0" prefWidth="162.33331298828125" text="Action" />
-                            </columns>
-                        </TableView>
+                  <GridPane layoutX="157.0" layoutY="361.0" prefHeight="90.0" prefWidth="315.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="260.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                           <content>
+                              <TableView fx:id="listPurchases" prefHeight="715.0" prefWidth="1040.0" stylesheets="@../styles/MainFormDesign.css">
+                                 <columns>
+                                    <TableColumn minWidth="150.0" prefWidth="157.0" text="Client" />
+                                    <TableColumn minWidth="127.33334350585938" prefWidth="200.0" text="Date" />
+                                    <TableColumn minWidth="178.0" prefWidth="178.0" text="Amount" />
+                                    <TableColumn minWidth="200.0" prefWidth="208.66668701171875" text="Utilisateur" />
+                                    <TableColumn minWidth="150.0" prefWidth="155.66668701171875" text="Produit" />
+                                    <TableColumn minWidth="150.0" prefWidth="162.33331298828125" text="Action" />
+                                 </columns>
+                              </TableView>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </GridPane>
                     </children></AnchorPane>
             </children>
         </GridPane>

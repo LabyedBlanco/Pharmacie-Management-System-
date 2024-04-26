@@ -73,15 +73,20 @@ public class CommandeController implements Initializable {
     @Override
     public void initialize(URL url , ResourceBundle resourceBundle){
 
-            Connected.setStyle("-fx-background-color: red;-fx-background-radius: 100px");
+        try {
             DatabaseManager Data = new DatabaseManager();
-            if (Data.ConnectionStat() == true) {
-                System.out.print(Data.ConnectionStat());
-                Connected.setStyle("-fx-background-color: green;-fx-background-radius: 100px");
-            }else {
-                System.out.print(Data.ConnectionStat());
-                Connected.setStyle("-fx-background-color: red;-fx-background-radius: 100px");
+            boolean isConnected = Data.ConnectionStat();
+            if (isConnected) {
+                System.out.print(isConnected);
+                Connected.setStyle("-fx-background-color: green; -fx-background-radius: 100px");
+            } else {
+                System.out.print(isConnected);
+                Connected.setStyle("-fx-background-color: red; -fx-background-radius: 100px");
+                main.setText("Offline");
             }
+        } catch (Exception e) {
+            System.err.println("Error initializing connection: " + e.getMessage());
+        }
 
         if(Depot != null){
             Depot.setItems(FXCollections.observableArrayList("1","2","3","4"));
