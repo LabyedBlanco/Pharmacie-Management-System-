@@ -19,6 +19,16 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
+
+   <GridPane fx:id="MainPane" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+   </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+         </rowConstraints>
+</GridPane>
       <GridPane style="-fx-background-color: #1c1f22;">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -38,6 +48,7 @@
             </ImageView>
             <VBox prefHeight="395.0" prefWidth="162.0" spacing="10.0" GridPane.rowIndex="1">
                <children>
+
                   <Button fx:id="dash" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#OnDashboard" prefHeight="40.0" prefWidth="216.0" style="-fx-background-color: #1c1f22;" styleClass="sidebarItem" stylesheets="@../styles/hover.css" text="  Dashbord" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0">
@@ -148,13 +159,20 @@
                   <Insets left="50.0" />
                </GridPane.margin>
             </VBox>
+         <Button fx:id="refraichir" prefHeight="32.0" prefWidth="351.0" style="-fx-background-color: transparent; -fx-padding: 0; -fx-border: none;" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+            <GridPane.margin>
+               <Insets left="450.0" top="40.0" />
+            </GridPane.margin>
+            <graphic>
+               <ImageView fitHeight="30.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../images/icons/refre-removebg-preview.png" />
+                  </image>
+               </ImageView>
+            </graphic>
+         </Button>
+
          </children>
-      </GridPane>
-      <GridPane fx:id="MainPane" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
       </GridPane>
    </children>
 </GridPane>

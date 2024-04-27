@@ -1,4 +1,5 @@
 package example.controller;
+import example.model.DatabaseManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -6,6 +7,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+
+import javafx.stage.FileChooser;
+
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -17,7 +21,25 @@ public class Produit_controller extends Controller implements Initializable {
 
     //this is to make the color of the Connection State
     public void initialize(URL url , ResourceBundle resourceBundle){
+
+
+
+        try {
+            DatabaseManager Data = new DatabaseManager();
+            boolean isConnected = Data.ConnectionStat();
+            if (isConnected) {
+                System.out.print(isConnected);
+                Connected.setStyle("-fx-background-color: green; -fx-background-radius: 100px");
+            } else {
+                System.out.print(isConnected);
+                Connected.setStyle("-fx-background-color: red; -fx-background-radius: 100px");
+                main.setText("Offline");
+            }
+        } catch (Exception e) {
+            System.err.println("Error initializing connection: " + e.getMessage());
+        }
         Online(ConnectionStat(),main,Connected);
+
     }
 
     @FXML

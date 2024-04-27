@@ -45,6 +45,10 @@ public class MainController extends Controller implements Initializable {
 
     @FXML
     private Button vent;
+    @FXML
+    Button refraichir;
+    private String currentPage;
+
 
     public void initialize(URL url , ResourceBundle resourceBundle){
         //Style
@@ -56,17 +60,19 @@ public class MainController extends Controller implements Initializable {
         four.setStyle("-fx-background-color: transparent");
         logout.setStyle("-fx-background-color: transparent");
 
-        //First to select
+        refraichir.setOnAction(this::onRefraichir);
+
         System.out.print("\nDashboard");
         FxmlLoader object = new FxmlLoader();
         Pane view = null;
         try {
             view = object.setPage("Dashboard");
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        //Add Contenue
+
         MainPane.add(view,0,0);
     }
 
@@ -98,6 +104,7 @@ public class MainController extends Controller implements Initializable {
         comm.setStyle("-fx-background-color: transparent");
         prod.setStyle("-fx-background-color: transparent");
         four.setStyle("-fx-background-color: transparent");
+        currentPage ="Utilisateur";
     }
     public void OnDashboard (ActionEvent event) throws IOException {
         MainPane.getChildren().clear();
@@ -105,12 +112,14 @@ public class MainController extends Controller implements Initializable {
         FxmlLoader object = new FxmlLoader();
         Pane view = object.setPage("Dashboard");
         MainPane.add(view,0,0);
+
         dash.setStyle("-fx-background-color: transparent;-fx-effect: dropshadow(gaussian, white, 10, 0.05, 0, 0);-fx-border-color: WHITE; -fx-border-width: 0px 0px 0px 3px;");
         comm.setStyle("-fx-background-color: transparent");
         vent.setStyle("-fx-background-color: transparent");
         util.setStyle("-fx-background-color: transparent");
         prod.setStyle("-fx-background-color: transparent");
         four.setStyle("-fx-background-color: transparent");
+        currentPage ="Dashboard";
 
     }
 
@@ -126,6 +135,7 @@ public class MainController extends Controller implements Initializable {
         util.setStyle("-fx-background-color: transparent");
         prod.setStyle("-fx-background-color: transparent");
         four.setStyle("-fx-background-color: transparent");
+        currentPage ="Commande";
 
 
     }
@@ -141,6 +151,7 @@ public class MainController extends Controller implements Initializable {
         util.setStyle("-fx-background-color: transparent");
         prod.setStyle("-fx-background-color: transparent");
         four.setStyle("-fx-background-color: transparent");
+        currentPage ="Ventes";
     }
 
 
@@ -156,11 +167,36 @@ public class MainController extends Controller implements Initializable {
         util.setStyle("-fx-background-color: transparent");
         comm.setStyle("-fx-background-color: transparent");
         prod.setStyle("-fx-background-color: transparent");
+        currentPage ="Fournisseur";
 
     }
+
+
+    public void Onlogout(ActionEvent actionEvent)  throws IOException{
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("/fxml/Close.fxml"));
+        Parent root = loader.load();
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
 
     public void OnClose(ActionEvent actionEvent) throws IOException{
         MessageConfirmation("Close");
 
+    }
+    public void onRefraichir(ActionEvent event) {
+        try {
+
+            FxmlLoader object = new FxmlLoader();
+            Pane view = object.setPage(currentPage);
+            MainPane.getChildren().clear();
+            MainPane.add(view, 0, 0);
+
+            System.out.println("Rafraîchissement effectué");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

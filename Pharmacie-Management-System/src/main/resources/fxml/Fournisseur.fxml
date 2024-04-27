@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -69,7 +68,7 @@
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
                             <children>
-                                <Text layoutX="46.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FOURNISSEURS :" AnchorPane.leftAnchor="46.0" AnchorPane.topAnchor="48.0">
+                                <Text layoutX="46.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fournisseur:" AnchorPane.leftAnchor="46.0" AnchorPane.topAnchor="48.0">
                                     <font>
                                         <Font name="Tahoma" size="16.0" />
                                     </font>
@@ -115,13 +114,44 @@
                                 </ImageView>
                             </graphic></Button>
 
-                        <Button onAction="#afficherFournisseursArchives" prefHeight="41.0" prefWidth="221.0" style="-fx-background-color: #019aff;" styleClass="drop-shadow" stylesheets="@style.css" text="Afficher les fournisseurs archivés" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                        <Button onAction="#afficherFournisseursArchives" prefHeight="41.0" prefWidth="221.0" style="-fx-background-color: #019aff;" text="Afficher les fournisseurs archivés" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                             <GridPane.margin>
                                 <Insets left="40.0" />
                             </GridPane.margin>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font></Button>
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font></Button>
+
+
+                        <AnchorPane prefHeight="416.0" prefWidth="1024.0" style="-fx-background-color: white; -fx-background-radius: 15px;" styleClass="drop-shadow" stylesheets="@style.css" GridPane.rowIndex="2">
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <GridPane.margin>
+                                <Insets bottom="40.0" left="40.0" right="60.0" top="80.0" />
+                            </GridPane.margin>
+                            <children>
+                                <TableView fx:id="tableViewActif" layoutX="197.0" layoutY="10.0" prefHeight="282.0" prefWidth="996.0" stylesheets="@../styles/MainFormDesign.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="10.0">
+                                    <columns>
+                                        <TableColumn minWidth="138.0" prefWidth="138.0" text="             Name" />
+                                        <TableColumn minWidth="150.0" prefWidth="222.0" text="             Email" />
+                                        <TableColumn minWidth="189.0" prefWidth="189.0" text="            Phone" />
+                                        <TableColumn minWidth="200.0" prefWidth="253.0" text="             Adress" />
+
+                                        <TableColumn minWidth="150.0" prefWidth="195.0" text="             Action" />
+                                    </columns>
+                                </TableView>
+                                <TableView fx:id="tableViewArchived" layoutX="197.0" layoutY="10.0" prefHeight="282.0" prefWidth="996.0" stylesheets="@../styles/MainFormDesign.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="10.0">
+                                    <columns>
+                                        <TableColumn minWidth="138.0" prefWidth="189.0" text="             Name" />
+                                        <TableColumn minWidth="150.0" prefWidth="287.0" text="             Email" />
+                                        <TableColumn minWidth="189.0" prefWidth="341.0" text="            Phone" />
+                                        <TableColumn minWidth="182.0" prefWidth="212.0" text="             Adresse" />
+
+                                    </columns>
+                                </TableView>
+                            </children>
+                        </AnchorPane>
 
                         <GridPane maxHeight="35.0" maxWidth="225.0" style="-fx-background-color: white; -fx-background-radius: 25px;" styleClass="drop-shadow" stylesheets="@style.css" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP">
                             <columnConstraints>
@@ -158,9 +188,9 @@
                                     </image>
                                 </ImageView>
                             </graphic>
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
+                            <font>
+                                <Font name="System Bold" size="13.0" />
+                            </font>
                         </Button>
                         <Text fx:id="main2" fill="#898989" strokeType="OUTSIDE" strokeWidth="0.0" text="Fournisseur Active :">
                             <GridPane.margin>
@@ -175,21 +205,6 @@
                                 <Insets left="40.0" />
                             </GridPane.margin>
                         </Line>
-                  <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
-                     <GridPane.margin>
-                        <Insets bottom="20.0" left="40.0" right="60.0" top="80.0" />
-                     </GridPane.margin>
-                     <content>
-                        <TableView fx:id="tableViewArchived" prefHeight="344.0" prefWidth="1020.0" stylesheets="@../styles/MainFormDesign.css">
-                           <columns>
-                              <TableColumn minWidth="138.0" prefWidth="189.0" text="             Name" />
-                              <TableColumn minWidth="150.0" prefWidth="287.0" text="             Email" />
-                              <TableColumn minWidth="189.0" prefWidth="341.0" text="            Phone" />
-                              <TableColumn minWidth="182.0" prefWidth="212.0" text="             Adresse" />
-                           </columns>
-                        </TableView>
-                     </content>
-                  </ScrollPane>
 
                     </children>
                 </GridPane>

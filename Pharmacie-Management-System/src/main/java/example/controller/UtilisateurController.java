@@ -34,10 +34,30 @@ public class UtilisateurController extends Controller implements Initializable {
     public Pane imagePane;
     @FXML
     private Text main;
-
     public void initialize(URL url , ResourceBundle resourceBundle){
         Online(ConnectionStat(),main,Connected);
+        try {
+            DatabaseManager Data = new DatabaseManager();
+            boolean isConnected = Data.ConnectionStat();
+            if (isConnected) {
+                System.out.print(isConnected);
+                Connected.setStyle("-fx-background-color: green; -fx-background-radius: 100px");
+
+            } else {
+                System.out.print(isConnected);
+                Connected.setStyle("-fx-background-color: red; -fx-background-radius: 100px");
+                main.setText("Offline");
+            }
+        } catch (Exception e) {
+            System.err.println("Error initializing connection: " + e.getMessage());
+        }
     }
+
+
+
+
+
+
 
     public void start(Stage primaryStage) {
 
