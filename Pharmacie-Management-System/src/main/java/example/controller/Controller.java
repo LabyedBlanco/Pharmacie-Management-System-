@@ -62,8 +62,8 @@ public class Controller extends DatabaseManager {
     }
 
     //this is to close the current Stage
-    public void FermerFentere(ActionEvent actionEvent) throws IOException {
-        Node source = (Node) actionEvent.getSource();
+    public void FermerFentere(ActionEvent event) throws IOException {
+        Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
     }
@@ -89,19 +89,6 @@ public class Controller extends DatabaseManager {
             FermerFentere(event);
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }
-    }
-
-    public void Rafraichir(ActionEvent event) {
-        try {
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Main.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 }

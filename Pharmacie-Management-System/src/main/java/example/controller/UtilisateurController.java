@@ -65,6 +65,7 @@ public class UtilisateurController extends Controller implements Initializable {
 
     public void switchToHello(ActionEvent event) throws IOException {
         Stage stage = new Stage();
+        stage.setResizable(false);
             NouveauFenetre("Profile_utilisateur");
     }
 
