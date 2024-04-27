@@ -28,14 +28,21 @@ import java.util.ResourceBundle;
 
 public class UtilisateurController extends Controller implements Initializable {
     public AnchorPane Connected ;
-<<<<<<< HEAD
+    public Button bottonmodify;
+    public ImageView image;
+    int c = 0;
+    public Pane imagePane;
+    @FXML
+    private Text main;
     public void initialize(URL url , ResourceBundle resourceBundle){
+        Online(ConnectionStat(),main,Connected);
         try {
             DatabaseManager Data = new DatabaseManager();
             boolean isConnected = Data.ConnectionStat();
             if (isConnected) {
                 System.out.print(isConnected);
                 Connected.setStyle("-fx-background-color: green; -fx-background-radius: 100px");
+
             } else {
                 System.out.print(isConnected);
                 Connected.setStyle("-fx-background-color: red; -fx-background-radius: 100px");
@@ -47,21 +54,10 @@ public class UtilisateurController extends Controller implements Initializable {
     }
 
 
-=======
->>>>>>> 022289110064033b2a58265e1dec8a5c303ee2e7
-    public Button bottonmodify;
-    public ImageView image;
-    int c = 0;
-    public Pane imagePane;
-    @FXML
-    private Text main;
-<<<<<<< HEAD
-=======
 
-    public void initialize(URL url , ResourceBundle resourceBundle){
-        Online(ConnectionStat(),main,Connected);
-    }
->>>>>>> 022289110064033b2a58265e1dec8a5c303ee2e7
+
+
+
 
     public void start(Stage primaryStage) {
 

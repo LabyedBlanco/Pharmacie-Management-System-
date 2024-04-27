@@ -66,7 +66,7 @@ public class CommandeController extends Controller implements Initializable {
     @Override
     public void initialize(URL url , ResourceBundle resourceBundle){
 
-<<<<<<< HEAD
+
         try {
             DatabaseManager Data = new DatabaseManager();
             boolean isConnected = Data.ConnectionStat();
@@ -81,9 +81,9 @@ public class CommandeController extends Controller implements Initializable {
         } catch (Exception e) {
             System.err.println("Error initializing connection: " + e.getMessage());
         }
-=======
+
         Online(ConnectionStat(),main,Connected);
->>>>>>> 022289110064033b2a58265e1dec8a5c303ee2e7
+
 
         if(Depot != null){
             Depot.setItems(FXCollections.observableArrayList("1","2","3","4"));
