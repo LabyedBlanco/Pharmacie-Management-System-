@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class Produit_controller extends Controller implements Initializable {
@@ -55,7 +56,7 @@ public class Produit_controller extends Controller implements Initializable {
     int d=0;
     Stage stage = new Stage();
 
-    public void Onclose(ActionEvent event) throws IOException {
+    public void Onclose(ActionEvent event) throws IOException , SQLException {
         FermerFentere(event);
     }
 

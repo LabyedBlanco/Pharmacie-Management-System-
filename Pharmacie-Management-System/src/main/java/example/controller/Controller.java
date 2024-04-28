@@ -19,6 +19,7 @@ import java.io.File;
 import java.io.IOException;
 import java.security.interfaces.ECPublicKey;
 import java.sql.Connection;
+import java.sql.SQLException;
 
 public class Controller extends DatabaseManager {
 
@@ -62,7 +63,7 @@ public class Controller extends DatabaseManager {
     }
 
     //this is to close the current Stage
-    public void FermerFentere(ActionEvent event) throws IOException {
+    public void FermerFentere(ActionEvent event) throws IOException{
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();

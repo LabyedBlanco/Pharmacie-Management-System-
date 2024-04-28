@@ -45,17 +45,17 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
             </GridPane>
-            <TextField minHeight="30.0" prefHeight="37.0" prefWidth="302.0" promptText="Password" style="-fx-background-color: white;" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+            <TextField fx:id="Password" minHeight="30.0" prefHeight="37.0" prefWidth="302.0" promptText="Password" style="-fx-background-color: white;" GridPane.halignment="CENTER" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets left="40.0" right="40.0" top="210.0" />
                </GridPane.margin>
             </TextField>
-            <ComboBox prefHeight="36.0" prefWidth="316.0" promptText="Role" style="-fx-background-color: white;" GridPane.halignment="CENTER">
+            <ComboBox fx:id="Rolebox" prefHeight="36.0" prefWidth="316.0" promptText="Role" style="-fx-background-color: white;" GridPane.halignment="CENTER">
                <GridPane.margin>
                   <Insets top="30.0" />
                </GridPane.margin>
             </ComboBox>
-            <TextField minHeight="30.0" prefHeight="35.0" prefWidth="255.0" promptText="Email" style="-fx-background-color: white;" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+            <TextField fx:id="Email" minHeight="30.0" prefHeight="35.0" prefWidth="255.0" promptText="Email" style="-fx-background-color: white;" GridPane.halignment="CENTER" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets left="40.0" right="40.0" top="160.0" />
                </GridPane.margin>
