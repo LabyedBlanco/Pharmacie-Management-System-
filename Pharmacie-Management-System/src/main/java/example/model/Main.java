@@ -16,15 +16,15 @@ import java.sql.SQLException;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/fxml/Main.fxml"));
-        double screenWidth = Screen.getPrimary().getVisualBounds().getWidth();
-        double screenHeight = Screen.getPrimary().getVisualBounds().getHeight();
-        System.out.print("Width = "+screenWidth+" Height = "+screenHeight);
-        Scene scene = new Scene(fxmlLoader.load(), screenWidth, screenHeight);
-        stage.setTitle("Pharmacie.exe");
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/fxml/login.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(),909 , 604);
+        stage.setTitle("Se Connecter");
         stage.setScene(scene);
         stage.show();
     }
+
+
+
     public static void main(String[] args) {
         //Trying to get Connection with Database;
         try{

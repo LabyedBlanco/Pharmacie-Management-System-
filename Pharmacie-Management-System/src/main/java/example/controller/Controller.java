@@ -1,7 +1,9 @@
 package example.controller;
 
 import example.model.DatabaseManager;
+import example.model.Main;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -17,6 +19,7 @@ import java.io.File;
 import java.io.IOException;
 import java.security.interfaces.ECPublicKey;
 import java.sql.Connection;
+import java.sql.SQLException;
 
 public class Controller extends DatabaseManager {
 
@@ -29,7 +32,7 @@ public class Controller extends DatabaseManager {
 
     //this to update the Stat in navbar
     public void Online(boolean Stat, Text text, AnchorPane pane) {
-        if(pane != null) {
+        if (pane != null) {
             if (Stat) {
                 pane.setStyle("-fx-background-color: green; -fx-background-radius: 100px");
                 text.setText("Active");
@@ -41,7 +44,7 @@ public class Controller extends DatabaseManager {
     }
 
     //this is to loadUp an image
-    public File ParcourirFichier(ActionEvent actionEvent){
+    public File ParcourirFichier(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select Image File");
         File file = fileChooser.showOpenDialog(new Stage());
@@ -51,7 +54,7 @@ public class Controller extends DatabaseManager {
 
     //this is to start an new Stage (fenetre)
     public void NouveauFenetre(String NomFichier) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/"+NomFichier+".fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/" + NomFichier + ".fxml"));
         Parent root = loader.load();
 
         Stage stage = new Stage();
@@ -60,27 +63,29 @@ public class Controller extends DatabaseManager {
     }
 
     //this is to close the current Stage
-    public void FermerFentere(ActionEvent actionEvent) throws IOException{
-        Node source = (Node)  actionEvent.getSource();
-        Stage stage  = (Stage) source.getScene().getWindow();
+    public void FermerFentere(ActionEvent event) throws IOException{
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
     }
 
     //this is to Connfirm Something
-    int c ;
-    public void MessageConfirmation(String NoMessge) throws IOException{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/"+NoMessge+".fxml"));
-            Parent root = loader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-            stage.setTitle("Alert!");
+    int c;
+
+    public void MessageConfirmation(String NoMessge) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/" + NoMessge + ".fxml"));
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+        stage.setTitle("Alert!");
     }
 
-    public void Quitter(){
-    //I dont know
+    public void Quitter() {
+        //I dont know
     }
-    public void Annuler(ActionEvent event){
+
+    public void Annuler(ActionEvent event) {
         try {
             FermerFentere(event);
         } catch (IOException e) {

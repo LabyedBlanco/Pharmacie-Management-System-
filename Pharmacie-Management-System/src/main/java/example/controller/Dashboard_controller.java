@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+
 
 import java.io.IOException;
 import java.net.URL;
@@ -18,22 +20,25 @@ public class Dashboard_controller extends Controller implements Initializable {
     @FXML
     private Text main;
 
-    public void initialize(URL url , ResourceBundle resourceBundle){
+    public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        //This is for connecting with database
-        //we are doing this on DashbordController cause its the first to be executed
-        try{
+
+            //This is for connecting with database
+            //we are doing this on DashbordController cause its the first to be executed
+
+
+        try {
             DataConnexion.setConnectionStat(true);
-            Online(ConnectionStat(),main,Connected);
-        }catch (Exception e){
+            Online(ConnectionStat(), main, Connected);
+        } catch (Exception e1) {
             DataConnexion.setConnectionStat(false);
-            e.printStackTrace();
+            e1.printStackTrace();
         }
 
 
-        //this code is repetetive for each controller to
+            //this code is repetetive for each controller to
 
 
-
+        }
     }
-}
+
