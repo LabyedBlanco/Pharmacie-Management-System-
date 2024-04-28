@@ -6,29 +6,21 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class LoginController extends Controller implements Initializable {
-    private Stage stage;
-    private Scene scene;
-    @FXML
-    private AnchorPane Connected;
+
     @FXML
     private TextField Email;
 
@@ -38,7 +30,7 @@ public class LoginController extends Controller implements Initializable {
     @FXML
     private ComboBox<String> Rolebox;
     public DatabaseManager DataConnexion = new DatabaseManager();
-
+    private String selectedOption;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         if (Rolebox != null) {
@@ -48,6 +40,10 @@ public class LoginController extends Controller implements Initializable {
 
     @Override
     public void FermerFentere(javafx.event.ActionEvent event) throws IOException {
+
+        Rolebox.setOnAction(e -> {
+            selectedOption = Rolebox.getValue();
+        });
 
             if (Verification() == true) {
                 super.FermerFentere(event);
@@ -63,8 +59,6 @@ public class LoginController extends Controller implements Initializable {
                 Main.setScene(scene);
                 Main.show();
                 System.out.println("Vous avez connecter !:");
-
-
             }else{
                 System.out.println("Password ou Email eroner ");
             }
@@ -74,7 +68,8 @@ public class LoginController extends Controller implements Initializable {
     public boolean Verification() {
 
         //the SQL request ;
-        String sql = "SELECT u.Email, u.Mpasse FROM utilisateur u WHERE u.Email = '"+Email.getText()+"' AND u.Mpasse = '"+Password.getText()+"';";
+        System.out.println(selectedOption);
+        String sql = "SELECT u.Email, u.Mpasse FROM utilisateur u WHERE u.Email = '"+Email.getText()+"' AND u.Mpasse = '"+Password.getText()+"' AND u.Role = '"+Rolebox.getValue()+"';";
         //prepare the Statemen;
         PreparedStatement statement = null;
 
@@ -86,13 +81,13 @@ public class LoginController extends Controller implements Initializable {
                 statement = getConnection().prepareStatement(sql);
                 ResultSet resultSet = statement.executeQuery();
                 if (!resultSet.next()) {
-                    System.out.println("No user found with the provided email and password.");
+                    System.out.println("No user found with the provided email and password and role.");
                     return false;
                 } else {
                     do {
                         String email = resultSet.getString("Email");
                         String password = resultSet.getString("Mpasse");
-                        System.out.println("Email: " + email + ", Password: " + password);
+                        System.out.println("Email: " + email + ", Password: " + password + ", Role: "+Rolebox.getValue());
                         return true;
                     } while (resultSet.next()); // Move to the next row
                 }
