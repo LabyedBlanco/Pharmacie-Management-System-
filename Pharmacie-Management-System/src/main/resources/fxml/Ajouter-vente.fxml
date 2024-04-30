@@ -85,12 +85,14 @@
                         </ScrollPane>
                         <TableView prefHeight="200.0" prefWidth="200.0" stylesheets="@../styles/MainFormDesign.css">
                            <columns>
-                              <TableColumn minWidth="150.0" prefWidth="183.0" text="Client Name" />
-                              <TableColumn minWidth="150.0" prefWidth="219.0" text="Mediacation Name" />
-                              <TableColumn minWidth="150.0" prefWidth="172.0" text="Code" />
-                              <TableColumn minWidth="105.0" prefWidth="105.0" text="Prix" />
-                              <TableColumn minWidth="89.0" prefWidth="111.0" text="Category" />
-                              <TableColumn prefWidth="90.0" text="Quantite" />
+                              <TableColumn minWidth="131.2000389099121" prefWidth="131.2000389099121" text="Client Name" />
+                              <TableColumn minWidth="150.0" prefWidth="167.19993591308594" text="Mediacation Name" />
+                              <TableColumn prefWidth="117.60003662109375" text="Date" />
+                              <TableColumn minWidth="60.00006103515625" prefWidth="63.2000732421875" text="Code" />
+                              <TableColumn minWidth="50.39996337890625" prefWidth="65.5999755859375" text="Prix" />
+                              <TableColumn minWidth="41.5999755859375" prefWidth="101.60003662109375" text="Category" />
+                              <TableColumn prefWidth="119.20001220703125" text="Quantite" />
+                              <TableColumn prefWidth="114.39996337890625" text="utilisateur" />
                            </columns>
                         </TableView>
                      </children>
