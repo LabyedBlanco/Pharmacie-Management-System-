@@ -75,7 +75,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <GridPane.margin>
-                        <Insets bottom="50.0" left="60.0" right="60.0" top="260.0" />
+                        <Insets bottom="50.0" left="60.0" right="60.0" top="280.0" />
                      </GridPane.margin>
                      <children>
                         <ScrollPane prefHeight="200.0" prefWidth="200.0">
@@ -83,16 +83,16 @@
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
                            </content>
                         </ScrollPane>
-                        <TableView prefHeight="200.0" prefWidth="200.0" stylesheets="@../styles/MainFormDesign.css">
+                        <TableView fx:id="tabresult" prefHeight="236.0" prefWidth="882.0" stylesheets="@../styles/MainFormDesign.css">
                            <columns>
-                              <TableColumn minWidth="131.2000389099121" prefWidth="131.2000389099121" text="Client Name" />
-                              <TableColumn minWidth="150.0" prefWidth="167.19993591308594" text="Mediacation Name" />
-                              <TableColumn prefWidth="117.60003662109375" text="Date" />
-                              <TableColumn minWidth="60.00006103515625" prefWidth="63.2000732421875" text="Code" />
-                              <TableColumn minWidth="50.39996337890625" prefWidth="65.5999755859375" text="Prix" />
-                              <TableColumn minWidth="41.5999755859375" prefWidth="101.60003662109375" text="Category" />
-                              <TableColumn prefWidth="119.20001220703125" text="Quantite" />
-                              <TableColumn prefWidth="114.39996337890625" text="utilisateur" />
+                              <TableColumn fx:id="tabcl" minWidth="131.2000389099121" prefWidth="131.2000389099121" text="Client Name" />
+                              <TableColumn fx:id="tabmed" minWidth="150.0" prefWidth="167.19993591308594" text="Mediacation Name" />
+                              <TableColumn fx:id="tabdate" prefWidth="117.60003662109375" text="Date" />
+                              <TableColumn fx:id="tabcode" minWidth="60.00006103515625" prefWidth="63.2000732421875" text="Code" />
+                              <TableColumn fx:id="tabprix" minWidth="50.39996337890625" prefWidth="65.5999755859375" text="Prix" />
+                              <TableColumn fx:id="tabcat" minWidth="41.5999755859375" prefWidth="101.60003662109375" text="Category" />
+                              <TableColumn fx:id="tabquan" prefWidth="119.20001220703125" text="Quantite" />
+                              <TableColumn fx:id="tabu" prefWidth="114.39996337890625" text="utilisateur" />
                            </columns>
                         </TableView>
                      </children>
@@ -106,9 +106,10 @@
                         <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="68.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="96.0" minHeight="10.0" prefHeight="76.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="101.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="101.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <GridPane.margin>
-                        <Insets bottom="300.0" left="60.0" right="60.0" top="20.0" />
+                        <Insets bottom="280.0" left="60.0" right="60.0" top="20.0" />
                      </GridPane.margin>
                      <children>
                         <Text fill="#898989" strokeType="OUTSIDE" strokeWidth="0.0" text="Client Name :" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
@@ -151,25 +152,12 @@
                               <Insets left="40.0" />
                            </GridPane.margin>
                         </Text>
-                        <Text fill="#898989" layoutX="490.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qte :" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                           <GridPane.margin>
-                              <Insets left="40.0" />
-                           </GridPane.margin>
-                        </Text>
-                        <TextField maxWidth="40.0" prefHeight="25.0" prefWidth="40.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                           <GridPane.margin>
-                              <Insets left="200.0" />
-                           </GridPane.margin>
-                        </TextField>
-                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <TextField fx:id="addcat" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets left="200.0" right="80.0" />
                            </GridPane.margin>
                         </TextField>
-                        <Button graphicTextGap="10.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" style="-fx-background-color: #46c35f;" styleClass="drop-shadow" stylesheets="@style.css" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                        <Button graphicTextGap="10.0" mnemonicParsing="false" onAction="#addpurchases" prefHeight="20.0" prefWidth="20.0" style="-fx-background-color: #46c35f;" styleClass="drop-shadow" stylesheets="@style.css" textFill="WHITE" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -190,22 +178,48 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <TextField>
+                        <TextField fx:id="addcl">
                            <GridPane.margin>
                               <Insets left="200.0" right="80.0" />
                            </GridPane.margin>
                         </TextField>
-                        <TextField GridPane.rowIndex="1">
+                        <TextField fx:id="addmed" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets left="200.0" right="80.0" />
                            </GridPane.margin>
                         </TextField>
-                        <TextField GridPane.rowIndex="2">
+                        <TextField fx:id="addcode" GridPane.rowIndex="2">
                            <GridPane.margin>
                               <Insets left="200.0" right="80.0" />
                            </GridPane.margin>
                         </TextField>
-                        <TextField GridPane.columnIndex="1">
+                        <TextField fx:id="addprix" GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets left="200.0" right="80.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <Text fill="#898989" strokeType="OUTSIDE" strokeWidth="0.0" text="Qte :" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="40.0" />
+                           </GridPane.margin>
+                        </Text>
+                        <TextField fx:id="addqte" maxWidth="40.0" prefHeight="25.0" prefWidth="40.0" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets left="220.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <Text fill="#898989" strokeType="OUTSIDE" strokeWidth="0.0" text="Methode Payment:" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="40.0" />
+                           </GridPane.margin>
+                        </Text>
+                        <TextField fx:id="addmethod" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <GridPane.margin>
                               <Insets left="200.0" right="80.0" />
                            </GridPane.margin>
