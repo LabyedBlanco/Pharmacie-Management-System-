@@ -12,6 +12,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
@@ -38,6 +40,11 @@ public class LoginController extends Controller implements Initializable {
         }
     }
 
+    @FXML
+    void Onpasswordtype(KeyEvent event) {
+
+    }
+
     @Override
     public void FermerFentere(javafx.event.ActionEvent event) throws IOException {
 
@@ -47,7 +54,6 @@ public class LoginController extends Controller implements Initializable {
 
             if (Verification() == true) {
                 super.FermerFentere(event);
-
                 //To load up the new stage and show;
                 FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/fxml/Main.fxml"));
                 double screenWidth = Screen.getPrimary().getVisualBounds().getWidth();
@@ -59,6 +65,7 @@ public class LoginController extends Controller implements Initializable {
                 Main.setScene(scene);
                 Main.show();
                 System.out.println("Vous avez connecter !:");
+
             }else{
                 System.out.println("Password ou Email eroner ");
             }
@@ -70,9 +77,8 @@ public class LoginController extends Controller implements Initializable {
         //the SQL request ;
         System.out.println(selectedOption);
         String sql = "SELECT u.Email, u.Mpasse FROM utilisateur u WHERE u.Email = '"+Email.getText()+"' AND u.Mpasse = '"+Password.getText()+"' AND u.Role = '"+Rolebox.getValue()+"';";
-        //prepare the Statemen;
+        //prepare the Statement;
         PreparedStatement statement = null;
-
         //ceci pour verifier dabbord est ce que vous étes connecter avec la base de donnés ;
         if (getConnection() != null) {
             try {
@@ -82,18 +88,23 @@ public class LoginController extends Controller implements Initializable {
                 ResultSet resultSet = statement.executeQuery();
                 if (!resultSet.next()) {
                     System.out.println("No user found with the provided email and password and role.");
+                    Password.setStyle("-fx-border-color: red");
+                    Email.setStyle("-fx-border-color: red");
                     return false;
                 } else {
                     do {
                         String email = resultSet.getString("Email");
                         String password = resultSet.getString("Mpasse");
                         System.out.println("Email: " + email + ", Password: " + password + ", Role: "+Rolebox.getValue());
+                        Password.setStyle("-fx-border-color: red");
                         return true;
                     } while (resultSet.next()); // Move to the next row
                 }
             } catch (SQLException e) {
                 System.out.println("2");
                 System.out.println(e);
+                Password.setStyle("-fx-border-color: red");
+                Email.setStyle("-fx-border-color: red");
                 return false;
             }
         } else {

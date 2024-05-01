@@ -161,7 +161,7 @@
             </VBox>
          <Button fx:id="refraichir" onAction="#OnSettings" prefHeight="32.0" prefWidth="351.0" style="-fx-background-color: transparent; -fx-padding: 0; -fx-border: none;" GridPane.halignment="LEFT" GridPane.valignment="TOP">
             <GridPane.margin>
-               <Insets left="950.0" top="40.0" />
+               <Insets left="1000.0" top="40.0" />
             </GridPane.margin>
             <graphic>
                <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
@@ -180,7 +180,7 @@
                   </ImageView>
                </graphic>
                <GridPane.margin>
-                  <Insets left="1000.0" top="40.0" />
+                  <Insets left="950.0" top="40.0" />
                </GridPane.margin>
             </Button>
 

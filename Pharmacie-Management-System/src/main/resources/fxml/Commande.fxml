@@ -120,7 +120,7 @@
                               <Image url="@../images/icons/9035096_search_icon.png" />
                            </image>
                         </ImageView>
-                        <TextField prefHeight="75.0" prefWidth="194.0" promptText="Search" style="-fx-background-color: white; -fx-border-color: white; -fx-border-radius: 25px; -fx-background-radius: 25px;" stylesheets="@style.css" GridPane.columnIndex="1">
+                        <TextField fx:id="Searchbar" prefHeight="75.0" prefWidth="194.0" promptText="Search" style="-fx-background-color: white; -fx-border-color: white; -fx-border-radius: 25px; -fx-background-radius: 25px;" stylesheets="@style.css" GridPane.columnIndex="1">
                            <GridPane.margin>
                               <Insets right="20.0" />
                            </GridPane.margin>
@@ -169,6 +169,16 @@
                         </TableView>
                      </content>
                   </ScrollPane>
+                  <ComboBox prefHeight="35.0" prefWidth="206.0" promptText="Gestion de Commande" style="-fx-background-color: white; -fx-border-color: white; -fx-background-radius: 24px; -fx-border-radius: 24px;" styleClass="drop-shadow" stylesheets="@style.css" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                     <GridPane.margin>
+                        <Insets left="40.0" top="90.0" />
+                     </GridPane.margin>
+                  </ComboBox>
+                  <ComboBox fx:id="SwithcBox" prefHeight="33.0" prefWidth="208.0" promptText="Gestion de Commande" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                     <GridPane.margin>
+                        <Insets left="40.0" />
+                     </GridPane.margin>
+                  </ComboBox>
                </children>
             </GridPane>
             <GridPane fx:id="Avoirs" layoutX="10.0" layoutY="118.0" prefHeight="579.0" prefWidth="1100.0" style="-fx-background-color: #f7f7f7;" styleClass="drop-shadow" stylesheets="@style.css" visible="false" GridPane.rowIndex="1">
@@ -270,11 +280,6 @@
                   </Line>
                </children>
             </GridPane>
-            <ComboBox fx:id="Selectbox" prefHeight="35.0" prefWidth="206.0" promptText="Gestion de Commande" style="-fx-background-color: white; -fx-border-color: white; -fx-background-radius: 24px; -fx-border-radius: 24px;" styleClass="drop-shadow" stylesheets="@style.css" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
-               <GridPane.margin>
-                  <Insets left="40.0" top="90.0" />
-               </GridPane.margin>
-            </ComboBox>
             </children>
         </GridPane>
     </center>

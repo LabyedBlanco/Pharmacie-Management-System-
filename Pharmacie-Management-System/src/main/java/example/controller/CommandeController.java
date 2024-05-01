@@ -1,13 +1,9 @@
 package example.controller;
 
-import example.model.DatabaseManager;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -15,8 +11,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -30,7 +24,7 @@ public class CommandeController extends Controller implements Initializable {
     @FXML
     private AnchorPane Connected;
     @FXML
-    private ComboBox<String> Selectbox;
+    private ComboBox<String> SwithcBox;
     private Connection connect;
     private PreparedStatement prepare;
     private ResultSet result;
@@ -58,16 +52,12 @@ public class CommandeController extends Controller implements Initializable {
     private GridPane MainPane;
     @FXML
     private ComboBox<String> ComPayement;
-
-
-
     Connection conexion = getConnection();
 
     @Override
     public void initialize(URL url , ResourceBundle resourceBundle){
 
         Online(ConnectionStat(),main,Connected);
-
 
         if(Depot != null){
             Depot.setItems(FXCollections.observableArrayList("1","2","3","4"));
@@ -84,9 +74,10 @@ public class CommandeController extends Controller implements Initializable {
                 System.out.println(selectedOption);
             });
         }
-
-        if (Selectbox != null) {
-            Selectbox.setItems(FXCollections.observableArrayList("Gestion des Commandes", "Gestion des Avoirs"));
+        if(SwithcBox != null ) {
+            SwithcBox.setItems(FXCollections.observableArrayList("Gestion des Commandes", "Gestion des Avoirs"));
+        }
+        /*if (Selectbox != null) {
             Selectbox.setOnAction(e -> {
                 String selectedOption = Selectbox.getValue();
                 System.out.println(selectedOption);
@@ -99,7 +90,7 @@ public class CommandeController extends Controller implements Initializable {
                     Commande.setVisible(true);
                 }
             });
-        }
+        }*/
     }
 
     public void Ajouter(ActionEvent actionEvent) throws IOException {
