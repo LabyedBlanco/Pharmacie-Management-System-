@@ -201,7 +201,7 @@
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <Button fx:id="btnjr" mnemonicParsing="false" style="-fx-background-color: rgb(255,255,255); -fx-border-radius: 20px; -fx-background-radius: 20px; -fx-text-fill: rgb(201,182,165);" text="Jour" GridPane.halignment="RIGHT">
+                                <Button fx:id="btnjr" mnemonicParsing="false" style="-fx-background-color: rgb(255,255,255); -fx-border-radius: 20px; -fx-background-radius: 20px; -fx-text-fill: rgb(201,182,165); -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);" text="Jour" GridPane.halignment="RIGHT">
                                     <font>
                                         <Font name="Tahoma" size="14.0" />
                                     </font>
@@ -212,7 +212,7 @@
                                         <Insets right="10.0" />
                                     </GridPane.margin>
                                 </Button>
-                                <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="76.0" style="-fx-background-color: rgb(255,255,255); -fx-border-radius: 20px; -fx-background-radius: 20px; -fx-text-fill: rgb(201,182,165);" text="Semaine" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                                <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="76.0" style="-fx-background-color: rgb(255,255,255); -fx-border-radius: 20px; -fx-background-radius: 20px; -fx-text-fill: rgb(201,182,165); -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);" text="Semaine" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                                     <font>
                                         <Font name="Tahoma" size="14.0" />
                                     </font>
@@ -220,7 +220,7 @@
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </Button>
-                                <Button mnemonicParsing="false" style="-fx-background-color: rgb(255,255,255); -fx-border-radius: 20px; -fx-background-radius: 20px; -fx-text-fill: rgb(201,182,165);" text="Mois" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                                <Button mnemonicParsing="false" style="-fx-background-color: rgb(255,255,255); -fx-border-radius: 20px; -fx-background-radius: 20px; -fx-text-fill: rgb(201,182,165); -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);" text="Mois" GridPane.columnIndex="2" GridPane.halignment="CENTER">
                                     <font>
                                         <Font name="Tahoma" size="14.0" />
                                     </font>
@@ -297,10 +297,14 @@
                            <content>
                               <TableView fx:id="listPurchases" prefHeight="715.0" prefWidth="1040.0" stylesheets="@../styles/MainFormDesign.css">
                                  <columns>
-                                    <TableColumn minWidth="150.0" prefWidth="157.0" text="Client" />
-                                    <TableColumn minWidth="127.33334350585938" prefWidth="200.0" text="Date" />
-                                    <TableColumn minWidth="178.0" prefWidth="178.0" text="Amount" />
-                                    <TableColumn minWidth="200.0" prefWidth="208.66668701171875" text="Utilisateur" />
+                                    <TableColumn fx:id="shcl" minWidth="129.59999923706073" prefWidth="129.59999923706073" text="Client nom" />
+                                    <TableColumn fx:id="shmed" prefWidth="164.00003051757812" text="Nom Medicament" />
+                                    <TableColumn fx:id="shdate" minWidth="88.00003051757812" prefWidth="110.39996337890625" text="Date" />
+                                    <TableColumn fx:id="shcode" prefWidth="112.0" text="code" />
+                                    <TableColumn fx:id="shprix" prefWidth="121.60003662109375" text="Prix" />
+                                    <TableColumn fx:id="shcate" prefWidth="145.5999755859375" text="Category" />
+                                    <TableColumn fx:id="shqua" minWidth="92.79998779296875" prefWidth="92.79998779296875" text="Quantite" />
+                                    <TableColumn fx:id="shuser" minWidth="178.39984130859375" prefWidth="178.39984130859375" text="Utilisateur" />
                                     <TableColumn minWidth="150.0" prefWidth="155.66668701171875" text="Produit" />
                                     <TableColumn minWidth="150.0" prefWidth="162.33331298828125" text="Action" />
                                  </columns>

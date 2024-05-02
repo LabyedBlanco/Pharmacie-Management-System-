@@ -66,6 +66,7 @@ public class FournisseurController extends Controller implements Initializable {
 
     @FXML
     private TextField emailfor;
+    private DatabaseManager dbManager;
 
     @FXML
     private ComboBox<String> genderfor;
