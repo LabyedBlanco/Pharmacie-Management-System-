@@ -32,12 +32,11 @@ import java.util.ResourceBundle;
 
 public class VentesController extends Controller implements Initializable {
 
-
+    @FXML
     public AnchorPane Connected;
     @FXML
     private Text main;
-    @FXML
-    static TableView<String> listPurchases;
+
     //@FXML
     //private AnchorPane Connected;
 
@@ -71,7 +70,7 @@ public class VentesController extends Controller implements Initializable {
 
 
     @FXML
-    private TableColumn<vente, String> tabcat=new TableColumn<>("Categoryyyy");
+    private TableColumn<vente, String> tabcat=new TableColumn<>("Category");
 
     @FXML
     private TableColumn<vente, Integer> tabcl=new TableColumn<>("Client");
@@ -91,10 +90,41 @@ public class VentesController extends Controller implements Initializable {
     @FXML
     private TableColumn<vente, SimpleIntegerProperty> tabquan=new TableColumn<>("quantite");
 
+    @FXML
+    private TableColumn<vente, String> tabu=new TableColumn<>("user");
+
+
+
 
 
     @FXML
-    private TableColumn<vente, String> tabu;
+    private TableView<vente> listPurchases= new TableView<>();
+
+    @FXML
+    private TableColumn<vente, String> shcate=new TableColumn<>("Category");
+
+    @FXML
+    private TableColumn<vente, Integer> shcl=new TableColumn<>("Client");
+
+    @FXML
+    private TableColumn<vente, String> shcode=new TableColumn<>("code");
+
+    @FXML
+    private TableColumn<vente, String> shdate=new TableColumn<>("date");
+
+    @FXML
+    private TableColumn<vente, String> shmed=new TableColumn<>("med");
+
+    @FXML
+    private TableColumn<vente, Float> shprix=new TableColumn<>("prix");
+
+    @FXML
+    private TableColumn<?, ?> shqua=new TableColumn<>("quantite");
+
+    @FXML
+    private TableColumn<?, ?> shuser=new TableColumn<>("user");
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -158,16 +188,16 @@ public class VentesController extends Controller implements Initializable {
                 System.out.println(w.getcateg());
 
 
-                tabcat.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getcateg()));
-                tabdate.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getdate()));
-                tabcl.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getidcl()).asObject());
-                tabcode.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getcode()));
-                tabmed.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getmed()));
-                tabprix.setCellValueFactory(cellData -> new SimpleFloatProperty(cellData.getValue().getprixv()).asObject());
+                shcate.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getcateg()));
+                shdate.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getdate()));
+                shcl.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getidcl()).asObject());
+                shcode.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getcode()));
+                shmed.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getmed()));
+                shprix.setCellValueFactory(cellData -> new SimpleFloatProperty(cellData.getValue().getprixv()).asObject());
 
-                ObservableList<vente> ventes=tabresult.getItems();
+                ObservableList<vente> ventes=listPurchases.getItems();
                 ventes.add(w);
-                tabresult.setItems(ventes);
+                listPurchases.setItems(ventes);
 
 
 
@@ -210,7 +240,7 @@ public class VentesController extends Controller implements Initializable {
 
 
             int quint=Integer.parseInt(qua);
-            quan.set(quint);
+
 
             System.out.println(addmed.getText());
             System.out.println(prixf);
@@ -239,7 +269,7 @@ public class VentesController extends Controller implements Initializable {
 
 
 
-            vente x=new vente(prixf,datefrm,5,1,0,method,categ,code,med,quan);
+            vente x=new vente(prixf,datefrm,5,1,0,method,categ,code,med,quint);
 
 
 

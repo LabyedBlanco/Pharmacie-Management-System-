@@ -15,12 +15,12 @@ public class vente {
     private String categ;
     private String code;
     private String med;
-    private SimpleIntegerProperty qua;
+    private int qua;
 
     public vente(){
 
     }
-    public vente(float prixv,String date,int idcl,int idca,int idu,String methodepaymentv,String categ,String code,String med,SimpleIntegerProperty qua){
+    public vente(float prixv,String date,int idcl,int idca,int idu,String methodepaymentv,String categ,String code,String med,int qua){
         this.prixv=prixv;
         this.date=date;
         this.idcl=idcl;
@@ -42,7 +42,7 @@ public class vente {
     public void setcateg(String categ){this.categ=categ;}
     public void setcode(String code){this.code=code;}
     public void setmed(String med){this.med=med;}
-    public void setqua(SimpleIntegerProperty qua){this.qua=qua;}
+    public void setqua(int qua){this.qua=qua;}
 
 
     public float getprixv(){return this.prixv;}
@@ -54,6 +54,6 @@ public class vente {
     public String getcateg(){return this.categ;}
     public String getcode(){return this.code;}
     public String getmed(){return this.med;}
-    public SimpleIntegerProperty getqua(){return this.qua;}
+    public int getqua(){return this.qua;}
 
 }
