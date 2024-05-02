@@ -23,7 +23,6 @@ import java.util.ResourceBundle;
 
 public class MainController extends Controller implements Initializable {
 
-
     public GridPane MainPane;
     @FXML
     private AnchorPane Display;
@@ -31,18 +30,13 @@ public class MainController extends Controller implements Initializable {
     private Button comm;
     @FXML
     private Button dash;
-
     @FXML
     private Button four;
-
-    @FXML
-    private Button prod;
+    public Button prod;
     @FXML
     private Button logout;
-
     @FXML
     private Button util;
-
     @FXML
     private Button vent;
     @FXML
@@ -50,7 +44,6 @@ public class MainController extends Controller implements Initializable {
     private String currentPage ="Dashboard" ;
     FxmlLoader object = new FxmlLoader();
     Pane view;
-
     public void initialize(URL url , ResourceBundle resourceBundle){
         //Style
         dash.setStyle("-fx-background-color: transparent;-fx-effect: dropshadow(gaussian, white, 10, 0.05, 0, 0);-fx-border-color: WHITE; -fx-border-width: 0px 0px 0px 3px;");
@@ -67,13 +60,9 @@ public class MainController extends Controller implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-
-        MainPane.add(view,0,0);
+            MainPane.add(view, 0, 0);
     }
-
     public void OnProduit (ActionEvent event) throws IOException {
-
         MainPane.getChildren().clear();
         System.out.print("\nGestion des Produit");
         Pane view = object.setPage("Produits");
@@ -168,15 +157,10 @@ public class MainController extends Controller implements Initializable {
         stage.setScene(new Scene(root));
         stage.show();
     }
-
-
     public void OnClose(ActionEvent actionEvent) throws IOException{
         MessageConfirmation("Close");
     }
-
-    public void OnSettings(ActionEvent actionEvent) throws IOException{
-        
-    }
+    public void OnSettings(ActionEvent actionEvent) throws IOException{}
 
     public void onRefraichir(ActionEvent event) {
         try {
@@ -189,4 +173,5 @@ public class MainController extends Controller implements Initializable {
             e.printStackTrace();
         }
     }
+
 }

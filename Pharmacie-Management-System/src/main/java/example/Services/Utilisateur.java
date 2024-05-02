@@ -1,11 +1,9 @@
-package example.model;
+package example.Services;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.scene.control.ComboBox;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.control.SplitMenuButton;
 
 public class Utilisateur {
@@ -35,8 +33,6 @@ public class Utilisateur {
         Salaire = new SimpleStringProperty(this, "Salaire");
         Mpasse = new SimpleStringProperty(this, "Mpasse");
         Action = new SplitMenuButton();
-
-
 
     }
 
@@ -137,7 +133,6 @@ public class Utilisateur {
         id.set(newId);
     }
 
-
     public SplitMenuButton getActionMenu() {
         return Action;
     }
@@ -156,8 +151,6 @@ public class Utilisateur {
 
         return  CIN.get();
     }
-
-
 }
 
 

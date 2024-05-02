@@ -1,16 +1,13 @@
 package example.controller;
 
 import example.model.DatabaseManager;
-import example.model.Utilisateur;
+import example.Services.Utilisateur;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -38,7 +35,9 @@ public class UtilisateurController extends Controller implements Initializable {
     public AnchorPane Connected ;
 
     @FXML
-    private Button bottommost,bottonadd;
+    private Button bottonadd;
+    @FXML
+    private Button buttonModifier;
     @FXML
     private ImageView image;
     @FXML
@@ -85,26 +84,7 @@ public class UtilisateurController extends Controller implements Initializable {
             Role.setItems(FXCollections.observableArrayList("Gérant", "Pharmacien", "Admin"));
         }
 
-
-
-
-
         Online(ConnectionStat(),main,Connected);
-        try {
-            DatabaseManager Data = new DatabaseManager();
-            boolean isConnected = Data.ConnectionStat();
-            if (isConnected) {
-                System.out.print(isConnected);
-                Connected.setStyle("-fx-background-color: green; -fx-background-radius: 100px");
-
-            } else {
-                System.out.print(isConnected);
-                Connected.setStyle("-fx-background-color: red; -fx-background-radius: 100px");
-                main.setText("Offline");
-            }
-        } catch (Exception e) {
-            System.err.println("Error initializing connection: " + e.getMessage());
-        }
         new Thread(this::table).start();
     }
 
@@ -122,23 +102,10 @@ public class UtilisateurController extends Controller implements Initializable {
         Stage stage = new Stage();
         stage.setResizable(false);
         NouveauFenetre("Profile_utilisateur");
-        bottommost.setVisible(false);
-
-
+        if(buttonModifier != null){
+            buttonModifier.setVisible(false);
+        }
     }
-
-    public void switchToHello() throws IOException {
-
-        Stage stage = new Stage();
-        stage.setResizable(false);
-        NouveauFenetre("Profile_utilisateur");
-        bottonadd.setVisible(false);
-
-
-    }
-
-
-
 
     public void onaddimageUser(ActionEvent event){
         File file = ParcourirFichier(event);
@@ -155,9 +122,7 @@ public class UtilisateurController extends Controller implements Initializable {
     }
 
     @FXML
-    public void addu() throws IOException {
-
-
+    public void addu(ActionEvent event) throws IOException {
 
         String name = nom.getText();
         String pren = prenom.getText();
@@ -171,16 +136,11 @@ public class UtilisateurController extends Controller implements Initializable {
         Image imageView = this.image.getImage();
 
 
-
-
-        DatabaseManager dbManager = new DatabaseManager();
-        Connection conn = null;
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         try {
-            conn = dbManager.getConnection();
 
             String sql = "INSERT INTO utilisateur (Nom,Prénom,DN, Tel,Role,Mpasse,Email,Salaire,CIN,IMAGE) VALUES (?, ?, ?, ?,?,?,?,?,?,?)";
-            PreparedStatement statement = conn.prepareStatement(sql);
+            PreparedStatement statement = getConnection().prepareStatement(sql);
 
             statement.setString(1, name);
             statement.setString(2, pren);
@@ -204,14 +164,10 @@ public class UtilisateurController extends Controller implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("Les données ont été insérées avec succès !");
             alert.showAndWait();
-            ActionEvent evenement = null;
-            FermerFentere(evenement);
-            
-
-
-
+            FermerFentere(event);
 
         } catch (Exception e) {
+            System.out.println(e);
             System.err.println("Erreur lors de l'ajout de données : " + e.getMessage());
             alert.setTitle("Failed");
             alert.setHeaderText(null);
@@ -219,17 +175,6 @@ public class UtilisateurController extends Controller implements Initializable {
             alert.showAndWait();
         }
 
-
-
-        finally {
-            if (conn != null) {
-                try {
-                    dbManager.closeConnection();
-                } catch (SQLException sqle) {
-                    System.err.println("Erreur lors de la fermeture de la connexion : " + sqle.getMessage());
-                }
-            }
-        }
 
     }
 
@@ -244,18 +189,15 @@ public class UtilisateurController extends Controller implements Initializable {
 
 public void table(){
     ObservableList<Utilisateur> dta = FXCollections.observableArrayList();
-    Connection conn = null;
-    try{
-        DatabaseManager dbManager = new DatabaseManager();
-        conn = dbManager.getConnection();
-        String sqlSelect="SELECT IDu,Nom,Prénom,DN,Role,Tel,Email,Salaire FROM utilisateur";
 
-        PreparedStatement stat = conn.prepareStatement(sqlSelect);
+    try{
+
+        String sqlSelect="SELECT IDu,Nom,Prénom,DN,Role,Tel,Email,Salaire FROM utilisateur";
+        PreparedStatement stat = getConnection().prepareStatement(sqlSelect);
         ResultSet result = stat.executeQuery();
 
-
         while (result.next()){
-         Utilisateur util=new Utilisateur();
+            Utilisateur util=new Utilisateur();
 
          util.setId(result.getInt("IDu"));
          util.setNom(result.getString("Nom"));
@@ -268,11 +210,6 @@ public void table(){
             SplitMenuButton actionMenu = new SplitMenuButton();
             MenuItem modifierItem = new MenuItem("Modifier");
            modifierItem.setOnAction(event -> {
-               try {
-                   switchToHello();
-               } catch (IOException e) {
-                   throw new RuntimeException(e);
-               }
 
 
            });
@@ -285,9 +222,8 @@ public void table(){
             util.setActionMenu(actionMenu);
 
             dta.add(util);
-
-
         }
+
         ID.setCellValueFactory(f -> f.getValue().idProperty().asObject());
         NOM.setCellValueFactory(f -> f.getValue().nomProperty());
         PRENOM.setCellValueFactory(f -> f.getValue().prenomProperty());
@@ -298,13 +234,7 @@ public void table(){
         SALAIRE.setCellValueFactory(f -> f.getValue().salaireProperty());
         ACTION.setCellValueFactory(f -> new SimpleObjectProperty<>(f.getValue().getActionMenu()));
 
-
         table.setItems(dta);
-
-
-
-
-
     }
 
     catch (SQLException e) {
@@ -349,10 +279,9 @@ public void table(){
 
         try
         {
-            DatabaseManager dbManager = new DatabaseManager();
-            Connection conn = dbManager.getConnection();
 
-            PreparedStatement pst = conn.prepareStatement("UPDATE utilisateur SET Nom = ?, Prénom = ?, DN = ?, Tel = ?, Role = ?, Mpasse = ?, Email = ?, Salaire = ?, CIN = ? IMAGE = ? WHERE IDu = ?");
+
+            PreparedStatement pst = getConnection().prepareStatement("UPDATE utilisateur SET Nom = ?, Prénom = ?, DN = ?, Tel = ?, Role = ?, Mpasse = ?, Email = ?, Salaire = ?, CIN = ? IMAGE = ? WHERE IDu = ?");
             pst.setString(1, name);
             pst.setString(2, lastname);
             pst.setString(3, dat);
@@ -389,14 +318,11 @@ public void table(){
         if (selectedIndex >= 0) {
 
             int id = table.getItems().get(selectedIndex).getId();
+
             try {
-
-                DatabaseManager dbManager = new DatabaseManager();
-                Connection conn = dbManager.getConnection();
-                PreparedStatement pst = conn.prepareStatement("DELETE FROM utilisateur WHERE IDu = ?");
-                pst.setInt(1, id);
-                pst.executeUpdate();
-
+                PreparedStatement sql = getConnection().prepareStatement("DELETE FROM utilisateur WHERE IDu = ?");
+                sql.setInt(1, id);
+                sql.executeUpdate();
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("User Registration");
                 alert.setHeaderText("User Registration");
