@@ -156,7 +156,6 @@ public class CommandeController extends Controller implements Initializable {
                 Methode.setCellValueFactory(f->f.getValue().MethodePayement);
                 data.add(Com);
             }
-
             Commandes.setItems(data);
         }
 

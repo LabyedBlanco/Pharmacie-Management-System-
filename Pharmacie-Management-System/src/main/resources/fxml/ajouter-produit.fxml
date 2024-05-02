@@ -105,7 +105,7 @@
                                     <Insets left="40.0" />
                                  </GridPane.margin>
                               </Text>
-                              <Text fill="#898989" layoutX="490.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qte :" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                              <Text fill="#898989" layoutX="490.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qte initial :" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>

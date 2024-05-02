@@ -2,9 +2,15 @@ package example.Services;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.scene.control.SplitMenuButton;
 
 public class Utilisateur {
 
+    private final StringProperty CIN;
+    private final StringProperty Mpasse;
+    private final SimpleIntegerProperty id;
     private final StringProperty Nom;
     private final StringProperty Prénom;
     private final StringProperty DN;
@@ -12,10 +18,12 @@ public class Utilisateur {
     private final StringProperty  Email;
     private final StringProperty  Tel;
     private final StringProperty  Salaire;
-
+    private SplitMenuButton Action;
 
 
     public Utilisateur() {
+        id = new SimpleIntegerProperty(this,"IDu");
+        CIN = new SimpleStringProperty(this, "CIN");
         Nom= new SimpleStringProperty(this, "Nom");
         Prénom = new SimpleStringProperty(this, "Prénom");
         DN = new SimpleStringProperty(this, "DN");
@@ -23,7 +31,12 @@ public class Utilisateur {
         Email = new SimpleStringProperty(this, "Email");
         Tel = new SimpleStringProperty(this, "Tel");
         Salaire = new SimpleStringProperty(this, "Salaire");
+        Mpasse = new SimpleStringProperty(this, "Mpasse");
+        Action = new SplitMenuButton();
+
     }
+
+
 
     public static void add(Utilisateur util) {
     }
@@ -113,5 +126,32 @@ public class Utilisateur {
     }
 
 
+    public IntegerProperty idProperty() { return id; }
+    public int getId() { return id.get(); }
 
+    public void setId(int newId) {
+        id.set(newId);
+    }
+
+    public SplitMenuButton getActionMenu() {
+        return Action;
+    }
+
+    // Ajoutez cette méthode pour définir le menu d'actions
+
+    public void setActionMenu(SplitMenuButton Action) {
+        this.Action= Action;
+    }
+
+    public String getPass() {
+        return Mpasse.get();
+    }
+
+    public String getCIN() {
+
+        return  CIN.get();
+    }
 }
+
+
+
