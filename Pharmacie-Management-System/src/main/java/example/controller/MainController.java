@@ -194,7 +194,7 @@ public class MainController extends Controller implements Initializable {
             MainPane.getChildren().clear();
             MainPane.add(view, 0, 0);
 
-            System.out.println("Rafraîchissement effectué"+currentPage);
+            System.out.println("Rafraîchissement effectué "+currentPage);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<<<<<<< HEAD
+
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="137.0" prefWidth="431.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
-=======
+
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="137.0" prefWidth="492.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="example.controller.Controller">
->>>>>>> 022289110064033b2a58265e1dec8a5c303ee2e7
+
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
@@ -21,7 +21,7 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-<<<<<<< HEAD
+
       <Button alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onAction="#AddforA" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #46c35f; -fx-background-color: #019aff;" styleClass="drop-shadow" stylesheets="@style.css" text="Archiver" textFill="WHITE" GridPane.halignment="RIGHT">
          <graphic>
             <ImageView fitHeight="25.0" fitWidth="25.0" nodeOrientation="INHERIT">
@@ -30,16 +30,16 @@
                </image>
             </ImageView>
          </graphic>
-=======
+
       <Button alignment="CENTER" graphicTextGap="10.0" mnemonicParsing="false" onAction="#Annuler" prefHeight="42.0" prefWidth="150.0" style="-fx-background-color: #019aff; -fx-border-radius: 8px; -fx-background-radius: 8px;" styleClass="drop-shadow" stylesheets="@style.css" text="Annuler" textFill="WHITE" GridPane.halignment="RIGHT">
->>>>>>> 022289110064033b2a58265e1dec8a5c303ee2e7
+
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
          <GridPane.margin>
-<<<<<<< HEAD
+
             <Insets right="40.0" />
-=======
+
             <Insets right="60.0" />
          </GridPane.margin>
       </Button>
@@ -49,8 +49,9 @@
          </font>
          <GridPane.margin>
             <Insets left="40.0" />
->>>>>>> 022289110064033b2a58265e1dec8a5c303ee2e7
+
          </GridPane.margin>
       </Button>
    </children>
+</GridPane>
 </GridPane>
