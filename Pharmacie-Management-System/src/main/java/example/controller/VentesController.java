@@ -2,6 +2,12 @@ package example.controller;
 import example.model.vente;
 
 import example.model.DatabaseManager;
+import javafx.beans.Observable;
+import javafx.beans.property.FloatProperty;
+import javafx.beans.property.SimpleFloatProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -25,6 +31,7 @@ import java.util.ResourceBundle;
 
 
 public class VentesController extends Controller implements Initializable {
+
 
     public AnchorPane Connected;
     @FXML
@@ -60,37 +67,36 @@ public class VentesController extends Controller implements Initializable {
 
 
     @FXML
-    private TableView<vente> tabresult;
+    private TableView<vente> tabresult= new TableView<>();
 
 
     @FXML
-    private TableColumn<vente, String> tabcat;
+    private TableColumn<vente, String> tabcat=new TableColumn<>("Categoryyyy");
 
     @FXML
-    private TableColumn<vente, Integer> tabcl;
+    private TableColumn<vente, Integer> tabcl=new TableColumn<>("Client");
 
     @FXML
-    private TableColumn<vente, Integer> tabcode;
+    private TableColumn<vente, String> tabcode=new TableColumn<>("code");
 
     @FXML
-    private TableColumn<vente, String> tabdate;
+    private TableColumn<vente, String> tabdate=new TableColumn<>("date");
 
     @FXML
-    private TableColumn<vente, String> tabmed;
+    private TableColumn<vente, String> tabmed=new TableColumn<>("med");
 
     @FXML
-    private TableColumn<vente, Integer> tabprix;
+    private TableColumn<vente, Float> tabprix=new TableColumn<>("prix");
 
     @FXML
-    private TableColumn<vente, Integer> tabquan;
+    private TableColumn<vente, SimpleIntegerProperty> tabquan=new TableColumn<>("quantite");
 
 
 
     @FXML
     private TableColumn<vente, String> tabu;
 
-
-
+    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Online(ConnectionStat(), main, Connected);
         try {
@@ -111,6 +117,7 @@ public class VentesController extends Controller implements Initializable {
 
         String sql="SELECT `IDv`, `Prixv`, `Datev`, `IDc`, `IDca`, `IDu`, `MethPayementV` FROM `vente`";
         try {
+            System.out.println("dkhol");
             PreparedStatement stmt =getConnection().prepareStatement(sql);
             ResultSet rs=stmt.executeQuery();
 
@@ -120,22 +127,48 @@ public class VentesController extends Controller implements Initializable {
             while (rs.next()){
 
                 vente w=new vente();
-                //w.setprixv(rs.getFloat("Prixv"));
+
+                //for showing the table
+                float prix = (rs.getFloat("Prixv"));//FloatProperty
+
+               // FloatProperty x = new SimpleFloatProperty();
+               // x.set(prix);
+                w.setprixv(prix);
+
                 w.setdate(rs.getString("Datev"));
 
                 w.setidu(rs.getInt("IDu"));
                 w.setmethod(rs.getString("MethPayementV"));
 
-                System.out.println(w.getdate());
+                //System.out.println(w.getdate());
 
 
-                String cat=rs.getString("categ");
-                String code=rs.getString("code");
-                String med=rs.getString("med");
-                int qua=rs.getInt("qua");
+                w.setcateg("testcateg");
+                w.setcode("code");
+                w.setmed("medi");
 
-                tabcat.setCellValueFactory(new PropertyValueFactory<vente,String>("prixv"));
-                tabdate.setCellValueFactory(new PropertyValueFactory<vente,String>("date"));
+                //w.setcateg(rs.getString("categ"));
+                //w.setcode(rs.getString("code"));
+                //w.setmed(rs.getString("med"));
+                //int qua=rs.getInt("qua");
+                //SimpleIntegerProperty quant = new SimpleIntegerProperty();
+                //quant.set(qua);
+                //w.setqua(quant);
+
+                System.out.println(w.getcateg());
+
+
+                tabcat.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getcateg()));
+                tabdate.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getdate()));
+                tabcl.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getidcl()).asObject());
+                tabcode.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getcode()));
+                tabmed.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getmed()));
+                tabprix.setCellValueFactory(cellData -> new SimpleFloatProperty(cellData.getValue().getprixv()).asObject());
+
+                ObservableList<vente> ventes=tabresult.getItems();
+                ventes.add(w);
+                tabresult.setItems(ventes);
+
 
 
 
@@ -145,6 +178,7 @@ public class VentesController extends Controller implements Initializable {
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+            System.out.println("33");
         }
 
 
@@ -158,21 +192,28 @@ public class VentesController extends Controller implements Initializable {
 
 
 
-
+        @FXML
         public void onadd() throws IOException {
             super.NouveauFenetre("Ajouter-vente");
         }
 
-
+        @FXML
         public void addpurchases(ActionEvent event) throws IOException {
 
             String prixstr=addprix.getText();
-            float prixfl=Float.parseFloat(prixstr);
+            float prixf = Float.parseFloat(prixstr);
+            //SimpleFloatProperty prixflo = new SimpleFloatProperty(prixf);
+
+
             String qua=addqte.getText();
+            SimpleIntegerProperty quan = new SimpleIntegerProperty();
+
+
             int quint=Integer.parseInt(qua);
+            quan.set(quint);
 
             System.out.println(addmed.getText());
-            System.out.println(prixfl);
+            System.out.println(prixf);
 
 
             System.out.println(addcat.getText());
@@ -193,7 +234,12 @@ public class VentesController extends Controller implements Initializable {
 
             System.out.println(addcl.getText());
 
-            vente x=new vente(prixfl,datefrm,5,1,0,method,categ,code,med,quint);
+            SimpleIntegerProperty idcl = new SimpleIntegerProperty();
+
+
+
+
+            vente x=new vente(prixf,datefrm,5,1,0,method,categ,code,med,quan);
 
 
 
@@ -203,7 +249,7 @@ public class VentesController extends Controller implements Initializable {
             try{
                 Connection conn=dbmanager.getConnection();
                 PreparedStatement statement =conn.prepareStatement(sql);
-                statement.setFloat(1,prixfl);
+                statement.setFloat(1,prixf);
                 statement.setString(2,datefrm);
 
                 // pour l essaie

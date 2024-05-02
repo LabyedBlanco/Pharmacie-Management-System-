@@ -6,7 +6,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 
 public class vente {
 
-    private FloatProperty prixv;
+    private float prixv;
     private String date;
     private int idcl;
     private int idca;
@@ -20,8 +20,8 @@ public class vente {
     public vente(){
 
     }
-    public vente(float prixv,String date,int idcl,int idca,int idu,String methodepaymentv,String categ,String code,String med,int qua){
-        this.prixv=new SimpleFloatProperty(prixv);
+    public vente(float prixv,String date,int idcl,int idca,int idu,String methodepaymentv,String categ,String code,String med,SimpleIntegerProperty qua){
+        this.prixv=prixv;
         this.date=date;
         this.idcl=idcl;
         this.idca=idca;
@@ -30,10 +30,10 @@ public class vente {
         this.categ=categ;
         this.code=code;
         this.med=med;
-        this.qua=new SimpleIntegerProperty(qua);
+        this.qua=qua;
     }
 
-    //public void setprixv(FloatProperty prixv){this.prixv=prixv;}
+    public void setprixv(float prixv){this.prixv=prixv;}
     public void setdate(String date){this.date=date;}
     public void setidcl(int idcl){this.idcl=idcl;}
     public void idca(int idca){this.idca=idca;}
@@ -42,10 +42,10 @@ public class vente {
     public void setcateg(String categ){this.categ=categ;}
     public void setcode(String code){this.code=code;}
     public void setmed(String med){this.med=med;}
-    //public void setqua(int qua){this.qua=qua;}
+    public void setqua(SimpleIntegerProperty qua){this.qua=qua;}
 
 
-    public FloatProperty getprixv(){return this.prixv;}
+    public float getprixv(){return this.prixv;}
     public String getdate(){return this.date;}
     public int getidcl(){return this.idcl;}
     public int getidca(){return this.idca;}
@@ -54,6 +54,6 @@ public class vente {
     public String getcateg(){return this.categ;}
     public String getcode(){return this.code;}
     public String getmed(){return this.med;}
-    //public int getqua(){return this.qua;}
+    public SimpleIntegerProperty getqua(){return this.qua;}
 
 }
