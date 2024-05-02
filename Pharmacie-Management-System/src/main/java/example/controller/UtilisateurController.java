@@ -1,18 +1,17 @@
 package example.controller;
 
-import com.almasb.fxgl.core.collection.Array;
 import example.model.DatabaseManager;
 import example.model.Utilisateur;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.image.ImageView;
@@ -39,7 +38,7 @@ public class UtilisateurController extends Controller implements Initializable {
     public AnchorPane Connected ;
 
     @FXML
-    private Button bottonmodify;
+    private Button bottommost,bottonadd;
     @FXML
     private ImageView image;
     @FXML
@@ -49,21 +48,23 @@ public class UtilisateurController extends Controller implements Initializable {
     @FXML
     private ComboBox<String> Role;
     @FXML
-    private ComboBox<String> Action;
+    private SplitMenuButton Action;
 
 
     @FXML
     private DatePicker birthday;
     @FXML private TableView<Utilisateur> table;
 
-    @FXML private TableColumn<Utilisateur,String>NOM;
+    @FXML   private TableColumn<Utilisateur,String>NOM;
     @FXML   private TableColumn<Utilisateur,String>PRENOM;
     @FXML   private TableColumn<Utilisateur,String>TELE;
     @FXML   private TableColumn<Utilisateur,String>EMAIL;
     @FXML   private TableColumn<Utilisateur,String>SALAIRE;
     @FXML   private TableColumn<Utilisateur,String>ROLE;
     @FXML   private TableColumn<Utilisateur,String>BIRTH;
-    @FXML   private TableColumn<Utilisateur,ComboBox<String>>ACTION;
+    @FXML   private TableColumn<Utilisateur,SplitMenuButton>ACTION;
+    @FXML private TableColumn<Utilisateur,Integer> ID;
+
 
 
 
@@ -83,6 +84,9 @@ public class UtilisateurController extends Controller implements Initializable {
         if (Role!= null) {
             Role.setItems(FXCollections.observableArrayList("Gérant", "Pharmacien", "Admin"));
         }
+
+
+
 
 
         Online(ConnectionStat(),main,Connected);
@@ -105,9 +109,6 @@ public class UtilisateurController extends Controller implements Initializable {
     }
 
 
-
-
-
     public void start(Stage primaryStage) {
         primaryStage.setOnShown(event -> {
             table();
@@ -118,12 +119,24 @@ public class UtilisateurController extends Controller implements Initializable {
 
 
     public void switchToHello(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        stage.setResizable(false);
+        NouveauFenetre("Profile_utilisateur");
+        bottommost.setVisible(false);
+
+
+    }
+
+    public void switchToHello() throws IOException {
 
         Stage stage = new Stage();
         stage.setResizable(false);
-            NouveauFenetre("Profile_utilisateur");
-        bottonmodify.setVisible(false);
+        NouveauFenetre("Profile_utilisateur");
+        bottonadd.setVisible(false);
+
+
     }
+
 
 
 
@@ -228,21 +241,23 @@ public class UtilisateurController extends Controller implements Initializable {
         return new ByteArrayInputStream(outputStream.toByteArray());
     }
 
+
 public void table(){
     ObservableList<Utilisateur> dta = FXCollections.observableArrayList();
     Connection conn = null;
     try{
         DatabaseManager dbManager = new DatabaseManager();
         conn = dbManager.getConnection();
-        String sqlSelect="SELECT Nom,Prénom,DN,Role,Tel,Email,Salaire FROM utilisateur";
+        String sqlSelect="SELECT IDu,Nom,Prénom,DN,Role,Tel,Email,Salaire FROM utilisateur";
 
         PreparedStatement stat = conn.prepareStatement(sqlSelect);
         ResultSet result = stat.executeQuery();
 
 
-
         while (result.next()){
          Utilisateur util=new Utilisateur();
+
+         util.setId(result.getInt("IDu"));
          util.setNom(result.getString("Nom"));
          util.setPrenom(result.getString("Prénom"));
          util.setDate(result.getString("DN"));
@@ -250,10 +265,30 @@ public void table(){
          util.setTelephone(result.getString("Tel"));
          util.setEmail(result.getString("Email"));
          util.setSalaire(result.getString("Salaire"));
+            SplitMenuButton actionMenu = new SplitMenuButton();
+            MenuItem modifierItem = new MenuItem("Modifier");
+           modifierItem.setOnAction(event -> {
+               try {
+                   switchToHello();
+               } catch (IOException e) {
+                   throw new RuntimeException(e);
+               }
+
+
+           });
+            MenuItem supprimerItem = new MenuItem("Supprimer");
+            supprimerItem.setOnAction(event -> {
+                delete();
+            });
+
+            actionMenu.getItems().addAll(modifierItem, supprimerItem);
+            util.setActionMenu(actionMenu);
+
             dta.add(util);
 
 
         }
+        ID.setCellValueFactory(f -> f.getValue().idProperty().asObject());
         NOM.setCellValueFactory(f -> f.getValue().nomProperty());
         PRENOM.setCellValueFactory(f -> f.getValue().prenomProperty());
         BIRTH.setCellValueFactory(f -> f.getValue().dateProperty());
@@ -261,8 +296,14 @@ public void table(){
         EMAIL.setCellValueFactory(f -> f.getValue().emailProperty());
         TELE.setCellValueFactory(f -> f.getValue().telephoneProperty());
         SALAIRE.setCellValueFactory(f -> f.getValue().salaireProperty());
+        ACTION.setCellValueFactory(f -> new SimpleObjectProperty<>(f.getValue().getActionMenu()));
+
 
         table.setItems(dta);
+
+
+
+
 
     }
 
@@ -273,7 +314,114 @@ public void table(){
 }
 
 
+
+   public void Update() throws IOException {
+
+
+        String name,lastname,tele,dat,role,email,salair,pass,Cin;
+
+
+       int selectedIndex = table.getSelectionModel().getSelectedIndex();
+       Utilisateur selectedUser = table.getItems().get(selectedIndex);
+
+
+
+        /*name = nom.getText();
+        tele =tel.getText();
+        lastname = prenom.getText();
+        email = Email.getText();
+        salair=salary.getText();
+        Cin=cin.getText();
+        dat=birthday.getEditor().getText();
+        role=Role.getValue();
+        pass=passwd.getText();*/
+
+         name = selectedUser.getNom();
+         lastname = selectedUser.getPrenom();
+         dat = selectedUser.getDate();
+         tele = selectedUser.getTelephone();
+         role = selectedUser.getRole();
+         pass = selectedUser.getPass();
+        email = selectedUser.getEmail();
+         salair = selectedUser.getSalaire();
+         Cin = selectedUser.getCIN();
+        int selectedUserId = selectedUser.getId();
+
+        try
+        {
+            DatabaseManager dbManager = new DatabaseManager();
+            Connection conn = dbManager.getConnection();
+
+            PreparedStatement pst = conn.prepareStatement("UPDATE utilisateur SET Nom = ?, Prénom = ?, DN = ?, Tel = ?, Role = ?, Mpasse = ?, Email = ?, Salaire = ?, CIN = ? IMAGE = ? WHERE IDu = ?");
+            pst.setString(1, name);
+            pst.setString(2, lastname);
+            pst.setString(3, dat);
+            pst.setString(4, tele);
+            pst.setString(5, role);
+            pst.setString(6, pass);
+            pst.setString(7, email);
+            pst.setString(8, salair);
+            pst.setString(9, Cin);
+            pst.setInt(10, selectedUserId);
+
+
+            pst.executeUpdate();
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Mise à jour");
+            alert.setHeaderText("Mise à jour utilisateur");
+            alert.setContentText("Utilisateur mis à jour avec succès !");
+            alert.showAndWait();
+
+            table();
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(UtilisateurController.class.getName()).log(Level.SEVERE, "An SQL exception occurred", ex);
+            ex.printStackTrace();
+        }
     }
+
+    public void delete() {
+
+        int selectedIndex = table.getSelectionModel().getSelectedIndex();
+
+        if (selectedIndex >= 0) {
+
+            int id = table.getItems().get(selectedIndex).getId();
+            try {
+
+                DatabaseManager dbManager = new DatabaseManager();
+                Connection conn = dbManager.getConnection();
+                PreparedStatement pst = conn.prepareStatement("DELETE FROM utilisateur WHERE IDu = ?");
+                pst.setInt(1, id);
+                pst.executeUpdate();
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("User Registration");
+                alert.setHeaderText("User Registration");
+                alert.setContentText("Deleted!");
+                alert.showAndWait();
+
+                table();
+            } catch (SQLException ex) {
+                Logger.getLogger(UtilisateurController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("No Selection");
+            alert.setHeaderText("No user Selected");
+            alert.setContentText("Please select a user to delete.");
+            alert.showAndWait();
+        }
+    }
+    
+
+
+
+
+}
 
 
 
