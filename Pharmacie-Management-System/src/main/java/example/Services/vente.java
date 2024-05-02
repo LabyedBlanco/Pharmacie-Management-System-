@@ -1,4 +1,4 @@
-package example.model;
+package example.Services;
 
 import javafx.beans.property.FloatProperty;
 import javafx.beans.property.SimpleFloatProperty;

@@ -1,18 +1,13 @@
 package example.controller;
 
-import com.almasb.fxgl.core.collection.Array;
 import example.model.DatabaseManager;
-import example.model.Utilisateur;
+import example.Services.Utilisateur;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.image.ImageView;
@@ -30,8 +25,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 public class UtilisateurController extends Controller implements Initializable {
@@ -251,9 +244,9 @@ public void table(){
          util.setEmail(result.getString("Email"));
          util.setSalaire(result.getString("Salaire"));
             dta.add(util);
-
-
         }
+
+
         NOM.setCellValueFactory(f -> f.getValue().nomProperty());
         PRENOM.setCellValueFactory(f -> f.getValue().prenomProperty());
         BIRTH.setCellValueFactory(f -> f.getValue().dateProperty());

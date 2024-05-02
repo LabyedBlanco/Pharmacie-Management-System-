@@ -1,5 +1,5 @@
 package example.controller;
-import example.model.vente;
+import example.Services.vente;
 
 import example.model.DatabaseManager;
 import javafx.event.ActionEvent;

@@ -1,13 +1,7 @@
-package example.model;
+package example.Services;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-
-import javax.swing.*;
 
 public class Utilisateur {
 
@@ -29,9 +23,6 @@ public class Utilisateur {
         Email = new SimpleStringProperty(this, "Email");
         Tel = new SimpleStringProperty(this, "Tel");
         Salaire = new SimpleStringProperty(this, "Salaire");
-
-
-
     }
 
     public static void add(Utilisateur util) {
@@ -120,10 +111,6 @@ public class Utilisateur {
     public void setSalaire(String newSalaire) {
         Salaire.set(newSalaire);
     }
-
-
-
-
 
 
 
