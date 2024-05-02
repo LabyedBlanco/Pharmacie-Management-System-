@@ -1,4 +1,4 @@
-package example.model;
+package example.Services;
 
 public class Fournisseur {
     private int id;
