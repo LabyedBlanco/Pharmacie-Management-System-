@@ -22,8 +22,6 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class Controller extends DatabaseManager {
-
-
     @Override
     //this is to get conexion in order to use it in sending SQL requests
     public Connection getConnection() {
