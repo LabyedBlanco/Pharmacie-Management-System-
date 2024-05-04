@@ -133,12 +133,7 @@
                             <children>
                                 <TableView fx:id="tableViewActif" layoutX="197.0" layoutY="10.0" prefHeight="282.0" prefWidth="996.0" stylesheets="@../styles/MainFormDesign.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="10.0">
                                     <columns>
-                                        <TableColumn minWidth="138.0" prefWidth="138.0" text="             Name" />
-                                        <TableColumn minWidth="150.0" prefWidth="222.0" text="             Email" />
-                                        <TableColumn minWidth="189.0" prefWidth="189.0" text="            Phone" />
-                                        <TableColumn minWidth="200.0" prefWidth="253.0" text="             Adress" />
 
-                                        <TableColumn minWidth="150.0" prefWidth="195.0" text="             Action" />
                                     </columns>
                                 </TableView>
                                 <TableView fx:id="tableViewArchived" layoutX="197.0" layoutY="10.0" prefHeight="282.0" prefWidth="996.0" stylesheets="@../styles/MainFormDesign.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="10.0">

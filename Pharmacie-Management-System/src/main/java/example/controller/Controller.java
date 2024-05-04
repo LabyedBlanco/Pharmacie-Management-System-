@@ -29,7 +29,6 @@ public class Controller extends DatabaseManager {
     public Connection getConnection() {
         return super.getConnection();
     }
-
     //this to update the Stat in navbar
     public void Online(boolean Stat, Text text, AnchorPane pane) {
         if (pane != null) {
@@ -60,6 +59,7 @@ public class Controller extends DatabaseManager {
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.show();
+        stage.setResizable(false);
     }
 
     //this is to close the current Stage
@@ -79,10 +79,6 @@ public class Controller extends DatabaseManager {
         stage.setScene(new Scene(root));
         stage.show();
         stage.setTitle("Alert!");
-    }
-
-    public void Quitter() {
-        //I dont know
     }
 
     public void Annuler(ActionEvent event) {

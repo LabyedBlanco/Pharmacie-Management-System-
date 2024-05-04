@@ -1,4 +1,4 @@
-package example.model;
+package example.Services;
 
 import javafx.beans.property.FloatProperty;
 import javafx.beans.property.SimpleFloatProperty;
@@ -55,5 +55,4 @@ public class vente {
     public String getcode(){return this.code;}
     public String getmed(){return this.med;}
     public int getqua(){return this.qua;}
-
 }

@@ -1,5 +1,5 @@
 package example.controller;
-import example.model.vente;
+import example.Services.vente;
 
 import example.model.DatabaseManager;
 import javafx.beans.Observable;
@@ -129,30 +129,13 @@ public class VentesController extends Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Online(ConnectionStat(), main, Connected);
-        try {
-            DatabaseManager Data = new DatabaseManager();
-            boolean isConnected = Data.ConnectionStat();
-            if (isConnected) {
-                System.out.print(isConnected);
-                Connected.setStyle("-fx-background-color: green; -fx-background-radius: 100px");
-
-            } else {
-                System.out.print(isConnected);
-                Connected.setStyle("-fx-background-color: red; -fx-background-radius: 100px");
-                main.setText("Offline");
-            }
-        } catch (Exception e) {
-            System.err.println("Error initializing connection: " + e.getMessage());
-        }
 
         String sql="SELECT `IDv`, `Prixv`, `Datev`, `IDc`, `IDca`, `IDu`, `MethPayementV` FROM `vente`";
+
         try {
             System.out.println("dkhol");
             PreparedStatement stmt =getConnection().prepareStatement(sql);
             ResultSet rs=stmt.executeQuery();
-
-
-
 
             while (rs.next()){
 
@@ -160,13 +143,8 @@ public class VentesController extends Controller implements Initializable {
 
                 //for showing the table
                 float prix = (rs.getFloat("Prixv"));//FloatProperty
-
-               // FloatProperty x = new SimpleFloatProperty();
-               // x.set(prix);
                 w.setprixv(prix);
-
-                w.setdate(rs.getString("Datev"));
-
+                w.setdate("02/05/2024");
                 w.setidu(rs.getInt("IDu"));
                 w.setmethod(rs.getString("MethPayementV"));
 
@@ -266,19 +244,12 @@ public class VentesController extends Controller implements Initializable {
 
             SimpleIntegerProperty idcl = new SimpleIntegerProperty();
 
-
-
-
             vente x=new vente(prixf,datefrm,5,1,0,method,categ,code,med,quint);
 
-
-
-
             String sql="INSERT INTO `vente`(`Prixv`, `Datev`,`IDu`,`IDca`,`IDc`,`MethPayementV`) VALUES (?,?,?,?,?,?)";
-            DatabaseManager dbmanager = new DatabaseManager();
             try{
-                Connection conn=dbmanager.getConnection();
-                PreparedStatement statement =conn.prepareStatement(sql);
+
+                PreparedStatement statement =getConnection().prepareStatement(sql);
                 statement.setFloat(1,prixf);
                 statement.setString(2,datefrm);
 
@@ -301,18 +272,11 @@ public class VentesController extends Controller implements Initializable {
 
 
                 statement.close();
-                dbmanager.closeConnection();
-
-
-
 
             } catch (SQLException e) {
 
                 System.out.println("connection failed");
                 System.out.println(e.getMessage());
-
-
-
 
 
             }
