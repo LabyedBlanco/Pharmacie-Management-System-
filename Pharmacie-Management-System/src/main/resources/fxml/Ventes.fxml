@@ -109,7 +109,7 @@
                                                 <Font name="System Bold" size="17.0" />
                                             </font>
                                         </Text>
-                                        <Text fill="WHITE" layoutX="10.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="23000 DH" translateX="30.0" GridPane.valignment="BOTTOM">
+                                        <Text fx:id="total" fill="WHITE" layoutX="10.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="23000 DH" translateX="30.0" GridPane.valignment="BOTTOM">
                                             <font>
                                                 <Font name="System Bold" size="17.0" />
                                             </font>
@@ -130,7 +130,7 @@
                                                 <Font name="System Bold" size="17.0" />
                                             </font>
                                         </Text>
-                                        <Text fill="WHITE" layoutX="10.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2000 DH" translateX="30.0" GridPane.valignment="BOTTOM">
+                                        <Text fx:id="month" fill="WHITE" layoutX="10.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2000 DH" translateX="30.0" GridPane.valignment="BOTTOM">
                                             <font>
                                                 <Font name="System Bold" size="17.0" />
                                             </font>
@@ -154,7 +154,7 @@
                                                 <Font name="System Bold" size="17.0" />
                                             </font>
                                         </Text>
-                                        <Text fill="WHITE" layoutX="10.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="23880 DH" translateX="30.0" GridPane.valignment="BOTTOM">
+                                        <Text fx:id="lmonth" fill="WHITE" layoutX="10.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="23880 DH" translateX="30.0" GridPane.valignment="BOTTOM">
                                             <font>
                                                 <Font name="System Bold" size="17.0" />
                                             </font>
@@ -178,7 +178,7 @@
                                                 <Font name="System Bold" size="17.0" />
                                             </font>
                                         </Text>
-                                        <Text fill="WHITE" layoutX="10.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="29800 DH" translateX="30.0" GridPane.valignment="BOTTOM">
+                                        <Text fx:id="year" fill="WHITE" layoutX="10.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="29800 DH" translateX="30.0" GridPane.valignment="BOTTOM">
                                             <font>
                                                 <Font name="System Bold" size="17.0" />
                                             </font>
@@ -201,7 +201,7 @@
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <Button fx:id="btnjr" mnemonicParsing="false" style="-fx-background-color: rgb(255,255,255); -fx-border-radius: 20px; -fx-background-radius: 20px; -fx-text-fill: rgb(201,182,165); -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);" text="Jour" GridPane.halignment="RIGHT">
+                                <Button mnemonicParsing="false" onAction="#jour" style="-fx-background-color: rgb(255,255,255); -fx-border-radius: 20px; -fx-background-radius: 20px; -fx-text-fill: rgb(201,182,165); -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);" text="Jour" GridPane.halignment="RIGHT">
                                     <font>
                                         <Font name="Tahoma" size="14.0" />
                                     </font>
@@ -212,7 +212,7 @@
                                         <Insets right="10.0" />
                                     </GridPane.margin>
                                 </Button>
-                                <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="76.0" style="-fx-background-color: rgb(255,255,255); -fx-border-radius: 20px; -fx-background-radius: 20px; -fx-text-fill: rgb(201,182,165); -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);" text="Semaine" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                                <Button mnemonicParsing="false" onAction="#week" prefHeight="28.0" prefWidth="76.0" style="-fx-background-color: rgb(255,255,255); -fx-border-radius: 20px; -fx-background-radius: 20px; -fx-text-fill: rgb(201,182,165); -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);" text="Semaine" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                                     <font>
                                         <Font name="Tahoma" size="14.0" />
                                     </font>
@@ -220,7 +220,7 @@
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </Button>
-                                <Button mnemonicParsing="false" style="-fx-background-color: rgb(255,255,255); -fx-border-radius: 20px; -fx-background-radius: 20px; -fx-text-fill: rgb(201,182,165); -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);" text="Mois" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                                <Button mnemonicParsing="false" onAction="#month" style="-fx-background-color: rgb(255,255,255); -fx-border-radius: 20px; -fx-background-radius: 20px; -fx-text-fill: rgb(201,182,165); -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);" text="Mois" GridPane.columnIndex="2" GridPane.halignment="CENTER">
                                     <font>
                                         <Font name="Tahoma" size="14.0" />
                                     </font>
@@ -237,7 +237,7 @@
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     </rowConstraints>
                                     <children>
-                                        <TextField maxWidth="160.0" prefHeight="30.0" prefWidth="195.0" promptText="Search" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+                                        <TextField fx:id="searchprinc" maxWidth="160.0" prefHeight="30.0" prefWidth="195.0" promptText="Search" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
                                             <GridPane.margin>
                                                 <Insets right="10.0" />
                                             </GridPane.margin>
@@ -262,7 +262,7 @@
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <Button graphicTextGap="0.0" mnemonicParsing="false" onAction="#onadd" prefHeight="34.0" prefWidth="127.0" style="-fx-background-color: rgb(70,195,95); -fx-text-fill: white;" styleClass="drop-shadow" stylesheets="@style.css" text="Ajouter" GridPane.halignment="RIGHT">
+                                <Button graphicTextGap="0.0" mnemonicParsing="false" onAction="#ondelete" prefHeight="34.0" prefWidth="127.0" style="-fx-background-color: rgb(252,44,16); -fx-text-fill: white;" styleClass="drop-shadow" stylesheets="@style.css" text="Supprimer" GridPane.halignment="RIGHT">
                                     <font>
                                         <Font name="Tahoma" size="13.0" />
                                     </font>
@@ -278,14 +278,35 @@
                                     <graphic>
                                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0">
                                             <image>
-                                                <Image url="@../images/icons/plus-symbole-noir.png" />
+                                                <Image url="@../images/icons/annuler.png" />
                                             </image>
                                         </ImageView>
                                     </graphic>
                                 </Button>
+                        <Button graphicTextGap="0.0" layoutX="939.0" layoutY="36.0" mnemonicParsing="false" onAction="#onadd" prefHeight="34.0" prefWidth="127.0" style="-fx-background-color: rgb(70,195,95); -fx-text-fill: white;" styleClass="drop-shadow" stylesheets="@style.css" text="Ajouter" GridPane.halignment="RIGHT">
+                           <font>
+                              <Font name="Tahoma" size="13.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0">
+                                 <image>
+                                    <Image url="@../images/icons/plus-symbole-noir.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <GridPane.margin>
+                              <Insets right="200.0" />
+                           </GridPane.margin>
+                        </Button>
                             </children>
                         </GridPane>
-                  <GridPane layoutX="157.0" layoutY="361.0" prefHeight="90.0" prefWidth="315.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="260.0">
+                  <GridPane layoutX="157.0" layoutY="361.0" prefHeight="90.0" prefWidth="315.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="260.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
@@ -293,23 +314,22 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                        <ScrollPane prefHeight="313.0" prefWidth="1040.0">
                            <content>
-                              <TableView fx:id="listPurchases" prefHeight="715.0" prefWidth="1040.0" stylesheets="@../styles/MainFormDesign.css">
+                              <TableView fx:id="listPurchases" maxHeight="600.0" prefHeight="299.0" prefWidth="1040.0" stylesheets="@../styles/MainFormDesign.css">
                                  <columns>
-                                    <TableColumn fx:id="shcl" minWidth="129.59999923706073" prefWidth="129.59999923706073" text="Client nom" />
                                     <TableColumn fx:id="shmed" prefWidth="164.00003051757812" text="Nom Medicament" />
-                                    <TableColumn fx:id="shdate" minWidth="88.00003051757812" prefWidth="110.39996337890625" text="Date" />
-                                    <TableColumn fx:id="shcode" prefWidth="112.0" text="code" />
-                                    <TableColumn fx:id="shprix" prefWidth="121.60003662109375" text="Prix" />
-                                    <TableColumn fx:id="shcate" prefWidth="145.5999755859375" text="Category" />
-                                    <TableColumn fx:id="shqua" minWidth="92.79998779296875" prefWidth="92.79998779296875" text="Quantite" />
-                                    <TableColumn fx:id="shuser" minWidth="178.39984130859375" prefWidth="178.39984130859375" text="Utilisateur" />
-                                    <TableColumn minWidth="150.0" prefWidth="155.66668701171875" text="Produit" />
-                                    <TableColumn minWidth="150.0" prefWidth="162.33331298828125" text="Action" />
+                                    <TableColumn fx:id="shdate" minWidth="88.00003051757812" prefWidth="158.3999786376953" text="Date" />
+                                    <TableColumn fx:id="shprix" prefWidth="140.0" text="Total Prix " />
+                                    <TableColumn fx:id="shcate" prefWidth="218.39999389648438" text="Category" />
+                                    <TableColumn fx:id="shqua" minWidth="92.79998779296875" prefWidth="184.0" text="Quantite" />
+                                    <TableColumn minWidth="150.0" prefWidth="168.7999267578125" text="Action" />
                                  </columns>
                               </TableView>
                            </content>
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
                         </ScrollPane>
                      </children>
                   </GridPane>

@@ -1,31 +1,21 @@
 package example.controller;
 import example.Services.vente;
 
-import example.model.DatabaseManager;
-import javafx.beans.Observable;
-import javafx.beans.property.FloatProperty;
-import javafx.beans.property.SimpleFloatProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.*;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
@@ -37,29 +27,47 @@ public class VentesController extends Controller implements Initializable {
     @FXML
     private Text main;
 
+    @FXML
+    private ListView<String> searchli=new ListView<>();
+    ObservableList<String> searchlili = FXCollections.observableArrayList();
+
+    @FXML
+    private TextField searchprinc = new TextField();
+
+
     //@FXML
     //private AnchorPane Connected;
 
-
+    @FXML
+    private Text lmonth= new Text();
 
     @FXML
-    private TextField addmethod;
-
+    private Text month= new Text();
+    @FXML
+    private Text total= new Text();
+    @FXML
+    private Text year= new Text();
 
     @FXML
-    private TextField addcat;
+    private ChoiceBox<String> addmethod=new ChoiceBox<>();
+
+    @FXML
+    private ChoiceBox<String> addcat=new ChoiceBox<>();
+
+    @FXML
+    private DatePicker adddate;
+
+    @FXML
+    private Text totalaj= new Text();
+
 
     @FXML
     private TextField addcl;
 
-    @FXML
-    private TextField addcode;
 
     @FXML
-    private TextField addmed;
+    private TextField addmed = new TextField();
 
-    @FXML
-    private TextField addprix;
 
     @FXML
     private TextField addqte;
@@ -68,18 +76,18 @@ public class VentesController extends Controller implements Initializable {
     @FXML
     private TableView<vente> tabresult= new TableView<>();
 
+    @FXML
+    private TableColumn<vente, String> metho =new TableColumn<>("method");
+
 
     @FXML
     private TableColumn<vente, String> tabcat=new TableColumn<>("Category");
 
-    @FXML
-    private TableColumn<vente, Integer> tabcl=new TableColumn<>("Client");
+
+
 
     @FXML
-    private TableColumn<vente, String> tabcode=new TableColumn<>("code");
-
-    @FXML
-    private TableColumn<vente, String> tabdate=new TableColumn<>("date");
+    private TableColumn<vente, Date> tabdate=new TableColumn<>("date");
 
     @FXML
     private TableColumn<vente, String> tabmed=new TableColumn<>("med");
@@ -88,11 +96,11 @@ public class VentesController extends Controller implements Initializable {
     private TableColumn<vente, Float> tabprix=new TableColumn<>("prix");
 
     @FXML
-    private TableColumn<vente, SimpleIntegerProperty> tabquan=new TableColumn<>("quantite");
+    private TableColumn<vente, Integer> tabquan=new TableColumn<>("quantite");
 
-    @FXML
-    private TableColumn<vente, String> tabu=new TableColumn<>("user");
 
+
+    private ObservableList<vente> allItems = FXCollections.observableArrayList();
 
 
 
@@ -100,17 +108,15 @@ public class VentesController extends Controller implements Initializable {
     @FXML
     private TableView<vente> listPurchases= new TableView<>();
 
+
+
     @FXML
     private TableColumn<vente, String> shcate=new TableColumn<>("Category");
 
-    @FXML
-    private TableColumn<vente, Integer> shcl=new TableColumn<>("Client");
+
 
     @FXML
-    private TableColumn<vente, String> shcode=new TableColumn<>("code");
-
-    @FXML
-    private TableColumn<vente, String> shdate=new TableColumn<>("date");
+    private TableColumn<vente, Date> shdate=new TableColumn<>("date");
 
     @FXML
     private TableColumn<vente, String> shmed=new TableColumn<>("med");
@@ -119,41 +125,61 @@ public class VentesController extends Controller implements Initializable {
     private TableColumn<vente, Float> shprix=new TableColumn<>("prix");
 
     @FXML
-    private TableColumn<?, ?> shqua=new TableColumn<>("quantite");
-
-    @FXML
-    private TableColumn<?, ?> shuser=new TableColumn<>("user");
+    private TableColumn<vente, Integer> shqua=new TableColumn<>("quantite");
 
 
+    float totprice=0;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        Online(ConnectionStat(), main, Connected);
+    ArrayList<vente> ventee=new ArrayList<>();
 
-        String sql="SELECT `IDv`, `Prixv`, `Datev`, `IDc`, `IDca`, `IDu`, `MethPayementV` FROM `vente`";
+
+    ObservableList<vente> ventes;
+
+    void afficher(){
+        ventes=listPurchases.getItems();
+        ventes.clear();
+        //refresh!!!
 
         try {
-            System.out.println("dkhol");
+            System.out.println("poo");
+            String sql="SELECT * FROM `vente`";
             PreparedStatement stmt =getConnection().prepareStatement(sql);
             ResultSet rs=stmt.executeQuery();
 
             while (rs.next()){
 
                 vente w=new vente();
-
                 //for showing the table
-                float prix = (rs.getFloat("Prixv"));//FloatProperty
-                w.setprixv(prix);
-                w.setdate("02/05/2024");
+                w.setprix(rs.getFloat("Prixv"));
+
+                w.setqua(rs.getInt("quantite"));
+
+                //pour calculer
+
+                //il faut calculer total par multiplication de prix uni par quantite apres get the total
+
+                w.calculerprix();
+                w.setidcl(rs.getInt("IDc"));
+                w.setidca(rs.getInt("IDca"));
+
+                Date dt=rs.getDate("Datev");
+                w.setdate(dt);
                 w.setidu(rs.getInt("IDu"));
                 w.setmethod(rs.getString("MethPayementV"));
 
-                //System.out.println(w.getdate());
 
 
-                w.setcateg("testcateg");
-                w.setcode("code");
-                w.setmed("medi");
+                w.setidv(rs.getInt("IDv"));
+                w.setcateg(rs.getString("categ"));
+                w.setmed(rs.getString("namemed"));
+
+
+                //float total=w.gettotal();
+                //totprice+=total;
+
+
+
+
 
                 //w.setcateg(rs.getString("categ"));
                 //w.setcode(rs.getString("code"));
@@ -163,19 +189,19 @@ public class VentesController extends Controller implements Initializable {
                 //quant.set(qua);
                 //w.setqua(quant);
 
-                System.out.println(w.getcateg());
 
 
                 shcate.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getcateg()));
-                shdate.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getdate()));
-                shcl.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getidcl()).asObject());
-                shcode.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getcode()));
+                shdate.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getdate()));
                 shmed.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getmed()));
-                shprix.setCellValueFactory(cellData -> new SimpleFloatProperty(cellData.getValue().getprixv()).asObject());
+                shprix.setCellValueFactory(cellData -> new SimpleFloatProperty(cellData.getValue().gettotal()).asObject());
+                shqua.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getqua()).asObject());
 
-                ObservableList<vente> ventes=listPurchases.getItems();
+
+
                 ventes.add(w);
                 listPurchases.setItems(ventes);
+
 
 
 
@@ -186,8 +212,218 @@ public class VentesController extends Controller implements Initializable {
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-            System.out.println("33");
+            System.out.println("moshkil");
         }
+    }
+
+
+    @FXML
+    void confirm(ActionEvent event) {
+
+    }
+    vente x;
+
+
+    private void updateSearchResults(String searchText, TableView<vente> searchResultsTableView) {
+        ObservableList<vente> searchResults = FXCollections.observableArrayList();
+        for (vente item : ventes) {
+            if (item.getmed().toLowerCase().contains(searchText.toLowerCase())) {
+                searchResults.add(item);
+            }
+        }
+        searchResultsTableView.setItems(searchResults);
+    }
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Online(ConnectionStat(), main, Connected);
+        addmethod.getItems().addAll("Check", "Espece", "Virement");
+        addmethod.setValue("Espece");
+        addcat.getItems().addAll("X", "Y", "Z");
+        addcat.setValue("X");
+
+
+        searchprinc.textProperty().addListener((observe, old, neww) -> {
+            updateSearchResults(neww, listPurchases);
+        });
+
+
+        try {
+            float all = 0;
+            String sql = "SELECT Prixv,quantite FROM vente";
+            PreparedStatement stmt = getConnection().prepareStatement(sql);
+
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                int quan = rs.getInt("quantite");
+                float prixun = rs.getFloat("Prixv");
+
+                float un = quan * prixun;
+                all += un;
+
+
+            }
+            System.out.println("all is " + all);
+            total.setText(String.valueOf(all));
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        // Retrieve the sum from the result set
+
+
+        try {
+            float all = 0;
+            String sql = "SELECT Prixv,quantite FROM vente" +
+                    " WHERE YEAR(Datev) = YEAR(CURDATE());";
+            PreparedStatement stmt = getConnection().prepareStatement(sql);
+
+            ResultSet rsa = stmt.executeQuery();
+
+
+            while (rsa.next()) {
+                int quan = rsa.getInt("quantite");
+                float prixun = rsa.getFloat("Prixv");
+
+                float un = quan * prixun;
+                all += un;
+
+            }
+            year.setText(String.valueOf(all));
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        try {
+            float all = 0;
+            String sql = "SELECT Prixv,quantite FROM vente" +
+                    " WHERE YEAR(Datev) = YEAR(CURDATE())" +
+                    " AND MONTH(Datev) = MONTH(CURDATE());";
+            PreparedStatement stmt = getConnection().prepareStatement(sql);
+
+
+            ResultSet rsb = stmt.executeQuery();
+
+
+            while (rsb.next()) {
+                int quan = rsb.getInt("quantite");
+                float prixun = rsb.getFloat("Prixv");
+
+                float un = quan * prixun;
+                all += un;
+
+            }
+            month.setText(String.valueOf(all));
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            float all = 0;
+            String sql = "SELECT Prixv, quantite " +
+                    "FROM vente " +
+                    "WHERE YEAR(Datev) = YEAR(DATE_SUB(CURDATE(), INTERVAL 1 MONTH))" +
+                    " AND MONTH(Datev) = MONTH(DATE_SUB(CURDATE(), INTERVAL 1 MONTH));";
+            PreparedStatement stmt = getConnection().prepareStatement(sql);
+
+
+            ResultSet rsc = stmt.executeQuery();
+
+
+            while (rsc.next()) {
+                int quan = rsc.getInt("quantite");
+                float prixun = rsc.getFloat("Prixv");
+
+                float un = quan * prixun;
+                all += un;
+
+            }
+            lmonth.setText(String.valueOf(all));
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+
+        afficher();
+
+
+        //String afficherpr=String.valueOf(totprice);
+
+        String sql2 = "Select Libellép from produit";
+        try {
+            PreparedStatement stmt = getConnection().prepareStatement(sql2);
+            ResultSet rse = stmt.executeQuery();
+
+            while (rse.next()) {
+                searchlili.add(rse.getString("Libellép"));
+                System.out.println("produit kayen dial search pour l ajout");
+            }
+
+
+        } catch (SQLException a) {
+            System.out.println(a.getMessage());
+            System.out.println("produit error");
+        }
+
+        searchli.setItems(searchlili);
+
+
+        addmed.textProperty().addListener((observable, oldValue, newValue) -> {
+            searchli.setItems(filterItems(newValue));
+        });
+
+        listPurchases.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                x = newValue;
+                System.out.println("Selected value: " + x.getidv());
+            }
+        });
+
+    }
+    private ObservableList<String> filterItems(String searchText) {
+        ObservableList<String> filteredItems = FXCollections.observableArrayList();
+
+        String med=addmed.getText();
+
+        for (String item : searchlili) {
+            if (item.toLowerCase().contains(searchText.toLowerCase())) {
+                filteredItems.add(item);
+            }
+        }
+        return filteredItems;
+    }
+
+
+
+
+
+
+
+    @FXML
+    void ondelete(ActionEvent event) {
+        int todel=x.getidv();
+
+        String sql = "DELETE FROM vente WHERE IDv = "+todel;
+
+        PreparedStatement stmt = null;
+        try {
+            stmt = getConnection().prepareStatement(sql);
+            stmt.executeUpdate(sql);
+            System.out.println("deleted");
+
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+
+        afficher();
+
 
 
 
@@ -199,91 +435,600 @@ public class VentesController extends Controller implements Initializable {
 
 
 
-
         @FXML
         public void onadd() throws IOException {
             super.NouveauFenetre("Ajouter-vente");
         }
 
-        @FXML
-        public void addpurchases(ActionEvent event) throws IOException {
+    @FXML
+    void month(ActionEvent event) {
 
-            String prixstr=addprix.getText();
-            float prixf = Float.parseFloat(prixstr);
-            //SimpleFloatProperty prixflo = new SimpleFloatProperty(prixf);
-
-
-            String qua=addqte.getText();
-            SimpleIntegerProperty quan = new SimpleIntegerProperty();
+        String sql="SELECT * " +
+                "FROM vente " +
+                "WHERE MONTH(Datev) = MONTH(CURRENT_DATE()) AND YEAR(Datev) = YEAR(CURRENT_DATE());";
 
 
-            int quint=Integer.parseInt(qua);
+        ventes=listPurchases.getItems();
+        ventes.clear();
+        //refresh!!!
+
+        try {
+            PreparedStatement stmt =getConnection().prepareStatement(sql);
+            ResultSet rs=stmt.executeQuery();
+
+            while (rs.next()){
+
+                vente w=new vente();
+                //for showing the table
+                w.setprix(rs.getFloat("Prixv"));
+
+                w.setqua(rs.getInt("quantite"));
+
+                //pour calculer
+
+                //il faut calculer total par multiplication de prix uni par quantite apres get the total
+
+                w.calculerprix();
+                w.setidcl(rs.getInt("IDc"));
+                w.setidca(rs.getInt("IDca"));
+
+                Date dt=rs.getDate("Datev");
+                w.setdate(dt);
+                w.setidu(rs.getInt("IDu"));
+                w.setmethod(rs.getString("MethPayementV"));
 
 
-            System.out.println(addmed.getText());
-            System.out.println(prixf);
+
+                w.setidv(rs.getInt("IDv"));
+                w.setcateg(rs.getString("categ"));
+                w.setmed(rs.getString("namemed"));
 
 
-            System.out.println(addcat.getText());
-            System.out.println(addcode.getText());
-            System.out.println(addmethod.getText());
-            String method=addmethod.getText();
-            String categ=addcat.getText();
-            String code=addcode.getText();
-            String med=addmed.getText();
+                float total=w.gettotal();
+                totprice+=total;
 
 
 
-            Date date=new Date();
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-            String datefrm = dateFormat.format(date);
-
-            System.out.println(datefrm);
-
-            System.out.println(addcl.getText());
-
-            SimpleIntegerProperty idcl = new SimpleIntegerProperty();
-
-            vente x=new vente(prixf,datefrm,5,1,0,method,categ,code,med,quint);
-
-            String sql="INSERT INTO `vente`(`Prixv`, `Datev`,`IDu`,`IDca`,`IDc`,`MethPayementV`) VALUES (?,?,?,?,?,?)";
-            try{
-
-                PreparedStatement statement =getConnection().prepareStatement(sql);
-                statement.setFloat(1,prixf);
-                statement.setString(2,datefrm);
-
-                // pour l essaie
-
-                statement.setInt(3,0);
-                statement.setInt(4,1);
-                statement.setInt(5,5);
 
 
-                statement.setString(6,method);
-
-                int Affected = statement.executeUpdate();
-
-                if (Affected > 0) {
-                    System.out.println("Insertion successful");
-                } else {
-                    System.out.println("Insertion failed");
-                }
+                //w.setcateg(rs.getString("categ"));
+                //w.setcode(rs.getString("code"));
+                //w.setmed(rs.getString("med"));
+                //int qua=rs.getInt("qua");
+                //SimpleIntegerProperty quant = new SimpleIntegerProperty();
+                //quant.set(qua);
+                //w.setqua(quant);
 
 
-                statement.close();
 
-            } catch (SQLException e) {
+                shcate.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getcateg()));
+                shdate.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getdate()));
+                shmed.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getmed()));
+                shprix.setCellValueFactory(cellData -> new SimpleFloatProperty(cellData.getValue().gettotal()).asObject());
+                shqua.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getqua()).asObject());
 
-                System.out.println("connection failed");
-                System.out.println(e.getMessage());
+
+
+                ventes.add(w);
+                listPurchases.setItems(ventes);
+
+
+
+
 
 
             }
 
 
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @FXML
+    void jour(ActionEvent event) {
+        String sql="SELECT * FROM vente WHERE DATE(Datev) = CURDATE()";
+        ventes=listPurchases.getItems();
+        ventes.clear();
+        //refresh!!!
+
+        try {
+            PreparedStatement stmt =getConnection().prepareStatement(sql);
+            ResultSet rs=stmt.executeQuery();
+
+            while (rs.next()){
+
+                vente w=new vente();
+                //for showing the table
+                w.setprix(rs.getFloat("Prixv"));
+
+                w.setqua(rs.getInt("quantite"));
+
+                //pour calculer
+
+                //il faut calculer total par multiplication de prix uni par quantite apres get the total
+
+                w.calculerprix();
+                w.setidcl(rs.getInt("IDc"));
+                w.setidca(rs.getInt("IDca"));
+
+                Date dt=rs.getDate("Datev");
+                w.setdate(dt);
+                w.setidu(rs.getInt("IDu"));
+                w.setmethod(rs.getString("MethPayementV"));
+
+
+
+                w.setidv(rs.getInt("IDv"));
+                w.setcateg(rs.getString("categ"));
+                w.setmed(rs.getString("namemed"));
+
+
+                float total=w.gettotal();
+                totprice+=total;
+
+
+
+
+
+
+
+
+                shcate.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getcateg()));
+                shdate.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getdate()));
+                shmed.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getmed()));
+                shprix.setCellValueFactory(cellData -> new SimpleFloatProperty(cellData.getValue().gettotal()).asObject());
+                shqua.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getqua()).asObject());
+
+
+
+                ventes.add(w);
+                listPurchases.setItems(ventes);
+
+
+
+
+
+
+            }
+
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+
+    }
+
+    @FXML
+    void week(ActionEvent event) {
+        String sql="SELECT * FROM vente WHERE WEEK(Datev) = WEEK(CURDATE());";
+        ventes=listPurchases.getItems();
+        ventes.clear();
+        //refresh!!!
+
+        try {
+            PreparedStatement stmt =getConnection().prepareStatement(sql);
+            ResultSet rs=stmt.executeQuery();
+
+            while (rs.next()){
+
+                vente w=new vente();
+                //for showing the table
+                w.setprix(rs.getFloat("Prixv"));
+
+                w.setqua(rs.getInt("quantite"));
+
+                //pour calculer
+
+                //il faut calculer total par multiplication de prix uni par quantite apres get the total
+
+                w.calculerprix();
+                w.setidcl(rs.getInt("IDc"));
+                w.setidca(rs.getInt("IDca"));
+
+                Date dt=rs.getDate("Datev");
+                w.setdate(dt);
+                w.setidu(rs.getInt("IDu"));
+                w.setmethod(rs.getString("MethPayementV"));
+
+
+
+                w.setidv(rs.getInt("IDv"));
+                w.setcateg(rs.getString("categ"));
+                w.setmed(rs.getString("namemed"));
+
+
+                float total=w.gettotal();
+                totprice+=total;
+
+
+
+
+
+                //w.setcateg(rs.getString("categ"));
+                //w.setcode(rs.getString("code"));
+                //w.setmed(rs.getString("med"));
+                //int qua=rs.getInt("qua");
+                //SimpleIntegerProperty quant = new SimpleIntegerProperty();
+                //quant.set(qua);
+                //w.setqua(quant);
+
+
+
+                shcate.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getcateg()));
+                shdate.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getdate()));
+                shmed.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getmed()));
+                shprix.setCellValueFactory(cellData -> new SimpleFloatProperty(cellData.getValue().gettotal()).asObject());
+                shqua.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getqua()).asObject());
+
+
+
+                ventes.add(w);
+                listPurchases.setItems(ventes);
+
+
+
+
+
+
+            }
+
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
+
+    int li=0;
+
+        @FXML
+        public void addpurchases(ActionEvent event) throws IOException {
+
+
+
+
+
+            //hta iconfirme
+            String sql="INSERT INTO `vente`(`Prixv`, `Datev`,`IDu`,`IDca`,`IDc`,`MethPayementV`,`namemed`,`categ`,`quantite`) VALUES (?,?,?,?,?,?,?,?,?)";
+
+            int idp=0;
+
+
+            for (int j=0;j<li;j++){
+                try{
+
+
+                    PreparedStatement statement =getConnection().prepareStatement(sql);
+                    statement.setFloat(1,ventee.get(j).getprix());
+                    statement.setDate(2,ventee.get(j).getdate());
+
+                    // pour l essaie
+
+                    statement.setInt(3,0);
+                    statement.setInt(4,1);
+                    statement.setInt(5,5);
+
+
+                    statement.setString(6,ventee.get(j).getMethod());
+                    statement.setString(7,ventee.get(j).getmed());
+
+                    int quanti = 0;
+                    try{
+
+
+
+                        String x="SELECT quantite " +
+                                "FROM produit " +
+                                "WHERE Libellép = '"+ventee.get(j).getmed()+"';";
+                        PreparedStatement statementa =getConnection().prepareStatement(x);
+                        ResultSet rs =statementa.executeQuery();
+                        rs.next();
+                        quanti=rs.getInt("quantite");
+
+                        if(quanti>0){
+                            quanti -= ventee.get(j).getqua();
+                        }else{
+                            System.out.println("quantite est pas suffisant");
+                        }
+
+
+
+
+
+
+                        statementa.executeQuery();
+
+
+
+
+                        statementa.close();
+
+
+                    } catch (SQLException e) {
+
+                        System.out.println("no quantite");
+                        System.out.println(e.getMessage());
+
+
+                    }
+
+                    try{
+
+
+
+                        String x="UPDATE produit" +
+                                " SET quantite =  "+ quanti+
+                                " WHERE Libellép = '"+ventee.get(j).getmed()+ "';";
+                        PreparedStatement statementa =getConnection().prepareStatement(x);
+
+
+                        int Affected = statementa.executeUpdate();
+
+                        if (Affected > 0) {
+                            System.out.println("quantite est diminue");
+                        } else {
+                            System.out.println("diminution failed");
+                        }
+
+
+
+
+                        statementa.close();
+
+
+                    } catch (SQLException e) {
+
+                        System.out.println("change quantite failed");
+                        System.out.println(e.getMessage());
+
+
+                    }
+
+
+                    statement.setString(8,ventee.get(j).getcateg());
+                    statement.setInt(9,ventee.get(j).getqua());
+
+                    try{
+
+
+
+                        String x="select IDp" +
+                                " from produit "+
+                                " WHERE Libellép = '"+ventee.get(j).getmed()+ "';";
+                        PreparedStatement statementa =getConnection().prepareStatement(x);
+
+
+                        ResultSet rs = statementa.executeQuery();
+
+                        if(rs.next()){
+                            System.out.println("we have this product to add to contenir table");
+                            idp=rs.getInt("IDp");
+
+                        }else{
+                            System.out.println("we dont have this product to add to table contenir");
+
+                        }
+
+
+                        statementa.close();
+
+
+                    } catch (SQLException e) {
+
+                        System.out.println("getting id from product failled");
+                        System.out.println(e.getMessage());
+
+
+                    }
+
+
+                    statement.executeUpdate();
+                    statement.close();
+
+
+
+                } catch (SQLException e) {
+
+                    System.out.println("connection failed");
+                    System.out.println(e.getMessage());
+
+
+                }
+
+                int idv=0;
+
+                try{
+
+
+
+                    String x="select IDv" +
+                            " from vente";
+                    PreparedStatement statementa =getConnection().prepareStatement(x);
+
+
+                    ResultSet rs = statementa.executeQuery();
+
+
+                    if(rs.next()){
+                        System.out.println("id of vente has been selected");
+                        idv=rs.getInt("IDv");
+
+                    }else{
+                        System.out.println("err in selecting the last id in table vente");
+
+                    }
+
+                    idv=rs.getInt("IDv");
+
+
+                    statementa.close();
+
+
+                } catch (SQLException e) {
+
+                    System.out.println("getting id from vente failled");
+                    System.out.println(e.getMessage());
+
+
+                }
+
+
+                    try{
+
+
+
+                        String x="insert into contenir (IDp,IDv) values ('"+idp+"','"+idv+"');";
+
+                        PreparedStatement statementa =getConnection().prepareStatement(x);
+
+
+                        int Affected = statementa.executeUpdate();
+
+                        if (Affected > 0) {
+                            System.out.println("quantite est diminue");
+                        } else {
+                            System.out.println("diminution failed");
+                        }
+
+
+
+
+                        statementa.close();
+
+
+                    } catch (SQLException e) {
+
+                        System.out.println("add to contenir failed");
+                        System.out.println(e.getMessage());
+
+
+                    }
+
+
+
+
+
+
+            }
+
+            li=0;
+
+
+            afficher();
+
+            trye.clear();
+            ventes.clear();
+
 
         }
+    ObservableList<vente> trye;
+
+            float price=0;
+
+
+    @FXML
+    void trynewone(ActionEvent event) {
+        //matzadetch l base de donne hta tconfirma
+
+        float prixf=0;
+
+
+
+        String qua=addqte.getText();
+
+
+        int quint=Integer.parseInt(qua);
+
+        String categ=addcat.getValue();
+
+        String selectedItem = searchli.getSelectionModel().getSelectedItem();
+        if (selectedItem != null) {
+            // Do something with the selected item, e.g., print it
+            System.out.println("Selected Item: " + selectedItem);
+        }
+        String med=selectedItem;
+
+        try{
+
+
+
+            String x="select Prixv" +
+                    " from produit where Libellép= '"+med+"'";
+            PreparedStatement statementa =getConnection().prepareStatement(x);
+
+
+            ResultSet rs = statementa.executeQuery();
+
+
+            if(rs.next()){
+                System.out.println("we have the price");
+                prixf=rs.getFloat("Prixv");
+
+            }else{
+                System.out.println("the price is not in the table");
+
+            }
+
+            statementa.close();
+
+
+        } catch (SQLException e) {
+
+            System.out.println("getting price from produit failed");
+            System.out.println(e.getMessage());
+
+
+        }
+
+
+        LocalDate dat=adddate.getValue();
+        Date dt=Date.valueOf(dat);
+
+        String methd=addmethod.getValue();
+
+
+        System.out.println(addcl.getText());
+
+        vente venta =new vente();
+        venta.setmed(med);
+        venta.setdate(dt);
+        venta.setprix(prixf);
+        venta.setcateg(categ);
+        venta.setqua(quint);
+        venta.setmethod(methd);
+
+        //tehseb quantite x prix unitaire
+        venta.calculerprix();
+        tabcat.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getcateg()));
+        tabdate.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getdate()));
+        tabmed.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getmed()));
+        metho.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMethod()));
+        tabprix.setCellValueFactory(cellData -> new SimpleFloatProperty(cellData.getValue().gettotal()).asObject());
+        tabquan.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getqua()).asObject());
+
+
+
+
+        trye=tabresult.getItems();
+
+        trye.add(venta);
+        tabresult.setItems(trye);
+
+        price+=venta.gettotal();
+        totalaj.setText(Float.toString(price));
+
+        ventee.add(venta);
+
+        li++;
+
+
+
+
+
+
+    }
 
 
     }
