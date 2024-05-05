@@ -188,7 +188,7 @@ public class CommandeController extends Controller implements Initializable {
                         new SimpleStringProperty(ComQantite.getText()),
                         new SimpleStringProperty(result.getString("IDp"))
                 );
-                Prod.Afficher();
+
 
 
                 /*String sqlINSERT = "INSERT ";
@@ -201,8 +201,6 @@ public class CommandeController extends Controller implements Initializable {
                 Quantite.setCellValueFactory(f -> f.getValue().Quantite);
                 Reference.setCellValueFactory(f -> f.getValue().Idp);
                 Data.add(Prod);
-
-
             }
 
             System.out.println("Peix est = " + result.getString("Prixv"));

@@ -129,10 +129,9 @@ public class FournisseurController extends Controller implements Initializable {
         } else {
             System.err.println("TableView is null");
         }
-<<<<<<< HEAD
+
         Online(ConnectionStat(), main, Connected);
-=======
->>>>>>> 58ae5f48cfdad5b17ca2308905332dd277fa21c1
+
 
         affiche();
         afficheArchives();

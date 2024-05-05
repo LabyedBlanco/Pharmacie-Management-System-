@@ -79,7 +79,7 @@
                         </AnchorPane>
                     </children>
                 </GridPane>
-                <AnchorPane prefHeight="631.0" prefWidth="1100.0" style="-fx-background-color: #f9f9f9;" styleClass="drop-shadow" stylesheets="@style.css" GridPane.rowIndex="1">
+                <AnchorPane  prefHeight="631.0" prefWidth="1100.0" style="-fx-background-color: #f9f9f9;" styleClass="drop-shadow" stylesheets="@style.css" GridPane.rowIndex="1">
                     <children>
                         <GridPane layoutX="1.0" layoutY="-1.0" prefHeight="69.0" prefWidth="1099.0">
                             <columnConstraints>
@@ -131,7 +131,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <TextField maxWidth="160.0" prefHeight="30.0" prefWidth="195.0" promptText="Search" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+                        <TextField onKeyTyped="#setupsearchtextfield" fx:id="searchTextField" maxWidth="160.0" prefHeight="30.0" prefWidth="195.0" promptText="Search" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
                            <GridPane.margin>
                               <Insets right="10.0" />
                            </GridPane.margin>
@@ -153,13 +153,17 @@
                      <children>
                         <ScrollPane prefHeight="200.0" prefWidth="200.0">
                            <content>
-                              <TableView fx:id="listPurchases" prefHeight="769.0" prefWidth="1060.0" styleClass="drop-shadow">
+                              <TableView fx:id="table" prefHeight="769.0" prefWidth="1060.0" styleClass="drop-shadow">
                                  <columns>
-                                    <TableColumn minWidth="150.0" prefWidth="243.0" text="Nom Produit" />
-                                    <TableColumn minWidth="127.33334350585938" prefWidth="199.0" text="Code " />
-                                    <TableColumn minWidth="178.0" prefWidth="252.0" text="Categorie" />
-                                    <TableColumn minWidth="193.0" prefWidth="209.0" text="Prix" />
-                                    <TableColumn minWidth="116.7999389648437" prefWidth="116.7999389648437" text="Action" />
+                                     <TableColumn prefWidth="96.00002670288086" text="Id" />
+                                     <TableColumn  prefWidth="96.00002670288086" text="Nom" />
+                                     <TableColumn  prefWidth="98.39999389648438" text="Prix" />
+                                     <TableColumn  prefWidth="98.39999389648438" text="Quantite" />
+                                     <TableColumn  prefWidth="157.60000610351562" text="Dte d'expiration" />
+                                     <TableColumn  prefWidth="150.4000244140625" text="codeBr" />
+                                     <TableColumn  prefWidth="109.5999755859375" text="Catégorie" />
+                                     <TableColumn  prefWidth="56.0" text="Action" />
+
                                  </columns>
                                  <stylesheets>
                                     <URL value="@../styles/MainFormDesign.css" />

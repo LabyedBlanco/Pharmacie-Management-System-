@@ -8,148 +8,81 @@ import javafx.scene.control.SplitMenuButton;
 
 public class Utilisateur {
 
-    private final StringProperty CIN;
-    private final StringProperty Mpasse;
-    private final SimpleIntegerProperty id;
-    private final StringProperty Nom;
-    private final StringProperty Prénom;
-    private final StringProperty DN;
-    private final StringProperty  Role;
-    private final StringProperty  Email;
-    private final StringProperty  Tel;
-    private final StringProperty  Salaire;
-    private SplitMenuButton Action;
+    private  String CIN;
+    private  String Mpasse;
+    private  int id;
+    private  String Nom;
+    private  String Prénom;
+    private  String DN;
+    private  String  Role;
+    private  String  Email;
+    private  String  Tel;
+    private  float Salaire;
 
 
-    public Utilisateur() {
-        id = new SimpleIntegerProperty(this,"IDu");
-        CIN = new SimpleStringProperty(this, "CIN");
-        Nom= new SimpleStringProperty(this, "Nom");
-        Prénom = new SimpleStringProperty(this, "Prénom");
-        DN = new SimpleStringProperty(this, "DN");
-        Role = new SimpleStringProperty(this, "Role");
-        Email = new SimpleStringProperty(this, "Email");
-        Tel = new SimpleStringProperty(this, "Tel");
-        Salaire = new SimpleStringProperty(this, "Salaire");
-        Mpasse = new SimpleStringProperty(this, "Mpasse");
-        Action = new SplitMenuButton();
 
+    public Utilisateur(int id,String Nom,String Prénom,String Email,String Tel,String Role,String DN,float Salaire) {
+       this.id=id;
+       this.Nom=Nom;
+       this.Prénom=Prénom;
+       this.Email=Email;
+       this.Tel=Tel;
+       this.Role=Role;
+       this.DN=DN;
+       this.Salaire=Salaire;
     }
 
-
-
-    public static void add(Utilisateur util) {
+    public Utilisateur(String CIN,String Mpasse){
+        this.Mpasse=Mpasse;
+        this.CIN=CIN;
     }
 
-    public StringProperty nomProperty() {
+    public int getId() {
+        return id;
+    }
+    public String getNom() {
         return Nom;
     }
-
-    public String getNom() {
-        return Nom.get();
-    }
-
-    public void setNom(String newNom) {
-        Nom.set(newNom);
-    }
-
-    public StringProperty prenomProperty() {
-        return Prénom;
-    }
-
-    public String getPrenom() {
-        return Prénom.get();
-    }
-
-    public void setPrenom(String newPrenom) {
-        Prénom.set(newPrenom);
-    }
-
-    public StringProperty dateProperty() {
-        return DN;
-    }
-
-    public String getDate() {
-        return DN.get();
-    }
-
-    public void setDate(String newDate) {
-        DN.set(newDate);
-    }
-
-    public StringProperty roleProperty() {
-        return Role;
-    }
-
-    public String getRole() {
-        return Role.get();
-    }
-
-    public void setRole(String newRole) {
-        Role.set(newRole);
-    }
-
-    public StringProperty emailProperty() {
+    public String getEmail() {
         return Email;
     }
-
-    public String getEmail() {
-        return Email.get();
-    }
-
-    public void setEmail(String newEmail) {
-        Email.set(newEmail);
-    }
-
-    public StringProperty telephoneProperty() {
+    public String getTel() {
         return Tel;
     }
-
-    public String getTelephone() {
-        return Tel.get();
+    public String getRole() {
+        return Role;
     }
-
-    public void setTelephone(String newTelephone) {
-        Tel.set(newTelephone);
+    public String getPrenom() {
+        return Prénom;
     }
-
-    public StringProperty salaireProperty() {
-        return Salaire;
+    public String getDN() {
+        return DN;
     }
+    public float getSalaire(){return Salaire; }
+    public String getCIN(){return CIN;}
 
-    public String getSalaire() {
-        return Salaire.get();
+    public void setId(int id) {
+        this.id = id;
     }
-
-    public void setSalaire(String newSalaire) {
-        Salaire.set(newSalaire);
+    public void setNom(String Nom) {
+        this.Nom = Nom;
     }
-
-
-    public IntegerProperty idProperty() { return id; }
-    public int getId() { return id.get(); }
-
-    public void setId(int newId) {
-        id.set(newId);
+    public void setEmail(String Email) {
+        this.Email = Email;
     }
-
-    public SplitMenuButton getActionMenu() {
-        return Action;
+    public void setTel(String Tel) {
+        this.Tel= Tel;
     }
-
-    // Ajoutez cette méthode pour définir le menu d'actions
-
-    public void setActionMenu(SplitMenuButton Action) {
-        this.Action= Action;
+    public void setRole(String Role) {
+        this.Role = Role;
     }
+    public void setPrenom(String Prénom){this.Prénom=Prénom;}
+    public void setDN(String DN) {this.DN = DN;}
+    public void setSalaire(float Salaire) {this.Salaire = Salaire;}
+    public void setCIN(String CIN) {this.CIN = CIN;}
 
-    public String getPass() {
-        return Mpasse.get();
-    }
-
-    public String getCIN() {
-
-        return  CIN.get();
+    public void setMpasse(String mpasse) {
+        Mpasse = mpasse;
     }
 }
 
