@@ -121,19 +121,7 @@ public class FournisseurController extends Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        try {
-            DatabaseManager Data = new DatabaseManager();
-            boolean isConnected = Data.ConnectionStat();
-            if (isConnected) {
-                System.out.print(isConnected);
-                Connected.setStyle("-fx-background-color: green; -fx-background-radius: 100px");
-            } else {
-                System.out.print(isConnected);
-                Connected.setStyle("-fx-background-color: red; -fx-background-radius: 100px");
-            }
-        } catch (Exception e) {
-            System.err.println("Error initializing connection: " + e.getMessage());
-        }
+        Online(ConnectionStat(), main, Connected);
 
         if (tableViewActif != null && tableViewArchived != null) {
             tableViewActif.setVisible(true);
@@ -141,7 +129,10 @@ public class FournisseurController extends Controller implements Initializable {
         } else {
             System.err.println("TableView is null");
         }
+<<<<<<< HEAD
         Online(ConnectionStat(), main, Connected);
+=======
+>>>>>>> 58ae5f48cfdad5b17ca2308905332dd277fa21c1
 
         affiche();
         afficheArchives();
