@@ -3,17 +3,17 @@ package example.controller;
 
 import example.model.DatabaseManager;
 import example.Services.Fournisseur;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+
+
 import javafx.event.ActionEvent;
-
-
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
+
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
@@ -41,12 +41,14 @@ public class FournisseurController extends Controller implements Initializable {
 
     @FXML
     private TableView<Fournisseur>tableViewActif;
+    private ObservableList<Fournisseur> fournisseursActifs;
+
 
     @FXML
     private ImageView OnBack;
 
     @FXML
-    private TableView<?> tableViewArchived;
+    private TableView<Fournisseur> tableViewArchived;
     @FXML
     private Text main2;
     @FXML
@@ -54,10 +56,11 @@ public class FournisseurController extends Controller implements Initializable {
 
     @FXML
     private TextField countryfor;
-
+    @FXML
+    private TextField searchField;
     @FXML
     private TextField emailfor;
-    private DatabaseManager dbManager;
+
 
     @FXML
     private ComboBox<String> genderfor;
@@ -68,21 +71,21 @@ public class FournisseurController extends Controller implements Initializable {
 
     @FXML
     private TextField phonefor;
-    @FXML
-    private TableColumn<?, ?> action;
 
-    @FXML
-    private TableColumn<Fournisseur, String> address;
+
+
 
     @FXML
     private TableColumn<Fournisseur, String> email;
     @FXML
     private TableColumn<Fournisseur, String> nom;
 
-    @FXML
-    private TableColumn<Fournisseur, String> phone;
+
 
     private ObservableList<Fournisseur> fournisseurs;
+    private ObservableList<Fournisseur> fournisseursArchives;
+
+
     @FXML
     private TableColumn<Fournisseur, Integer> id;
     @FXML
@@ -92,6 +95,10 @@ public class FournisseurController extends Controller implements Initializable {
 
     @FXML
     private Label N;
+    private FilteredList<Fournisseur> filteredFournisseurs;
+
+    private FilteredList<Fournisseur> filteredFournisseurA;
+
 
     @FXML
     private Label T;
@@ -109,6 +116,8 @@ public class FournisseurController extends Controller implements Initializable {
 
     @FXML
     private TextField te;
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -133,32 +142,62 @@ public class FournisseurController extends Controller implements Initializable {
             System.err.println("TableView is null");
         }
         Online(ConnectionStat(), main, Connected);
+
         affiche();
+        afficheArchives();
+        if (fournisseurs == null) {
+            System.err.println("La liste 'fournisseurs' est null.");
+            return;
+        }
+        FilteredList<Fournisseur> filteredFournisseursActifs = new FilteredList<>(fournisseurs, p -> true);
+        FilteredList<Fournisseur> filteredFournisseursArchives = new FilteredList<>(fournisseursArchives, p -> true);
+
+
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            String lowerCaseFilter = newValue == null ? "" : newValue.toLowerCase();
+
+            filteredFournisseursActifs.setPredicate(fournisseur -> {
+                if (lowerCaseFilter.isEmpty()) {
+                    return true;
+                }
+
+                return fournisseur.getNom().toLowerCase().contains(lowerCaseFilter) ||
+                        fournisseur.getEmail().toLowerCase().contains(lowerCaseFilter) ||
+                        fournisseur.getPhone().toLowerCase().contains(lowerCaseFilter);
+            });
+        });
+
+
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            String lowerCaseFilter = newValue == null ? "" : newValue.toLowerCase();
+
+            filteredFournisseursArchives.setPredicate(fournisseur -> {
+                if (lowerCaseFilter.isEmpty()) {
+                    return true; // Si le champ est vide, afficher tout
+                }
+
+                return fournisseur.getNom().toLowerCase().contains(lowerCaseFilter) ||
+                        fournisseur.getEmail().toLowerCase().contains(lowerCaseFilter) ||
+                        fournisseur.getPhone().toLowerCase().contains(lowerCaseFilter);
+            });
+        });
+
+
+        tableViewActif.setItems(filteredFournisseursActifs);
+        tableViewArchived.setItems(filteredFournisseursArchives);
+
+
+        afficherFournisseursActifs();
 
     }
 
     @FXML
     public void Addfor() throws IOException {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Add.fxml"));
-        Parent root = loader.load();
-
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.show();
+        NouveauFenetre("Add");
     }
 
-    @FXML
-    public void AddforA(ActionEvent event) throws IOException {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ArchiverF.fxml"));
-        Parent root = loader.load();
-
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.show();
-
-    }
 
     @FXML
     void afficherFournisseursActifs() {
@@ -188,7 +227,7 @@ public class FournisseurController extends Controller implements Initializable {
     }
 
     @FXML
-    public void addf() {
+    public void addf(ActionEvent event) {
         String name = namefor.getText();
         String email = emailfor.getText();
         String phone = phonefor.getText();
@@ -196,15 +235,16 @@ public class FournisseurController extends Controller implements Initializable {
         String city = cityfor.getText();
         String country = countryfor.getText();
 
-        DatabaseManager dbManager = new DatabaseManager();
-        Connection conn = null;
+        /*DatabaseManager dbManager = new DatabaseManager();
+        Connection conn = null;*/
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         try {
-            conn = dbManager.getConnection();
+            //conn = dbManager.getConnection();
+
 
             String sql = "INSERT INTO fournisseur (Nomf, Telf, Emailf,country,city, gender,etat) VALUES (?, ?, ?, ?,?,?,'A')";
-            PreparedStatement statement = conn.prepareStatement(sql);
-
+            //PreparedStatement statement = conn.prepareStatement(sql);
+            PreparedStatement statement = getConnection().prepareStatement(sql);
             statement.setString(1, name);
             statement.setString(2, phone);
             statement.setString(3, email);
@@ -219,7 +259,9 @@ public class FournisseurController extends Controller implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("Les données ont été insérées avec succès !");
             alert.showAndWait();
-            Addfor();
+            FermerFentere(event);
+            affiche();
+
 
         } catch (Exception e) {
             System.err.println("Erreur lors de l'ajout de données : " + e.getMessage());
@@ -227,7 +269,7 @@ public class FournisseurController extends Controller implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("probleme d'insertion !");
             alert.showAndWait();
-        } finally {
+        } /*finally {
             if (conn != null) {
                 try {
                     dbManager.closeConnection();
@@ -235,7 +277,7 @@ public class FournisseurController extends Controller implements Initializable {
                     System.err.println("Erreur lors de la fermeture de la connexion : " + sqle.getMessage());
                 }
             }
-        }
+        }*/
     }
 
     public void affiche() {
@@ -243,19 +285,21 @@ public class FournisseurController extends Controller implements Initializable {
             System.err.println("Erreur : tableViewActif est null");
             return;
         }
-        DatabaseManager dbManager = new DatabaseManager();
-        Connection conn = null;
+        /*DatabaseManager dbManager = new DatabaseManager();
+        Connection conn = null;*/
 
         try {
-            conn = dbManager.getConnection();
+          //  conn = dbManager.getConnection();
 
             String sql = "SELECT IDF, Nomf, Telf, Emailf, country, city FROM fournisseur WHERE etat='A'";
-            PreparedStatement statement = conn.prepareStatement(sql);
+           // PreparedStatement statement = conn.prepareStatement(sql);
+            PreparedStatement statement = getConnection().prepareStatement(sql);
 
             ResultSet rs = statement.executeQuery();
 
 
             fournisseurs = FXCollections.observableArrayList();
+
 
 
             if (!rs.isBeforeFirst()) {
@@ -334,9 +378,11 @@ public class FournisseurController extends Controller implements Initializable {
 
         tableViewActif.getColumns().addAll(actionCol);
 
+
+
             rs.close();
             statement.close();
-            conn.close();
+            //conn.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -379,11 +425,11 @@ public class FournisseurController extends Controller implements Initializable {
 
         if (result.isPresent() && result.get() == okButton) {
 
-            DatabaseManager dbManager = new DatabaseManager();
+           // DatabaseManager dbManager = new DatabaseManager();
 
-            try (Connection conn = dbManager.getConnection()) {
+            try  {
                 String sql = "UPDATE fournisseur SET Nomf = ?, Emailf = ?, Telf = ?, country = ?, city = ? WHERE IDF = ?";
-                PreparedStatement statement = conn.prepareStatement(sql);
+                PreparedStatement statement = getConnection().prepareStatement(sql);
 
                 statement.setString(1, nomField.getText());
                 statement.setString(2, emailField.getText());
@@ -415,72 +461,136 @@ public class FournisseurController extends Controller implements Initializable {
     }
 
     private void deleteFournisseur(Fournisseur fournisseur) {
-        DatabaseManager dbManager = new DatabaseManager();
+        Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmationAlert.setTitle("Confirmer la suppression");
+        confirmationAlert.setHeaderText("Suppression du fournisseur");
+        confirmationAlert.setContentText("Êtes-vous sûr de vouloir supprimer " + fournisseur.getNom() + "?");
 
-        try (Connection conn = dbManager.getConnection()) {
-            String sql = "DELETE FROM fournisseur WHERE IDF = ?";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setInt(1, fournisseur.getId());
 
-            int rowsAffected = statement.executeUpdate();
-            if (rowsAffected > 0) {
-                System.out.println("Fournisseur supprimé avec succès : " + fournisseur.getNom());
+        Optional<ButtonType> result = confirmationAlert.showAndWait();
 
-                fournisseurs.remove(fournisseur);
-                tableViewActif.setItems(fournisseurs);
-            } else {
-                System.out.println("Aucun fournisseur supprimé.");
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            //DatabaseManager dbManager = new DatabaseManager();
+
+            try  {
+                String sql = "DELETE FROM fournisseur WHERE IDF = ?";
+                //PreparedStatement statement = conn.prepareStatement(sql);
+                PreparedStatement statement = getConnection().prepareStatement(sql);
+                statement.setInt(1, fournisseur.getId());
+
+                int rowsAffected = statement.executeUpdate();
+                if (rowsAffected > 0) {
+                    System.out.println("Fournisseur supprimé avec succès : " + fournisseur.getNom());
+
+                    fournisseurs.remove(fournisseur);
+                    tableViewActif.setItems(fournisseurs);
+                } else {
+                    System.out.println("Aucun fournisseur supprimé.");
+                }
+
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                System.out.println("Erreur lors de la suppression du fournisseur.");
             }
+        }
+    }
+    public void afficheArchives() {
+        if (tableViewArchived == null) {
+            System.err.println("Erreur : tableViewArchived est null");
+            return;
+        }
+       // DatabaseManager dbManager = new DatabaseManager();
+        try  {
+            String sql = "SELECT IDF, Nomf, Telf, Emailf, country, city FROM fournisseur WHERE etat='D'";
+           // PreparedStatement statement = conn.prepareStatement(sql);
+            PreparedStatement statement = getConnection().prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+            fournisseursArchives = FXCollections.observableArrayList();
+
+            while (rs.next()) {
+                Fournisseur fournisseur = new Fournisseur(
+                        rs.getInt("IDF"),
+                        rs.getString("Nomf"),
+                        rs.getString("Emailf"),
+                        rs.getString("Telf"),
+                        rs.getString("country") + ", " + rs.getString("city")
+                );
+                fournisseursArchives.add(fournisseur);
+            }
+            tableViewArchived.setItems(fournisseursArchives);
+
+
+            TableColumn<Fournisseur, Integer> idCol = new TableColumn<>("ID");
+            idCol.setCellValueFactory(f -> new javafx.beans.property.SimpleIntegerProperty(f.getValue().getId()).asObject());
+            idCol.setMinWidth(138);
+
+            TableColumn<Fournisseur, String> nameCol = new TableColumn<>("Nom");
+            nameCol.setCellValueFactory(f -> new javafx.beans.property.SimpleStringProperty(f.getValue().getNom()));
+            nameCol.setMinWidth(170);
+            applyTextAlignment(nameCol);
+
+            TableColumn<Fournisseur, String> emailCol = new TableColumn<>("Email");
+            emailCol.setCellValueFactory(f -> new javafx.beans.property.SimpleStringProperty(f.getValue().getEmail()));
+            emailCol.setMinWidth(190);
+            applyTextAlignment(emailCol);
+
+            TableColumn<Fournisseur, String> phoneCol = new TableColumn<>("Téléphone");
+            phoneCol.setCellValueFactory(f -> new javafx.beans.property.SimpleStringProperty(f.getValue().getPhone()));
+            phoneCol.setMinWidth(150);
+            applyTextAlignment(phoneCol);
+            TableColumn<Fournisseur, String> addressCol = new TableColumn<>("Adresse");
+            addressCol.setCellValueFactory(f -> new javafx.beans.property.SimpleStringProperty(f.getValue().getAdresse()));
+            addressCol.setMinWidth(350);
+            applyTextAlignment(addressCol);
+            tableViewArchived.setItems(fournisseursArchives);
+            System.out.println("Nombre de fournisseurs archivés chargés: " + fournisseursArchives.size());
+            System.out.println("Columns: " + tableViewArchived.getColumns().size());
+            System.out.println("Items in TableView: " + tableViewArchived.getItems().size());
+            tableViewArchived.getColumns().addAll(idCol, nameCol, emailCol, phoneCol, addressCol);
+
+            statement.close();
 
         } catch (SQLException ex) {
             ex.printStackTrace();
-            System.out.println("Erreur lors de la suppression du fournisseur.");
         }
     }
+
     private void displayFournisseurDetails(Fournisseur fournisseur) {
         no.setText(fournisseur.getNom());
         em.setText(fournisseur.getEmail());
         te.setText(fournisseur.getPhone());
         ad.setText(fournisseur.getAdresse());
     }
-    private void archiveFournisseur(Fournisseur fournisseur) {
-        DatabaseManager dbManager = new DatabaseManager();
 
-        try (Connection conn = dbManager.getConnection()) {
-            String sql = "UPDATE fournisseur SET etat = 'D' WHERE IDF = ?";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setInt(1, fournisseur.getId());
-
-            int rowsAffected = statement.executeUpdate();
-
-            if (rowsAffected > 0) {
-                System.out.println("Fournisseur archivé avec succès.");
-            } else {
-                System.out.println("Aucun fournisseur archivé.");
-            }
-
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-            System.out.println("Erreur lors de l'archivage du fournisseur.");
+    @FXML
+    public void handleChangeState() {
+        Fournisseur selectedFournisseur = tableViewActif.getSelectionModel().getSelectedItem();
+        if (selectedFournisseur != null) {
+            updateFournisseurState(selectedFournisseur.getId());
+        } else {
+            System.err.println("Aucun fournisseur sélectionné");
         }
     }
-    @FXML
-    public void onSelect() {
-        selectedFournisseur = fournisseurListView.getSelectionModel().getSelectedItem();
+    public void updateFournisseurState(int fournisseurId) {
+        //DatabaseManager dbManager = new DatabaseManager();
+        try  {
+            String sqlUpdate = "UPDATE fournisseur SET etat = 'D' WHERE IDF = ? AND etat = 'A'";
+            //PreparedStatement statement = conn.prepareStatement(sqlUpdate);
+            PreparedStatement statement = getConnection().prepareStatement(sqlUpdate);
+            statement.setInt(1, fournisseurId);
 
-        Stage stage = (Stage) fournisseurListView.getScene().getWindow();
-        stage.close();
+            int rowsAffected = statement.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("État du fournisseur mis à jour avec succès");
+                afficheArchives();
+                affiche();
+            } else {
+                System.out.println("Aucune mise à jour effectuée");
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
-    @FXML
-    public void onCancel() {
-        selectedFournisseur = null;
 
-        Stage stage = (Stage) fournisseurListView.getScene().getWindow();
-        stage.close();
-    }
-
-    public Fournisseur getSelectedFournisseur() {
-        return selectedFournisseur;
-    }
 }
