@@ -1,13 +1,11 @@
 package example.controller;
 
-import example.model.DatabaseManager;
 import example.model.FxmlLoader;
 import example.model.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -24,8 +22,7 @@ import java.util.ResourceBundle;
 public class MainController extends Controller implements Initializable {
 
     public GridPane MainPane;
-    @FXML
-    private AnchorPane Display;
+
     @FXML
     private Button comm;
     @FXML
@@ -54,7 +51,6 @@ public class MainController extends Controller implements Initializable {
         four.setStyle("-fx-background-color: transparent");
         logout.setStyle("-fx-background-color: transparent");
         System.out.print("\nDashboard");
-        Pane view = null;
         try {
             view = object.setPage("Dashboard");
         } catch (IOException e) {
@@ -62,7 +58,7 @@ public class MainController extends Controller implements Initializable {
         }
             MainPane.add(view, 0, 0);
     }
-    public void OnProduit (ActionEvent event) throws IOException {
+    public void OnProduit () throws IOException {
         MainPane.getChildren().clear();
         System.out.print("\nGestion des Produit");
         Pane view = object.setPage("Produits");
@@ -76,7 +72,7 @@ public class MainController extends Controller implements Initializable {
         currentPage ="Produits";
     }
 
-    public void OnUtilisateur (ActionEvent event) throws IOException {
+    public void OnUtilisateur () throws IOException {
         MainPane.getChildren().clear();
         System.out.print("\nGestion des Utilisateurs");
         Pane view = object.setPage("Utilisateur");
@@ -89,12 +85,11 @@ public class MainController extends Controller implements Initializable {
         four.setStyle("-fx-background-color: transparent");
         currentPage ="Utilisateur";
     }
-    public void OnDashboard (ActionEvent event) throws IOException {
+    public void OnDashboard () throws IOException {
         MainPane.getChildren().clear();
         System.out.print("\nDashboard");
         Pane view = object.setPage("Dashboard");
         MainPane.add(view,0,0);
-
         dash.setStyle("-fx-background-color: transparent;-fx-effect: dropshadow(gaussian, white, 10, 0.05, 0, 0);-fx-border-color: WHITE; -fx-border-width: 0px 0px 0px 3px;");
         comm.setStyle("-fx-background-color: transparent");
         vent.setStyle("-fx-background-color: transparent");
@@ -102,9 +97,8 @@ public class MainController extends Controller implements Initializable {
         prod.setStyle("-fx-background-color: transparent");
         four.setStyle("-fx-background-color: transparent");
         currentPage ="Dashboard" ;
-
     }
-    public void OnCommande (ActionEvent event) throws IOException {
+    public void OnCommande () throws IOException {
         MainPane.getChildren().clear();
         System.out.print("\nCommande");
         Pane view = object.setPage("Commande");
@@ -116,10 +110,8 @@ public class MainController extends Controller implements Initializable {
         prod.setStyle("-fx-background-color: transparent");
         four.setStyle("-fx-background-color: transparent");
         currentPage ="Commande";
-
-
     }
-    public void OnVentes (ActionEvent event) throws IOException {
+    public void OnVentes () throws IOException {
         MainPane.getChildren().clear();
         System.out.print("\nVentes");
         Pane view = object.setPage("Ventes");
@@ -134,7 +126,7 @@ public class MainController extends Controller implements Initializable {
     }
 
 
-    public void OnFournisseur (ActionEvent event) throws IOException {
+    public void OnFournisseur () throws IOException {
         MainPane.getChildren().clear();
         System.out.print("\nFournisseur");
         view = object.setPage("Fournisseur");
@@ -146,23 +138,26 @@ public class MainController extends Controller implements Initializable {
         comm.setStyle("-fx-background-color: transparent");
         prod.setStyle("-fx-background-color: transparent");
         currentPage ="Fournisseur";
-
     }
 
 
-    public void Onlogout(ActionEvent actionEvent)  throws IOException{
+    public void Onlogout()  throws IOException{
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("/fxml/Close.fxml"));
         Parent root = loader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.show();
     }
-    public void OnClose(ActionEvent actionEvent) throws IOException{
+    public void OnClose() throws IOException{
         MessageConfirmation("Close");
     }
-    public void OnSettings(ActionEvent actionEvent) throws IOException{}
+    public void OnSettings() throws IOException{
+        MainPane.getChildren().clear();
+        System.out.print("\nSettings");
+        view = object.setPage("Settings");
+    }
 
-    public void onRefraichir(ActionEvent event) {
+    public void onRefraichir() {
         try {
             MainPane.getChildren().clear();
             view = object.setPage(currentPage);
