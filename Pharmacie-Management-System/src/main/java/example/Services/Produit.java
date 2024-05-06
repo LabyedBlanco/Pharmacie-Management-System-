@@ -10,7 +10,6 @@ public class Produit {
     private  String libp;
     private  float prixv;
     private  int idp;
-    private  int iddep;
     private int Qte;
     private String Datep;
     private String codBr;
@@ -34,14 +33,13 @@ public class Produit {
         System.out.println("libeller : " +libeller+ " Prix " +PrixProduit+ " Quantite : " +Quantite+ " idp : " +Idp);
     }
 
-    public Produit(int idp,String libp,float prixv,int Qte,String Datep,String codBr,int iddep){
+    public Produit(int idp,String libp,float prixv,int Qte,String Datep,String codBr){
         this.idp=idp;
         this.libp=libp;
         this.codBr=codBr;
         this.Datep=Datep;
         this.Qte=Qte;
         this.prixv=prixv;
-        this.iddep=iddep;
 
     }
 

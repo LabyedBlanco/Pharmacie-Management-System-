@@ -22,7 +22,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 import example.Services.Commande;
-import org.controlsfx.control.textfield.TextFields;
+//import org.controlsfx.control.textfield.TextFields;
 
 
 public class CommandeController extends Controller implements Initializable {
@@ -109,7 +109,7 @@ public class CommandeController extends Controller implements Initializable {
             } catch (SQLException e) {
                 System.out.println(e);
             }
-            TextFields.bindAutoCompletion(SearchProduit, possibleSuggestions);
+            //TextFields.bindAutoCompletion(SearchProduit, possibleSuggestions);
         }
 
         if (SearchFournisseur != null) {
@@ -129,7 +129,7 @@ public class CommandeController extends Controller implements Initializable {
             } catch (SQLException e) {
                 System.out.println(e);
             }
-            TextFields.bindAutoCompletion(SearchFournisseur, possibleSuggestions);
+            //TextFields.bindAutoCompletion(SearchFournisseur, possibleSuggestions);
         }
 
 
@@ -172,7 +172,7 @@ public class CommandeController extends Controller implements Initializable {
             });
         }
     }
-    int prixtotal;
+    float prixtotal;
     public void Ajouterliste(ActionEvent actionEvent) {
         String PrdAjouter = SearchProduit.getText();
 
@@ -188,30 +188,58 @@ public class CommandeController extends Controller implements Initializable {
                         new SimpleStringProperty(ComQantite.getText()),
                         new SimpleStringProperty(result.getString("IDp"))
                 );
-
-
-
-                /*String sqlINSERT = "INSERT ";
-                PreparedStatement stat2 = getConnection().prepareStatement(sqlINSERT);
-                stat2.executeQuery();*/
-
-                Integer Ord = 0;
                 Nom.setCellValueFactory(f -> f.getValue().libeller);
                 Prix.setCellValueFactory(f -> f.getValue().PrixProduit);
                 Quantite.setCellValueFactory(f -> f.getValue().Quantite);
                 Reference.setCellValueFactory(f -> f.getValue().Idp);
                 Data.add(Prod);
-            }
 
-            System.out.println("Peix est = " + result.getString("Prixv"));
-            prixtotal += Integer.parseInt( result.getString("Prixv"));
-            String str = Integer.toString(prixtotal);
-            Prixtotal.setText(str);
+                String QuantiteString = Prod.Quantite.get();
+
+                try {
+                    float floatValue = Float.parseFloat(QuantiteString);
+                    prixtotal += floatValue*result.getFloat("Prixv");
+                    System.out.println(prixtotal);
+                    Prixtotal.setText(Float.toString(prixtotal));
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                }
+
+                selectedDate = ComDate.getValue();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                String formattedDate = selectedDate.format(formatter);
+
+
+                Commande Com = new Commande(
+                        new SimpleStringProperty(),   // IDcommande
+                        new SimpleStringProperty(Prixtotal.getText()),   // Prixa
+                        new SimpleStringProperty(formattedDate), // DateCommande
+                        new SimpleStringProperty(SearchFournisseur.getText()),
+                        new SimpleStringProperty("1"),
+                        new SimpleStringProperty(), // IdUtilisateur
+                        new SimpleStringProperty(ComPayement.toString()), // MethodePayement
+                        new SimpleStringProperty("En Cours")  // Status
+                );
+
+                Com.Afficher();
+
+                IDcommande.setCellValueFactory(f -> f.getValue().IDcommande);
+                Datec.setCellValueFactory(f -> f.getValue().DateCommande);
+                PrixCo.setCellValueFactory(f -> f.getValue().Prixa);
+                Idfournisseur.setCellValueFactory(f -> f.getValue().IdFournisseur);
+                utilisateur.setCellValueFactory(f -> f.getValue().IdUtilisateur);
+                Status.setCellValueFactory(f -> f.getValue().Status);
+                Caisse.setCellValueFactory(f -> f.getValue().IdCaisse);
+                Methode.setCellValueFactory(f -> f.getValue().MethodePayement);
+                data.add(Com);
+
+
+            }
 
             Produits.setItems(Data);
 
         } catch (SQLException e) {
-            System.out.println(e);
+            System.out.println("problem est : " +e);
         }
 
         //table d'association ;
