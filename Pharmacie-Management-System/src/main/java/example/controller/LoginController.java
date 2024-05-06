@@ -1,49 +1,70 @@
 package example.controller;
 
-import example.model.DatabaseManager;
 import example.model.Main;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class LoginController extends Controller implements Initializable {
-    public int id;
+
+
+
+
+public static int id;
 
     @FXML
     private TextField Email;
-
+    @FXML
+    private GridPane login;
+    @FXML
+    private GridPane oublier;
     @FXML
     private TextField Password;
-
     @FXML
     private ComboBox<String> Rolebox;
-    public DatabaseManager DataConnexion = new DatabaseManager();
     private String selectedOption;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         if (Rolebox != null) {
             Rolebox.setItems(FXCollections.observableArrayList("Gérant", "Pharmacien", "Admin"));
         }
     }
+    public void Oublierdata(){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation Dialog");
+        alert.setContentText("Souhaitez-vous continuer ? Un message d'erreur sera envoyé au personnel par e-mail.");
 
-    @FXML
-    void Onpasswordtype(KeyEvent event) {
+        ButtonType buttonTypeYes = new ButtonType("Yes");
+        ButtonType buttonTypeNo = new ButtonType("No");
 
+        alert.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == buttonTypeYes) {
+            login.setVisible(false);
+            oublier.setVisible(true);
+        }
     }
 
     @Override
@@ -72,6 +93,11 @@ public class LoginController extends Controller implements Initializable {
             }
 
     }
+    public void OnClose(ActionEvent event) throws IOException {
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
+    }
 
     public boolean Verification() {
 
@@ -98,7 +124,10 @@ public class LoginController extends Controller implements Initializable {
                         String email = resultSet.getString("Email");
                         String password = resultSet.getString("Mpasse");
                         System.out.println("Email: " + email + ", Password: " + password + ", Role: "+Rolebox.getValue());
+
                          id=resultSet.getInt("IDu");
+
+
                         System.out.println(id);
                         Password.setStyle("-fx-border-color: red");
                         return true;

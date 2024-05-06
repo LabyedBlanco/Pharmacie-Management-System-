@@ -37,7 +37,7 @@
                   <RowConstraints maxHeight="557.3333282470703" minHeight="10.0" prefHeight="538.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button graphicTextGap="10.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #46c35f;" styleClass="drop-shadow" stylesheets="@style.css" text="Ajouter" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                  <Button graphicTextGap="10.0" mnemonicParsing="false" onAction="#OnClose" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #46c35f;" styleClass="drop-shadow" stylesheets="@style.css" text="Ajouter" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets right="60.0" top="20.0" />
                      </GridPane.margin>
@@ -92,30 +92,29 @@
                      </GridPane.margin>
                      <children>
                         <ScrollPane prefHeight="200.0" prefWidth="200.0">
-                          <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-                          </content>
+                           <content>
+                              <TableView fx:id="Produits" prefHeight="271.0" prefWidth="880.0" stylesheets="@../styles/MainFormDesign.css">
+                                 <columns>
+                                    <TableColumn fx:id="Order" minWidth="150.0" prefWidth="183.0" text="Order" />
+                                    <TableColumn fx:id="Nom" minWidth="150.0" prefWidth="183.0" text="Nom" />
+                                    <TableColumn fx:id="Quantite" minWidth="150.0" prefWidth="183.0" text="Quantitée " />
+                                    <TableColumn fx:id="Prix" minWidth="150.0" prefWidth="183.0" text="Prix" />
+                                    <TableColumn fx:id="Reference" minWidth="150.0" prefWidth="183.0" text="Reference" />
+                                 </columns>
+                              </TableView>
+                           </content>
                         </ScrollPane>
-                        <TableView prefHeight="200.0" prefWidth="200.0" stylesheets="@../styles/MainFormDesign.css">
-                           <columns>
-                              <TableColumn minWidth="150.0" prefWidth="183.0" text="Order" />
-                              <TableColumn minWidth="150.0" prefWidth="183.0" text="Nom" />
-                              <TableColumn minWidth="150.0" prefWidth="183.0" text="Quantitée " />
-                              <TableColumn minWidth="150.0" prefWidth="183.0" text="Prix" />
-                              <TableColumn minWidth="150.0" prefWidth="183.0" text="Reference" />
-                           </columns>
-                        </TableView>
                      </children>
                   </GridPane>
-                  <GridPane style="-fx-background-color: white; -fx-background-radius: 25px;" styleClass="drop-shadow" stylesheets="@style.css" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                  <GridPane style="-fx-background-color: white;" styleClass="drop-shadow" stylesheets="@style.css" GridPane.rowIndex="1" GridPane.valignment="TOP">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
-                      <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="68.0" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="96.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="101.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="96.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="131.0" minHeight="10.0" prefHeight="105.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <GridPane.margin>
                         <Insets bottom="300.0" left="60.0" right="60.0" top="20.0" />
@@ -129,7 +128,7 @@
                               <Insets left="40.0" />
                            </GridPane.margin>
                         </Text>
-                        <Text fill="#898989" layoutX="50.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date :" GridPane.columnIndex="1" GridPane.valignment="CENTER">
+                        <Text fill="#898989" layoutX="50.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date :" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -146,7 +145,7 @@
                            </GridPane.margin>
                            
                         </Text>
-                        <Text fill="#898989" layoutX="10.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Details :" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                        <Text fill="#898989" layoutX="10.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Details :" GridPane.columnIndex="1" GridPane.valignment="CENTER">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -162,7 +161,7 @@
                               <Insets left="40.0" />
                            </GridPane.margin>
                         </Text>
-                        <Text fill="#898989" layoutX="10.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produits :" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                        <Text fill="#898989" layoutX="10.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produit :" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -170,7 +169,7 @@
                               <Insets left="40.0" />
                            </GridPane.margin>
                         </Text>
-                        <Text fill="#898989" layoutX="490.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qte :" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                        <Text fill="#898989" layoutX="490.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix Total (DH):" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -178,37 +177,32 @@
                               <Insets bottom="10.0" left="40.0" top="40.0" />
                            </GridPane.margin>
                         </Text>
-                        <TextField fx:id="ComQantite" maxWidth="40.0" prefHeight="25.0" prefWidth="40.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                        <TextField fx:id="ComQantite" maxWidth="40.0" prefHeight="25.0" prefWidth="40.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <GridPane.margin>
                               <Insets bottom="10.0" left="150.0" top="40.0" />
                            </GridPane.margin>
                         </TextField>
-                        <ComboBox fx:id="Depot" prefWidth="150.0" GridPane.rowIndex="1">
+                        <ComboBox fx:id="Depot" prefWidth="150.0" promptText="Depot" style="-fx-background-color: white;" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets left="150.0" />
                            </GridPane.margin>
                         </ComboBox>
-                        <DatePicker fx:id="ComDate" GridPane.columnIndex="1">
+                        <DatePicker fx:id="ComDate" GridPane.rowIndex="2">
                            <GridPane.margin>
                               <Insets left="150.0" />
                            </GridPane.margin>
                         </DatePicker>
-                        <TextField fx:id="ComDetails" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <TextField fx:id="ComDetails" GridPane.columnIndex="1">
                            <GridPane.margin>
                               <Insets left="150.0" right="80.0" />
                            </GridPane.margin>
                         </TextField>
-                        <ComboBox fx:id="ComPayement" layoutX="160.0" layoutY="96.0" prefWidth="150.0" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                        <ComboBox fx:id="ComPayement" layoutX="160.0" layoutY="96.0" prefWidth="150.0" promptText="Cash" style="-fx-background-color: white;" GridPane.rowIndex="2" GridPane.valignment="TOP">
                            <GridPane.margin>
                               <Insets left="150.0" />
                            </GridPane.margin>
                         </ComboBox>
-                        <TextField fx:id="AjProduit" layoutX="600.0" layoutY="181.0" prefHeight="25.0" prefWidth="40.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP">
-                           <GridPane.margin>
-                              <Insets left="150.0" right="80.0" />
-                           </GridPane.margin>
-                        </TextField>
-                        <Button fx:id="ComConfirm" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" style="-fx-background-color: #46c35f;" styleClass="drop-shadow" stylesheets="@style.css" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                        <Button graphicTextGap="10.0" mnemonicParsing="false" onAction="#Ajouterliste" prefHeight="20.0" prefWidth="20.0" style="-fx-background-color: #46c35f;" styleClass="drop-shadow" stylesheets="@style.css" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -223,9 +217,22 @@
                               <Insets left="200.0" top="32.0" />
                            </GridPane.margin>
                         </Button>
-                        <TextField fx:id="ComFournisseur">
+                        <TextField fx:id="SearchFournisseur">
                            <GridPane.margin>
                               <Insets left="150.0" right="80.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <Text fx:id="Prixtotal" fill="#898989" layoutX="490.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="150.0" top="30.0" />
+                           </GridPane.margin>
+                        </Text>
+                        <TextField fx:id="SearchProduit" layoutX="600.0" layoutY="23.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets bottom="40.0" left="150.0" right="80.0" />
                            </GridPane.margin>
                         </TextField>
                      </children>

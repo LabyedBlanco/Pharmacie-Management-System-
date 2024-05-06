@@ -120,7 +120,7 @@
                                         <Image url="@../images/icons/9035096_search_icon.png" />
                                     </image>
                                 </ImageView>
-                                <TextField prefHeight="75.0" prefWidth="194.0" promptText="Search" style="-fx-background-color: white; -fx-border-color: white; -fx-border-radius: 25px; -fx-background-radius: 25px;" stylesheets="@style.css" GridPane.columnIndex="1">
+                                <TextField fx:id="SearchTextfeild" prefHeight="35.0" prefWidth="194.0" promptText="Search" style="-fx-background-color: white; -fx-border-color: white; -fx-border-radius: 25px; -fx-background-radius: 25px;" GridPane.columnIndex="1">
                                     <GridPane.margin>
                                         <Insets right="20.0" />
                                     </GridPane.margin>

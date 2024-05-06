@@ -141,8 +141,11 @@ public class VentesController extends Controller implements Initializable {
         //refresh!!!
 
         try {
-            System.out.println("poo");
-            String sql="SELECT * FROM `vente`";
+            String sql="SELECT vente.MethPayementV as x, produit.libellép as a, produit.Prixv as b, vente.Datev as c, catégorie.Libelléca as d, contenir.Quantpr as e " +
+                    "FROM contenir" +
+                    " JOIN produit ON produit.IDp = contenir.IDp" +
+                    " JOIN vente ON vente.IDv = contenir.IDv" +
+                    " JOIN catégorie ON produit.IDcat = catégorie.IDcat;";
             PreparedStatement stmt =getConnection().prepareStatement(sql);
             ResultSet rs=stmt.executeQuery();
 
@@ -150,28 +153,29 @@ public class VentesController extends Controller implements Initializable {
 
                 vente w=new vente();
                 //for showing the table
-                w.setprix(rs.getFloat("Prixv"));
+                w.setprix(rs.getFloat("b"));
 
-                w.setqua(rs.getInt("quantite"));
+                w.setqua(rs.getInt("e"));
 
                 //pour calculer
 
                 //il faut calculer total par multiplication de prix uni par quantite apres get the total
 
                 w.calculerprix();
-                w.setidcl(rs.getInt("IDc"));
+                /*w.setidcl(rs.getInt("IDc"));
                 w.setidca(rs.getInt("IDca"));
 
-                Date dt=rs.getDate("Datev");
-                w.setdate(dt);
-                w.setidu(rs.getInt("IDu"));
-                w.setmethod(rs.getString("MethPayementV"));
+                Date dt=rs.getDate("Datev");*/
+                w.setdate(rs.getDate("c"));
+
+                //w.setidu(rs.getInt("IDu"));
+                w.setmethod(rs.getString("x"));
 
 
 
-                w.setidv(rs.getInt("IDv"));
-                w.setcateg(rs.getString("categ"));
-                w.setmed(rs.getString("namemed"));
+                //w.setidv(rs.getInt("IDv"));
+                w.setcateg(rs.getString("d"));
+                w.setmed(rs.getString("a"));
 
 
                 //float total=w.gettotal();
@@ -203,12 +207,123 @@ public class VentesController extends Controller implements Initializable {
                 listPurchases.setItems(ventes);
 
 
+
             }
+            listPurchases.setItems(ventes);
+
 
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("moshkil");
+        }
+
+        try {
+            float all = 0;
+
+            //jointure produit prix m3a contenir quantite
+            String sqlQuery = "SELECT produit.Prixv AS x, contenir.Quantpr AS y " +
+                    "FROM produit " +
+                    "INNER JOIN contenir ON produit.IDp = contenir.IDp";
+            PreparedStatement stmte = getConnection().prepareStatement(sqlQuery);
+
+
+            ResultSet rse = stmte.executeQuery();
+
+            while (rse.next()) {
+                int quan = rse.getInt("y");
+                float prixun = rse.getFloat("x");
+
+                float un = quan * prixun;
+                all += un;
+
+
+            }
+            System.out.println("all is " + all);
+            total.setText(String.valueOf(all));
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+
+        try {
+            float all = 0;
+            String sql = "SELECT produit.Prixv AS x, contenir.Quantpr AS y" +
+                    " FROM produit" +
+                    " INNER JOIN contenir ON produit.IDp = contenir.IDp" +
+                    " INNER JOIN vente ON contenir.IDv = vente.IDv" +
+                    " WHERE YEAR(vente.Datev) = YEAR(CURDATE());";
+            PreparedStatement stmt = getConnection().prepareStatement(sql);
+
+            ResultSet rsa = stmt.executeQuery();
+
+
+            while (rsa.next()) {
+                int quan = rsa.getInt("y");
+                float prixun = rsa.getFloat("x");
+
+                float un = quan * prixun;
+                all += un;
+
+            }
+            year.setText(String.valueOf(all));
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        try {
+            float all = 0;
+            String sql = "SELECT produit.Prixv AS x, contenir.Quantpr AS y" +
+                    " FROM produit" +
+                    " INNER JOIN contenir ON produit.IDp = contenir.IDp" +
+                    " INNER JOIN vente ON contenir.IDv = vente.IDv" +
+                    " WHERE YEAR(vente.Datev) = YEAR(CURDATE()) AND MONTH(vente.Datev) = MONTH(CURDATE());";
+            PreparedStatement stmt = getConnection().prepareStatement(sql);
+
+
+            ResultSet rsb = stmt.executeQuery();
+
+
+            while (rsb.next()) {
+                int quan = rsb.getInt("y");
+                float prixun = rsb.getFloat("x");
+
+                float un = quan * prixun;
+                all += un;
+
+            }
+            month.setText(String.valueOf(all));
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            float all = 0;
+            String sql = "SELECT produit.Prixv AS x, contenir.Quantpr AS y" +
+                    " FROM produit" +
+                    " INNER JOIN contenir ON produit.IDp = contenir.IDp" +
+                    " INNER JOIN vente ON contenir.IDv = vente.IDv" +
+                    " WHERE YEAR(vente.Datev) = YEAR(CURRENT_DATE() - INTERVAL 1 MONTH) " +
+                    "AND MONTH(vente.Datev) = MONTH(CURRENT_DATE() - INTERVAL 1 MONTH);";
+            PreparedStatement stmt = getConnection().prepareStatement(sql);
+
+
+            ResultSet rsc = stmt.executeQuery();
+
+
+            while (rsc.next()) {
+                int quan = rsc.getInt("y");
+                float prixun = rsc.getFloat("x");
+
+                float un = quan * prixun;
+                all += un;
+
+            }
+            lmonth.setText(String.valueOf(all));
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
     }
 
@@ -217,7 +332,7 @@ public class VentesController extends Controller implements Initializable {
     void confirm(ActionEvent event) {
 
     }
-    vente x;
+    vente x =new vente();
 
 
     private void updateSearchResults(String searchText, TableView<vente> searchResultsTableView) {
@@ -245,104 +360,12 @@ public class VentesController extends Controller implements Initializable {
         });
 
 
-        try {
-            float all = 0;
-            String sql = "SELECT Prixv,quantite FROM vente";
-            PreparedStatement stmt = getConnection().prepareStatement(sql);
 
-
-            ResultSet rs = stmt.executeQuery();
-
-            while (rs.next()) {
-                int quan = rs.getInt("quantite");
-                float prixun = rs.getFloat("Prixv");
-
-                float un = quan * prixun;
-                all += un;
-
-
-            }
-            System.out.println("all is " + all);
-            total.setText(String.valueOf(all));
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
 
         // Retrieve the sum from the result set
 
 
-        try {
-            float all = 0;
-            String sql = "SELECT Prixv,quantite FROM vente" +
-                    " WHERE YEAR(Datev) = YEAR(CURDATE());";
-            PreparedStatement stmt = getConnection().prepareStatement(sql);
 
-            ResultSet rsa = stmt.executeQuery();
-
-
-            while (rsa.next()) {
-                int quan = rsa.getInt("quantite");
-                float prixun = rsa.getFloat("Prixv");
-
-                float un = quan * prixun;
-                all += un;
-
-            }
-            year.setText(String.valueOf(all));
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        try {
-            float all = 0;
-            String sql = "SELECT Prixv,quantite FROM vente" +
-                    " WHERE YEAR(Datev) = YEAR(CURDATE())" +
-                    " AND MONTH(Datev) = MONTH(CURDATE());";
-            PreparedStatement stmt = getConnection().prepareStatement(sql);
-
-
-            ResultSet rsb = stmt.executeQuery();
-
-
-            while (rsb.next()) {
-                int quan = rsb.getInt("quantite");
-                float prixun = rsb.getFloat("Prixv");
-
-                float un = quan * prixun;
-                all += un;
-
-            }
-            month.setText(String.valueOf(all));
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-
-        try {
-            float all = 0;
-            String sql = "SELECT Prixv, quantite " +
-                    "FROM vente " +
-                    "WHERE YEAR(Datev) = YEAR(DATE_SUB(CURDATE(), INTERVAL 1 MONTH))" +
-                    " AND MONTH(Datev) = MONTH(DATE_SUB(CURDATE(), INTERVAL 1 MONTH));";
-            PreparedStatement stmt = getConnection().prepareStatement(sql);
-
-
-            ResultSet rsc = stmt.executeQuery();
-
-
-            while (rsc.next()) {
-                int quan = rsc.getInt("quantite");
-                float prixun = rsc.getFloat("Prixv");
-
-                float un = quan * prixun;
-                all += un;
-
-            }
-            lmonth.setText(String.valueOf(all));
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
 
 
         afficher();
@@ -350,13 +373,14 @@ public class VentesController extends Controller implements Initializable {
 
         //String afficherpr=String.valueOf(totprice);
 
-        String sql2 = "Select Libellép from produit";
+        String sql2 = "Select Libellép,IDp from produit";
         try {
             PreparedStatement stmt = getConnection().prepareStatement(sql2);
             ResultSet rse = stmt.executeQuery();
 
             while (rse.next()) {
                 searchlili.add(rse.getString("Libellép"));
+                idp=rse.getInt("IDp");
                 System.out.println("produit kayen dial search pour l ajout");
             }
 
@@ -372,13 +396,25 @@ public class VentesController extends Controller implements Initializable {
         addmed.textProperty().addListener((observable, oldValue, newValue) -> {
             searchli.setItems(filterItems(newValue));
         });
+/*
+        vente selectedItem = listPurchases.getSelectionModel().getSelectedItem();
+
+        if (selectedItem != null) {
+            x.setidv(selectedItem.getidv());
+            System.out.println("Selected value: " + x.getidv());
+        }
+
+*/
+
 
         listPurchases.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
-                x = newValue;
-                System.out.println("Selected value: " + x.getidv());
+                int x=newValue.getidv();
+                System.out.println("Selected value: " + x);
             }
         });
+
+
 
     }
     private ObservableList<String> filterItems(String searchText) {
@@ -410,7 +446,7 @@ public class VentesController extends Controller implements Initializable {
         try {
             stmt = getConnection().prepareStatement(sql);
             stmt.executeUpdate(sql);
-            System.out.println("deleted");
+            System.out.println("deleted "+x.getidv());
 
 
         } catch (SQLException e) {
@@ -431,10 +467,10 @@ public class VentesController extends Controller implements Initializable {
 
 
 
-        @FXML
-        public void onadd() throws IOException {
-            super.NouveauFenetre("Ajouter-vente");
-        }
+    @FXML
+    public void onadd() throws IOException {
+        super.NouveauFenetre("Ajouter-vente");
+    }
 
     @FXML
     void month(ActionEvent event) {
@@ -613,7 +649,7 @@ public class VentesController extends Controller implements Initializable {
                 //for showing the table
                 w.setprix(rs.getFloat("Prixv"));
 
-               // w.setqua(rs.getInt("quantite"));
+                w.setqua(rs.getInt("quantite"));
 
                 //pour calculer
 
@@ -656,7 +692,7 @@ public class VentesController extends Controller implements Initializable {
                 shdate.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getdate()));
                 shmed.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getmed()));
                 shprix.setCellValueFactory(cellData -> new SimpleFloatProperty(cellData.getValue().gettotal()).asObject());
-              //  shqua.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getqua()).asObject());
+                shqua.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getqua()).asObject());
 
 
 
@@ -678,184 +714,77 @@ public class VentesController extends Controller implements Initializable {
     }
 
     int li=0;
+    int idp=0;
 
-        @FXML
-        public void addpurchases(ActionEvent event) throws IOException {
+    @FXML
+    public void addpurchases(ActionEvent event) throws IOException {
 
 
 
 
 
-            //hta iconfirme
-            String sql="INSERT INTO `vente`(`Prixv`, `Datev`,`IDu`,`IDca`,`IDc`,`MethPayementV`,`namemed`,`categ`) VALUES (?,?,id,?,?,?,?,?)";
+        //hta iconfirme
+        String sql="INSERT INTO `vente`(`Prixv`, `Datev`,`IDu`,`IDca`,`IDc`,`MethPayementV`) VALUES (?,?,?,?,?,?)";
 
-            int idp=0;
 
 
-            for (int j=0;j<li;j++){
-                try{
 
 
-                    PreparedStatement statement =getConnection().prepareStatement(sql);
-                    statement.setFloat(1,ventee.get(j).getprix());
-                    statement.setDate(2,ventee.get(j).getdate());
 
-                    // pour l essaie
 
-                    //statement.setInt(3,0);
-                    statement.setInt(4,1);
-                    statement.setInt(5,1);
+        for (int j=0;j<li;j++){
+            int quanti = 0;
+            try{
 
 
-                    statement.setString(6,ventee.get(j).getMethod());
-                    statement.setString(7,ventee.get(j).getmed());
 
-                    int quanti = 0;
-                    try{
 
 
+                PreparedStatement statement =getConnection().prepareStatement(sql);
+                statement.setFloat(1,ventee.get(j).getprix());
+                statement.setDate(2,ventee.get(j).getdate());
 
-                        String x="SELECT quantite " +
-                                "FROM produit " +
-                                "WHERE Libellép = '"+ventee.get(j).getmed()+"';";
-                        PreparedStatement statementa =getConnection().prepareStatement(x);
-                        ResultSet rs =statementa.executeQuery();
-                        rs.next();
-                       // quanti=rs.getInt("quantite");
+                // pour l essaie
+                //LoginController LOGIN = new LoginController();
+                statement.setInt(3,LoginController.id);
+                System.out.println(LoginController.id);
+                statement.setInt(4,1);
+                statement.setInt(5,1);
 
-                        if(quanti>0){
-                            quanti -= ventee.get(j).getqua();
-                        }else{
-                            System.out.println("quantite est pas suffisant");
-                        }
 
+                statement.setString(6,ventee.get(j).getMethod());
 
+                //tweli jointure m3a contenir bach njibo namemed
 
 
 
-
-                        statementa.executeQuery();
-
-
-
-
-                        statementa.close();
-
-
-                    } catch (SQLException e) {
-
-                        System.out.println("no quantite");
-                        System.out.println(e.getMessage());
-
-
-                    }
-
-                    try{
-
-
-
-                        String x="UPDATE produit" +
-                                " SET quantite =  "+ quanti+
-                                " WHERE Libellép = '"+ventee.get(j).getmed()+ "';";
-                        PreparedStatement statementa =getConnection().prepareStatement(x);
-
-
-                        int Affected = statementa.executeUpdate();
-
-                        if (Affected > 0) {
-                            System.out.println("quantite est diminue");
-                        } else {
-                            System.out.println("diminution failed");
-                        }
-
-
-
-
-                        statementa.close();
-
-
-                    } catch (SQLException e) {
-
-                        System.out.println("change quantite failed");
-                        System.out.println(e.getMessage());
-
-
-                    }
-
-
-               //     statement.setString(8,ventee.get(j).getcateg());
-
-                    try{
-
-
-
-                        String x="select IDp" +
-                                " from produit "+
-                                " WHERE Libellép = '"+ventee.get(j).getmed()+ "';";
-                        PreparedStatement statementa =getConnection().prepareStatement(x);
-
-
-                        ResultSet rs = statementa.executeQuery();
-
-                        if(rs.next()){
-                            System.out.println("we have this product to add to contenir table");
-                            idp=rs.getInt("IDp");
-
-                        }else{
-                            System.out.println("we dont have this product to add to table contenir");
-
-                        }
-
-
-                        statementa.close();
-
-
-                    } catch (SQLException e) {
-
-                        System.out.println("getting id from product failled");
-                        System.out.println(e.getMessage());
-
-
-                    }
-
-
-                    statement.executeUpdate();
-                    statement.close();
-
-
-
-                } catch (SQLException e) {
-
-                    System.out.println("connection failed");
-                    System.out.println(e.getMessage());
-
-
-                }
-
-                int idv=0;
 
                 try{
 
 
 
-                    String x="select IDv" +
-                            " from vente";
+                    String x="SELECT Qte " +
+                            "FROM produit " +
+                            "WHERE Libellép = '"+ventee.get(j).getmed()+"';";
                     PreparedStatement statementa =getConnection().prepareStatement(x);
+                    ResultSet rs =statementa.executeQuery();
+                    rs.next();
+                    quanti=rs.getInt("Qte");
 
-
-                    ResultSet rs = statementa.executeQuery();
-
-
-                    if(rs.next()){
-                        System.out.println("id of vente has been selected");
-                        idv=rs.getInt("IDv");
-
+                    if(quanti>0){
+                        quanti -= ventee.get(j).getqua();
                     }else{
-                        System.out.println("err in selecting the last id in table vente");
-
+                        System.out.println("quantite est pas suffisant");
                     }
 
-                    idv=rs.getInt("IDv");
+
+
+
+
+
+                    statementa.executeQuery();
+
+
 
 
                     statementa.close();
@@ -863,64 +792,183 @@ public class VentesController extends Controller implements Initializable {
 
                 } catch (SQLException e) {
 
-                    System.out.println("getting id from vente failled");
+                    System.out.println("no quantite");
+                    System.out.println(e.getMessage());
+
+
+                }
+                try{
+
+
+
+                    String x="UPDATE produit" +
+                            " SET Qte =  "+ quanti+
+                            " WHERE IDp = '"+idp+ "';";
+                    PreparedStatement statementa =getConnection().prepareStatement(x);
+
+
+                    int Affected = statementa.executeUpdate();
+
+                    if (Affected > 0) {
+                        System.out.println("quantite est diminue");
+                    } else {
+                        System.out.println("diminution failed");
+                    }
+
+
+
+
+                    statementa.close();
+
+
+                } catch (SQLException e) {
+
+                    System.out.println("change quantite failed");
                     System.out.println(e.getMessage());
 
 
                 }
 
 
-                    try{
 
 
 
-                        String x="insert into contenir (IDp,IDv) values ('"+idp+"','"+idv+"');";
-
-                        PreparedStatement statementa =getConnection().prepareStatement(x);
+                statement.setString(8,ventee.get(j).getcateg());
 
 
-                        int Affected = statementa.executeUpdate();
-
-                        if (Affected > 0) {
-                            System.out.println("quantite est diminue");
-                        } else {
-                            System.out.println("diminution failed");
-                        }
+                try{
 
 
 
+                    String x="select IDp" +
+                            " from produit "+
+                            " WHERE Libellép = '"+ventee.get(j).getmed()+ "';";
+                    PreparedStatement statementa =getConnection().prepareStatement(x);
 
-                        statementa.close();
 
+                    ResultSet rs = statementa.executeQuery();
 
-                    } catch (SQLException e) {
+                    if(rs.next()){
+                        System.out.println("we have this product to add to contenir table");
+                        idp=rs.getInt("IDp");
 
-                        System.out.println("add to contenir failed");
-                        System.out.println(e.getMessage());
-
+                    }else{
+                        System.out.println("we dont have this product to add to table contenir");
 
                     }
 
 
+                    statementa.close();
 
 
+                } catch (SQLException e) {
+
+                    System.out.println("getting id from product failled");
+                    System.out.println(e.getMessage());
+
+
+                }
+
+
+                statement.executeUpdate();
+                statement.close();
+
+
+
+            } catch (SQLException e) {
+
+                System.out.println("connection failed");
+                System.out.println(e.getMessage());
 
 
             }
 
-            li=0;
 
 
-            afficher();
+            int idv=0;
 
-            trye.clear();
-            ventes.clear();
+            try{
 
 
+
+                //ye3ni akhir haja tzadet
+                String x="SELECT IDv FROM vente ORDER BY idv DESC LIMIT 1;";
+                PreparedStatement statementa =getConnection().prepareStatement(x);
+
+
+                ResultSet rs = statementa.executeQuery();
+
+
+                if(rs.next()){
+                    System.out.println("id of vente has been selected");
+                    idv=rs.getInt("IDv");
+                    System.out.println(idv+"oooooooo");
+
+                }else{
+                    System.out.println("err in selecting the last id in table vente");
+
+                }
+
+
+
+                statementa.close();
+
+
+            } catch (SQLException e) {
+
+                System.out.println("getting id from vente failled");
+                System.out.println(e.getMessage());
+
+
+            }
+
+
+            try{
+
+
+
+                String x="insert into contenir (IDp,IDv,Quantpr) values ('"+idp+"','"+idv+"','"+quint+"');";
+
+                PreparedStatement statementa =getConnection().prepareStatement(x);
+
+
+                int Affected = statementa.executeUpdate();
+
+                if (Affected > 0) {
+                    System.out.println("contenir fait");
+                } else {
+                    System.out.println("contenir failed");
+                }
+
+
+
+
+                statementa.close();
+
+
+            } catch (SQLException e) {
+
+                System.out.println("add to contenir failed");
+                System.out.println(e.getMessage());
+
+
+            }
         }
+
+        li=0;
+
+
+        afficher();
+
+        trye.clear();
+        ventes.clear();
+
+
+    }
     ObservableList<vente> trye;
 
-            float price=0;
+    float price=0;
+    int quint;
 
 
     @FXML
@@ -934,7 +982,7 @@ public class VentesController extends Controller implements Initializable {
         String qua=addqte.getText();
 
 
-        int quint=Integer.parseInt(qua);
+        quint=Integer.parseInt(qua);
 
         String categ=addcat.getValue();
 
@@ -944,11 +992,7 @@ public class VentesController extends Controller implements Initializable {
             System.out.println("Selected Item: " + selectedItem);
         }
         String med=selectedItem;
-
         try{
-
-
-
             String x="select Prixv" +
                     " from produit where Libellép= '"+med+"'";
             PreparedStatement statementa =getConnection().prepareStatement(x);
@@ -991,7 +1035,7 @@ public class VentesController extends Controller implements Initializable {
         venta.setdate(dt);
         venta.setprix(prixf);
         venta.setcateg(categ);
-       // venta.setqua(quint);
+        venta.setqua(quint);
         venta.setmethod(methd);
 
         //tehseb quantite x prix unitaire
@@ -1001,7 +1045,7 @@ public class VentesController extends Controller implements Initializable {
         tabmed.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getmed()));
         metho.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMethod()));
         tabprix.setCellValueFactory(cellData -> new SimpleFloatProperty(cellData.getValue().gettotal()).asObject());
-        //tabquan.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getqua()).asObject());
+        tabquan.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getqua()).asObject());
 
 
 
@@ -1026,8 +1070,4 @@ public class VentesController extends Controller implements Initializable {
     }
 
 
-    }
-
-
-
-
+}

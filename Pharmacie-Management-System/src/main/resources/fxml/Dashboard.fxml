@@ -120,7 +120,7 @@
                                           <Insets left="20.0" top="20.0" />
                                        </GridPane.margin>
                                        <children>
-                                          <LineChart layoutX="3.0" layoutY="6.0" prefHeight="235.0" prefWidth="754.0" style="-fx-background-radius: 15;" styleClass="borderraduis" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="20.0">
+                                          <LineChart fx:id="Capital" layoutX="11.0" layoutY="-4.0" prefHeight="282.0" prefWidth="751.0" style="-fx-background-radius: 15;" styleClass="borderraduis" stylesheets="@style.css" AnchorPane.bottomAnchor="-40.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="-4.0">
                                             <xAxis>
                                               <CategoryAxis side="BOTTOM" />
                                             </xAxis>
@@ -147,7 +147,7 @@
                                                 <Insets bottom="20.0" left="20.0" top="20.0" />
                                              </GridPane.margin>
                                              <children>
-                                                <BarChart layoutX="-123.0" layoutY="-139.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="20.0">
+                                                <BarChart fx:id="barChart" layoutX="-123.0" layoutY="-139.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="20.0">
                                                   <xAxis>
                                                     <CategoryAxis side="BOTTOM" />
                                                   </xAxis>
@@ -189,7 +189,7 @@
                                           </GridPane>
                                        </children>
                                     </GridPane>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Rapport de Capital Annuel :" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ventes pour les dix dernier mois :" GridPane.halignment="CENTER" GridPane.valignment="TOP">
                                        <GridPane.margin>
                                           <Insets top="32.0" />
                                        </GridPane.margin>
@@ -267,7 +267,7 @@
                                           <Font name="System Bold" size="17.0" />
                                        </font>
                                     </Text>
-                                    <Text fill="WHITE" layoutX="10.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2560DH" GridPane.valignment="BOTTOM">
+                                    <Text fx:id="income" fill="WHITE" layoutX="10.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2560DH" GridPane.valignment="BOTTOM">
                                        <font>
                                           <Font name="System Bold" size="17.0" />
                                        </font>
@@ -307,7 +307,7 @@
                                           <Font name="System Bold" size="17.0" />
                                        </font>
                                     </Text>
-                                    <Text fill="WHITE" layoutX="10.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="418" GridPane.valignment="BOTTOM">
+                                    <Text fx:id="prod" fill="WHITE" layoutX="10.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="418" GridPane.valignment="BOTTOM">
                                        <font>
                                           <Font name="System Bold" size="17.0" />
                                        </font>
@@ -350,7 +350,7 @@
                                           <Font name="System Bold" size="17.0" />
                                        </font>
                                     </Text>
-                                    <Text fill="WHITE" layoutX="10.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="58" GridPane.valignment="BOTTOM">
+                                    <Text fx:id="client" fill="WHITE" layoutX="10.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="58" GridPane.valignment="BOTTOM">
                                        <font>
                                           <Font name="System Bold" size="17.0" />
                                        </font>
@@ -396,7 +396,7 @@
                                           <Font name="System Bold" size="17.0" />
                                        </font>
                                     </Text>
-                                    <Text fill="WHITE" layoutX="10.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.valignment="BOTTOM">
+                                    <Text fx:id="perim" fill="WHITE" layoutX="10.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" GridPane.valignment="BOTTOM">
                                        <font>
                                           <Font name="System Bold" size="17.0" />
                                        </font>
