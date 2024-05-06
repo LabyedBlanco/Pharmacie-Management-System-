@@ -115,11 +115,11 @@ public class Produit_controller extends Controller implements Initializable {
     }*/
 
     public void Addimage(ActionEvent event){
-         File file = ParcourirFichier(event);
-            if (file != null) {
-                Image img=new Image(file.toURI().toString());
-                imageprod.setImage(img);
-            }
+        File file = ParcourirFichier(event);
+        if (file != null) {
+            Image img=new Image(file.toURI().toString());
+            imageprod.setImage(img);
+        }
     }
     public void addproduct(ActionEvent event) throws IOException {
         NouveauFenetre("ajouter-produit");
@@ -322,8 +322,8 @@ public class Produit_controller extends Controller implements Initializable {
         String sql = "SELECT IDcat FROM catégorie WHERE Libelléca = ?";
         PreparedStatement statement = getConnection().prepareStatement(sql);
         statement.setString(1, categoryName);
-
         ResultSet rs = statement.executeQuery();
+        
         if (rs.next()) {
             categoryId = rs.getInt("IDcat");
         }
@@ -507,50 +507,50 @@ public class Produit_controller extends Controller implements Initializable {
 
 
 
-public void setupsearchtextfield(javafx.scene.input.KeyEvent event){
-    FilteredList<Produit> filteredListProduit = new FilteredList<>(produits, b -> true);
+    public void setupsearchtextfield(javafx.scene.input.KeyEvent event){
+        FilteredList<Produit> filteredListProduit = new FilteredList<>(produits, b -> true);
 
-    if ( searchTextField!= null) {
+        if ( searchTextField!= null) {
 
-        searchTextField.textProperty().addListener((observable, OldValue, NewValue) -> {
-            filteredListProduit.setPredicate(produit -> {
-                // Aucune valeur de recherche
-                if (NewValue == null || NewValue.isEmpty() || NewValue.isBlank()) {
-                    return true;
-                }
-                String searchedProduit = NewValue.toLowerCase();
+            searchTextField.textProperty().addListener((observable, OldValue, NewValue) -> {
+                filteredListProduit.setPredicate(produit -> {
+                    // Aucune valeur de recherche
+                    if (NewValue == null || NewValue.isEmpty() || NewValue.isBlank()) {
+                        return true;
+                    }
+                    String searchedProduit = NewValue.toLowerCase();
 
-                // Vérifie si le texte recherché est présent dans chaque propriété du produit
-                if (produit.getLibp().toLowerCase().contains(searchedProduit)) {
-                    return true;
-                }
-                if (produit.getCode().toLowerCase().contains(searchedProduit)) {
-                    return true;
-                }
-                if (String.valueOf(produit.getPrixv()).toLowerCase().contains(searchedProduit)) {
-                    return true;
-                }
-                if (produit.getExpDate() != null && produit.getExpDate().toString().toLowerCase().contains(searchedProduit)) {
-                    return true;
-                }
-                // Ajoutez d'autres conditions pour d'autres propriétés du produit si nécessaire
+                    // Vérifie si le texte recherché est présent dans chaque propriété du produit
+                    if (produit.getLibp().toLowerCase().contains(searchedProduit)) {
+                        return true;
+                    }
+                    if (produit.getCode().toLowerCase().contains(searchedProduit)) {
+                        return true;
+                    }
+                    if (String.valueOf(produit.getPrixv()).toLowerCase().contains(searchedProduit)) {
+                        return true;
+                    }
+                    if (produit.getExpDate() != null && produit.getExpDate().toString().toLowerCase().contains(searchedProduit)) {
+                        return true;
+                    }
+                    // Ajoutez d'autres conditions pour d'autres propriétés du produit si nécessaire
 
-                // Aucun résultat trouvé
-                return false;
+                    // Aucun résultat trouvé
+                    return false;
+                });
+
+                // Création d'une SortedList à partir de la FilteredList
+                SortedList<Produit> sortedList = new SortedList<>(filteredListProduit);
+
+                // Lier le comparateur de la SortedList avec le comparateur du TableView Commandes (remplacez Commandes par le nom de votre TableView)
+                sortedList.comparatorProperty().bind(table.comparatorProperty());
+
+                // Définir les éléments du TableView avec la SortedList filtrée et triée
+                table.setItems(sortedList);
             });
+        }
 
-            // Création d'une SortedList à partir de la FilteredList
-            SortedList<Produit> sortedList = new SortedList<>(filteredListProduit);
-
-            // Lier le comparateur de la SortedList avec le comparateur du TableView Commandes (remplacez Commandes par le nom de votre TableView)
-            sortedList.comparatorProperty().bind(table.comparatorProperty());
-
-            // Définir les éléments du TableView avec la SortedList filtrée et triée
-            table.setItems(sortedList);
-        });
     }
-
-}
 
 
 
