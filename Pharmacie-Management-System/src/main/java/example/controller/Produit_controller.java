@@ -440,7 +440,6 @@ public class Produit_controller extends Controller implements Initializable {
                 int rowsAffected = statement.executeUpdate();
                 if (rowsAffected > 0) {
                     System.out.println("Produit supprimé avec succès : " + produit.getLibp());
-
                     // Supprimer le produit de la liste et rafraîchir la table
                     produits.remove(produit);
                     table.setItems(produits);
