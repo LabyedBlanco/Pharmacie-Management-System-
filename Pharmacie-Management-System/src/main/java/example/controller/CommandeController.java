@@ -172,7 +172,7 @@ public class CommandeController extends Controller implements Initializable {
             });
         }
     }
-    Integer prixtotal;
+    float prixtotal;
     public void Ajouterliste(ActionEvent actionEvent) {
         String PrdAjouter = SearchProduit.getText();
 
@@ -193,6 +193,47 @@ public class CommandeController extends Controller implements Initializable {
                 Quantite.setCellValueFactory(f -> f.getValue().Quantite);
                 Reference.setCellValueFactory(f -> f.getValue().Idp);
                 Data.add(Prod);
+
+                String QuantiteString = Prod.Quantite.get();
+
+                try {
+                    float floatValue = Float.parseFloat(QuantiteString);
+                    prixtotal += floatValue*result.getFloat("Prixv");
+                    System.out.println(prixtotal);
+                    Prixtotal.setText(Float.toString(prixtotal));
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                }
+
+                selectedDate = ComDate.getValue();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                String formattedDate = selectedDate.format(formatter);
+
+
+                Commande Com = new Commande(
+                        new SimpleStringProperty("800"),   // IDcommande
+                        new SimpleStringProperty(Prixtotal.getText()),   // Prixa
+                        new SimpleStringProperty(formattedDate), // DateCommande
+                        new SimpleStringProperty(SearchFournisseur.getText()),
+                        new SimpleStringProperty("1"),
+                        new SimpleStringProperty("333"), // IdUtilisateur
+                        new SimpleStringProperty(ComPayement.toString()), // MethodePayement
+                        new SimpleStringProperty("En Cours")  // Status
+                );
+
+                Com.Afficher();
+
+                IDcommande.setCellValueFactory(f -> f.getValue().IDcommande);
+                Datec.setCellValueFactory(f -> f.getValue().DateCommande);
+                PrixCo.setCellValueFactory(f -> f.getValue().Prixa);
+                Idfournisseur.setCellValueFactory(f -> f.getValue().IdFournisseur);
+                utilisateur.setCellValueFactory(f -> f.getValue().IdUtilisateur);
+                Status.setCellValueFactory(f -> f.getValue().Status);
+                Caisse.setCellValueFactory(f -> f.getValue().IdCaisse);
+                Methode.setCellValueFactory(f -> f.getValue().MethodePayement);
+                data.add(Com);
+
+
             }
 
             Produits.setItems(Data);
