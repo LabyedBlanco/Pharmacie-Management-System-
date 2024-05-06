@@ -172,7 +172,7 @@ public class CommandeController extends Controller implements Initializable {
             });
         }
     }
-    int prixtotal;
+    Integer prixtotal;
     public void Ajouterliste(ActionEvent actionEvent) {
         String PrdAjouter = SearchProduit.getText();
 
@@ -188,14 +188,6 @@ public class CommandeController extends Controller implements Initializable {
                         new SimpleStringProperty(ComQantite.getText()),
                         new SimpleStringProperty(result.getString("IDp"))
                 );
-
-
-
-                /*String sqlINSERT = "INSERT ";
-                PreparedStatement stat2 = getConnection().prepareStatement(sqlINSERT);
-                stat2.executeQuery();*/
-
-                Integer Ord = 0;
                 Nom.setCellValueFactory(f -> f.getValue().libeller);
                 Prix.setCellValueFactory(f -> f.getValue().PrixProduit);
                 Quantite.setCellValueFactory(f -> f.getValue().Quantite);
@@ -203,15 +195,10 @@ public class CommandeController extends Controller implements Initializable {
                 Data.add(Prod);
             }
 
-            System.out.println("Peix est = " + result.getString("Prixv"));
-            prixtotal += Integer.parseInt( result.getString("Prixv"));
-            String str = Integer.toString(prixtotal);
-            Prixtotal.setText(str);
-
             Produits.setItems(Data);
 
         } catch (SQLException e) {
-            System.out.println(e);
+            System.out.println("problem est : " +e);
         }
 
         //table d'association ;
