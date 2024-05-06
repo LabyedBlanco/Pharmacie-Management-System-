@@ -201,12 +201,7 @@ public class VentesController extends Controller implements Initializable {
                 shprix.setCellValueFactory(cellData -> new SimpleFloatProperty(cellData.getValue().gettotal()).asObject());
                 shqua.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getqua()).asObject());
 
-
-
                 ventes.add(w);
-                listPurchases.setItems(ventes);
-
-
 
             }
             listPurchases.setItems(ventes);
@@ -407,12 +402,7 @@ public class VentesController extends Controller implements Initializable {
 */
 
 
-        listPurchases.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                int x=newValue.getidv();
-                System.out.println("Selected value: " + x);
-            }
-        });
+
 
 
 
@@ -452,6 +442,13 @@ public class VentesController extends Controller implements Initializable {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+
+        listPurchases.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                int x=newValue.getidv();
+                System.out.println("Selected value: " + x);
+            }
+        });
 
 
         afficher();
@@ -720,16 +717,8 @@ public class VentesController extends Controller implements Initializable {
     public void addpurchases(ActionEvent event) throws IOException {
 
 
-
-
-
         //hta iconfirme
         String sql="INSERT INTO `vente`(`Prixv`, `Datev`,`IDu`,`IDca`,`IDc`,`MethPayementV`) VALUES (?,?,?,?,?,?)";
-
-
-
-
-
 
 
         for (int j=0;j<li;j++){
@@ -832,8 +821,7 @@ public class VentesController extends Controller implements Initializable {
 
 
 
-
-                statement.setString(8,ventee.get(j).getcateg());
+             //   statement.setString(7,ventee.get(j).getcateg());
 
 
                 try{
@@ -953,6 +941,12 @@ public class VentesController extends Controller implements Initializable {
 
 
             }
+
+
+
+
+
+
         }
 
         li=0;
@@ -965,10 +959,12 @@ public class VentesController extends Controller implements Initializable {
 
 
     }
+
     ObservableList<vente> trye;
 
     float price=0;
     int quint;
+
 
 
     @FXML
@@ -992,7 +988,13 @@ public class VentesController extends Controller implements Initializable {
             System.out.println("Selected Item: " + selectedItem);
         }
         String med=selectedItem;
+
+
+
         try{
+
+
+
             String x="select Prixv" +
                     " from produit where Libellép= '"+med+"'";
             PreparedStatement statementa =getConnection().prepareStatement(x);
