@@ -201,14 +201,7 @@ public class VentesController extends Controller implements Initializable {
                 shprix.setCellValueFactory(cellData -> new SimpleFloatProperty(cellData.getValue().gettotal()).asObject());
                 shqua.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getqua()).asObject());
 
-
-
                 ventes.add(w);
-<<<<<<< HEAD
-=======
-                listPurchases.setItems(ventes);
->>>>>>> d8968c399b5cc097c63cec2951d6226f07a6ee1d
-
 
             }
             listPurchases.setItems(ventes);
@@ -409,12 +402,7 @@ public class VentesController extends Controller implements Initializable {
 */
 
 
-        listPurchases.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                int x=newValue.getidv();
-                System.out.println("Selected value: " + x);
-            }
-        });
+
 
 
 
@@ -454,6 +442,13 @@ public class VentesController extends Controller implements Initializable {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+
+        listPurchases.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                int x=newValue.getidv();
+                System.out.println("Selected value: " + x);
+            }
+        });
 
 
         afficher();
@@ -722,19 +717,8 @@ public class VentesController extends Controller implements Initializable {
         public void addpurchases(ActionEvent event) throws IOException {
 
 
-
-
-
             //hta iconfirme
-<<<<<<< HEAD
             String sql="INSERT INTO `vente`(`Prixv`, `Datev`,`IDu`,`IDca`,`IDc`,`MethPayementV`) VALUES (?,?,?,?,?,?)";
-
-
-
-=======
-            String sql="INSERT INTO `vente`(`Prixv`, `Datev`,`IDu`,`IDca`,`IDc`,`MethPayementV`,`namemed`,`categ`) VALUES (?,?,?,?,?,?,?,?)";
->>>>>>> d8968c399b5cc097c63cec2951d6226f07a6ee1d
-
 
 
             for (int j=0;j<li;j++){
@@ -835,12 +819,10 @@ public class VentesController extends Controller implements Initializable {
                     }
 
 
-<<<<<<< HEAD
 
 
-=======
                     statement.setString(8,ventee.get(j).getcateg());
->>>>>>> d8968c399b5cc097c63cec2951d6226f07a6ee1d
+
 
                     try{
 
@@ -977,10 +959,12 @@ public class VentesController extends Controller implements Initializable {
 
 
         }
+
     ObservableList<vente> trye;
 
-            float price=0;
+        float price=0;
     int quint;
+
 
 
     @FXML
