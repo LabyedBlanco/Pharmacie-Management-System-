@@ -742,8 +742,9 @@ public class VentesController extends Controller implements Initializable {
                     statement.setDate(2,ventee.get(j).getdate());
 
                     // pour l essaie
-
-                    statement.setInt(3,0);
+                    //LoginController LOGIN = new LoginController();
+                    statement.setInt(3,LoginController.id);
+                    System.out.println(LoginController.id);
                     statement.setInt(4,1);
                     statement.setInt(5,1);
 
