@@ -389,22 +389,40 @@ public class UtilisateurController extends Controller implements Initializable {
 
 
 
-    private void deleteUtilisateur(Utilisateur utilisateur) {
+
+    public void deleteUtilisateur(Utilisateur utilisateur) {
         Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
         confirmationAlert.setTitle("Confirmation");
         confirmationAlert.setHeaderText(null);
-        confirmationAlert.setContentText("Êtes-vous sûr de vouloir supprimer cet utilisateur ?");
+        confirmationAlert.setContentText("Êtes-vous sûr de vouloir supprimer cet utilisateur ? Cette action supprimera également toutes les ventes et contenus associés.");
 
         Optional<ButtonType> result = confirmationAlert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
             DatabaseManager dbManager = new DatabaseManager();
 
             try (Connection conn = dbManager.getConnection()) {
-                String sql = "DELETE FROM utilisateur WHERE IDu = ?";
-                PreparedStatement statement = conn.prepareStatement(sql);
-                statement.setInt(1, utilisateur.getId());
+                conn.setAutoCommit(false); // Désactiver l'autocommit pour gérer la transaction
 
-                int rowsAffected = statement.executeUpdate();
+                // Supprimer les contenus associés aux ventes associées à cet utilisateur
+                String deleteContenirSql = "DELETE c FROM contenir c INNER JOIN vente v ON c.IDv = v.IDv WHERE v.IDu = ?";
+                PreparedStatement deleteContenirStatement = conn.prepareStatement(deleteContenirSql);
+                deleteContenirStatement.setInt(1, utilisateur.getId());
+                deleteContenirStatement.executeUpdate();
+
+                // Supprimer les ventes associées à cet utilisateur
+                String deleteVentesSql = "DELETE FROM vente WHERE IDu = ?";
+                PreparedStatement deleteVentesStatement = conn.prepareStatement(deleteVentesSql);
+                deleteVentesStatement.setInt(1, utilisateur.getId());
+                deleteVentesStatement.executeUpdate();
+
+                // Supprimer l'utilisateur
+                String deleteUtilisateurSql = "DELETE FROM utilisateur WHERE IDu = ?";
+                PreparedStatement deleteUtilisateurStatement = conn.prepareStatement(deleteUtilisateurSql);
+                deleteUtilisateurStatement.setInt(1, utilisateur.getId());
+                int rowsAffected = deleteUtilisateurStatement.executeUpdate();
+
+                conn.commit(); // Valider la transaction
+
                 if (rowsAffected > 0) {
                     System.out.println("Utilisateur supprimé avec succès : " + utilisateur.getNom());
 
@@ -417,9 +435,21 @@ public class UtilisateurController extends Controller implements Initializable {
             } catch (SQLException ex) {
                 ex.printStackTrace();
                 System.out.println("Erreur lors de la suppression de l'utilisateur.");
+                System.out.println(ex);
+
+                try {
+                    getConnection().rollback(); // Annuler la transaction en cas d'erreur
+                } catch (SQLException rollbackEx) {
+                    rollbackEx.printStackTrace();
+                    System.out.println("Erreur lors de l'annulation de la suppression de l'utilisateur.");
+                    System.out.println(rollbackEx);
+                }
             }
         }
     }
+
+
+
 
 
     public void setupSearchUser(javafx.scene.input.KeyEvent event) {

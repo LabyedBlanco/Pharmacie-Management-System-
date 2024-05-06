@@ -22,8 +22,6 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class Controller extends DatabaseManager {
-
-
     @Override
     //this is to get conexion in order to use it in sending SQL requests
     public Connection getConnection() {
@@ -55,11 +53,9 @@ public class Controller extends DatabaseManager {
     public void NouveauFenetre(String NomFichier) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/" + NomFichier + ".fxml"));
         Parent root = loader.load();
-
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.show();
-        stage.setResizable(false);
     }
 
     //this is to close the current Stage

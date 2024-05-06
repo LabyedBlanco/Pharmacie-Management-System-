@@ -20,6 +20,7 @@ public class Main extends Application {
         Scene scene = new Scene(fxmlLoader.load(),909 , 604);
         stage.setTitle("Se Connecter");
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
 

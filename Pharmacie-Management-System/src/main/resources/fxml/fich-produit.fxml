@@ -85,17 +85,17 @@
                               <Insets left="40.0" right="400.0" />
                            </GridPane.margin>
                         </Text>
-                        <Text fill="#898989" layoutX="253.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Prix&quot;" GridPane.halignment="CENTER">
+                        <Text fx:id="prix" fill="#898989" layoutX="253.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Prix&quot;" GridPane.halignment="CENTER">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Text>
-                        <Text fill="#898989" layoutX="236.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Category&quot;" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                        <Text fx:id="categ" fill="#898989" layoutX="236.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Category&quot;" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Text>
-                        <Text fill="#898989" layoutX="254.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Qte&quot;" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                        <Text fx:id="qua" fill="#898989" layoutX="254.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Qte&quot;" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -119,7 +119,7 @@
                               <Insets left="80.0" top="70.0" />
                            </GridPane.margin>
                         </Text>
-                        <ImageView fitWidth="190.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                        <ImageView fx:id="img" fitWidth="190.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                            <image>
                               <Image url="@../images/icons/Mediacation.png" />
                            </image>
@@ -132,7 +132,7 @@
                               <Insets bottom="50.0" left="120.0" top="80.0" />
                            </GridPane.margin>
                         </Text>
-                        <Text fill="#898989" layoutX="90.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Mediacation Name&quot;" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+                        <Text fx:id="med" fill="#898989" layoutX="90.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Mediacation Name&quot;" GridPane.halignment="CENTER" GridPane.valignment="TOP">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -140,7 +140,7 @@
                               <Insets left="200.0" top="70.0" />
                            </GridPane.margin>
                         </Text>
-                        <Text fill="#898989" layoutX="90.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Code&quot;" GridPane.halignment="CENTER">
+                        <Text fx:id="code" fill="#898989" layoutX="90.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Code&quot;" GridPane.halignment="CENTER">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>

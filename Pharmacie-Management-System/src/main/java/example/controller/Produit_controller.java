@@ -43,7 +43,9 @@ public class Produit_controller extends Controller implements Initializable {
     public AnchorPane Connected ;
 
     @FXML
-    private ComboBox<String> category;
+    private ComboBox<String> category,ordon;
+    @FXML
+    private  ComboBox<Integer> depot;
 
     @FXML
     private TextField nompro,codeba,prix,qantite;
@@ -64,6 +66,13 @@ public class Produit_controller extends Controller implements Initializable {
 
         if(category !=null){
             initializeCategoryComboBox();
+        }
+        if(depot !=null){
+            initializeDepotComboBox();
+        }
+
+        if(ordon != null){
+            ordon.setItems(FXCollections.observableArrayList("Oui", "Non"));
         }
 
         Online(ConnectionStat(),main,Connected);
@@ -145,6 +154,32 @@ public class Produit_controller extends Controller implements Initializable {
     }
 
 
+    public void initializeDepotComboBox() {
+        try {
+            DatabaseManager dbManager = new DatabaseManager();
+            Connection conn = dbManager.getConnection();
+
+            String sql = "SELECT IDdep FROM depot";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+
+            ObservableList<Integer> depotIds = FXCollections.observableArrayList();
+            while (rs.next()) {
+                int depotId = rs.getInt("IDdep");
+                depotIds.add(depotId);
+            }
+
+            depot.setItems(depotIds);
+
+            rs.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+
 
     public InputStream convertImageInputStream(Image image) throws IOException {
         BufferedImage bufferedImage = SwingFXUtils.fromFXImage(image, null);
@@ -178,7 +213,7 @@ public class Produit_controller extends Controller implements Initializable {
         }
 
         if (!codeba.getText().matches("\\d{8,14}")) {
-            showAlert("Erreur de validation", "Le code barre doit contenir des chiffres.");
+            showAlert("Erreur de validation", "Le code barre doit contenir des chiffres entre 8 et 14.");
             return false;
         }
 
@@ -218,7 +253,7 @@ public class Produit_controller extends Controller implements Initializable {
 
 
 
-
+    LocalDate selectedDate;
     public void addProduct(ActionEvent event) throws IOException {
         if(validateFields()){
             String productName = nompro.getText();
@@ -226,8 +261,18 @@ public class Produit_controller extends Controller implements Initializable {
             String code = codeba.getText();
             float price = Float.parseFloat(prix.getText());
             int initialQuantity = Integer.parseInt(qantite.getText());
-            String expirationDate = dateexpir.getEditor().getText();
+            selectedDate = dateexpir.getValue();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            String formattedDate = selectedDate.format(formatter);
             Image productImage = imageprod.getImage();
+            int depotId = depot.getValue();
+            String ordonValue = ordon.getValue();
+
+            boolean besOrdon = false;
+            if ( ordonValue.equalsIgnoreCase("oui")) {
+                besOrdon = true;
+            }
+
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             try {
@@ -238,7 +283,7 @@ public class Produit_controller extends Controller implements Initializable {
                     return;
                 }
 
-                String sql = "INSERT INTO produit (Libellép, IDcat, Codebr, Prixv, Qte, Datepp, Imagep) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                String sql = "INSERT INTO produit (Libellép, IDcat, Codebr, Prixv, Qte, Datepp, Imagep, IDdep, BesoinORD ) VALUES (?, ?, ?, ?, ?, ?,?, ?,?)";
                 PreparedStatement statement = getConnection().prepareStatement(sql);
 
                 statement.setString(1, productName);
@@ -246,10 +291,12 @@ public class Produit_controller extends Controller implements Initializable {
                 statement.setString(3, code);
                 statement.setFloat(4, price);
                 statement.setInt(5, initialQuantity);
-                statement.setString(6, expirationDate);
+                statement.setString(6, formattedDate);
 
                 InputStream inputStream = convertImageInputStream(productImage);
                 statement.setBlob(7, inputStream);
+                statement.setInt(8,depotId);
+                statement.setBoolean(9,besOrdon);
 
                 statement.executeUpdate();
 
@@ -301,7 +348,7 @@ public class Produit_controller extends Controller implements Initializable {
             conn = dbManager.getConnection();
 
 
-            String sql ="SELECT p.IDp, p.Libellép, p.Prixv, p.Qte, p.Datepp, p.Codebr, c.Libelléca " +
+            String sql ="SELECT p.IDp, p.Libellép, p.Prixv, p.Qte, p.Datepp, p.Codebr, p.IDdep, c.Libelléca " +
                     "FROM produit p " +
                     "JOIN catégorie c ON p.IDcat = c.IDcat";
             PreparedStatement statement = conn.prepareStatement(sql);
@@ -309,6 +356,7 @@ public class Produit_controller extends Controller implements Initializable {
             ResultSet rs = statement.executeQuery();
 
             produits = FXCollections.observableArrayList();
+
 
             if (!rs.isBeforeFirst()) {
                 System.out.println("Aucun produit trouvé");
@@ -321,7 +369,8 @@ public class Produit_controller extends Controller implements Initializable {
                         rs.getFloat("Prixv"),
                         rs.getInt("Qte"),
                         rs.getString("Datepp"),
-                        rs.getString("CodeBr")
+                        rs.getString("CodeBr"),
+                        rs.getInt("IDdep")
                 );
                 produit.setCategorie(rs.getString("Libelléca"));
                 produits.add(produit);
@@ -333,7 +382,7 @@ public class Produit_controller extends Controller implements Initializable {
 
             TableColumn<Produit, Integer> idCol = new TableColumn<>("ID");
             idCol.setCellValueFactory(f -> new javafx.beans.property.SimpleIntegerProperty(f.getValue().getIdp()).asObject());
-            idCol.setMinWidth(120);
+            idCol.setMinWidth(50);
 
             TableColumn<Produit, String> libCol = new TableColumn<>("Nom");
             libCol.setCellValueFactory(f -> new javafx.beans.property.SimpleStringProperty(f.getValue().getLibp()));
@@ -363,7 +412,11 @@ public class Produit_controller extends Controller implements Initializable {
             categCol.setMinWidth(150);
             applyTextAlignment(categCol);
 
-            table.getColumns().setAll(idCol, libCol, priceCol, quantityCol, expirationCol,codeCol,categCol);
+            TableColumn<Produit, Integer> iddepCol = new TableColumn<>("ID");
+            iddepCol.setCellValueFactory(f -> new javafx.beans.property.SimpleIntegerProperty(f.getValue().getIdp()).asObject());
+            iddepCol.setMinWidth(20);
+
+            table.getColumns().setAll(idCol, libCol, priceCol, quantityCol, expirationCol,codeCol,categCol,iddepCol);
 
 
             TableColumn<Produit, Void> actionCol = new TableColumn<>("Actions");
@@ -505,32 +558,11 @@ public void setupsearchtextfield(javafx.scene.input.KeyEvent event){
         TextField nomField = new TextField(produit.getLibp());
         TextField prixField = new TextField(String.valueOf(produit.getPrixv()));
         TextField quantiteField = new TextField(String.valueOf(produit.getQuantite()));
-        ComboBox<String> dayComboBox = new ComboBox<>();
-        ComboBox<String> monthComboBox = new ComboBox<>();
-        ComboBox<String> yearComboBox = new ComboBox<>();
         TextField codeField = new TextField(String.valueOf(produit.getCode()));
-
-        // Remplir les ComboBox pour le jour, le mois et l'année
-        for (int i = 1; i <= 31; i++) {
-            dayComboBox.getItems().add(String.valueOf(i));
-        }
-        for (int i = 1; i <= 12; i++) {
-            monthComboBox.getItems().add(String.valueOf(i));
-        }
-        // Supposons que nous voulons couvrir les années de 2022 à 2050
-        for (int i = 2024; i <= 2100; i++) {
-            yearComboBox.getItems().add(String.valueOf(i));
-        }
-
-        // Sélectionner la date d'expiration du produit actuel
-        String[] dateParts = produit.getExpDate().split("/");
-        if (dateParts.length >= 3) {
-            dayComboBox.setValue(dateParts[0]);
-            monthComboBox.setValue(dateParts[1]);
-            yearComboBox.setValue(dateParts[2]);
-        } else {
-            System.out.println("Format de date invalide : " + produit.getExpDate());
-        }
+        DatePicker selectdate=new DatePicker();
+        selectedDate = selectDate.getValue();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formattedDate = selectedDate.format(formatter);
 
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.setTitle("Modifier le produit");
@@ -541,8 +573,7 @@ public void setupsearchtextfield(javafx.scene.input.KeyEvent event){
                 new Label("Nom :"), nomField,
                 new Label("Prix :"), prixField,
                 new Label("Quantité :"), quantiteField,
-                new Label("Date d'expiration :"),
-                new HBox(dayComboBox, new Label("/"), monthComboBox, new Label("/"), yearComboBox),
+                new Label("Date d'expiration :"), selectdate,
                 new Label("Code-barres :"), codeField
         );
 
@@ -570,6 +601,9 @@ public void setupsearchtextfield(javafx.scene.input.KeyEvent event){
         Optional<ButtonType> result = dialog.showAndWait();
 
         if (result.isPresent() && result.get() == okButton) {
+
+            LocalDate selectedDate = selectdate.getValue();
+
             DatabaseManager dbManager = new DatabaseManager();
 
             try (Connection conn = dbManager.getConnection()) {
@@ -580,9 +614,10 @@ public void setupsearchtextfield(javafx.scene.input.KeyEvent event){
                 statement.setFloat(2, Float.parseFloat(prixField.getText()));
                 statement.setInt(3, Integer.parseInt(quantiteField.getText()));
 
-                // Concaténer les valeurs sélectionnées pour former la date d'expiration au format "année-mois-jour"
-                String dateExpiration = dayComboBox.getValue() + "/" + monthComboBox.getValue() + "/" + yearComboBox.getValue();
-                statement.setString(4, dateExpiration);
+
+
+                String formattedDate = selectedDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                statement.setString(4, formattedDate);
 
                 statement.setString(5, codeField.getText());
                 statement.setInt(6, produit.getIdp());
