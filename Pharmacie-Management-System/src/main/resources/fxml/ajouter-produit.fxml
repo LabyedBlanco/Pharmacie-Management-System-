@@ -78,12 +78,13 @@
                         <RowConstraints vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <GridPane prefHeight="443.0" prefWidth="481.0" style="-fx-background-color: white; -fx-background-radius: 25px; -fx-border-width: 0;">
+                        <GridPane prefHeight="456.0" prefWidth="481.0" style="-fx-background-color: white; -fx-background-radius: 25px; -fx-border-width: 0;">
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                            </columnConstraints>
                            <rowConstraints>
                               <RowConstraints maxHeight="115.0" minHeight="10.0" prefHeight="84.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="96.0" minHeight="10.0" prefHeight="74.0" vgrow="SOMETIMES" />
                               <RowConstraints maxHeight="96.0" minHeight="10.0" prefHeight="74.0" vgrow="SOMETIMES" />
                               <RowConstraints maxHeight="96.0" minHeight="10.0" prefHeight="74.0" vgrow="SOMETIMES" />
                               <RowConstraints maxHeight="96.0" minHeight="10.0" prefHeight="74.0" vgrow="SOMETIMES" />
@@ -124,7 +125,7 @@
                                     <Insets left="200.0" right="80.0" />
                                  </GridPane.margin>
                               </TextField>
-                              <Text fill="#898989" layoutX="490.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Code :" GridPane.rowIndex="2">
+                              <Text fill="#898989" layoutX="490.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CodeBr :" GridPane.rowIndex="2">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
@@ -157,6 +158,18 @@
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Text>
+                              <Text fill="#898989" strokeType="OUTSIDE" strokeWidth="0.0" text="Depot :" translateX="40.0" GridPane.rowIndex="5">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Text>
+                              <ComboBox fx:id="depot" prefHeight="26.0" prefWidth="110.0" translateX="100.0" GridPane.rowIndex="5" />
+                              <Text fill="#898989" strokeType="OUTSIDE" strokeWidth="0.0" text="Ordonnance :" translateX="240.0" GridPane.rowIndex="5">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Text>
+                              <ComboBox fx:id="ordon" prefHeight="26.0" prefWidth="115.0" translateX="340.0" GridPane.rowIndex="5" />
                            </children>
                            <GridPane.margin>
                               <Insets bottom="100.0" />
