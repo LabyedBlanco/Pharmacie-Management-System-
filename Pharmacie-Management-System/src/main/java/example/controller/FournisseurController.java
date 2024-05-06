@@ -224,12 +224,17 @@ public class FournisseurController extends Controller implements Initializable {
         String gender = genderfor.getValue();
         String city = cityfor.getText();
         String country = countryfor.getText();
+        if (name.isEmpty() || email.isEmpty() || phone.isEmpty() || gender == null || city.isEmpty() || country.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Champs manquants");
+            alert.setHeaderText(null);
+            alert.setContentText("Veuillez remplir tous les champs requis.");
+            alert.showAndWait();
+            return;
+        }
 
-        /*DatabaseManager dbManager = new DatabaseManager();
-        Connection conn = null;*/
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         try {
-            //conn = dbManager.getConnection();
 
 
             String sql = "INSERT INTO fournisseur (Nomf, Telf, Emailf,country,city, gender,etat) VALUES (?, ?, ?, ?,?,?,'A')";
@@ -259,15 +264,7 @@ public class FournisseurController extends Controller implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("probleme d'insertion !");
             alert.showAndWait();
-        } /*finally {
-            if (conn != null) {
-                try {
-                    dbManager.closeConnection();
-                } catch (SQLException sqle) {
-                    System.err.println("Erreur lors de la fermeture de la connexion : " + sqle.getMessage());
-                }
-            }
-        }*/
+        }
     }
 
     public void affiche() {
@@ -364,15 +361,10 @@ public class FournisseurController extends Controller implements Initializable {
                             }
                         };
             });
-
-
         tableViewActif.getColumns().addAll(actionCol);
-
-
-
             rs.close();
             statement.close();
-            //conn.close();
+
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
