@@ -204,6 +204,10 @@ public class VentesController extends Controller implements Initializable {
 
 
                 ventes.add(w);
+<<<<<<< HEAD
+=======
+                listPurchases.setItems(ventes);
+>>>>>>> d8968c399b5cc097c63cec2951d6226f07a6ee1d
 
 
             }
@@ -722,10 +726,14 @@ public class VentesController extends Controller implements Initializable {
 
 
             //hta iconfirme
+<<<<<<< HEAD
             String sql="INSERT INTO `vente`(`Prixv`, `Datev`,`IDu`,`IDca`,`IDc`,`MethPayementV`) VALUES (?,?,?,?,?,?)";
 
 
 
+=======
+            String sql="INSERT INTO `vente`(`Prixv`, `Datev`,`IDu`,`IDca`,`IDc`,`MethPayementV`,`namemed`,`categ`) VALUES (?,?,?,?,?,?,?,?)";
+>>>>>>> d8968c399b5cc097c63cec2951d6226f07a6ee1d
 
 
 
@@ -827,8 +835,12 @@ public class VentesController extends Controller implements Initializable {
                     }
 
 
+<<<<<<< HEAD
 
 
+=======
+                    statement.setString(8,ventee.get(j).getcateg());
+>>>>>>> d8968c399b5cc097c63cec2951d6226f07a6ee1d
 
                     try{
 

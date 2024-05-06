@@ -417,6 +417,7 @@ public class UtilisateurController extends Controller implements Initializable {
             } catch (SQLException ex) {
                 ex.printStackTrace();
                 System.out.println("Erreur lors de la suppression de l'utilisateur.");
+                System.out.println(ex);
             }
         }
     }

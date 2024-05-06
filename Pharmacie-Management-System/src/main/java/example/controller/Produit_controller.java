@@ -218,7 +218,7 @@ public class Produit_controller extends Controller implements Initializable {
 
 
 
-
+    LocalDate selectedDate;
     public void addProduct(ActionEvent event) throws IOException {
         if(validateFields()){
             String productName = nompro.getText();
@@ -226,7 +226,9 @@ public class Produit_controller extends Controller implements Initializable {
             String code = codeba.getText();
             float price = Float.parseFloat(prix.getText());
             int initialQuantity = Integer.parseInt(qantite.getText());
-            String expirationDate = dateexpir.getEditor().getText();
+            selectedDate = dateexpir.getValue();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            String formattedDate = selectedDate.format(formatter);
             Image productImage = imageprod.getImage();
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -238,7 +240,7 @@ public class Produit_controller extends Controller implements Initializable {
                     return;
                 }
 
-                String sql = "INSERT INTO produit (Libellép, IDcat, Codebr, Prixv, Qte, Datepp, Imagep) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                String sql = "INSERT INTO produit (Libellép, IDcat, Codebr, Prixv, Qte, Datepp,IDdep, Imagep) VALUES (?, ?, ?, ?, ?, ?,?, ?)";
                 PreparedStatement statement = getConnection().prepareStatement(sql);
 
                 statement.setString(1, productName);
@@ -246,7 +248,7 @@ public class Produit_controller extends Controller implements Initializable {
                 statement.setString(3, code);
                 statement.setFloat(4, price);
                 statement.setInt(5, initialQuantity);
-                statement.setString(6, expirationDate);
+                statement.setString(6, formattedDate);
 
                 InputStream inputStream = convertImageInputStream(productImage);
                 statement.setBlob(7, inputStream);
@@ -309,6 +311,7 @@ public class Produit_controller extends Controller implements Initializable {
             ResultSet rs = statement.executeQuery();
 
             produits = FXCollections.observableArrayList();
+
 
             if (!rs.isBeforeFirst()) {
                 System.out.println("Aucun produit trouvé");
@@ -581,8 +584,11 @@ public void setupsearchtextfield(javafx.scene.input.KeyEvent event){
                 statement.setInt(3, Integer.parseInt(quantiteField.getText()));
 
                 // Concaténer les valeurs sélectionnées pour former la date d'expiration au format "année-mois-jour"
-                String dateExpiration = dayComboBox.getValue() + "/" + monthComboBox.getValue() + "/" + yearComboBox.getValue();
-                statement.setString(4, dateExpiration);
+
+                selectedDate = dateexpir.getValue();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                String formattedDate = selectedDate.format(formatter);
+                statement.setString(4, formattedDate);
 
                 statement.setString(5, codeField.getText());
                 statement.setInt(6, produit.getIdp());
