@@ -22,6 +22,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class LoginController extends Controller implements Initializable {
+    public int id;
 
     @FXML
     private TextField Email;
@@ -76,7 +77,7 @@ public class LoginController extends Controller implements Initializable {
 
         //the SQL request ;
         System.out.println(selectedOption);
-        String sql = "SELECT u.Email, u.Mpasse FROM utilisateur u WHERE u.Email = '"+Email.getText()+"' AND u.Mpasse = '"+Password.getText()+"' AND u.Role = '"+Rolebox.getValue()+"';";
+        String sql = "SELECT u.IDu,u.Email, u.Mpasse FROM utilisateur u WHERE u.Email = '"+Email.getText()+"' AND u.Mpasse = '"+Password.getText()+"' AND u.Role = '"+Rolebox.getValue()+"';";
         //prepare the Statement;
         PreparedStatement statement = null;
         //ceci pour verifier dabbord est ce que vous étes connecter avec la base de donnés ;
@@ -86,6 +87,7 @@ public class LoginController extends Controller implements Initializable {
                 //this is to send the SQL requete;
                 statement = getConnection().prepareStatement(sql);
                 ResultSet resultSet = statement.executeQuery();
+
                 if (!resultSet.next()) {
                     System.out.println("No user found with the provided email and password and role.");
                     Password.setStyle("-fx-border-color: red");
@@ -96,6 +98,8 @@ public class LoginController extends Controller implements Initializable {
                         String email = resultSet.getString("Email");
                         String password = resultSet.getString("Mpasse");
                         System.out.println("Email: " + email + ", Password: " + password + ", Role: "+Rolebox.getValue());
+                         id=resultSet.getInt("IDu");
+                        System.out.println(id);
                         Password.setStyle("-fx-border-color: red");
                         return true;
                     } while (resultSet.next()); // Move to the next row
