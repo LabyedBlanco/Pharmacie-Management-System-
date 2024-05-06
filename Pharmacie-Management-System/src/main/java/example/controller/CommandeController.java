@@ -211,12 +211,12 @@ public class CommandeController extends Controller implements Initializable {
 
 
                 Commande Com = new Commande(
-                        new SimpleStringProperty("800"),   // IDcommande
+                        new SimpleStringProperty(),   // IDcommande
                         new SimpleStringProperty(Prixtotal.getText()),   // Prixa
                         new SimpleStringProperty(formattedDate), // DateCommande
                         new SimpleStringProperty(SearchFournisseur.getText()),
                         new SimpleStringProperty("1"),
-                        new SimpleStringProperty("333"), // IdUtilisateur
+                        new SimpleStringProperty(), // IdUtilisateur
                         new SimpleStringProperty(ComPayement.toString()), // MethodePayement
                         new SimpleStringProperty("En Cours")  // Status
                 );
