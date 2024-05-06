@@ -22,7 +22,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 import example.Services.Commande;
-//import org.controlsfx.control.textfield.TextFields;
+import org.controlsfx.control.textfield.TextFields;
 
 
 public class CommandeController extends Controller implements Initializable {
@@ -109,7 +109,7 @@ public class CommandeController extends Controller implements Initializable {
             } catch (SQLException e) {
                 System.out.println(e);
             }
-            //TextFields.bindAutoCompletion(SearchProduit, possibleSuggestions);
+            TextFields.bindAutoCompletion(SearchProduit, possibleSuggestions);
         }
 
         if (SearchFournisseur != null) {
@@ -129,7 +129,7 @@ public class CommandeController extends Controller implements Initializable {
             } catch (SQLException e) {
                 System.out.println(e);
             }
-            //TextFields.bindAutoCompletion(SearchFournisseur, possibleSuggestions);
+            TextFields.bindAutoCompletion(SearchFournisseur, possibleSuggestions);
         }
 
 
@@ -171,6 +171,12 @@ public class CommandeController extends Controller implements Initializable {
                 }
             });
         }
+    }
+
+
+
+    public void OnClose(ActionEvent actionEvent) throws IOException {
+        super.FermerFentere(actionEvent);
     }
     float prixtotal;
     public void Ajouterliste(ActionEvent actionEvent) {
@@ -246,11 +252,6 @@ public class CommandeController extends Controller implements Initializable {
 
 
     }
-
-    public void OnClose(ActionEvent actionEvent) throws IOException {
-        super.FermerFentere(actionEvent);
-    }
-
     LocalDate selectedDate ;
 
     public void Ajouter(ActionEvent actionEvent) throws IOException {
@@ -387,5 +388,3 @@ public class CommandeController extends Controller implements Initializable {
     }
 
 }
-
-
