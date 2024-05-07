@@ -322,8 +322,8 @@ public class Produit_controller extends Controller implements Initializable {
         String sql = "SELECT IDcat FROM catégorie WHERE Libelléca = ?";
         PreparedStatement statement = getConnection().prepareStatement(sql);
         statement.setString(1, categoryName);
+
         ResultSet rs = statement.executeQuery();
-        
         if (rs.next()) {
             categoryId = rs.getInt("IDcat");
         }
@@ -412,11 +412,15 @@ public class Produit_controller extends Controller implements Initializable {
             categCol.setMinWidth(150);
             applyTextAlignment(categCol);
 
-            TableColumn<Produit, Integer> iddepCol = new TableColumn<>("ID");
-            iddepCol.setCellValueFactory(f -> new javafx.beans.property.SimpleIntegerProperty(f.getValue().getIdp()).asObject());
-            iddepCol.setMinWidth(20);
+            /*TableColumn<Produit, Integer> iddeCol = new TableColumn<>("IDdep");
+            iddeCol.setCellValueFactory(f -> new javafx.beans.property.SimpleIntegerProperty(f.getValue().getIdp()).asObject());
+            iddeCol.setMinWidth(20);*/
 
-            table.getColumns().setAll(idCol, libCol, priceCol, quantityCol, expirationCol,codeCol,categCol,iddepCol);
+            TableColumn<Produit, Integer> iddeCol = new TableColumn<>("IDdep");
+            iddeCol.setCellValueFactory(f -> new javafx.beans.property.SimpleIntegerProperty(f.getValue().getIddep()).asObject());
+            iddeCol.setMinWidth(20);
+
+            table.getColumns().setAll(idCol, libCol, priceCol, quantityCol, expirationCol,codeCol,categCol,iddeCol);
 
 
             TableColumn<Produit, Void> actionCol = new TableColumn<>("Actions");
@@ -472,7 +476,9 @@ public class Produit_controller extends Controller implements Initializable {
         });
     }
 
-    private void deleteProduit(Produit produit) {
+
+
+    public void deleteProduit(Produit produit) {
         Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
         confirmationAlert.setTitle("Confirmation");
         confirmationAlert.setHeaderText(null);
@@ -491,14 +497,13 @@ public class Produit_controller extends Controller implements Initializable {
                 if (rowsAffected > 0) {
                     System.out.println("Produit supprimé avec succès : " + produit.getLibp());
 
-                    // Supprimer le produit de la liste et rafraîchir la table
-                    produits.remove(produit);
-                    table.setItems(produits);
+                    // Supprimer le produit de la liste attachée au TableView
+                    table.getItems().remove(produit);
                 } else {
                     System.out.println("Aucun produit supprimé.");
                 }
             } catch (SQLException ex) {
-                ex.printStackTrace();
+                System.out.println(ex);
                 System.out.println("Erreur lors de la suppression du produit.");
             }
         }
@@ -554,16 +559,28 @@ public class Produit_controller extends Controller implements Initializable {
 
 
 
+
+
     public void editProduit(Produit produit) {
         TextField nomField = new TextField(produit.getLibp());
         TextField prixField = new TextField(String.valueOf(produit.getPrixv()));
         TextField quantiteField = new TextField(String.valueOf(produit.getQuantite()));
-        TextField codeField = new TextField(String.valueOf(produit.getCode()));
-        DatePicker selectdate=new DatePicker();
-        selectedDate = selectDate.getValue();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        String formattedDate = selectedDate.format(formatter);
 
+
+
+        TextField codeField = new TextField(String.valueOf(produit.getCode()));
+
+        // Remplir les ComboBox pour le jour, le mois et l'année
+        DatePicker datePicker = new DatePicker();
+
+        LocalDate date = LocalDate.parse(produit.getExpDate());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formattedDate = date.format(formatter);
+
+
+        date = LocalDate.parse((formattedDate));
+
+        datePicker.setValue(date);
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.setTitle("Modifier le produit");
         dialog.setHeaderText("Modifier les détails du produit : " + produit.getLibp());
@@ -573,7 +590,7 @@ public class Produit_controller extends Controller implements Initializable {
                 new Label("Nom :"), nomField,
                 new Label("Prix :"), prixField,
                 new Label("Quantité :"), quantiteField,
-                new Label("Date d'expiration :"), selectdate,
+                new Label("Date d'expiration :"),datePicker,
                 new Label("Code-barres :"), codeField
         );
 
@@ -602,22 +619,23 @@ public class Produit_controller extends Controller implements Initializable {
 
         if (result.isPresent() && result.get() == okButton) {
 
-            LocalDate selectedDate = selectdate.getValue();
 
-            DatabaseManager dbManager = new DatabaseManager();
-
-            try (Connection conn = dbManager.getConnection()) {
+            try {
                 String sql = "UPDATE produit SET Libellép = ?, Prixv = ?, Qte = ?, Datepp = ?, Codebr = ? WHERE IDp = ?";
-                PreparedStatement statement = conn.prepareStatement(sql);
+                PreparedStatement statement = getConnection().prepareStatement(sql);
 
+                selectedDate = datePicker.getValue();
+                formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                formattedDate = selectedDate.format(formatter);
+
+                statement.setString(4, formattedDate);
                 statement.setString(1, nomField.getText());
                 statement.setFloat(2, Float.parseFloat(prixField.getText()));
                 statement.setInt(3, Integer.parseInt(quantiteField.getText()));
 
+                // Concaténer les valeurs sélectionnées pour former la date d'expiration au format "année-mois-jour"
 
 
-                String formattedDate = selectedDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-                statement.setString(4, formattedDate);
 
                 statement.setString(5, codeField.getText());
                 statement.setInt(6, produit.getIdp());
@@ -639,7 +657,6 @@ public class Produit_controller extends Controller implements Initializable {
             }
         }
     }
-
 
 
 

@@ -14,6 +14,7 @@ public class Produit {
     private String Datep;
     private String codBr;
     private String categ;
+    private int Iddep;
     public SimpleStringProperty libeller;
     public SimpleStringProperty PrixProduit;
     public SimpleStringProperty Quantite;
@@ -33,13 +34,14 @@ public class Produit {
         System.out.println("libeller : " +libeller+ " Prix " +PrixProduit+ " Quantite : " +Quantite+ " idp : " +Idp);
     }
 
-    public Produit(int idp,String libp,float prixv,int Qte,String Datep,String codBr){
+    public Produit(int idp,String libp,float prixv,int Qte,String Datep,String codBr,int Iddep){
         this.idp=idp;
         this.libp=libp;
         this.codBr=codBr;
         this.Datep=Datep;
         this.Qte=Qte;
         this.prixv=prixv;
+        this.Iddep=Iddep;
 
     }
 
@@ -80,5 +82,8 @@ public class Produit {
 
     public String getCateg() {
         return categ;
+    }
+    public int getIddep(){
+        return Iddep;
     }
 }
