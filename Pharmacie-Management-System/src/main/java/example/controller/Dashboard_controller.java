@@ -150,8 +150,6 @@ public class Dashboard_controller extends Controller implements Initializable {
 
         XYChart.Series series2 = new XYChart.Series();
 
-
-        for (int i = 10, j = 9; i >= 1 && j >= 0; i--, j--) {
             sqlSelect = "SELECT IDp, COUNT(IDp) AS count\n" +
                     "FROM contenir\n" +
                     "GROUP BY IDp\n" +
@@ -172,14 +170,14 @@ public class Dashboard_controller extends Controller implements Initializable {
 
                     while (result2.next()){
                         System.out.print(result2.getString("Libellép"));
-                        System.out.println( "l ID du produits est : "+result.getInt("IDp"));
-                        series2.getData().add(new XYChart.Data<>(result2.getString("Libellép"), result.getInt(1)));
+                        System.out.println( "l ID du produits est : "+result.getInt("IDp")+" count "+ result.getInt("count"));
+                        series2.getData().add(new XYChart.Data<>(result2.getString("Libellép"),  result.getInt("count")));
                     }
                 }
             } catch (SQLException e) {
                 System.out.println(e);
             }
-        }
+
 
         barChart.getData().addAll(series2);
     }}
