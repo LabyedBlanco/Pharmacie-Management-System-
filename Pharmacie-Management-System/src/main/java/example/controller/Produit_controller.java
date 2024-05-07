@@ -503,11 +503,17 @@ public class Produit_controller extends Controller implements Initializable {
                     System.out.println("Aucun produit supprimé.");
                 }
             } catch (SQLException ex) {
-                System.out.println(ex);
+                System.out.println(ex.getErrorCode());
+
+                if(ex.getErrorCode() == 1451 ) {
+                    showAlert("Erreur ", "Imposible de suprimer ce produit car il apartient a d'autre ventes ");
+                      }
                 System.out.println("Erreur lors de la suppression du produit.");
             }
+
+            }
         }
-    }
+
 
 
 
