@@ -262,7 +262,7 @@
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <Button graphicTextGap="0.0" mnemonicParsing="false" onAction="#ondelete" prefHeight="34.0" prefWidth="127.0" style="-fx-background-color: rgb(252,44,16); -fx-text-fill: white;" styleClass="drop-shadow" stylesheets="@style.css" text="Supprimer" GridPane.halignment="RIGHT">
+                                <Button fx:id="delete" graphicTextGap="0.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="127.0" style="-fx-background-color: rgb(252,44,16); -fx-text-fill: white;" styleClass="drop-shadow" stylesheets="@style.css" text="Supprimer" GridPane.halignment="RIGHT">
                                     <font>
                                         <Font name="Tahoma" size="13.0" />
                                     </font>
@@ -318,12 +318,12 @@
                            <content>
                               <TableView fx:id="listPurchases" maxHeight="600.0" prefHeight="299.0" prefWidth="1040.0" stylesheets="@../styles/MainFormDesign.css">
                                  <columns>
-                                    <TableColumn fx:id="shmed" prefWidth="164.00003051757812" text="Nom Medicament" />
-                                    <TableColumn fx:id="shdate" minWidth="88.00003051757812" prefWidth="158.3999786376953" text="Date" />
-                                    <TableColumn fx:id="shprix" prefWidth="140.0" text="Total Prix " />
-                                    <TableColumn fx:id="shcate" prefWidth="218.39999389648438" text="Category" />
-                                    <TableColumn fx:id="shqua" minWidth="92.79998779296875" prefWidth="184.0" text="Quantite" />
-                                    <TableColumn minWidth="150.0" prefWidth="168.7999267578125" text="Action" />
+                                    <TableColumn fx:id="shid" prefWidth="144.80001525878924" text="ID" />
+                                    <TableColumn fx:id="shdate" minWidth="88.00003051757812" prefWidth="178.40000915527344" text="Date" />
+                                    <TableColumn fx:id="shprix" prefWidth="121.60003662109375" text="Total Prix " />
+                                    <TableColumn fx:id="shqua" minWidth="92.79998779296875" prefWidth="220.0" text="Quantite" />
+                                    <TableColumn fx:id="shmethod" prefWidth="200.0" text="MethPayementV" />
+                                    <TableColumn minWidth="107.2000732421875" prefWidth="163.0" text="Action" />
                                  </columns>
                               </TableView>
                            </content>

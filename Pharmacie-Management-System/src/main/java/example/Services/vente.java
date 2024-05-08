@@ -12,21 +12,21 @@ import java.util.List;
 public class vente {
 
     private int idv;
-    private float prix;
     private Date date;
-    private int idcl;
+    private static int idcl;
     private int idca;
     private int idu;
     private String methodepaymentv;
     private int qua;
-    private String med;
+    private String med;//tweli idproduit
     private String categ;
     private float totprix;
+    private int idprod;
 
     public vente(){
 
     }
-    public vente(int idv,float prix,Date date,int idcl,int idca,int idu,String methodepaymentv,int qua,String categ,String med,int idprod){
+    public vente(int idv,Date date,int idcl,int idca,int idu,String methodepaymentv,int qua,String categ,String med,int idprod){
         this.date=date;
         this.idv=idv;
         this.idcl=idcl;
@@ -36,7 +36,7 @@ public class vente {
         this.qua=qua;
         this.categ=categ;
         this.med=med;
-        this.prix=prix;
+        this.idprod=idprod;
 
     }
 
@@ -48,13 +48,13 @@ public class vente {
     public void setcateg(String categ){this.categ=categ;}
     public void setmed(String med){this.med=med;}
     public void setqua(int qua){this.qua=qua;}
-    public void setprix(float prix){this.prix=prix;}
+    public void setprixtot(float prix){this.totprix=prix;}
+    public void setidprod(int idprod){this.idprod=idprod;}
 
 
     public int getidv(){return this.idv;}
     public void setidv(int idv){this.idv=idv;}
 
-    public float getprix(){return this.prix;}
     public Date getdate(){return this.date;}
     public int getidcl(){return this.idcl;}
     public int getidca(){return this.idca;}
@@ -64,10 +64,8 @@ public class vente {
     public String getmed(){return this.med;}
     public int getqua(){return this.qua;}
     public float gettotal(){return this.totprix;}
+    public int getidprod(){return this.idprod;}
 
 
 
-    public void calculerprix(){
-        this.totprix=prix*qua;
-    }
 }
