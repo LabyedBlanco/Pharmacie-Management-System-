@@ -9,5 +9,8 @@
         <module name="Pharmacie-Management-System" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Pharmacie-Management-System" target="19" />
+    </bytecodeTargetLevel>
   </component>
 </project>
