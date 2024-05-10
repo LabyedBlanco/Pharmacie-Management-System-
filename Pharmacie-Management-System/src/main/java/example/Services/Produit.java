@@ -19,14 +19,16 @@ public class Produit {
     public SimpleStringProperty PrixProduit;
     public SimpleStringProperty Quantite;
     public SimpleStringProperty Idp;
+    public SimpleStringProperty order;
 
     public static int ord = 0;
 
-    public Produit(SimpleStringProperty libeller, SimpleStringProperty prixProduit, SimpleStringProperty quantite, SimpleStringProperty idp) {
+    public Produit(SimpleStringProperty libeller, SimpleStringProperty prixProduit, SimpleStringProperty quantite, SimpleStringProperty idp, SimpleStringProperty Order) {
         this.libeller = libeller;
         PrixProduit = prixProduit;
         Quantite = quantite;
         Idp = idp;
+        order = Order;
         ord++;
     }
 

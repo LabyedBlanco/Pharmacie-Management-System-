@@ -3,7 +3,9 @@ package example.controller;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import example.Services.Produit;
+import example.Services.Utilisateur;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -14,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import java.io.IOException;
 import java.net.URL;
@@ -61,7 +64,7 @@ public class CommandeController extends Controller implements Initializable {
     @FXML
     private TableColumn<Produit, String> Nom;
     @FXML
-    private TableColumn<Produit, Integer> Order;
+    private TableColumn<Produit, String> Order;
     @FXML
     private TableColumn<Produit, String> Prix;
     @FXML
@@ -86,11 +89,15 @@ public class CommandeController extends Controller implements Initializable {
     private TextField SearchTextfeild;
     @FXML
     private TextField SearchFournisseur;
+    @FXML
+    private ComboBox<String> StatusCom;
 
+    int PanierOrder;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
 
         if (SearchProduit != null) {
             List<String> possibleSuggestions = new ArrayList<>(List.of(
@@ -139,7 +146,22 @@ public class CommandeController extends Controller implements Initializable {
 
 
         if (Depot != null) {
-            Depot.setItems(FXCollections.observableArrayList("1", "2", "3", "4"));
+            try {
+
+
+            String sqlSelect = "SELECT d.IDdep FROM depot d;";
+            PreparedStatement stat = getConnection().prepareStatement(sqlSelect);
+            ResultSet result = stat.executeQuery();
+            while (result.next()) {
+                System.out.println(result.getString("IDdep"));
+                Depot.setItems(FXCollections.observableArrayList(result.getString("IDdep")));
+            }
+
+            }catch (SQLException ex){
+                System.out.println(ex);
+            }
+
+
             Depot.setOnAction(e -> {
                 String selectedOption = Depot.getValue();
                 System.out.println(selectedOption);
@@ -152,6 +174,10 @@ public class CommandeController extends Controller implements Initializable {
                 String selectedOption = ComPayement.getValue();
                 System.out.println(selectedOption);
             });
+        }
+        if(StatusCom != null){
+            StatusCom.setItems(FXCollections.observableArrayList("Annuler", "Succes", "En Cours"));
+
         }
 
         if (Selectbox != null) {
@@ -172,93 +198,283 @@ public class CommandeController extends Controller implements Initializable {
             });
         }
     }
-
-
-
-    public void OnClose(ActionEvent actionEvent) throws IOException {
-        super.FermerFentere(actionEvent);
+    public void OnModify(ActionEvent event){
+        Commande c = Commandes.getSelectionModel().getSelectedItem();
+        if(Commandes.getSelectionModel().getSelectedItem() == null){
+            showAlert("Alert","Aucune element dans le tableux est selecter");
+        }
+        c.Afficher();
+        Modify(c);
     }
+
+    public void Modify(Commande commande){
+
+
+        TextField fournisseurField = new TextField(commande.IdFournisseur.getValue().toString());
+        TextField utilisateurField= new TextField(commande.IdUtilisateur.getValue().toString());
+        TextField statusfeild= new TextField(commande.Status.getValue().toString());
+        TextField Caissefeild= new TextField(commande.IdCaisse.getValue().toString());
+        TextField Prixfeild = new TextField(commande.Prixa.getValue().toString());
+        TextField Methodefeild = new TextField(commande.MethodePayement.getValue().toString());
+
+        // Remplir les ComboBox pour le jour, le mois et l'année
+        DatePicker datePicker = new DatePicker();
+
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formattedDate ;
+
+
+
+
+        datePicker.setValue(LocalDate.parse(commande.DateCommande.getValue()));
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.setTitle("Modifier le produit");
+        dialog.setHeaderText("Modifier les détails de la commande : " + commande.IDcommande);
+
+        VBox vbox = new VBox();
+        vbox.getChildren().addAll(
+                new Label("Fournisseur :"), fournisseurField,
+                new Label("Prix :"), utilisateurField,
+                new Label("Quantité :"), statusfeild,
+                new Label("Date d'commande :"),datePicker,
+                new Label("Inventaire :"), Caissefeild,
+                new Label("Prix Total :"), Prixfeild,
+                new Label("Methode de Payement :"), Methodefeild
+        );
+
+        dialog.getDialogPane().setContent(vbox);
+
+        ButtonType okButton = new ButtonType("Enregistrer", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(okButton, ButtonType.CANCEL);
+
+        Optional<ButtonType> result = dialog.showAndWait();
+
+        if (result.isPresent() && result.get() == okButton) {
+
+
+            try {
+                String sql = "UPDATE commande SET Prixa = ?, Datec = ?, IDf = ?, IDca = ?, IDu = ? , MethPayementC = ? , Stat = ?";
+                PreparedStatement statement = getConnection().prepareStatement(sql);
+
+                selectedDate = datePicker.getValue();
+                formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                formattedDate = selectedDate.format(formatter);
+
+                statement.setString(2, formattedDate);
+                statement.setString(1, Prixfeild.getText());
+                statement.setString(3, fournisseurField.getText());
+                statement.setString(4, Caissefeild.getText());
+                statement.setString(5, utilisateurField.getText());
+                statement.setString(6, Methodefeild.getText());
+                statement.setString(7, statusfeild.getText());
+
+                // Concaténer les valeurs sélectionnées pour former la date d'expiration au format "année-mois-jour"
+
+                int rowsAffected = statement.executeUpdate();
+
+                if (rowsAffected > 0) {
+                    System.out.println("Produit mis à jour avec succès.");
+                } else {
+                    System.out.println("Aucune modification apportée.");
+                }
+            } catch (NumberFormatException ex) {
+                System.out.println("Erreur de format de nombre.");
+                ex.printStackTrace();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                System.out.println("Erreur lors de la modification de la commande.");
+            }
+        }
+    }
+
+
     float prixtotal;
+    int IDcomm = 999;
+
+    public void Confirmer(ActionEvent event) throws IOException {
+        //get date ;
+        selectedDate = ComDate.getValue();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formattedDate = selectedDate.format(formatter);
+
+        try {
+            String sqlupdate = "UPDATE `commande` SET `Prixa` = ?, `Datec` = ?, `MethPayementC` = ?, `Stat` = ? WHERE `IDco` = ?";
+            PreparedStatement update = getConnection().prepareStatement(sqlupdate);
+            update.setString(1, String.valueOf(prixtotal));
+            update.setString(2, formattedDate);
+            update.setString(3, ComPayement.getValue().toString());
+            update.setString(4, StatusCom.getValue().toString());
+            update.setInt(5, IDcomm);
+            int effectedRows = update.executeUpdate();
+
+
+        }catch (SQLException ex){
+            System.out.println("Update exception " + ex);
+        }
+
+        super.FermerFentere(event);
+    }
+
     public void Ajouterliste(ActionEvent actionEvent) {
+        //first get id produit ;
+
         String PrdAjouter = SearchProduit.getText();
 
         try {
             String sqlSelect = "SELECT c.Prixv,c.IDp,c.Libellép FROM produit c WHERE Libellép LIKE '" + PrdAjouter + "';";
             PreparedStatement stat = getConnection().prepareStatement(sqlSelect);
-            ResultSet result = stat.executeQuery();
+            ResultSet resultproduit = stat.executeQuery();
 
-            while (result.next()) {
-                Produit Prod = new Produit(
-                        new SimpleStringProperty(result.getString("Libellép")),
-                        new SimpleStringProperty(result.getString("Prixv")),
-                        new SimpleStringProperty(ComQantite.getText()),
-                        new SimpleStringProperty(result.getString("IDp"))
-                );
-                Nom.setCellValueFactory(f -> f.getValue().libeller);
-                Prix.setCellValueFactory(f -> f.getValue().PrixProduit);
-                Quantite.setCellValueFactory(f -> f.getValue().Quantite);
-                Reference.setCellValueFactory(f -> f.getValue().Idp);
-                Data.add(Prod);
+            while (resultproduit.next()) {
+        /*}catch (SQLException ex){
+            System.out.println("produit " + ex);
+        }
+*/
+                //get quantite
 
-                String QuantiteString = Prod.Quantite.get();
+                String quantite = ComQantite.getText();
 
-                try {
-                    float floatValue = Float.parseFloat(QuantiteString);
-                    prixtotal += floatValue*result.getFloat("Prixv");
-                    System.out.println(prixtotal);
-                    Prixtotal.setText(Float.toString(prixtotal));
-                } catch (NumberFormatException e) {
-                    e.printStackTrace();
+                //get ID commande virtual
+
+                if (Ajouter == 0) {
+
+                    try {
+                        String Idco = "SELECT IDco FROM commande ORDER BY IDco DESC LIMIT 1;";
+                        PreparedStatement statIdv = getConnection().prepareStatement(Idco);
+                        ResultSet resultIdv = statIdv.executeQuery();
+
+                        while (resultIdv.next()) {
+                            IDcomm = resultIdv.getInt(1);
+                            System.out.println("previous cmd ID " +IDcomm);
+                            IDcomm++;
+                            System.out.println("current cmd ID " +IDcomm);
+                        }
+                    } catch (SQLException ex) {
+                        System.out.println("Virtual ID : " + ex);
+                    }
                 }
 
-                selectedDate = ComDate.getValue();
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-                String formattedDate = selectedDate.format(formatter);
+                Ajouter++;
+
+                //get ID fournisseur
+                int IDfourni = 999;
+                if (!SearchFournisseur.getText().isEmpty()) {
+                    String FourniAjt = SearchFournisseur.getText();
+                    try {
+                        sqlSelect = "SELECT f.IDf FROM fournisseur f WHERE Nomf LIKE '" + FourniAjt + "';";
+                        stat = getConnection().prepareStatement(sqlSelect);
+                        ResultSet resultfournisseur = stat.executeQuery();
+
+                        while (resultfournisseur.next()) {
+                            IDfourni = resultfournisseur.getInt("IDf");
+                        }
+                    } catch (SQLException ex) {
+                        System.out.println("fournisseur : " + ex);
+                    }
 
 
-                Commande Com = new Commande(
-                        new SimpleStringProperty(),   // IDcommande
-                        new SimpleStringProperty(Prixtotal.getText()),   // Prixa
-                        new SimpleStringProperty(formattedDate), // DateCommande
-                        new SimpleStringProperty(SearchFournisseur.getText()),
-                        new SimpleStringProperty("1"),
-                        new SimpleStringProperty(), // IdUtilisateur
-                        new SimpleStringProperty(ComPayement.toString()), // MethodePayement
-                        new SimpleStringProperty("En Cours")  // Status
-                );
+                //default Id user and Id inventaire ;
 
-                Com.Afficher();
+                int Idca = 1;
+                int Iduser = 1;
 
-                IDcommande.setCellValueFactory(f -> f.getValue().IDcommande);
-                Datec.setCellValueFactory(f -> f.getValue().DateCommande);
-                PrixCo.setCellValueFactory(f -> f.getValue().Prixa);
-                Idfournisseur.setCellValueFactory(f -> f.getValue().IdFournisseur);
-                utilisateur.setCellValueFactory(f -> f.getValue().IdUtilisateur);
-                Status.setCellValueFactory(f -> f.getValue().Status);
-                Caisse.setCellValueFactory(f -> f.getValue().IdCaisse);
-                Methode.setCellValueFactory(f -> f.getValue().MethodePayement);
-                data.add(Com);
-
-
+                //initialize the virtual commande;
+                try {
+                    String sqlInsert = "INSERT INTO `commande` (`IDco`, `Prixa`, `Datec`, `IDf`, `IDca`, `IDu`, `MethPayementC`, `Stat`) VALUES ('" + IDcomm + "', NULL, NULL,'" + IDfourni + "', '" + Idca + "', '" + Iduser + "', NULL, NULL);";
+                    PreparedStatement insert = getConnection().prepareStatement(sqlInsert);
+                    int rowsAffected = insert.executeUpdate();
+                    if (rowsAffected > 0) {
+                        System.out.println("INSERT successful!");
+                    } else {
+                        System.out.println("INSERT failed!");
+                    }
+                } catch (SQLException ex) {
+                    System.out.println("intialisation de la commande virtuel " + ex);
+                }
+            } else {
+                System.out.println("No fournisseur");
+                showAlert("Alert", "Veuiller choisiser un fournisseur dabbord");
             }
+                //INSERER maintenent dans la table commander;
 
-            Produits.setItems(Data);
+                try {
 
-        } catch (SQLException e) {
-            System.out.println("problem est : " +e);
+                    String sqlInsert = "INSERT INTO `commander` (`IDcom`, `IDco`, `Idpro`, `Quantcm`) VALUES (NULL,?,?,?) ";
+                    PreparedStatement insert = getConnection().prepareStatement(sqlInsert);
+                    System.out.println(sqlInsert);
+
+
+                    insert.setInt(1, IDcomm);
+                    insert.setString(2, resultproduit.getString("IDp"));
+                    System.out.println(IDcomm);
+                    insert.setString(3, ComQantite.getText());
+                    int rowsAffected = insert.executeUpdate();
+
+                    if (rowsAffected > 0) {
+                        System.out.println("INSERT successful!");
+                    } else {
+                        System.out.println("INSERT failed!");
+                    }
+
+
+                } catch (SQLException e) {
+                    System.out.println(" Insert problem is : " + e);
+                }
+
+                if(IDfourni != 999) {
+
+                    Produit Prod = new Produit(
+                            new SimpleStringProperty(resultproduit.getString("Libellép")),
+                            new SimpleStringProperty(resultproduit.getString("Prixv")),
+                            new SimpleStringProperty(ComQantite.getText()),
+                            new SimpleStringProperty(resultproduit.getString("IDp")),
+                            new SimpleStringProperty(Integer.toString(PanierOrder++))
+                    );
+
+                    Nom.setCellValueFactory(f -> f.getValue().libeller);
+                    Quantite.setCellValueFactory(f -> f.getValue().Quantite);
+                    Prix.setCellValueFactory(f -> f.getValue().PrixProduit);
+                    Reference.setCellValueFactory(f -> f.getValue().Idp);
+                    Order.setCellValueFactory(f -> f.getValue().order);
+
+                    Prod.Afficher();
+                    Data.add(Prod);
+                    Produits.setItems(Data);
+
+                    String QuantiteString = Prod.Quantite.get();
+
+
+                    try {
+                        float floatValue = Float.parseFloat(QuantiteString);
+                        prixtotal += floatValue * resultproduit.getFloat("Prixv");
+                        System.out.println(prixtotal);
+                        Prixtotal.setText(Float.toString(prixtotal));
+                    } catch (NumberFormatException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }catch (SQLException ex){
+            System.out.println("produit " + ex);
         }
+
+
+
+    }
 
         //table d'association ;
 
 
-    }
+
     LocalDate selectedDate ;
+    int Ajouter ;
 
     public void Ajouter(ActionEvent actionEvent) throws IOException {
+        Ajouter = 0;
         prixtotal = 0;
         super.NouveauFenetre("AddCommande");
         //get all the data from ui ;
-
         selectedDate = ComDate.getValue();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String formattedDate = selectedDate.format(formatter);
@@ -312,7 +528,7 @@ public class CommandeController extends Controller implements Initializable {
 
                 Com.Afficher();
 
-                IDcommande.setCellValueFactory(f -> f.getValue().IDcommande);
+
                 Datec.setCellValueFactory(f -> f.getValue().DateCommande);
                 PrixCo.setCellValueFactory(f -> f.getValue().Prixa);
                 Idfournisseur.setCellValueFactory(f -> f.getValue().IdFournisseur);

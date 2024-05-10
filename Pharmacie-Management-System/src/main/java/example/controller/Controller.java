@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -55,6 +56,7 @@ public class Controller extends DatabaseManager {
         Parent root = loader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+        stage.setResizable(false);
         stage.show();
     }
 
@@ -75,6 +77,14 @@ public class Controller extends DatabaseManager {
         stage.setScene(new Scene(root));
         stage.show();
         stage.setTitle("Alert!");
+    }
+
+    public void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 
     public void Annuler(ActionEvent event) {
