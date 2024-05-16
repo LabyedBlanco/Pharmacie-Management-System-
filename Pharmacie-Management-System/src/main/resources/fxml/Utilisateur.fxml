@@ -25,8 +25,8 @@
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints maxHeight="238.0" minHeight="0.0" prefHeight="108.66666412353516" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="642.0" minHeight="10.0" prefHeight="619.3333358764648" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="238.0" minHeight="0.0" prefHeight="97.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="665.0" minHeight="10.0" prefHeight="632.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
                 <GridPane style="-fx-background-color: white;">
@@ -93,7 +93,7 @@
                         <Image url="@../images/icons/9035096_search_icon.png" />
                      </image>
                   </ImageView>
-                  <TextField onKeyTyped="#setupSearchUser" fx:id="searchUser" prefHeight="30.0" prefWidth="121.0" promptText="Search" style="-fx-background-color: white; -fx-border-color: white; -fx-border-radius: 25px; -fx-background-radius: 25px;" stylesheets="@style.css" GridPane.columnIndex="1">
+                  <TextField fx:id="searchUser" onKeyTyped="#setupSearchUser" prefHeight="30.0" prefWidth="121.0" promptText="Search" style="-fx-background-color: white; -fx-border-color: white; -fx-border-radius: 25px; -fx-background-radius: 25px;" stylesheets="@style.css" GridPane.columnIndex="1">
                      <GridPane.margin>
                         <Insets right="60.0" />
                      </GridPane.margin>
@@ -110,15 +110,15 @@
                <content>
                   <TableView fx:id="table" prefHeight="470.0" prefWidth="999.0" style="-fx-border-radius: 20; -fx-background-radius: 20;" styleClass="drop-shadow">
                     <columns>
-                        <TableColumn  prefWidth="96.00002670288086" text="Id" />
-                        <TableColumn  prefWidth="96.00002670288086" text="Nom" />
-                        <TableColumn  prefWidth="98.39999389648438" text="Prenom" />
-                        <TableColumn  prefWidth="98.39999389648438" text="Telephone" />
-                        <TableColumn  prefWidth="157.60000610351562" text="Email" />
-                        <TableColumn  prefWidth="150.4000244140625" text="Salaire" />
-                        <TableColumn  prefWidth="109.5999755859375" text="Role" />
-                        <TableColumn  prefWidth="56.0" text="Date" />
-                        <TableColumn  prefWidth="225.0" text="Action" />
+                        <TableColumn prefWidth="96.00002670288086" text="Id" />
+                        <TableColumn prefWidth="96.00002670288086" text="Nom" />
+                        <TableColumn prefWidth="98.39999389648438" text="Prenom" />
+                        <TableColumn prefWidth="98.39999389648438" text="Telephone" />
+                        <TableColumn prefWidth="157.60000610351562" text="Email" />
+                        <TableColumn prefWidth="150.4000244140625" text="Salaire" />
+                        <TableColumn prefWidth="109.5999755859375" text="Role" />
+                        <TableColumn prefWidth="56.0" text="Date" />
+                        <TableColumn prefWidth="225.0" text="Action" />
 
 
                     </columns>

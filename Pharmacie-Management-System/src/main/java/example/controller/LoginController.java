@@ -103,7 +103,11 @@ public static int id;
 
         //the SQL request ;
         System.out.println(selectedOption);
-        String sql = "SELECT u.IDu,u.Email, u.Mpasse FROM utilisateur u WHERE u.Email = '"+Email.getText()+"' AND u.Mpasse = '"+Password.getText()+"' AND u.Role = '"+Rolebox.getValue()+"';";
+        String sql = "SELECT u.IDu,u.Email, u.Mpasse FROM utilisateur u WHERE u.Email = ? AND u.Mpasse = ? AND u.Role = '"+Rolebox.getValue()+"';";
+
+
+
+
         //prepare the Statement;
         PreparedStatement statement = null;
         //ceci pour verifier dabbord est ce que vous étes connecter avec la base de donnés ;
@@ -112,6 +116,8 @@ public static int id;
                 System.out.println("1");
                 //this is to send the SQL requete;
                 statement = getConnection().prepareStatement(sql);
+                statement.setString(1,Email.getText());
+                statement.setString(2,Password.getText());
                 ResultSet resultSet = statement.executeQuery();
 
                 if (!resultSet.next()) {

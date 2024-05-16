@@ -1,5 +1,6 @@
 package example.controller;
 import com.sun.javafx.charts.Legend;
+import example.Services.Commande;
 import example.Services.Produit;
 import example.Services.Utilisateur;
 import example.model.DatabaseManager;
@@ -38,7 +39,8 @@ import java.util.ResourceBundle;
 import java.util.function.UnaryOperator;
 
 public class Produit_controller extends Controller implements Initializable {
-
+    @FXML
+    private Text productname;
     @FXML
     public AnchorPane Connected ;
 
@@ -121,11 +123,27 @@ public class Produit_controller extends Controller implements Initializable {
             imageprod.setImage(img);
         }
     }
+
+    public void ficheproduit() throws IOException {
+
+            Produit p = table.getSelectionModel().getSelectedItem();
+            if(table.getSelectionModel().getSelectedItem() == null){
+                showAlert("Alert","Aucune element dans le tableux est selecter");
+            }else {
+                NouveauFenetre("product");
+                fiche(p);
+            }
+    }
+
+    public void fiche(Produit p ){
+
+                System.out.println(p.getLibp());
+                System.out.println("labiad" + productname.getText());
+
+    }
+
     public void addproduct(ActionEvent event) throws IOException {
         NouveauFenetre("ajouter-produit");
-    }
-    public void fichproduct(ActionEvent event) throws IOException {
-        NouveauFenetre("fich-produit");
     }
 
     public void initializeCategoryComboBox() {

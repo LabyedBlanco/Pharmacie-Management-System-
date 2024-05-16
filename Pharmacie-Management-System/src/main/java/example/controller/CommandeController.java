@@ -3,11 +3,9 @@ package example.controller;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import com.mysql.cj.xdevapi.SqlStatement;
 import example.Services.Produit;
-import example.Services.Utilisateur;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;

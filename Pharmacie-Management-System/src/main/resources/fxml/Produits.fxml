@@ -79,7 +79,7 @@
                         </AnchorPane>
                     </children>
                 </GridPane>
-                <AnchorPane  prefHeight="631.0" prefWidth="1100.0" style="-fx-background-color: #f9f9f9;" styleClass="drop-shadow" stylesheets="@style.css" GridPane.rowIndex="1">
+                <AnchorPane prefHeight="631.0" prefWidth="1100.0" style="-fx-background-color: #f9f9f9;" styleClass="drop-shadow" stylesheets="@style.css" GridPane.rowIndex="1">
                     <children>
                         <GridPane layoutX="1.0" layoutY="-1.0" prefHeight="69.0" prefWidth="1099.0">
                             <columnConstraints>
@@ -90,7 +90,7 @@
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <Button mnemonicParsing="false" onAction="#fichproduct" prefHeight="35.0" prefWidth="127.0" style="-fx-background-color: red;" styleClass="drop-shadow" stylesheets="@style.css" text="Fich Produit" textFill="WHITE" GridPane.halignment="RIGHT">
+                                <Button mnemonicParsing="false" onAction="#ficheproduit" prefHeight="35.0" prefWidth="127.0" style="-fx-background-color: red;" styleClass="drop-shadow" stylesheets="@style.css" text="Fich Produit" textFill="WHITE" GridPane.halignment="RIGHT">
                                     <font>
                                         <Font name="Tahoma" size="13.0" />
                                     </font>
@@ -131,7 +131,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <TextField onKeyTyped="#setupsearchtextfield" fx:id="searchTextField" maxWidth="160.0" prefHeight="30.0" prefWidth="195.0" promptText="Search" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+                        <TextField fx:id="searchTextField" maxWidth="160.0" onKeyTyped="#setupsearchtextfield" prefHeight="30.0" prefWidth="195.0" promptText="Search" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
                            <GridPane.margin>
                               <Insets right="10.0" />
                            </GridPane.margin>
@@ -156,13 +156,13 @@
                               <TableView fx:id="table" prefHeight="769.0" prefWidth="1060.0" styleClass="drop-shadow">
                                  <columns>
                                      <TableColumn prefWidth="96.00002670288086" text="Id" />
-                                     <TableColumn  prefWidth="96.00002670288086" text="Nom" />
-                                     <TableColumn  prefWidth="98.39999389648438" text="Prix" />
-                                     <TableColumn  prefWidth="98.39999389648438" text="Quantite" />
-                                     <TableColumn  prefWidth="157.60000610351562" text="Dte d'expiration" />
-                                     <TableColumn  prefWidth="150.4000244140625" text="codeBr" />
-                                     <TableColumn  prefWidth="109.5999755859375" text="Catégorie" />
-                                     <TableColumn  prefWidth="56.0" text="Action" />
+                                     <TableColumn prefWidth="96.00002670288086" text="Nom" />
+                                     <TableColumn prefWidth="98.39999389648438" text="Prix" />
+                                     <TableColumn prefWidth="98.39999389648438" text="Quantite" />
+                                     <TableColumn prefWidth="157.60000610351562" text="Dte d'expiration" />
+                                     <TableColumn prefWidth="150.4000244140625" text="codeBr" />
+                                     <TableColumn prefWidth="109.5999755859375" text="Catégorie" />
+                                     <TableColumn prefWidth="56.0" text="Action" />
 
                                  </columns>
                                  <stylesheets>

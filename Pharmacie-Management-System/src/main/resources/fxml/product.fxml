@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="example.controller.Produit_controller">
+   <children>
+      <Text fx:id="productname" layoutX="289.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text layoutX="195.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Name : " />
+   </children>
+</AnchorPane>
