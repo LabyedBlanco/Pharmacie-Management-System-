@@ -48,6 +48,8 @@ public class UtilisateurController extends Controller implements Initializable {
     public AnchorPane Connected;
 
     @FXML
+    private Text leNom;
+    @FXML
     private Button bottonadd;
     @FXML
     private Button buttonModifier;
@@ -79,11 +81,12 @@ public class UtilisateurController extends Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-
+        if(leNom != null) {
+            leNom.setText(LoginController.Nom);
+        }
         if (Role != null) {
             Role.setItems(FXCollections.observableArrayList("Gérant", "Pharmacien", "Admin"));
         }
-
 
         Online(ConnectionStat(), main, Connected);
         new Thread(this::table).start();

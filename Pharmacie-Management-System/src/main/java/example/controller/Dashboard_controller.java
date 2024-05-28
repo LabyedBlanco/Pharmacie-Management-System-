@@ -30,6 +30,8 @@ public class Dashboard_controller extends Controller implements Initializable {
     private AnchorPane Connected;
     @FXML
     private Text main;
+    @FXML
+    private Text UtilisateurName;
     float Totalvente;
     int Totalproduits;
     int Totalclient;
@@ -54,6 +56,7 @@ public class Dashboard_controller extends Controller implements Initializable {
         try {
             DataConnexion.setConnectionStat(true);
             Online(ConnectionStat(), main, Connected);
+            UtilisateurName.setText(LoginController.Nom);
         } catch (Exception e1) {
             DataConnexion.setConnectionStat(false);
             e1.printStackTrace();

@@ -116,13 +116,16 @@ public class FournisseurController extends Controller implements Initializable {
 
     @FXML
     private TextField te;
-
+    @FXML
+    private Text UtilisateurName;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Online(ConnectionStat(), main, Connected);
-
+        if(UtilisateurName != null) {
+            UtilisateurName.setText(LoginController.Nom);
+        }
         if (tableViewActif != null && tableViewArchived != null) {
             tableViewActif.setVisible(true);
             tableViewArchived.setVisible(false);

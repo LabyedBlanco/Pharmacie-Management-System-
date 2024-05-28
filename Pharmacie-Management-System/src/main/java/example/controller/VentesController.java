@@ -137,7 +137,8 @@ public class VentesController extends Controller implements Initializable {
 
     @FXML
     private TableColumn<vente, Integer> shqua=new TableColumn<>("quantite");
-
+    @FXML
+    private Text UtilisateurName;
 
     float totprice=0;
 
@@ -366,6 +367,9 @@ public class VentesController extends Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Online(ConnectionStat(), main, Connected);
+        if(UtilisateurName != null) {
+            UtilisateurName.setText(LoginController.Nom);
+        }
         addmethod.getItems().addAll("Check", "Espece", "Virement");
         addmethod.setValue("Espece");
 

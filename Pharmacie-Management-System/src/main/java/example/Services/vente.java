@@ -1,5 +1,6 @@
 package example.Services;
 
+import example.controller.VentesController;
 import javafx.beans.property.FloatProperty;
 import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -9,7 +10,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class vente {
+public class vente extends VentesController {
 
     private int idv;
     private Date date;

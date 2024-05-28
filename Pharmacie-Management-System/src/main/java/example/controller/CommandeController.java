@@ -34,6 +34,8 @@ public class CommandeController extends Controller implements Initializable {
 
 
     @FXML
+    private Text UtilisateurName;
+    @FXML
     private GridPane Avoirs;
     @FXML
     private Text Prixtotal;
@@ -152,6 +154,9 @@ public class CommandeController extends Controller implements Initializable {
         Online(ConnectionStat(), main, Connected);
         new Thread(this::Commande).start();
         new Thread(this::Produit).start();
+        if(UtilisateurName != null) {
+            UtilisateurName.setText(LoginController.Nom);
+        }
 
 
         if (Depot != null) {

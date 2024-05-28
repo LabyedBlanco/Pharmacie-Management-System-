@@ -31,6 +31,7 @@ public class LoginController extends Controller implements Initializable {
 
 
 public static int id;
+public static String Nom;
 
     @FXML
     private TextField Email;
@@ -103,7 +104,7 @@ public static int id;
 
         //the SQL request ;
         System.out.println(selectedOption);
-        String sql = "SELECT u.IDu,u.Email, u.Mpasse FROM utilisateur u WHERE u.Email = ? AND u.Mpasse = ? AND u.Role = '"+Rolebox.getValue()+"';";
+        String sql = "SELECT u.IDu,u.Email, u.Mpasse ,u.Nom FROM utilisateur u WHERE u.Email = ? AND u.Mpasse = ? AND u.Role = '"+Rolebox.getValue()+"';";
 
 
 
@@ -132,9 +133,10 @@ public static int id;
                         System.out.println("Email: " + email + ", Password: " + password + ", Role: "+Rolebox.getValue());
 
                          id=resultSet.getInt("IDu");
-
+                        Nom = resultSet.getString("Nom");
 
                         System.out.println(id);
+                        System.out.println("Nom est : "+Nom);
                         Password.setStyle("-fx-border-color: red");
                         return true;
                     } while (resultSet.next()); // Move to the next row
