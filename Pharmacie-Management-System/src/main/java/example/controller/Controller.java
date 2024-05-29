@@ -70,14 +70,7 @@ public class Controller extends DatabaseManager {
     //this is to Connfirm Something
     int c;
 
-    public void MessageConfirmation(String NoMessge) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/" + NoMessge + ".fxml"));
-        Parent root = loader.load();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.show();
-        stage.setTitle("Alert!");
-    }
+
 
     public void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.ERROR);

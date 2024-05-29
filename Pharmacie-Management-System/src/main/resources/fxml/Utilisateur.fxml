@@ -3,7 +3,6 @@
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -103,32 +102,6 @@
                   <Insets left="40.0" top="40.0" />
                </GridPane.margin>
             </GridPane>
-            <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-               <GridPane.margin>
-                  <Insets bottom="20.0" left="40.0" right="50.0" top="150.0" />
-               </GridPane.margin>
-               <content>
-                  <TableView fx:id="table" prefHeight="470.0" prefWidth="999.0" style="-fx-border-radius: 20; -fx-background-radius: 20;" styleClass="drop-shadow">
-                    <columns>
-                        <TableColumn prefWidth="96.00002670288086" text="Id" />
-                        <TableColumn prefWidth="96.00002670288086" text="Nom" />
-                        <TableColumn prefWidth="98.39999389648438" text="Prenom" />
-                        <TableColumn prefWidth="98.39999389648438" text="Telephone" />
-                        <TableColumn prefWidth="157.60000610351562" text="Email" />
-                        <TableColumn prefWidth="150.4000244140625" text="Salaire" />
-                        <TableColumn prefWidth="109.5999755859375" text="Role" />
-                        <TableColumn prefWidth="56.0" text="Date" />
-                        <TableColumn prefWidth="225.0" text="Action" />
-
-
-                    </columns>
-                     <stylesheets>
-                        <URL value="@../styles/MainFormDesign.css" />
-                        <URL value="@style.css" />
-                     </stylesheets>
-                  </TableView>
-               </content>
-            </ScrollPane>
             <Button graphicTextGap="10.0" mnemonicParsing="false" onAction="#switchToHello" prefHeight="39.0" prefWidth="147.0" style="-fx-background-color: #46c35f;" styleClass="drop-shadow" stylesheets="@style.css" text="Ajouter" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
                <font>
                   <Font name="System Bold" size="15.0" />
@@ -144,6 +117,30 @@
                   <Insets right="60.0" top="40.0" />
                </GridPane.margin>
             </Button>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: WHITE; -fx-background-radius: 20px;" styleClass="drop-shadow" stylesheets="@style.css" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="40.0" left="40.0" right="60.0" top="150.0" />
+               </GridPane.margin>
+               <children>
+                  <TableView fx:id="table" layoutY="24.0" prefHeight="393.0" prefWidth="1000.0" style="-fx-border-radius: 20; -fx-background-radius: 20;">
+                     <columns>
+                        <TableColumn prefWidth="96.00002670288086" text="Id" />
+                        <TableColumn prefWidth="96.00002670288086" text="Nom" />
+                        <TableColumn prefWidth="98.39999389648438" text="Prenom" />
+                        <TableColumn prefWidth="98.39999389648438" text="Telephone" />
+                        <TableColumn prefWidth="157.60000610351562" text="Email" />
+                        <TableColumn prefWidth="150.4000244140625" text="Salaire" />
+                        <TableColumn prefWidth="109.5999755859375" text="Role" />
+                        <TableColumn prefWidth="56.0" text="Date" />
+                        <TableColumn prefWidth="225.0" text="Action" />
+                     </columns>
+                     <stylesheets>
+                        <URL value="@../styles/MainFormDesign.css" />
+                        <URL value="@style.css" />
+                     </stylesheets>
+                  </TableView>
+               </children>
+            </AnchorPane>
             </children>
          <BorderPane.margin>
             <Insets />

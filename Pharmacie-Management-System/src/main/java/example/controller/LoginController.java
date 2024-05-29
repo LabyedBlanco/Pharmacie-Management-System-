@@ -32,6 +32,7 @@ public class LoginController extends Controller implements Initializable {
 
 public static int id;
 public static String Nom;
+    public static String Role;
 
     @FXML
     private TextField Email;
@@ -134,6 +135,7 @@ public static String Nom;
 
                          id=resultSet.getInt("IDu");
                         Nom = resultSet.getString("Nom");
+                        Role = Rolebox.getValue();
 
                         System.out.println(id);
                         System.out.println("Nom est : "+Nom);

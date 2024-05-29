@@ -182,22 +182,22 @@
                               <Insets bottom="10.0" left="150.0" top="40.0" />
                            </GridPane.margin>
                         </TextField>
-                        <ComboBox fx:id="Depot" prefWidth="150.0" promptText="Depot" style="-fx-background-color: white;" GridPane.rowIndex="1">
+                        <ComboBox fx:id="Depot" prefWidth="150.0" promptText="Depot" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets left="150.0" />
                            </GridPane.margin>
                         </ComboBox>
-                        <DatePicker fx:id="ComDate" GridPane.rowIndex="2">
+                        <DatePicker fx:id="ComDate" promptText="Date" GridPane.rowIndex="2">
                            <GridPane.margin>
                               <Insets left="150.0" />
                            </GridPane.margin>
                         </DatePicker>
-                        <TextField fx:id="ComDetails" GridPane.columnIndex="1">
+                        <TextField fx:id="ComDetails" style="-fx-border-color: gray; -fx-border-width: 1px; -fx-border-radius: 10px;" GridPane.columnIndex="1">
                            <GridPane.margin>
                               <Insets left="150.0" right="80.0" />
                            </GridPane.margin>
                         </TextField>
-                        <ComboBox fx:id="ComPayement" layoutX="160.0" layoutY="96.0" prefWidth="150.0" promptText="Cash" style="-fx-background-color: white;" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                        <ComboBox fx:id="ComPayement" layoutX="160.0" layoutY="96.0" prefWidth="150.0" promptText="Payement Type" GridPane.rowIndex="2" GridPane.valignment="TOP">
                            <GridPane.margin>
                               <Insets left="150.0" />
                            </GridPane.margin>
@@ -217,7 +217,7 @@
                               <Insets left="200.0" top="32.0" />
                            </GridPane.margin>
                         </Button>
-                        <TextField fx:id="SearchFournisseur">
+                        <TextField fx:id="SearchFournisseur" style="-fx-border-width: 1px; -fx-border-color: grey; -fx-border-radius: 10px;">
                            <GridPane.margin>
                               <Insets left="150.0" right="80.0" />
                            </GridPane.margin>
@@ -230,17 +230,17 @@
                               <Insets left="150.0" top="30.0" />
                            </GridPane.margin>
                         </Text>
-                        <TextField fx:id="SearchProduit" layoutX="600.0" layoutY="23.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <TextField fx:id="SearchProduit" layoutX="600.0" layoutY="23.0" style="-fx-border-color: gray; -fx-border-width: 1px; -fx-border-radius: 10px;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets bottom="40.0" left="150.0" right="80.0" />
                            </GridPane.margin>
                         </TextField>
-                        <ComboBox fx:id="StatusCom" prefWidth="150.0" promptText="En Cours" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <ComboBox fx:id="StatusCom" prefWidth="150.0" promptText="Etat" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <GridPane.margin>
                               <Insets bottom="30.0" left="180.0" />
                            </GridPane.margin>
                         </ComboBox>
-                        <Text fill="#898989" strokeType="OUTSIDE" strokeWidth="0.0" text="Payement Type:" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Text fill="#898989" strokeType="OUTSIDE" strokeWidth="0.0" text="Etat commande :" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
