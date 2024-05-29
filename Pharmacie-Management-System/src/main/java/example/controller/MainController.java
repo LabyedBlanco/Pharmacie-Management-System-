@@ -142,11 +142,7 @@ public class MainController extends Controller implements Initializable {
 
 
     public void Onlogout()  throws IOException{
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("/fxml/Close.fxml"));
-        Parent root = loader.load();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.show();
+            
     }
     public void OnClose() throws IOException{
         MessageConfirmation("Close");

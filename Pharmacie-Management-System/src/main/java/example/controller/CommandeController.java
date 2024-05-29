@@ -101,7 +101,7 @@ public class CommandeController extends Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         try {
-            String sqldelete = "DELETE FROM commande where Prixa IS NULL;";
+            String sqldelete = "DELETE FROM commande where Prixa = 0;";
             PreparedStatement delete = getConnection().prepareStatement(sqldelete);
             int rowsAffected = delete.executeUpdate();
 
@@ -418,7 +418,7 @@ public class CommandeController extends Controller implements Initializable {
 
                         //initialize the virtual commande;
                         try {
-                            String sqlInsert = "INSERT INTO `commande` (`IDco`, `Prixa`, `Datec`, `IDf`, `IDca`, `IDu`, `MethPayementC`, `Stat`) VALUES (?, NULL, NULL, ?, ?, ?, NULL, NULL);";
+                            String sqlInsert = "INSERT INTO `commande` (`IDco`, `Prixa`, `Datec`, `IDf`, `IDca`, `IDu`, `MethPayementC`, `Stat`,`iddep`) VALUES (?, 0, '2004-05-03', ?, ?, ?, 'Cash', 'En Cours','8');";
                             PreparedStatement stmt = getConnection().prepareStatement(sqlInsert);
 
 
@@ -427,6 +427,7 @@ public class CommandeController extends Controller implements Initializable {
                             stmt.setInt(3, Idca);
                             stmt.setInt(4, Iduser);
 
+
                             int rowsAffected = stmt.executeUpdate();  // Executing the PreparedStatement
                             if (rowsAffected > 0) {
                                 System.out.println("INSERT successful!");
@@ -434,7 +435,7 @@ public class CommandeController extends Controller implements Initializable {
                                 System.out.println("INSERT failed!");
                             }
                         } catch (SQLException ex) {
-                            System.out.println("intialisation de la commande virtuel " + ex);
+                            System.out.println("intialisation de la commande virtuel " + ex +"\n");
                         }
                     } else {
                         System.out.println("No fournisseur");
