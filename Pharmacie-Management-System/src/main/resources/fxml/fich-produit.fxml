@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="example.controller.Produit_controller">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="example.controller.controlfich">
    <children>
       <GridPane layoutX="10.0" layoutY="10.0" prefHeight="636.0" prefWidth="1000.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <columnConstraints>
@@ -85,7 +85,7 @@
                               <Insets left="40.0" right="400.0" />
                            </GridPane.margin>
                         </Text>
-                        <Text fx:id="prix" fill="#898989" layoutX="253.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Prix&quot;" GridPane.halignment="CENTER">
+                        <Text fx:id="prixx" fill="#898989" layoutX="253.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Prix&quot;" GridPane.halignment="CENTER">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>

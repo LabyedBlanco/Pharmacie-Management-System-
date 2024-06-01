@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -90,10 +89,9 @@
                            <columns>
                               <TableColumn fx:id="metho" prefWidth="75.0" text="Method" />
                               <TableColumn fx:id="tabmed" minWidth="150.0" prefWidth="167.19993591308594" text="Mediacation Name" />
-                              <TableColumn fx:id="tabdate" prefWidth="136.79998779296875" text="Date" />
-                              <TableColumn fx:id="tabprix" minWidth="50.39996337890625" prefWidth="205.5999755859375" text="total prix de produit" />
-                              <TableColumn fx:id="tabcat" minWidth="41.5999755859375" prefWidth="143.2000732421875" text="Category" />
-                              <TableColumn fx:id="tabquan" maxWidth="152.800048828125" prefWidth="152.800048828125" text="Quantite" />
+                              <TableColumn fx:id="tabprix" minWidth="50.39996337890625" prefWidth="227.199951171875" text="total prix de produit" />
+                              <TableColumn fx:id="tabcat" minWidth="41.5999755859375" prefWidth="203.20001220703125" text="Category" />
+                              <TableColumn fx:id="tabquan" maxWidth="287.20001220703125" prefWidth="207.2000732421875" text="Quantite" />
                            </columns>
                         </TableView>
                      </children>
@@ -105,8 +103,8 @@
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="42.600006103515625" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="96.0" minHeight="10.0" prefHeight="57.19999389648437" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="101.0" minHeight="10.0" prefHeight="87.60000610351562" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="96.0" minHeight="10.0" prefHeight="57.20000610351562" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="101.0" minHeight="10.0" prefHeight="55.59999389648438" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="101.0" minHeight="10.0" prefHeight="44.199981689453125" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <GridPane.margin>
@@ -160,7 +158,7 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                            <GridPane.margin>
-                              <Insets bottom="20.0" left="40.0" />
+                              <Insets left="40.0" />
                            </GridPane.margin>
                         </Text>
                         <ChoiceBox fx:id="addcat" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -170,10 +168,10 @@
                         </ChoiceBox>
                         <ChoiceBox fx:id="addmethod" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <GridPane.margin>
-                              <Insets bottom="20.0" left="200.0" right="80.0" />
+                              <Insets left="200.0" right="80.0" />
                            </GridPane.margin>
                         </ChoiceBox>
-                        <Text fill="#898989" strokeType="OUTSIDE" strokeWidth="0.0" text="Date:" GridPane.rowIndex="3">
+                        <Text fill="#898989" strokeType="OUTSIDE" strokeWidth="0.0" text="Date:" GridPane.rowIndex="2">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -181,16 +179,11 @@
                               <Insets left="40.0" />
                            </GridPane.margin>
                         </Text>
-                        <DatePicker fx:id="adddate" GridPane.rowIndex="3">
+                        <DatePicker fx:id="adddate" GridPane.rowIndex="2">
                            <GridPane.margin>
                               <Insets left="200.0" right="80.0" />
                            </GridPane.margin>
                         </DatePicker>
-                        <ListView fx:id="searchli" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
-                           <GridPane.margin>
-                              <Insets left="200.0" right="80.0" />
-                           </GridPane.margin>
-                        </ListView>
                         <Text fill="#898989" strokeType="OUTSIDE" strokeWidth="0.0" text="Caisse :" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <font>
                               <Font name="System Bold" size="14.0" />
@@ -321,7 +314,7 @@
                   <Insets bottom="10.0" left="330.0" />
                </GridPane.margin>
             </Text>
-            <Text fx:id="totalaj" fill="#898989" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Price&quot;" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+            <Text fx:id="totalaj" fill="#898989" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

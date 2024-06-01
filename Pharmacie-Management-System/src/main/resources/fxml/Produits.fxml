@@ -90,7 +90,7 @@
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <Button mnemonicParsing="false" onAction="#ficheproduit" prefHeight="35.0" prefWidth="127.0" style="-fx-background-color: red;" styleClass="drop-shadow" stylesheets="@style.css" text="Fich Produit" textFill="WHITE" GridPane.halignment="RIGHT">
+                                <Button fx:id="fiche" mnemonicParsing="false" onAction="#fichproduct" prefHeight="35.0" prefWidth="127.0" style="-fx-background-color: red;" styleClass="drop-shadow" stylesheets="@style.css" text="Fich Produit" textFill="WHITE" GridPane.halignment="RIGHT">
                                     <font>
                                         <Font name="Tahoma" size="13.0" />
                                     </font>

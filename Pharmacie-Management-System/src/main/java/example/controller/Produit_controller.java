@@ -1,13 +1,15 @@
 package example.controller;
 import com.sun.javafx.charts.Legend;
-import example.Services.Commande;
 import example.Services.Produit;
 import example.Services.Utilisateur;
 import example.model.DatabaseManager;
+import javafx.application.Platform;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.concurrent.Task;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -39,10 +41,27 @@ import java.util.ResourceBundle;
 import java.util.function.UnaryOperator;
 
 public class Produit_controller extends Controller implements Initializable {
+
     @FXML
-    private Text productname;
+    public AnchorPane Connected =new AnchorPane();
+
     @FXML
-    public AnchorPane Connected ;
+    private Text categ =new Text();
+
+    @FXML
+    private Text code=new Text();
+
+    @FXML
+    private ImageView img;
+
+    @FXML
+    private Text med=new Text("");
+
+    @FXML
+    private Text prixx=new Text();
+
+    @FXML
+    private Text qua=new Text();
 
     @FXML
     private ComboBox<String> category,ordon;
@@ -59,25 +78,35 @@ public class Produit_controller extends Controller implements Initializable {
     @FXML
     private TextField searchTextField;
 
+    @FXML
+    private Button fiche=new Button();
 
-    @FXML private TableView<Produit> table;
+    @FXML
+    private Button fichh= new Button();
+
+    public static int idp;
+    public static String string="";
+
+    @FXML private TableView<Produit> table=new TableView<>();
     private ObservableList<Produit> produits;
 
-    public void initialize(URL url , ResourceBundle resourceBundle){
+
+    public void initialize(URL url , ResourceBundle resourceBundle) {
 
 
-        if(category !=null){
+
+        if (category != null) {
             initializeCategoryComboBox();
         }
-        if(depot !=null){
+        if (depot != null) {
             initializeDepotComboBox();
         }
 
-        if(ordon != null){
+        if (ordon != null) {
             ordon.setItems(FXCollections.observableArrayList("Oui", "Non"));
         }
 
-        Online(ConnectionStat(),main,Connected);
+        Online(ConnectionStat(), main, Connected);
         new Thread(this::table).start();
 
 
@@ -95,13 +124,19 @@ public class Produit_controller extends Controller implements Initializable {
         } catch (Exception e) {
             System.err.println("Error initializing connection: " + e.getMessage());
         }
-        Online(ConnectionStat(),main,Connected);
+        Online(ConnectionStat(), main, Connected);
 
-    }
+
+
+        }
+
 
     /*@FXML
     private AnchorPane Connected;*/
     public void start(Stage primaryStage) {
+
+
+
 
     }
     @FXML
@@ -123,28 +158,245 @@ public class Produit_controller extends Controller implements Initializable {
             imageprod.setImage(img);
         }
     }
-
-    public void ficheproduit() throws IOException {
-
-            Produit p = table.getSelectionModel().getSelectedItem();
-            if(table.getSelectionModel().getSelectedItem() == null){
-                showAlert("Alert","Aucune element dans le tableux est selecter");
-            }else {
-                NouveauFenetre("product");
-                fiche(p);
-            }
-    }
-
-    public void fiche(Produit p ){
-
-                System.out.println(p.getLibp());
-                System.out.println("labiad" + productname.getText());
-
-    }
-
     public void addproduct(ActionEvent event) throws IOException {
         NouveauFenetre("ajouter-produit");
     }
+
+
+    //int idp=0;
+
+    private void updateDetails(Produit selectedProduct) {
+
+    }
+
+     /*public void fiche() {
+        int idcat = 0;
+        String img;
+        String categorie;
+        Produit selected = table.getSelectionModel().getSelectedItem();
+
+        if (selected != null) {
+            idp = selected.getIdp();
+            System.out.println("Selected ID: " + idp);
+
+            try {
+                String sql = "SELECT * FROM produit WHERE IDp = ?";
+                PreparedStatement stmt = getConnection().prepareStatement(sql);
+                stmt.setInt(1, idp);
+                ResultSet rs = stmt.executeQuery();
+
+                if (rs.next()) {
+                    String libellep = rs.getString("Libellép");
+                    String codebr = rs.getString("Codebr");
+                    String prixv = rs.getString("Prixv");
+                    String qte = rs.getString("Qte");
+                    idcat = rs.getInt("IDcat");
+
+                    System.out.println("Fetched details - libellep: " + libellep + ", codebr: " + codebr + ", prixv: " + prixv + ", qte: " + qte);
+
+                    Platform.runLater(() -> {
+                        try {
+                            if (med != null) {
+                                med.setText(libellep);
+                                System.out.println("med updated to: " + libellep);
+                            } else {
+                                System.out.println("med is null");
+                            }
+
+                            if (code != null) {
+                                code.setText(codebr);
+                                System.out.println("code updated to: " + codebr);
+                            } else {
+                                System.out.println("code is null");
+                            }
+
+                            if (prixx != null) {
+                                prixx.setText(prixv);
+                                System.out.println("prixx updated to: " + prixv);
+                            } else {
+                                System.out.println("prixx is null");
+                            }
+
+                            if (qua != null) {
+                                qua.setText(qte);
+                                System.out.println("qua updated to: " + qte);
+                            } else {
+                                System.out.println("qua is null");
+                            }
+                        } catch (Exception e) {
+                            System.err.println("Error setting text: " + e.getMessage());
+                        }
+                    });
+                }
+                stmt.close();
+                rs.close();
+
+            } catch (SQLException ea) {
+                System.out.println(ea.getMessage());
+            }
+
+            try {
+                String getcat = "SELECT Libelléca FROM catégorie WHERE IDcat = ?";
+                PreparedStatement stmt = getConnection().prepareStatement(getcat);
+                stmt.setInt(1, idcat);
+                ResultSet rs = stmt.executeQuery();
+
+                if (rs.next()) {
+                    final String categoryText = rs.getString("Libelléca");
+                    Platform.runLater(() -> {
+                        if (categ != null) {
+                            categ.setText(categoryText);
+                            System.out.println("categ updated to: " + categoryText);
+                        } else {
+                            System.out.println("categ is null");
+                        }
+                    });
+                }
+                stmt.close();
+                rs.close();
+            } catch (SQLException ee) {
+                throw new RuntimeException(ee);
+            }
+        } else {
+            System.out.println("No selection.");
+        }
+    }*/
+
+
+/*
+
+    void fiche(){
+
+        int idcat=0;
+        String img;
+        String categorie;
+        Produit selected = table.getSelectionModel().getSelectedItem();
+
+        if (selected != null) {
+
+            idp = selected.getIdp();
+            System.out.println("Selected ID : ssss " + idp);
+
+
+
+            try {
+
+                String sql="select * from produit where IDp= "+idp;
+
+                PreparedStatement stmt=getConnection().prepareStatement(sql);
+                ResultSet rs=stmt.executeQuery();
+                System.out.println("Selected ID : "+idp);
+
+                if (rs.next()) {
+                    String libellep = rs.getString("Libellép");
+                    String codebr = rs.getString("Codebr");
+                    String prixv = rs.getString("Prixv");
+                    String qte = rs.getString("Qte");
+                    idcat = rs.getInt("IDcat");
+
+
+                    System.out.println("Setting med text to: " + libellep);
+                    Platform.runLater(() -> {
+                        try {
+                            med.setText(libellep);
+                            code.setText(codebr);
+                            prixx.setText(prixv);
+                            qua.setText(qte);
+                            System.out.println(898989);
+
+
+                            System.out.println("med text set to: " + libellep);
+                        } catch (Exception e) {
+                            System.err.println("Error setting text: " + e.getMessage());
+                        }
+                    });
+
+               /* if(rs.next()){
+
+                    Platform.runLater(() -> {
+                        try {
+                            System.out.println("Setting med text to: " + rs.getString("Libellép"));
+                            med.setText(rs.getString("Libellép"));
+                            code.setText(rs.getString("Codebr"));
+                            prixx.setText(rs.getString("Prixv"));
+                            qua.setText(rs.getString("Qte"));
+
+                            System.out.println("med text set to: " + rs.getString("Libellép"));
+                        } catch (SQLException e) {
+                            System.err.println("Error setting text: " + e.getMessage());
+                        }
+                    });*/
+
+
+/*
+                    try{
+                        //med.setText(rs.getString("Libellép"));
+                        if (med == null) {
+                            System.out.println("med is not initialized!");
+                        } else {
+                            med.setText("tatatata");
+                        }
+
+                        System.out.println("khdatha");
+
+                        code.setText(rs.getString("Codebr"));
+                        System.out.println(rs.getString("Codebr"));
+                        prixx.setText(rs.getString("Prixv"));
+                        idcat=rs.getInt("IDcat");
+                        qua.setText(rs.getString("Qte"));
+                        img=rs.getString("image1");
+                        System.out.println(rs.getString("Libellép"));
+                    }catch (IllegalStateException x){
+                        System.out.println(x.getMessage());
+                        System.out.println("tttttttt");
+                    }
+
+
+                }
+
+            } catch (SQLException ea) {
+
+                System.out.println(ea.getMessage());
+                System.out.println("aaaa");
+            }
+            try {
+                String getcat="select Libelléca from catégorie where IDcat="+idcat;
+                PreparedStatement stmt=getConnection().prepareStatement(getcat);
+
+                ResultSet rs=stmt.executeQuery();
+                if(rs.next()){
+                    categ.setText(rs.getString("Libelléca"));
+                }
+            } catch (SQLException ee) {
+                throw new RuntimeException(ee);
+            }
+
+
+
+
+
+
+        } else {
+            System.out.println("No selection. 888888");
+        }
+
+    }
+
+*/
+    @FXML
+    private void fichproduct(ActionEvent event) throws IOException {
+
+
+        Produit selected = table.getSelectionModel().getSelectedItem();
+
+        if (selected != null) {
+            idp=selected.getIdp();
+        }else{
+            System.out.println("no product selected");
+        }
+        super.NouveauFenetre("fich-produit");
+    }
+
 
     public void initializeCategoryComboBox() {
         try {
@@ -355,6 +607,9 @@ public class Produit_controller extends Controller implements Initializable {
 
 
     public void table() {
+
+
+
         if (table == null) {
             System.err.println("Erreur : tableViewActif est null");
             return;
@@ -525,12 +780,12 @@ public class Produit_controller extends Controller implements Initializable {
 
                 if(ex.getErrorCode() == 1451 ) {
                     showAlert("Erreur ", "Imposible de suprimer ce produit car il apartient a d'autre ventes ");
-                      }
+                }
                 System.out.println("Erreur lors de la suppression du produit.");
             }
 
-            }
         }
+    }
 
 
 

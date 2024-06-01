@@ -49,7 +49,7 @@
                                 <Line endX="-3.0" endY="15.0" layoutX="307.0" layoutY="57.0" startX="-3.0" startY="-22.0" stroke="#bfbdbd" styleClass="style.css" AnchorPane.rightAnchor="245.5" />
                                 <AnchorPane layoutX="312.0" layoutY="13.0" prefHeight="84.0" prefWidth="129.0" AnchorPane.rightAnchor="108.0">
                                     <children>
-                                        <Text fx:id="UtilisateurName" layoutX="26.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jhon Doe" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="40.61962890625">
+                                        <Text layoutX="26.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jhon Doe" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="40.61962890625">
                                             <font>
                                                 <Font size="15.0" />
                                             </font>
@@ -237,7 +237,7 @@
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     </rowConstraints>
                                     <children>
-                                        <TextField fx:id="searchprinc" maxWidth="160.0" prefHeight="30.0" prefWidth="195.0" promptText="Search" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+                                        <TextField fx:id="searchprinc" maxWidth="160.0" onKeyTyped="#setupsearchtextfield" prefHeight="30.0" prefWidth="195.0" promptText="Search" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
                                             <GridPane.margin>
                                                 <Insets right="10.0" />
                                             </GridPane.margin>
@@ -262,27 +262,6 @@
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <Button fx:id="delete" graphicTextGap="0.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="127.0" style="-fx-background-color: rgb(252,44,16); -fx-text-fill: white;" styleClass="drop-shadow" stylesheets="@style.css" text="Supprimer" GridPane.halignment="RIGHT">
-                                    <font>
-                                        <Font name="Tahoma" size="13.0" />
-                                    </font>
-                                    <cursor>
-                                        <Cursor fx:constant="HAND" />
-                                    </cursor>
-                                    <opaqueInsets>
-                                        <Insets />
-                                    </opaqueInsets>
-                                    <GridPane.margin>
-                                        <Insets right="40.0" />
-                                    </GridPane.margin>
-                                    <graphic>
-                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0">
-                                            <image>
-                                                <Image url="@../images/icons/annuler.png" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic>
-                                </Button>
                         <Button graphicTextGap="0.0" layoutX="939.0" layoutY="36.0" mnemonicParsing="false" onAction="#onadd" prefHeight="34.0" prefWidth="127.0" style="-fx-background-color: rgb(70,195,95); -fx-text-fill: white;" styleClass="drop-shadow" stylesheets="@style.css" text="Ajouter" GridPane.halignment="RIGHT">
                            <font>
                               <Font name="Tahoma" size="13.0" />
@@ -301,7 +280,7 @@
                               </ImageView>
                            </graphic>
                            <GridPane.margin>
-                              <Insets right="200.0" />
+                              <Insets right="100.0" />
                            </GridPane.margin>
                         </Button>
                             </children>
@@ -323,7 +302,7 @@
                                     <TableColumn fx:id="shprix" prefWidth="121.60003662109375" text="Total Prix " />
                                     <TableColumn fx:id="shqua" minWidth="92.79998779296875" prefWidth="220.0" text="Quantite" />
                                     <TableColumn fx:id="shmethod" prefWidth="200.0" text="MethPayementV" />
-                                    <TableColumn minWidth="107.2000732421875" prefWidth="163.0" text="Action" />
+                                    <TableColumn fx:id="action" minWidth="107.2000732421875" prefWidth="163.0" text="Action" />
                                  </columns>
                               </TableView>
                            </content>
