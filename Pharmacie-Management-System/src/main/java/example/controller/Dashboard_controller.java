@@ -153,7 +153,7 @@ public class Dashboard_controller extends Controller implements Initializable {
 
         XYChart.Series series2 = new XYChart.Series();
 
-            sqlSelect = "SELECT p.Libellép , COUNT(c.IDp) AS count FROM contenir c INNER JOIN produit p WHERE p.IDp = c.IDp  GROUP BY c.IDp ORDER BY count DESC LIMIT 5";
+            sqlSelect = "SELECT p.IDp , COUNT(c.IDp) AS count FROM contenir c INNER JOIN produit p WHERE p.IDp = c.IDp  GROUP BY c.IDp ORDER BY count DESC LIMIT 5";
 
             String sqlSelect2 ;
             System.out.println(sqlSelect);
@@ -163,7 +163,7 @@ public class Dashboard_controller extends Controller implements Initializable {
                 ResultSet result = stat.executeQuery();
 
                 while (result.next()) {
-                    series2.getData().add(new XYChart.Data<>(result.getString("Libellép"),  result.getInt("count")));
+                    series2.getData().add(new XYChart.Data<>(result.getString("IDp"),  result.getInt("count")));
                 }
             } catch (SQLException e) {
                 System.out.println(e);

@@ -13,7 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-//import org.controlsfx.control.textfield.TextFields;
+import org.controlsfx.control.textfield.TextFields;
 
 import java.io.IOException;
 import java.net.URL;
@@ -561,7 +561,7 @@ public class VentesController extends Controller implements Initializable {
                 System.out.println(e.getMessage());
             }
 
-            //TextFields.bindAutoCompletion(addmed, Suggestions);
+            TextFields.bindAutoCompletion(addmed, Suggestions);
 
         }
 

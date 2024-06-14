@@ -74,6 +74,15 @@ public class Produit_controller extends Controller implements Initializable {
     private DatePicker dateexpir;
     @FXML
     private ImageView imageprod;
+    @FXML
+    private ImageView imageprod1;
+    @FXML
+    private ImageView imageprod2;
+
+    @FXML
+    private TextArea conseils;
+    @FXML
+    private TextField description;
 
     @FXML
     private TextField searchTextField;
@@ -106,7 +115,7 @@ public class Produit_controller extends Controller implements Initializable {
             ordon.setItems(FXCollections.observableArrayList("Oui", "Non"));
         }
 
-        Online(ConnectionStat(), main, Connected);
+        //Online(ConnectionStat(), main, Connected);
         new Thread(this::table).start();
 
 
@@ -124,7 +133,7 @@ public class Produit_controller extends Controller implements Initializable {
         } catch (Exception e) {
             System.err.println("Error initializing connection: " + e.getMessage());
         }
-        Online(ConnectionStat(), main, Connected);
+        //Online(ConnectionStat(), main, Connected);
 
 
 
@@ -156,6 +165,24 @@ public class Produit_controller extends Controller implements Initializable {
         if (file != null) {
             Image img=new Image(file.toURI().toString());
             imageprod.setImage(img);
+        }
+    }
+    public void Addimage1(ActionEvent event){
+        File file = ParcourirFichier(event);
+        if (file != null) {
+            Image img=new Image(file.toURI().toString());
+            imageprod1 = new ImageView();
+            imageprod1.setImage(img);
+            System.out.println("Image1");
+        }
+    }
+    public void Addimage2(ActionEvent event){
+        File file = ParcourirFichier(event);
+        if (file != null) {
+            Image img=new Image(file.toURI().toString());
+            imageprod2 = new ImageView();
+            imageprod2.setImage(img);
+            System.out.println("Image2");
         }
     }
     public void addproduct(ActionEvent event) throws IOException {
@@ -465,6 +492,10 @@ public class Produit_controller extends Controller implements Initializable {
             showAlert("Erreur de validation", "Veuillez remplir tous les champs.");
             return false;
         }
+        if ( conseils.getText().isEmpty() || description.getText().isEmpty()) {
+            showAlert("Erreur de validation", "Veuillez remplir tous les champs.");
+            return false;
+        }
 
 
         if (!nompro.getText().matches("[a-zA-ZÀ-ÿ\\s-]+")) {
@@ -529,12 +560,16 @@ public class Produit_controller extends Controller implements Initializable {
             String productName = nompro.getText();
             String category = this.category.getValue();
             String code = codeba.getText();
+            String descrip = description.getText();
+            String cons = conseils.getText();
             float price = Float.parseFloat(prix.getText());
             int initialQuantity = Integer.parseInt(qantite.getText());
             selectedDate = dateexpir.getValue();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             String formattedDate = selectedDate.format(formatter);
             Image productImage = imageprod.getImage();
+            Image productImage1 = imageprod1.getImage();
+            Image productImage2 = imageprod2.getImage();
             int depotId = depot.getValue();
             String ordonValue = ordon.getValue();
 
@@ -553,7 +588,7 @@ public class Produit_controller extends Controller implements Initializable {
                     return;
                 }
 
-                String sql = "INSERT INTO produit (Libellép, IDcat, Codebr, Prixv, Qte, Datepp, Imagep, IDdep, BesoinORD ) VALUES (?, ?, ?, ?, ?, ?,?, ?,?)";
+                String sql = "INSERT INTO produit (Libellép, IDcat, Codebr, Prixv, Qte, Datepp, Imagep, IDdep, BesoinORD ,Image1,Image2,Description,Conseils) VALUES (?, ?, ?, ?, ?, ?,?, ?,?,?,?,?,?)";
                 PreparedStatement statement = getConnection().prepareStatement(sql);
 
                 statement.setString(1, productName);
@@ -567,6 +602,13 @@ public class Produit_controller extends Controller implements Initializable {
                 statement.setBlob(7, inputStream);
                 statement.setInt(8,depotId);
                 statement.setBoolean(9,besOrdon);
+                inputStream = convertImageInputStream(productImage1);
+                statement.setBlob(10, inputStream);
+                inputStream = convertImageInputStream(productImage2);
+                statement.setBlob(11, inputStream);
+                statement.setString(12, cons);
+                statement.setString(13, descrip);
+
 
                 statement.executeUpdate();
 

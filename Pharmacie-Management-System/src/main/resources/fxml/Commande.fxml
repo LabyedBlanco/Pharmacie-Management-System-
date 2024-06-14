@@ -79,7 +79,7 @@
                         </AnchorPane>
                     </children>
                 </GridPane>
-                <GridPane fx:id="Commande" prefHeight="579.0" prefWidth="1100.0" style="-fx-background-color: #f7f7f7;" styleClass="drop-shadow" stylesheets="@style.css" GridPane.rowIndex="1">
+                <GridPane fx:id="CommandeGridpane" prefHeight="579.0" prefWidth="1100.0" style="-fx-background-color: #f7f7f7;" styleClass="drop-shadow" stylesheets="@style.css" GridPane.rowIndex="1">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
@@ -165,15 +165,16 @@
                               <TableColumn fx:id="utilisateur" minWidth="95.0" prefWidth="108.0" text="Utilisateur" />
                               <TableColumn fx:id="Status" minWidth="58.0" prefWidth="78.0" text="Status" />
                               <TableColumn fx:id="Caisse" minWidth="64.0" prefWidth="121.0" text="Caisse" />
-                              <TableColumn fx:id="PrixCo" prefWidth="149.0" styleClass="..\styles\MainFormDesign.css" text="Prix" />
-                              <TableColumn fx:id="Methode" prefWidth="142.0" text="Methode Payement" />
+                              <TableColumn fx:id="PrixCo" prefWidth="43.0" styleClass="..\styles\MainFormDesign.css" text="Prix" />
+                              <TableColumn fx:id="Methode" prefWidth="151.0" text="Methode Payement" />
+                              <TableColumn fx:id="Actioncolumn" prefWidth="345.0" text="Action" />
                            </columns>
                         </TableView>
                      </children>
                   </AnchorPane>
                     </children>
                 </GridPane>
-                <GridPane fx:id="Avoirs" layoutX="10.0" layoutY="118.0" prefHeight="579.0" prefWidth="1100.0" style="-fx-background-color: #f7f7f7;" styleClass="drop-shadow" stylesheets="@style.css" visible="false" GridPane.rowIndex="1">
+                <GridPane fx:id="AvoirsGridpane" layoutX="10.0" layoutY="118.0" prefHeight="579.0" prefWidth="1100.0" style="-fx-background-color: #f7f7f7;" styleClass="drop-shadow" stylesheets="@style.css" visible="false" GridPane.rowIndex="1">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
@@ -257,7 +258,7 @@
                                 </ImageView>
                             </graphic>
                         </Button>
-                        <Text fill="#898989" strokeType="OUTSIDE" strokeWidth="0.0" text="Avoir">
+                        <Text fill="#898989" strokeType="OUTSIDE" strokeWidth="0.0" text="Avoirs">
                             <GridPane.margin>
                                 <Insets left="60.0" />
                             </GridPane.margin>

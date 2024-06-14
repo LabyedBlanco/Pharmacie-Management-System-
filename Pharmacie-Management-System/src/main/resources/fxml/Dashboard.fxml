@@ -185,6 +185,7 @@
                                                       </Text>
                                                    </children>
                                                 </GridPane>
+                                                <Text fill="#3c700a" strokeType="OUTSIDE" strokeWidth="0.0" text="0 Alerts " GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                                              </children>
                                           </GridPane>
                                        </children>
@@ -215,6 +216,11 @@
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Aujourd'hui Rapport :" GridPane.halignment="CENTER" GridPane.valignment="TOP">
                                        <GridPane.margin>
                                           <Insets top="10.0" />
+                                       </GridPane.margin>
+                                    </Text>
+                                    <Text fill="#3c700a" strokeType="OUTSIDE" strokeWidth="0.0" text="Rien pour Aujourd'hui" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                       <GridPane.margin>
+                                          <Insets top="20.0" />
                                        </GridPane.margin>
                                     </Text>
                                  </children>

@@ -8,6 +8,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -183,7 +184,7 @@
                               <Image url="@../images/icons/Mediacation.png" />
                            </image>
                         </ImageView>
-                        <Button graphicTextGap="10.0" mnemonicParsing="false" onAction="#Addimage" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #46c35f;" styleClass="drop-shadow" stylesheets="@style.css" text="Image" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                        <Button graphicTextGap="10.0" mnemonicParsing="false" onAction="#Addimage" prefHeight="35.0" prefWidth="95.0" style="-fx-background-color: #46c35f;" styleClass="drop-shadow" stylesheets="@style.css" text="Image" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -198,9 +199,71 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                            <GridPane.margin>
-                              <Insets bottom="60.0" right="50.0" />
+                              <Insets bottom="60.0" right="100.0" />
                            </GridPane.margin>
                         </Button>
+                        <Button graphicTextGap="10.0" layoutX="611.0" layoutY="363.0" mnemonicParsing="false" onAction="#Addimage2" prefHeight="35.0" prefWidth="0.0" style="-fx-background-color: gray; -fx-border-radius: 5px; -fx-border-color: #46c35f;" styleClass="drop-shadow" stylesheets="@style.css" text="2" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" nodeOrientation="INHERIT">
+                                 <image>
+                                    <Image url="@../images/icons/plus-symbole-noir.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <GridPane.margin>
+                              <Insets bottom="60.0" left="250.0" right="50.0" />
+                           </GridPane.margin>
+                        </Button>
+                        <Button graphicTextGap="10.0" layoutX="491.0" layoutY="217.0" mnemonicParsing="false" onAction="#Addimage1" prefHeight="35.0" prefWidth="22.0" style="-fx-background-color: gray; -fx-border-color: #46c35f; -fx-border-radius: 5px;" styleClass="drop-shadow" stylesheets="@style.css" text="1" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" nodeOrientation="INHERIT">
+                                 <image>
+                                    <Image url="@../images/icons/plus-symbole-noir.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <GridPane.margin>
+                              <Insets bottom="60.0" left="70.0" />
+                           </GridPane.margin>
+                        </Button>
+                        <TextArea fx:id="conseils" prefHeight="67.0" prefWidth="331.0">
+                           <GridPane.margin>
+                              <Insets left="150.0" top="450.0" />
+                           </GridPane.margin>
+                        </TextArea>
+                        <Text fill="#898989" strokeType="OUTSIDE" strokeWidth="0.0" text="Description :">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="40.0" top="350.0" />
+                           </GridPane.margin>
+                        </Text>
+                        <TextField fx:id="description">
+                           <GridPane.margin>
+                              <Insets left="150.0" top="350.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <Text fill="#898989" strokeType="OUTSIDE" strokeWidth="0.0" text="Conseils :">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="40.0" top="440.0" />
+                           </GridPane.margin>
+                        </Text>
                      </children>
                      <GridPane.margin>
                         <Insets bottom="60.0" left="60.0" right="20.0" top="20.0" />

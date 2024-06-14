@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import example.Services.Produit;
+import example.Services.Utilisateur;
 import javafx.beans.property.SimpleStringProperty;
 
 import javafx.collections.FXCollections;
@@ -16,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import java.io.IOException;
@@ -34,11 +36,11 @@ public class CommandeController extends Controller implements Initializable {
 
 
     @FXML
-    private Text UtilisateurName;
-    @FXML
-    private GridPane Avoirs;
+    private GridPane AvoirsGridpane;
     @FXML
     private Text Prixtotal;
+    @FXML
+    private TableColumn<Commande, HBox> Actioncolumn;
     @FXML
     private DatePicker ComDate;
     @FXML
@@ -101,7 +103,7 @@ public class CommandeController extends Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         try {
-            String sqldelete = "DELETE FROM commande where Prixa = 0;";
+            String sqldelete = "DELETE FROM commande where Prixa IS NULL;";
             PreparedStatement delete = getConnection().prepareStatement(sqldelete);
             int rowsAffected = delete.executeUpdate();
 
@@ -154,22 +156,19 @@ public class CommandeController extends Controller implements Initializable {
         Online(ConnectionStat(), main, Connected);
         new Thread(this::Commande).start();
         new Thread(this::Produit).start();
-        if(UtilisateurName != null) {
-            UtilisateurName.setText(LoginController.Nom);
-        }
 
 
         if (Depot != null) {
             try {
 
 
-            String sqlSelect = "SELECT d.IDdep FROM depot d;";
-            PreparedStatement stat = getConnection().prepareStatement(sqlSelect);
-            ResultSet result = stat.executeQuery();
-            while (result.next()) {
-                System.out.println(result.getString("IDdep"));
-                Depot.setItems(FXCollections.observableArrayList(result.getString("IDdep")));
-            }
+                String sqlSelect = "SELECT d.IDdep FROM depot d;";
+                PreparedStatement stat = getConnection().prepareStatement(sqlSelect);
+                ResultSet result = stat.executeQuery();
+                while (result.next()) {
+                    System.out.println(result.getString("IDdep"));
+                    Depot.setItems(FXCollections.observableArrayList(result.getString("IDdep")));
+                }
 
             }catch (SQLException ex){
                 System.out.println(ex);
@@ -201,16 +200,18 @@ public class CommandeController extends Controller implements Initializable {
                 System.out.println("labiad");
                 String selectedOption = Selectbox.getValue();
                 System.out.println(selectedOption);
-                if (selectedOption == "Gestion des Avoirs") {
+
+                if ("Gestion des Avoirs".equals(selectedOption)) {
                     System.out.println(selectedOption);
                     CommandeGridpane.setVisible(false);
-                    Avoirs.setVisible(true);
+                    AvoirsGridpane.setVisible(true);
                 } else {
-                    Avoirs.setVisible(false);
+                    AvoirsGridpane.setVisible(false);
                     CommandeGridpane.setVisible(true);
                 }
             });
         }
+
     }
     public void OnModify(ActionEvent event){
         Commande c = Commandes.getSelectionModel().getSelectedItem();
@@ -243,7 +244,7 @@ public class CommandeController extends Controller implements Initializable {
 
         datePicker.setValue(LocalDate.parse(commande.DateCommande.getValue()));
         Dialog<ButtonType> dialog = new Dialog<>();
-        dialog.setTitle("Modifier le produit");
+        dialog.setTitle("Modifier la Commande");
         dialog.setHeaderText("Modifier les détails de la commande : " + commande.IDcommande);
 
         VBox vbox = new VBox();
@@ -418,7 +419,7 @@ public class CommandeController extends Controller implements Initializable {
 
                         //initialize the virtual commande;
                         try {
-                            String sqlInsert = "INSERT INTO `commande` (`IDco`, `Prixa`, `Datec`, `IDf`, `IDca`, `IDu`, `MethPayementC`, `Stat`,`iddep`) VALUES (?, 0, '2004-05-03', ?, ?, ?, 'Cash', 'En Cours','8');";
+                            String sqlInsert = "INSERT INTO `commande` (`IDco`, `Prixa`, `Datec`, `IDf`, `IDca`, `IDu`, `MethPayementC`, `Stat` , `iddep`) VALUES (?, NULL, NULL, ?, ?, ?, NULL, NULL,NULL);";
                             PreparedStatement stmt = getConnection().prepareStatement(sqlInsert);
 
 
@@ -427,7 +428,6 @@ public class CommandeController extends Controller implements Initializable {
                             stmt.setInt(3, Idca);
                             stmt.setInt(4, Iduser);
 
-
                             int rowsAffected = stmt.executeUpdate();  // Executing the PreparedStatement
                             if (rowsAffected > 0) {
                                 System.out.println("INSERT successful!");
@@ -435,7 +435,7 @@ public class CommandeController extends Controller implements Initializable {
                                 System.out.println("INSERT failed!");
                             }
                         } catch (SQLException ex) {
-                            System.out.println("intialisation de la commande virtuel " + ex +"\n");
+                            System.out.println("intialisation de la commande virtuel " + ex);
                         }
                     } else {
                         System.out.println("No fournisseur");
@@ -527,7 +527,7 @@ public class CommandeController extends Controller implements Initializable {
 
     }
 
-        //table d'association ;
+    //table d'association ;
 
 
 
@@ -579,6 +579,9 @@ public class CommandeController extends Controller implements Initializable {
                     "FROM commande c;";
             PreparedStatement stat = getConnection().prepareStatement(sqlSelect);
             ResultSet result = stat.executeQuery();
+            Button btn = new Button("Action");
+
+
 
             while (result.next()) {
                 Commande Com = new Commande(
@@ -589,8 +592,9 @@ public class CommandeController extends Controller implements Initializable {
                         new SimpleStringProperty(result.getString("IDca")),
                         new SimpleStringProperty(result.getString("IDu")),   // IdUtilisateur
                         new SimpleStringProperty(result.getString("MethPayementC")), // MethodePayement
-                        new SimpleStringProperty(result.getString("Stat"))  // Status
+                        new SimpleStringProperty(result.getString("Stat"))
                 );
+
 
                 Com.Afficher();
 
@@ -603,6 +607,7 @@ public class CommandeController extends Controller implements Initializable {
                 Caisse.setCellValueFactory(f -> f.getValue().IdCaisse);
                 Methode.setCellValueFactory(f -> f.getValue().MethodePayement);
                 IDcommande.setCellValueFactory(f -> f.getValue().IDcommande);
+
                 data.add(Com);
             }
             Commandes.setItems(data);
@@ -669,5 +674,12 @@ public class CommandeController extends Controller implements Initializable {
         );
 
     }
+
+
+
+    //This Code bellow is for Avoir ;
+
+
+
 
 }
