@@ -32,6 +32,7 @@ import java.util.ResourceBundle;
 
 
 public class FournisseurController extends Controller implements Initializable {
+    //rdedaddd
     @FXML
     private ImageView imageView;
     @FXML
@@ -116,16 +117,13 @@ public class FournisseurController extends Controller implements Initializable {
 
     @FXML
     private TextField te;
-    @FXML
-    private Text UtilisateurName;
+
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Online(ConnectionStat(), main, Connected);
-        if(UtilisateurName != null) {
-            UtilisateurName.setText(LoginController.Nom);
-        }
+
         if (tableViewActif != null && tableViewArchived != null) {
             tableViewActif.setVisible(true);
             tableViewArchived.setVisible(false);
@@ -235,6 +233,20 @@ public class FournisseurController extends Controller implements Initializable {
             alert.showAndWait();
             return;
         }
+        if (!isNameValid(name)) {
+            showAlert(Alert.AlertType.WARNING, "Erreur de saisie", null, "Le nom ne doit pas contenir de chiffres ou de caractères spéciaux.");
+            return;
+        }
+
+        if (!isEmailValid(email)) {
+            showAlert(Alert.AlertType.WARNING, "Erreur de saisie", null, "Veuillez entrer une adresse email valide.");
+            return;
+        }
+
+        if (!isPhoneValid(phone)) {
+            showAlert(Alert.AlertType.WARNING, "Erreur de saisie", null, "Veuillez entrer un numéro de téléphone valide.");
+            return;
+        }
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         try {
@@ -279,10 +291,10 @@ public class FournisseurController extends Controller implements Initializable {
         Connection conn = null;*/
 
         try {
-          //  conn = dbManager.getConnection();
+            //  conn = dbManager.getConnection();
 
             String sql = "SELECT IDF, Nomf, Telf, Emailf, country, city FROM fournisseur WHERE etat='A'";
-           // PreparedStatement statement = conn.prepareStatement(sql);
+            // PreparedStatement statement = conn.prepareStatement(sql);
             PreparedStatement statement = getConnection().prepareStatement(sql);
 
             ResultSet rs = statement.executeQuery();
@@ -341,30 +353,30 @@ public class FournisseurController extends Controller implements Initializable {
             actionCol.setMinWidth(200);
 
             actionCol.setCellFactory(col -> {
-                        return new TableCell<Fournisseur, Void>() {
-                            private final Button btnDelete = new Button("Supprimer");
-                            private final Button btnEdit = new Button("Modifier");
+                return new TableCell<Fournisseur, Void>() {
+                    private final Button btnDelete = new Button("Supprimer");
+                    private final Button btnEdit = new Button("Modifier");
 
-                            {
-                                btnDelete.setOnAction(e -> {
-                                    Fournisseur f = getTableView().getItems().get(getIndex());
-                                    deleteFournisseur(f);
-                                });
-                                btnEdit.setOnAction(e -> {
-                                    Fournisseur f = getTableView().getItems().get(getIndex());
-                                    editFournisseur(f);
-                                });
-                            }
-                            HBox pane = new HBox(10, btnDelete, btnEdit);
+                    {
+                        btnDelete.setOnAction(e -> {
+                            Fournisseur f = getTableView().getItems().get(getIndex());
+                            deleteFournisseur(f);
+                        });
+                        btnEdit.setOnAction(e -> {
+                            Fournisseur f = getTableView().getItems().get(getIndex());
+                            editFournisseur(f);
+                        });
+                    }
+                    HBox pane = new HBox(10, btnDelete, btnEdit);
 
-                            @Override
-                            protected void updateItem(Void item, boolean empty) {
-                                super.updateItem(item, empty);
-                                setGraphic(empty ? null : pane);
-                            }
-                        };
+                    @Override
+                    protected void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        setGraphic(empty ? null : pane);
+                    }
+                };
             });
-        tableViewActif.getColumns().addAll(actionCol);
+            tableViewActif.getColumns().addAll(actionCol);
             rs.close();
             statement.close();
 
@@ -381,7 +393,7 @@ public class FournisseurController extends Controller implements Initializable {
             return cell;
         });
     }
-    private void editFournisseur(Fournisseur fournisseur) {
+    /*private void editFournisseur(Fournisseur fournisseur) {
 
         TextField nomField = new TextField(fournisseur.getNom());
         TextField emailField = new TextField(fournisseur.getEmail());
@@ -443,7 +455,95 @@ public class FournisseurController extends Controller implements Initializable {
                 System.out.println("Erreur lors de la modification du fournisseur.");
             }
         }
+    }*/
+    private void editFournisseur(Fournisseur fournisseur) {
+        TextField nomField = new TextField(fournisseur.getNom());
+        TextField emailField = new TextField(fournisseur.getEmail());
+        TextField phoneField = new TextField(fournisseur.getPhone());
+        TextField addressField = new TextField(fournisseur.getAdresse());
+
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.setTitle("Modifier le fournisseur");
+        dialog.setHeaderText("Modifier les détails du fournisseur : " + fournisseur.getNom());
+
+        VBox vbox = new VBox();
+        vbox.getChildren().addAll(
+                new Label("Nom :"), nomField,
+                new Label("Email :"), emailField,
+                new Label("Téléphone :"), phoneField,
+                new Label("Adresse :"), addressField
+        );
+
+        dialog.getDialogPane().setContent(vbox);
+
+        ButtonType okButton = new ButtonType("Enregistrer", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(okButton, ButtonType.CANCEL);
+
+        Optional<ButtonType> result = dialog.showAndWait();
+
+        if (result.isPresent() && result.get() == okButton) {
+            // Validation des entrées
+            if (!isPhoneValid(phoneField.getText())) {
+                showAlert(Alert.AlertType.WARNING, "Erreur de saisie", null, "Veuillez entrer un numéro de téléphone valide.");
+                return;
+            }
+
+            if (!isEmailValid(emailField.getText())) {
+                showAlert(Alert.AlertType.WARNING, "Erreur de saisie", null, "Veuillez entrer une adresse email valide.");
+                return;
+            }
+
+            try {
+                String sql = "UPDATE fournisseur SET Nomf = ?, Emailf = ?, Telf = ?, country = ?, city = ? WHERE IDF = ?";
+                PreparedStatement statement = getConnection().prepareStatement(sql);
+
+                statement.setString(1, nomField.getText());
+                statement.setString(2, emailField.getText());
+                statement.setString(3, phoneField.getText());
+                statement.setString(4, addressField.getText().split(",")[0].trim());
+                statement.setString(5, addressField.getText().split(",")[1].trim());
+                statement.setInt(6, fournisseur.getId());
+
+                int rowsAffected = statement.executeUpdate();
+
+                if (rowsAffected > 0) {
+                    System.out.println("Fournisseur mis à jour avec succès.");
+
+                    fournisseur.setNom(nomField.getText());
+                    fournisseur.setEmail(emailField.getText());
+                    fournisseur.setPhone(phoneField.getText());
+                    fournisseur.setAdresse(addressField.getText());
+                    // Actualiser le TableView
+                    tableViewActif.refresh();
+                } else {
+                    System.out.println("Aucune modification apportée.");
+                }
+
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                System.out.println("Erreur lors de la modification du fournisseur.");
+            }
+        }
     }
+
+    private boolean isEmailValid(String email) {
+        return email.contains("@");
+    }
+
+    private boolean isPhoneValid(String phone) {
+        return phone.matches("\\d+");
+    }
+    private boolean isNameValid(String name) {
+        return name.matches("[a-zA-Z\\s]+");
+    }
+    private void showAlert(Alert.AlertType alertType, String title, String headerText, String contentText) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
+        alert.showAndWait();
+    }
+
 
     private void deleteFournisseur(Fournisseur fournisseur) {
         Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -480,14 +580,16 @@ public class FournisseurController extends Controller implements Initializable {
         }
     }
     public void afficheArchives() {
+        tableViewArchived.getColumns().clear();
+
         if (tableViewArchived == null) {
             System.err.println("Erreur : tableViewArchived est null");
             return;
         }
-       // DatabaseManager dbManager = new DatabaseManager();
+        // DatabaseManager dbManager = new DatabaseManager();
         try  {
             String sql = "SELECT IDF, Nomf, Telf, Emailf, country, city FROM fournisseur WHERE etat='D'";
-           // PreparedStatement statement = conn.prepareStatement(sql);
+            // PreparedStatement statement = conn.prepareStatement(sql);
             PreparedStatement statement = getConnection().prepareStatement(sql);
             ResultSet rs = statement.executeQuery();
             fournisseursArchives = FXCollections.observableArrayList();
@@ -525,7 +627,7 @@ public class FournisseurController extends Controller implements Initializable {
             applyTextAlignment(phoneCol);
             TableColumn<Fournisseur, String> addressCol = new TableColumn<>("Adresse");
             addressCol.setCellValueFactory(f -> new javafx.beans.property.SimpleStringProperty(f.getValue().getAdresse()));
-            addressCol.setMinWidth(350);
+            addressCol.setMinWidth(300);
             applyTextAlignment(addressCol);
             tableViewArchived.setItems(fournisseursArchives);
             System.out.println("Nombre de fournisseurs archivés chargés: " + fournisseursArchives.size());
@@ -533,6 +635,29 @@ public class FournisseurController extends Controller implements Initializable {
             System.out.println("Items in TableView: " + tableViewArchived.getItems().size());
             tableViewArchived.getColumns().addAll(idCol, nameCol, emailCol, phoneCol, addressCol);
 
+
+            TableColumn<Fournisseur, Void> actionCol = new TableColumn<>("Actions");
+            actionCol.setMinWidth(150);
+            actionCol.setCellFactory(col -> new TableCell<>() {
+                private final Button btnEdit = new Button("Activer");
+
+                {
+                    btnEdit.setOnAction(e -> {
+                        Fournisseur fournisseur = getTableView().getItems().get(getIndex());
+                        updateFournisseurStateA(fournisseur.getId());
+                    });
+                }
+
+                private final HBox pane = new HBox(10, btnEdit);
+
+                @Override
+                protected void updateItem(Void item, boolean empty) {
+                    super.updateItem(item, empty);
+                    setGraphic(empty ? null : pane);
+                }
+            });
+            //  tableViewArchived.getColumns().addAll(actionCol);
+            tableViewArchived.getColumns().addAll(actionCol);
             statement.close();
 
         } catch (SQLException ex) {
@@ -572,6 +697,27 @@ public class FournisseurController extends Controller implements Initializable {
             } else {
                 System.out.println("Aucune mise à jour effectuée");
             }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    public void updateFournisseurStateA(int fournisseurId) {
+        try  {
+            String sqlUpdate = "UPDATE fournisseur SET etat = 'A' WHERE IDF = ? AND etat = 'D'";
+            PreparedStatement statement = getConnection().prepareStatement(sqlUpdate);
+            statement.setInt(1, fournisseurId);
+
+            int rowsAffected = statement.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("État du fournisseur mis à jour avec succès");
+                // Rafraîchissement des données après mise à jour.
+                afficheArchives();
+                // Rafraîchissement des données actives si nécessaire.
+                affiche();
+            } else {
+                System.out.println("Aucune mise à jour effectuée");
+            }
+            statement.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
